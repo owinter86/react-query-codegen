@@ -94,9 +94,9 @@ const generateResponsesDefinition = (responses: ComponentsObject['responses'] = 
         if (isEmptyInterface) {
           return `export type RQ${pascal(name)}Response = ${type}`;
         } else if (type.includes('{') && !type.includes('|') && !type.includes('&')) {
-          return `${doc}export type RQ${pascal(name)}Response = ${type}`;
+          return `${doc}\nexport type RQ${pascal(name)}Response = ${type}`;
         } else {
-          return `${doc}export type RQ${pascal(name)}Response = ${type};`;
+          return `${doc}\nexport type RQ${pascal(name)}Response = ${type};`;
         }
       })
       .join('\n\n') +

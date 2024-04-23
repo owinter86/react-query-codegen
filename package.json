@@ -37,7 +37,7 @@
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "tsc": "tsc -p tsconfig.json",
-    "test": "yarn tsc && node test/script.mjs",
+    "test": "npm run tsc && node test/script.mjs",
     "deploy": "tsc && semantic-release --no-ci",
     "prepare": "husky install"
   },

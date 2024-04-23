@@ -63,7 +63,8 @@ export function importSpecs({
                   !schemaImportsArray.includes(formattedImport) &&
                   element !== 'void' &&
                   element !== 'string' &&
-                  !element.includes('{')
+                  !element.includes('{') &&
+                  !element.includes('unknown')
                 ) {
                   schemaImportsArray.push(formattedImport);
                 }

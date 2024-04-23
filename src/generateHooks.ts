@@ -68,7 +68,7 @@ export const createHook = ({
   const isOk = ([statusCode]: [string, ResponseObject | ReferenceObject]) =>
     statusCode.toString().startsWith('2');
 
-  const responseTypes = getResReqTypes(Object.entries(operation.responses).filter(isOk)) || 'void';
+  const responseTypes = getResReqTypes(Object.entries(operation.responses).filter(isOk)) || 'unknown';
   const requestBodyTypes = operation.requestBody ? getResReqTypes([['body', operation.requestBody]]) : null;
 
   let imports = [responseTypes];
@@ -261,7 +261,7 @@ export const createHook = ({
 
      export const ${fetchName} = async (props:${componentName}Params) => {
       const {${paramsInPath.join(', ')}, ...params} = props
-      const result = await api.${verb}<${responseTypes}>("${route}", ${config})
+      const result = await api.${verb}<${responseTypes}>(\`${route}\`, ${config})
       return result.data;
     }`;
   }
