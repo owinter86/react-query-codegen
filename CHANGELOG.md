@@ -1,3 +1,10 @@
+## 1.3.3 (2024-04-23)
+
+
+### Bug Fixes
+
+* fix string interpolation of requests f3da64e
+
 ## 1.3.2 (2024-03-25)
 
 
