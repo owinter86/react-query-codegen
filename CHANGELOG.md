@@ -1,3 +1,10 @@
+## 1.4.0 (2024-05-02)
+
+
+### Features
+
+* add generation from url 705be63
+
 ## 1.3.3 (2024-04-23)
 
 
