@@ -1,3 +1,10 @@
+## 1.4.1 (2024-05-24)
+
+
+### Bug Fixes
+
+* dont throw for unsupported types 9b72d52
+
 ## 1.4.0 (2024-05-02)
 
 
