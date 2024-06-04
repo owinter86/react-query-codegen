@@ -186,26 +186,12 @@ export const createHook = ({
     if (requiredBodyProps.length) {
       if (enabledParam === true) {
         enabledParam = 'hasDefinedProps(params,';
-        enabledParam += requiredParams.map((p) => `"${p.name}"`).join(', ');
+        enabledParam += requiredBodyProps.map((p) => `"${p}"`).join(', ');
       } else {
         enabledParam += ',';
         enabledParam += requiredBodyProps.map((p) => `"${p}"`).join(', ');
       }
     }
-    // generatedBodyProps.forEach((item) => {
-    //   const isRequired = (scheme.required || []).includes(item);
-    //   if (isRequired) {
-    //     if (enabledParam && enabledParam !== 'hasDefinedProps(params,') {
-    //       enabledParam += `&& params['${item}'] != null`;
-    //     } else {
-    //       enabledParam = `params['${item}'] != null`;
-    //     }
-    //   }
-    // });
-  }
-
-  if (enabledParam !== true) {
-    enabledParam += ')';
   }
 
   if (operation.requestBody && 'content' in operation.requestBody) {
@@ -223,12 +209,16 @@ export const createHook = ({
     if (generatedBodyProps.length > 0) {
       generatedBodyProps.forEach((item) => {
         if (enabledParam && enabledParam !== 'hasDefinedProps(params,') {
-          enabledParam += `&& params['${item}'] != null`;
+          console.log('SKIPPING', item);
         } else {
-          enabledParam = `params['${item}'] != null`;
+          console.log('SKIPPING2', item);
         }
       });
     }
+  }
+
+  if (enabledParam !== true) {
+    enabledParam += ')';
   }
 
   const createQueryHooks = (emptyParams?: boolean) => {
