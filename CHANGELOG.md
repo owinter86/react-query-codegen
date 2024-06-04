@@ -1,3 +1,10 @@
+## 1.5.1 (2024-06-04)
+
+
+### Bug Fixes
+
+* fix has defined props for body params e67c758
+
 ## 1.5.0 (2024-06-04)
 
 
