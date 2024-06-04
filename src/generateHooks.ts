@@ -94,29 +94,19 @@ export const createHook = ({
   );
 
   const headerParams = header.filter((p) => !headerFilters?.includes(p.name));
-
-  let enabled = [] as any;
-
+  const requiredParams = [...queryParams, ...pathParams, ...headerParams].filter((p) => p.required);
   // TODO: extract all requestBody or remove useQuery variants
-  let enabledParam = '!!params';
-  [...queryParams, ...pathParams, ...headerParams].forEach((item) => {
-    if (item.required) {
-      enabled.push(`["${item.name}"]`);
-      if (enabledParam && enabledParam !== '!!params') {
-        enabledParam += `&& params['${item.name}'] != null`;
-      } else {
-        enabledParam = `params['${item.name}'] != null`;
-      }
-    }
-  });
-
-  // `!props${enabled.join('== null && !props')}`;
+  let enabledParam: boolean | string = true;
+  if (requiredParams.length) {
+    enabledParam = 'hasDefinedProps(params,';
+    enabledParam += requiredParams.map((p) => `"${p.name}"`).join(', ');
+  }
 
   const paramsTypes = paramsInPath
     .map((p) => {
       try {
         const { name, required, schema } = pathParams.find((i) => i.name === p)!;
-        return `${name}${required ? '' : '?'}: ${resolveValue(schema!)}`;
+        return `${name}${required ? '' : '?'}: ${resolveValue(schema!)} ${required ? '| undefined' : ''}`;
       } catch (err) {
         throw new Error(`The path params ${p} can't be found in parameters (${operationId})`);
       }
@@ -127,7 +117,7 @@ export const createHook = ({
     .map((p) => {
       const processedName = IdentifierRegexp.test(p.name) ? p.name : `"${p.name}"`;
       return `${formatDescription(p.description)}
-      ${processedName}${p.required ? '' : '?'}: ${resolveValue(p.schema!)}`;
+      ${processedName}${p.required ? '' : '?'}: ${resolveValue(p.schema!)} ${p.required ? '| undefined' : ''}`;
     })
     .join(';\n  ');
 
@@ -135,7 +125,7 @@ export const createHook = ({
     .map((p) => {
       try {
         const { name, required, schema } = headerParams.find((i) => i.name === p.name)!;
-        return `"${name}"${required ? '' : '?'}: ${resolveValue(schema!)}`;
+        return `"${name}"${required ? '' : '?'}: ${resolveValue(schema!)} ${required ? '| undefined' : ''}`;
       } catch (err) {
         throw new Error(`The path params ${p} can't be found in parameters (${operationId})`);
       }
@@ -179,9 +169,71 @@ export const createHook = ({
 
   const fetchName = camel(componentName);
 
+  const hasRequestBodyArrray = requestBodyComponent && requestBodyComponent.includes('[]');
+  const body = hasRequestBodyArrray ? `{body: ${requestBodyComponent}}` : `${requestBodyComponent}`;
+  const bodyProps = hasRequestBodyArrray ? `{body, ...props}` : 'props';
+
+  // const generateEnabledBodyProps = () => {
+  const definitionKey = Object.keys(schemasComponents?.schemas || {}).find(
+    (key) => pascal(key) === requestBodyComponent
+  );
+
+  if (definitionKey && !hasRequestBodyArrray) {
+    const scheme = schemasComponents?.schemas?.[definitionKey] as SchemaObject;
+    const generatedBodyProps = Object.keys(scheme.properties as SchemaObject);
+    const requiredBodyProps = generatedBodyProps.filter((p) => scheme.required?.includes(p));
+
+    if (requiredBodyProps.length) {
+      if (enabledParam === true) {
+        enabledParam = 'hasDefinedProps(params,';
+        enabledParam += requiredParams.map((p) => `"${p.name}"`).join(', ');
+      } else {
+        enabledParam += ',';
+        enabledParam += requiredBodyProps.map((p) => `"${p}"`).join(', ');
+      }
+    }
+    // generatedBodyProps.forEach((item) => {
+    //   const isRequired = (scheme.required || []).includes(item);
+    //   if (isRequired) {
+    //     if (enabledParam && enabledParam !== 'hasDefinedProps(params,') {
+    //       enabledParam += `&& params['${item}'] != null`;
+    //     } else {
+    //       enabledParam = `params['${item}'] != null`;
+    //     }
+    //   }
+    // });
+  }
+
+  if (enabledParam !== true) {
+    enabledParam += ')';
+  }
+
+  if (operation.requestBody && 'content' in operation.requestBody) {
+    let generatedBodyProps = [];
+    for (let contentType of Object.keys(operation.requestBody.content)) {
+      if (contentType.startsWith('application/json') || contentType.startsWith('application/octet-stream')) {
+        const schema = operation.requestBody.content[contentType].schema!;
+
+        if ('properties' in schema) {
+          // @ts-ignore
+          generatedBodyProps.push(...Object.keys(schema.properties));
+        }
+      }
+    }
+    if (generatedBodyProps.length > 0) {
+      generatedBodyProps.forEach((item) => {
+        if (enabledParam && enabledParam !== 'hasDefinedProps(params,') {
+          enabledParam += `&& params['${item}'] != null`;
+        } else {
+          enabledParam = `params['${item}'] != null`;
+        }
+      });
+    }
+  }
+
   const createQueryHooks = (emptyParams?: boolean) => {
     const key = emptyParams ? '' : `params`;
-    const queryParamType = emptyParams ? '' : `${componentName}Params`;
+    const queryParamType = emptyParams ? '' : `Partial<${componentName}Params>`;
     const queryKey = emptyParams
       ? `["${componentName.toLowerCase()}"]`
       : `["${componentName.toLowerCase()}", params]`;
@@ -189,9 +241,11 @@ export const createHook = ({
     const propTest = emptyParams ? '' : `${props}: ${queryParamType}`;
     const createQuery = () => `
     export function get${componentName}QueryOptions(${propTest}) { 
+      const enabled = ${enabledParam}
+
       return queryOptions({
         queryKey: ${queryKey},
-        queryFn: () => ${fetchName}(${key}), 
+        queryFn: enabled ?  () => ${fetchName}(${key}) : skipToken, 
       });
     }`;
 
@@ -201,19 +255,11 @@ export const createHook = ({
 
   output += createQueryHooks(!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam);
 
-  const hasRequestBodyArrray = requestBodyComponent && requestBodyComponent.includes('[]');
-  const body = hasRequestBodyArrray ? `{body: ${requestBodyComponent}}` : `${requestBodyComponent}`;
-  const bodyProps = hasRequestBodyArrray ? `{body, ...props}` : 'props';
-
   const generateProps = (props: ParameterObject[]) => {
     return props.map((item) => `["${item.name}"]: props["${item.name}"]`).join(',');
   };
 
   const generateBodyProps = () => {
-    const definitionKey = Object.keys(schemasComponents?.schemas || {}).find(
-      (key) => pascal(key) === requestBodyComponent
-    );
-
     if (definitionKey && !hasRequestBodyArrray) {
       const scheme = schemasComponents?.schemas?.[definitionKey] as SchemaObject;
       const generatedBodyProps = Object.keys(scheme.properties as SchemaObject)
@@ -240,7 +286,7 @@ export const createHook = ({
       return `const body = {${generatedBodyProps.map((item) => `${item}: props.${item}`).join(',')}}`;
     }
 
-    return `hehe`;
+    return `ERROR`;
   };
 
   if (!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam) {

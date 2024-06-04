@@ -101,7 +101,14 @@ async function make({
 
   const operationIds: string[] = [];
 
-  let hooks = '';
+  let hooks = `
+  function hasDefinedProps<T extends { [P in K]?: any }, K extends PropertyKey>(
+    obj: T,
+    ...keys: K[]
+  ): obj is T & { [P in K]-?: Exclude<T[P], undefined> } {
+    return keys.every((k) => obj[k] !== undefined);
+  }
+  `;
   let schemaImportsArray = [] as string[];
   let collectedQueryImports = [] as ('query' | 'mutation' | 'infiniteQuery')[];
   Object.entries(spec.paths).forEach(([route, verbs]: [string, PathItemObject]) => {

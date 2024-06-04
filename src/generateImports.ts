@@ -12,7 +12,7 @@ export const generateImports = ({
   const importTypes = schemaImports.join(',');
   let imports = [] as string[];
   if (queryImports.includes('query')) {
-    imports = [...imports, 'queryOptions'];
+    imports = [...imports, 'skipToken', 'queryOptions'];
   }
   if (queryImports.includes('infiniteQuery')) {
     imports = [...imports, 'infiniteQueryOptions'];
