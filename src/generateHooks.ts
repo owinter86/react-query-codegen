@@ -106,7 +106,7 @@ export const createHook = ({
     .map((p) => {
       try {
         const { name, required, schema } = pathParams.find((i) => i.name === p)!;
-        return `${name}${required ? '' : '?'}: ${resolveValue(schema!)} ${required ? '| undefined' : ''}`;
+        return `${name}${required ? '' : '?'}: ${resolveValue(schema!)}`;
       } catch (err) {
         throw new Error(`The path params ${p} can't be found in parameters (${operationId})`);
       }
@@ -117,7 +117,7 @@ export const createHook = ({
     .map((p) => {
       const processedName = IdentifierRegexp.test(p.name) ? p.name : `"${p.name}"`;
       return `${formatDescription(p.description)}
-      ${processedName}${p.required ? '' : '?'}: ${resolveValue(p.schema!)} ${p.required ? '| undefined' : ''}`;
+      ${processedName}${p.required ? '' : '?'}: ${resolveValue(p.schema!)}`;
     })
     .join(';\n  ');
 
@@ -125,7 +125,7 @@ export const createHook = ({
     .map((p) => {
       try {
         const { name, required, schema } = headerParams.find((i) => i.name === p.name)!;
-        return `"${name}"${required ? '' : '?'}: ${resolveValue(schema!)} ${required ? '| undefined' : ''}`;
+        return `"${name}"${required ? '' : '?'}: ${resolveValue(schema!)}`;
       } catch (err) {
         throw new Error(`The path params ${p} can't be found in parameters (${operationId})`);
       }
