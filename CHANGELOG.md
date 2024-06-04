@@ -1,3 +1,10 @@
+## 1.5.2 (2024-06-04)
+
+
+### Bug Fixes
+
+* remove required undefined type 862b1b0
+
 ## 1.5.1 (2024-06-04)
 
 
