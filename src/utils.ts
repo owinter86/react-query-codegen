@@ -34,8 +34,6 @@ export const getScalar = (item: SchemaObject) => {
       return getArray(item) + nullable;
 
     case 'string':
-      console.log(JSON.stringify(item, null, 2));
-
       return (item.enum ? `"${item.enum.join(`" | "`)}"` : 'string') + nullable;
 
     case 'object':
