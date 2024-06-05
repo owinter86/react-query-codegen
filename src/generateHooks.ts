@@ -73,7 +73,6 @@ export const createHook = ({
   const responseTypes = getResReqTypes(Object.entries(operation.responses).filter(isOk)) || 'unknown';
   const requestBodyTypes = operation.requestBody ? getResReqTypes([['body', operation.requestBody]]) : null;
 
-  console.log({ imports });
   let queryImports = [] as Array<'mutation' | 'query' | 'infiniteQuery'>;
 
   const paramsInPath = getParamsInPath(route).filter(
