@@ -1,3 +1,10 @@
+## 1.5.5 (2024-06-05)
+
+
+### Bug Fixes
+
+* support application/ld+json content types 729496c
+
 ## 1.5.4 (2024-06-05)
 
 
