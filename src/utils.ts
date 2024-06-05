@@ -6,6 +6,7 @@ import chalk from 'chalk';
 const { pascal } = pasCase;
 
 import type { ReferenceObject, RequestBodyObject, ResponseObject, SchemaObject } from 'openapi3-ts';
+import { imports } from './generateHooks.js';
 
 export const getDocs = (data: ReferenceObject | { description?: string }) =>
   isReference(data) ? '' : formatDescription(data.description);
@@ -145,8 +146,14 @@ const getObject = (item: SchemaObject): string => {
 /**
  * Resolve the value of a schema object to a proper type definition.
  */
-export const resolveValue = (schema: SchemaObject) =>
-  isReference(schema) ? getRef(schema.$ref) : getScalar(schema);
+export const resolveValue = (schema: SchemaObject) => {
+  if (isReference(schema)) {
+    const ref = getRef(schema.$ref);
+    imports?.push(ref);
+    return ref;
+  }
+  return getScalar(schema);
+};
 
 /**
  * Format a description to code documentation.
@@ -174,17 +181,19 @@ export const getResReqTypes = (
       }
 
       if (isReference(res)) {
-        return getRef(res.$ref);
+        const ref = getRef(res.$ref);
+        imports.push(ref);
+        return ref;
       }
 
       if (res.content) {
         for (const contentType of Object.keys(res.content)) {
           if (
             contentType.startsWith('application/json') ||
+            contentType.startsWith('application/ld+json') ||
             contentType.startsWith('application/octet-stream')
           ) {
             const schema = res.content[contentType].schema!;
-
             return resolveValue(schema);
           }
         }

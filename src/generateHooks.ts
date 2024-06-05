@@ -29,6 +29,8 @@ const getParamsInPath = (path: string) => {
   return output;
 };
 
+export const imports: string[] = [];
+
 /**
  * Generate a react-query component from openapi operation specs
  */
@@ -71,7 +73,7 @@ export const createHook = ({
   const responseTypes = getResReqTypes(Object.entries(operation.responses).filter(isOk)) || 'unknown';
   const requestBodyTypes = operation.requestBody ? getResReqTypes([['body', operation.requestBody]]) : null;
 
-  let imports = [responseTypes];
+  console.log({ imports });
   let queryImports = [] as Array<'mutation' | 'query' | 'infiniteQuery'>;
 
   const paramsInPath = getParamsInPath(route).filter(
@@ -161,10 +163,6 @@ export const createHook = ({
   const queryParam = queryParamsType && queryParamsType !== 'void' ? `${queryParamsType}` : '';
   const requestBodyComponent = requestBodyTypes && requestBodyTypes !== 'void' ? `${requestBodyTypes}` : '';
 
-  if (requestBodyComponent) {
-    imports.push(requestBodyComponent);
-  }
-
   const isUpdateRequest = ['post', 'patch', 'put'].includes(verb);
 
   const fetchName = camel(componentName);
@@ -197,7 +195,11 @@ export const createHook = ({
   if (operation.requestBody && 'content' in operation.requestBody) {
     let generatedBodyProps = [];
     for (let contentType of Object.keys(operation.requestBody.content)) {
-      if (contentType.startsWith('application/json') || contentType.startsWith('application/octet-stream')) {
+      if (
+        contentType.startsWith('application/json') ||
+        contentType.startsWith('application/ld+json') ||
+        contentType.startsWith('application/octet-stream')
+      ) {
         const schema = operation.requestBody.content[contentType].schema!;
 
         if ('properties' in schema) {
@@ -263,6 +265,7 @@ export const createHook = ({
       for (let contentType of Object.keys(operation.requestBody.content)) {
         if (
           contentType.startsWith('application/json') ||
+          contentType.startsWith('application/ld+json') ||
           contentType.startsWith('application/octet-stream')
         ) {
           const schema = operation.requestBody.content[contentType].schema!;
