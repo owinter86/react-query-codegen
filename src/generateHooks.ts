@@ -60,6 +60,8 @@ export const createHook = ({
   }
   operationIds.push(operationId);
 
+  imports = [];
+
   route = route.replace(/\{/g, '${').replace('//', '/'); // `/pet/{id}` => `/pet/${id}`
 
   // Remove the last param of the route if we are in the DELETE case
@@ -244,7 +246,6 @@ export const createHook = ({
     return createQuery();
   };
 
-  imports = [];
   output += createQueryHooks(!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam);
 
   const generateProps = (props: ParameterObject[]) => {
