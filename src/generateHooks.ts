@@ -29,7 +29,7 @@ const getParamsInPath = (path: string) => {
   return output;
 };
 
-export const imports: string[] = [];
+export let imports: string[] = [];
 
 /**
  * Generate a react-query component from openapi operation specs
@@ -244,6 +244,7 @@ export const createHook = ({
     return createQuery();
   };
 
+  imports = [];
   output += createQueryHooks(!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam);
 
   const generateProps = (props: ParameterObject[]) => {
