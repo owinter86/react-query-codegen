@@ -1,3 +1,10 @@
+## 1.5.8 (2024-06-17)
+
+
+### Bug Fixes
+
+* ensure only yaml or json are generated 07e240e
+
 ## 1.5.7 (2024-06-07)
 
 
