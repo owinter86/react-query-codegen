@@ -55,6 +55,10 @@ export function importSpecs({
         try {
           const data = readFileSync(join(process.cwd(), sourceDirectory + '/' + filename), 'utf-8');
           const { ext } = parse(sourceDirectory + '/' + filename);
+          if (['.yaml', '.yml', '.json'].includes(ext.toLowerCase())) {
+            console.log(chalk.red(`Skipping ${filename} as it is not a valid openapi/swagger file`));
+            return;
+          }
           const format = ['.yaml', '.yml'].includes(ext.toLowerCase()) ? 'yaml' : 'json';
           make({
             data,
