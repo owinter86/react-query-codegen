@@ -209,15 +209,6 @@ export const createHook = ({
         }
       }
     }
-    if (generatedBodyProps.length > 0) {
-      generatedBodyProps.forEach((item) => {
-        if (enabledParam && enabledParam !== 'hasDefinedProps(params,') {
-          console.log('SKIPPING', item);
-        } else {
-          console.log('SKIPPING2', item);
-        }
-      });
-    }
   }
 
   if (enabledParam !== true) {
