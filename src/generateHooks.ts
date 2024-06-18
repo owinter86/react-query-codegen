@@ -105,6 +105,36 @@ export const createHook = ({
     enabledParam += requiredParams.map((p) => `"${p.name}"`).join(', ');
   }
 
+  if (operation.requestBody && 'content' in operation.requestBody) {
+    // get all required requestBody schemas and output the required properties
+    const generatedBodyProps = Object.keys(operation.requestBody.content).reduce((acc, contentType) => {
+      if (
+        contentType.startsWith('application/json') ||
+        contentType.startsWith('application/ld+json') ||
+        contentType.startsWith('application/octet-stream')
+      ) {
+        // @ts-ignore
+        const schema = operation.requestBody.content[contentType].schema!;
+
+        if ('required' in schema) {
+          // @ts-ignore
+          acc.push(...schema.required);
+        }
+      }
+      return acc;
+    }, []);
+
+    if (generatedBodyProps.length) {
+      if (enabledParam === true) {
+        enabledParam = 'hasDefinedProps(params,';
+        enabledParam += generatedBodyProps.map((p) => `"${p}"`).join(', ');
+      } else {
+        enabledParam += ',';
+        enabledParam += generatedBodyProps.map((p) => `"${p}"`).join(', ');
+      }
+    }
+  }
+
   const paramsTypes = paramsInPath
     .map((p) => {
       try {
@@ -236,8 +266,6 @@ export const createHook = ({
     queryImports.push('query');
     return createQuery();
   };
-
-  output += createQueryHooks(!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam);
 
   const generateProps = (props: ParameterObject[]) => {
     return props.map((item) => `["${item.name}"]: props["${item.name}"]`).join(',');
@@ -449,6 +477,8 @@ export const createHook = ({
   if (requestBodyComponent && paramsInPath.length && !queryParam && headerParam) {
     output += `// TODO: NOT SUPPORTED (requestBodyComponent && paramsInPath && headerParam)`;
   }
+
+  output += createQueryHooks(!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam);
 
   return { implementation: output, imports, queryImports };
 };
