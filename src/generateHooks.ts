@@ -436,7 +436,6 @@ export const createHook = ({
       ${headerParam}
       ${paramsTypes}
     };
-// TEST1
 
     export const ${fetchName} = async (${bodyProps}: ${componentName}Params) => {
       ${generateBodyProps()}
@@ -447,7 +446,19 @@ export const createHook = ({
   }
 
   if (requestBodyComponent && paramsInPath.length && queryParam && !headerParam) {
-    output += `// TODO: NOT SUPPORTED requestBodyComponent && paramsInPath && queryParam)`;
+    output += `
+    export type ${componentName}Params = ${body} & {
+      ${headerParam}
+      ${paramsTypes}
+    };
+
+    export const ${fetchName} = async (${bodyProps}: ${componentName}Params) => {
+      ${generateBodyProps()}
+      const params =  {${generateProps(queryParams)}}
+      const result = await api.${verb}<${responseTypes}>(\`${route.replace(/\{/g, '{props.')}\`, body, {params})
+      return result.data
+    }
+    `;
   }
 
   if (requestBodyComponent && paramsInPath.length && queryParam && headerParam) {
