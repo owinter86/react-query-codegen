@@ -1,3 +1,11 @@
+## 1.5.11 (2024-06-25)
+
+
+### Bug Fixes
+
+* fix required request body query enabling e52b9fb
+* support query, body and params requests 057f81b
+
 ## 1.5.10 (2024-06-17)
 
 
