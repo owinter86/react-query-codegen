@@ -366,7 +366,7 @@ export const createHook = ({
   if (!requestBodyComponent && !paramsInPath.length && !queryParam && headerParam) {
     const config = isUpdateRequest ? 'null,{headers}' : '{headers}';
     output += `
-          export type ${componentName}Params = {
+      export type ${componentName}Params = {
         ${headerParam}
       };
   
@@ -419,7 +419,7 @@ export const createHook = ({
     output += `
     export type ${componentName}Params = ${body} & {
       ${headerParam}
-      ${paramsTypes}
+      ${queryParamsType}
     };
     export const ${fetchName} = async (${bodyProps}: ${componentName}Params) => {
       ${generateBodyProps()}
@@ -450,6 +450,7 @@ export const createHook = ({
     export type ${componentName}Params = ${body} & {
       ${headerParam}
       ${paramsTypes}
+      ${queryParamsType}
     };
 
     export const ${fetchName} = async (${bodyProps}: ${componentName}Params) => {
