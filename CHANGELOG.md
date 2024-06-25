@@ -1,3 +1,10 @@
+## 1.5.12 (2024-06-25)
+
+
+### Bug Fixes
+
+* update query params types 745fee0
+
 ## 1.5.11 (2024-06-25)
 
 
