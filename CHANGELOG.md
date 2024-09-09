@@ -1,3 +1,10 @@
+## 1.6.0 (2024-09-09)
+
+
+### Features
+
+* support form data for request bodies 475a982
+
 ## 1.5.13 (2024-08-13)
 
 
