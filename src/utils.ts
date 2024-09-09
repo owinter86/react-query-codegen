@@ -39,7 +39,7 @@ export const getScalar = (item: SchemaObject) => {
         return 'string | { name?: string; type?: string; uri: string }' + nullable;
       }
       if (item.enum) {
-        return item.enum.join(`" | "`) + nullable;
+        return `"${item.enum.join(`" | "`)}"` + nullable;
       }
       return 'string' + nullable;
 
