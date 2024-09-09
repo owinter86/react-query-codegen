@@ -35,7 +35,13 @@ export const getScalar = (item: SchemaObject) => {
       return getArray(item) + nullable;
 
     case 'string':
-      return (item.enum ? `"${item.enum.join(`" | "`)}"` : 'string') + nullable;
+      if (item.format === 'binary') {
+        return 'string | { name?: string; type?: string; uri: string }' + nullable;
+      }
+      if (item.enum) {
+        return item.enum.join(`" | "`) + nullable;
+      }
+      return 'string' + nullable;
 
     case 'object':
       return getObject(item) + nullable;
@@ -191,7 +197,8 @@ export const getResReqTypes = (
           if (
             contentType.startsWith('application/json') ||
             contentType.startsWith('application/ld+json') ||
-            contentType.startsWith('application/octet-stream')
+            contentType.startsWith('application/octet-stream') ||
+            contentType.startsWith('multipart/form-data')
           ) {
             const schema = res.content[contentType].schema!;
             return resolveValue(schema);

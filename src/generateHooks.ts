@@ -274,7 +274,24 @@ export const createHook = ({
   const generateBodyProps = () => {
     if (definitionKey && !hasRequestBodyArrray) {
       const scheme = schemasComponents?.schemas?.[definitionKey] as SchemaObject;
-      const generatedBodyProps = Object.keys(scheme.properties as SchemaObject)
+      const schemProperties = Object.keys(scheme.properties as SchemaObject);
+      if (
+        operation.requestBody &&
+        'content' in operation.requestBody &&
+        Object.keys(operation.requestBody.content)[0] === 'multipart/form-data'
+      ) {
+        let formData = `const body = new FormData()`;
+        schemProperties.forEach((item) => {
+          if (scheme.required?.includes(item)) {
+            formData += `\nbody.append("${item}",  props["${item}"]);`;
+          } else {
+            formData += `\n if (props["${item}"] != null) {\n  body.append("${item}",  props["${item}"]);\n}`;
+          }
+        });
+        return formData;
+      }
+
+      const generatedBodyProps = schemProperties
         .map((item: string) => `["${item}"]: props["${item}"]`)
         .join(',');
       return `const body = {${generatedBodyProps}}`;
@@ -282,7 +299,26 @@ export const createHook = ({
 
     if (operation.requestBody && 'content' in operation.requestBody) {
       let generatedBodyProps = [];
-      for (let contentType of Object.keys(operation.requestBody.content)) {
+      let bodyData = '';
+      const contentTypes = Object.keys(operation.requestBody.content);
+      if (contentTypes.includes('multipart/form-data')) {
+        bodyData += `const body = new FormData()`;
+        for (let contentType of contentTypes) {
+          const schema = operation.requestBody.content[contentType].schema!;
+          if ('properties' in schema) {
+            const schemaProperties = Object.keys(schema.properties || []);
+            for (let item of schemaProperties) {
+              if (schema.required?.includes(item)) {
+                bodyData += `\nbody.append("${item}",  props["${item}"].toString());`;
+              } else {
+                bodyData += `\n if (props["${item}"] != null) {\n  body.append("${item}",  props["${item}"].toString());\n}`;
+              }
+            }
+          }
+        }
+        return bodyData;
+      }
+      for (let contentType of contentTypes) {
         if (
           contentType.startsWith('application/json') ||
           contentType.startsWith('application/ld+json') ||
@@ -296,10 +332,8 @@ export const createHook = ({
           }
         }
       }
-      return `const body = {${generatedBodyProps.map((item) => `${item}: props.${item}`).join(',')}}`;
+      return `const body = {${generatedBodyProps.map((item) => `${item}: props["${item}"]`).join(',')}}`;
     }
-
-    return `ERROR`;
   };
 
   if (!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam) {
