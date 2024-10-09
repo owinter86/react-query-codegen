@@ -271,7 +271,6 @@ export const createHook = ({
     return props.map((item) => `["${item.name}"]: props["${item.name}"]`).join(',');
   };
 
-  let defaultHeaders = {};
   const generateBodyProps = () => {
     if (definitionKey && !hasRequestBodyArrray) {
       const scheme = schemasComponents?.schemas?.[definitionKey] as SchemaObject;
@@ -281,7 +280,6 @@ export const createHook = ({
         'content' in operation.requestBody &&
         Object.keys(operation.requestBody.content)[0] === 'multipart/form-data'
       ) {
-        defaultHeaders = JSON.stringify({ ...defaultHeaders, ...{ ContentType: 'multipart/form-data' } });
         let formData = `const body = new FormData()`;
         schemProperties.forEach((item) => {
           if (scheme.required?.includes(item)) {
@@ -304,7 +302,10 @@ export const createHook = ({
       let bodyData = '';
       const contentTypes = Object.keys(operation.requestBody.content);
       if (contentTypes.includes('multipart/form-data')) {
+        console.log('UPDATE2');
+
         bodyData += `const body = new FormData()`;
+
         for (let contentType of contentTypes) {
           const schema = operation.requestBody.content[contentType].schema!;
           if ('properties' in schema) {
@@ -337,6 +338,11 @@ export const createHook = ({
       return `const body = {${generatedBodyProps.map((item) => `${item}: props["${item}"]`).join(',')}}`;
     }
   };
+
+  const hasFormData = generateBodyProps()?.includes('FormData');
+  const defaultHeaders = JSON.stringify({
+    ContentType: hasFormData ? 'multipart/form-data' : 'application/json',
+  });
 
   if (!requestBodyComponent && !paramsInPath.length && !queryParam && !headerParam) {
     output += `
@@ -445,7 +451,7 @@ export const createHook = ({
 
     export const ${fetchName} = async (${bodyProps}: ${componentName}Params) => {
       ${generateBodyProps()}
-      const headers = {${generateProps(header)}, ...${defaultHeaders}}
+      const headers = null
       const result = await api.${verb}<${responseTypes}>("${route}", body, {headers})
       return result.data
     }
@@ -459,7 +465,7 @@ export const createHook = ({
     };
     export const ${fetchName} = async (${bodyProps}: ${componentName}Params) => {
       ${generateBodyProps()}
-      const headers = {${generateProps(header)}, ...${defaultHeaders}}
+      const headers = null
       const params =  {${generateProps(queryParams)}}
       const result = await api.${verb}<${responseTypes}>("${route}", body, {headers, params})
       return result.data
