@@ -1,3 +1,10 @@
+## 1.6.2 (2024-10-09)
+
+
+### Bug Fixes
+
+* update headers for formdata 0aa2e9e
+
 ## 1.6.1 (2024-09-09)
 
 
