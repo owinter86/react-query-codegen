@@ -180,13 +180,15 @@ export const createHook = ({
     throw new Error(`The path params ${lastParamInTheRoute} can't be found in parameters (${operationId})`);
   }
 
-  const defaultDescription = `type: ${verb}\noperationId: ${operationId}\nurl: ${route}`;
+  let defaultDescription = `type: ${verb}\noperationId: ${operationId}\nurl: ${route}`;
+  if (operation.summary) {
+    defaultDescription += `\n\n${operation.summary}`;
+  }
+  if (operation.description) {
+    defaultDescription += `\n\n${operation.description}`;
+  }
 
-  const description = formatDescription(
-    operation.summary && operation.description
-      ? `${defaultDescription}\n\n${operation.summary}\n\n${operation.description}`
-      : `${defaultDescription}`
-  );
+  const description = formatDescription(defaultDescription);
 
   let output = `\n\n${description}`;
 
