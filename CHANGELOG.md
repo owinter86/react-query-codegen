@@ -1,3 +1,10 @@
+## 1.6.4 (2024-11-20)
+
+
+### Bug Fixes
+
+* add descriptions to types d913817
+
 ## 1.6.3 (2024-10-09)
 
 
