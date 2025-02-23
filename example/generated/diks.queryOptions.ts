@@ -1,6 +1,5 @@
 import { queryOptions, skipToken } from "@tanstack/react-query";
-import type { ApiClient } from "./diks.client";
-
+import * as apiClient from "./diks.client";
 const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 	obj: T,
 	...keys: K[]
@@ -8,7 +7,7 @@ const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 	return keys.every((k) => obj[k] !== undefined);
 };
 
-export const AccountFavoritesQueryOptions = (apiClient: ApiClient) => {
+export const AccountFavoritesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AccountFavorites", undefined],
@@ -21,7 +20,7 @@ export const AccountFavoritesQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const AccountGetAppPreferencesQueryOptions = (apiClient: ApiClient) => {
+export const AccountGetAppPreferencesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AccountGetAppPreferences", undefined],
@@ -34,7 +33,7 @@ export const AccountGetAppPreferencesQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const AccountGetCompanyPreferencesQueryOptions = (apiClient: ApiClient) => {
+export const AccountGetCompanyPreferencesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AccountGetCompanyPreferences", undefined],
@@ -48,8 +47,7 @@ export const AccountGetCompanyPreferencesQueryOptions = (apiClient: ApiClient) =
 };
 
 export const AccountUpdateCompanyPreferencesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AccountUpdateCompanyPreferences"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AccountUpdateCompanyPreferences>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "companyPreferences");
 	return queryOptions({
@@ -63,7 +61,7 @@ export const AccountUpdateCompanyPreferencesQueryOptions = (
 	});
 };
 
-export const AccountGetPersonalPreferencesQueryOptions = (apiClient: ApiClient) => {
+export const AccountGetPersonalPreferencesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AccountGetPersonalPreferences", undefined],
@@ -77,8 +75,7 @@ export const AccountGetPersonalPreferencesQueryOptions = (apiClient: ApiClient) 
 };
 
 export const AccountUpdatePersonalPreferencesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AccountUpdatePersonalPreferences"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AccountUpdatePersonalPreferences>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "personalPreferences");
 	return queryOptions({
@@ -92,7 +89,7 @@ export const AccountUpdatePersonalPreferencesQueryOptions = (
 	});
 };
 
-export const AccountMeQueryOptions = (apiClient: ApiClient) => {
+export const AccountMeQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AccountMe", undefined],
@@ -106,8 +103,7 @@ export const AccountMeQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const AccountRegisterQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AccountRegister"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AccountRegister>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "password", "type", "subscribeNewsletter", "phone");
 	return queryOptions({
@@ -121,7 +117,7 @@ export const AccountRegisterQueryOptions = (
 	});
 };
 
-export const AccountRemoveQueryOptions = (apiClient: ApiClient) => {
+export const AccountRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AccountRemove", undefined],
@@ -134,7 +130,7 @@ export const AccountRemoveQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const AccountRemoveDriversLicenseDataQueryOptions = (apiClient: ApiClient) => {
+export const AccountRemoveDriversLicenseDataQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AccountRemoveDriversLicenseData", undefined],
@@ -148,8 +144,7 @@ export const AccountRemoveDriversLicenseDataQueryOptions = (apiClient: ApiClient
 };
 
 export const AccountReservationsQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AccountReservations"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AccountReservations>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "status", "filters");
 	return queryOptions({
@@ -164,8 +159,7 @@ export const AccountReservationsQueryOptions = (
 };
 
 export const CategoryAlternativesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryAlternatives"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategoryAlternatives>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId");
 	return queryOptions({
@@ -180,8 +174,7 @@ export const CategoryAlternativesQueryOptions = (
 };
 
 export const CategoryAvailabilityQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryAvailability"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategoryAvailability>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "datePickup", "dateReturn", "mainCategoryId");
 	return queryOptions({
@@ -196,8 +189,7 @@ export const CategoryAvailabilityQueryOptions = (
 };
 
 export const CategoryCompareQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryCompare"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategoryCompare>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryIds");
 	return queryOptions({
@@ -212,8 +204,7 @@ export const CategoryCompareQueryOptions = (
 };
 
 export const CategoryFavoriteQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryFavorite"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategoryFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId");
 	return queryOptions({
@@ -227,10 +218,7 @@ export const CategoryFavoriteQueryOptions = (
 	});
 };
 
-export const CategoryImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryImage"]>[0]>
-) => {
+export const CategoryImageQueryOptions = (params: Partial<Parameters<typeof apiClient.CategoryImage>[0]>) => {
 	const enabled = hasDefinedProps(params, "categoryId", "fileId", "w");
 	return queryOptions({
 		queryKey: ["CategoryImage", params],
@@ -244,8 +232,7 @@ export const CategoryImageQueryOptions = (
 };
 
 export const CategoryInsuranceProfileQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryInsuranceProfile"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategoryInsuranceProfile>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "categoryId", "datePickup", "dateReturn");
 	return queryOptions({
@@ -259,7 +246,7 @@ export const CategoryInsuranceProfileQueryOptions = (
 	});
 };
 
-export const CategoryListQueryOptions = (apiClient: ApiClient) => {
+export const CategoryListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["CategoryList", undefined],
@@ -273,8 +260,7 @@ export const CategoryListQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const CategoryMainImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryMainImage"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategoryMainImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId", "w");
 	return queryOptions({
@@ -289,8 +275,7 @@ export const CategoryMainImageQueryOptions = (
 };
 
 export const CategoryPriceCalculationQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategoryPriceCalculation"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategoryPriceCalculation>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -314,8 +299,7 @@ export const CategoryPriceCalculationQueryOptions = (
 };
 
 export const CategorySingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["CategorySingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.CategorySingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId");
 	return queryOptions({
@@ -330,8 +314,7 @@ export const CategorySingleQueryOptions = (
 };
 
 export const MainCategoryImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["MainCategoryImage"]>[0]>
+	params: Partial<Parameters<typeof apiClient.MainCategoryImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "mainCategoryId", "fileId", "w");
 	return queryOptions({
@@ -345,7 +328,7 @@ export const MainCategoryImageQueryOptions = (
 	});
 };
 
-export const MainCategoryListQueryOptions = (apiClient: ApiClient) => {
+export const MainCategoryListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["MainCategoryList", undefined],
@@ -359,8 +342,7 @@ export const MainCategoryListQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const MainCategoryMainImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["MainCategoryMainImage"]>[0]>
+	params: Partial<Parameters<typeof apiClient.MainCategoryMainImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "mainCategoryId", "w");
 	return queryOptions({
@@ -374,10 +356,7 @@ export const MainCategoryMainImageQueryOptions = (
 	});
 };
 
-export const AddonImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AddonImage"]>[0]>
-) => {
+export const AddonImageQueryOptions = (params: Partial<Parameters<typeof apiClient.AddonImage>[0]>) => {
 	const enabled = hasDefinedProps(params, "addonId", "fileId", "w");
 	return queryOptions({
 		queryKey: ["AddonImage", params],
@@ -391,8 +370,7 @@ export const AddonImageQueryOptions = (
 };
 
 export const AddonMainImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AddonMainImage"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AddonMainImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "addonId", "w");
 	return queryOptions({
@@ -407,8 +385,7 @@ export const AddonMainImageQueryOptions = (
 };
 
 export const SharedVehicleAddDamageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleAddDamage"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAddDamage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "image", "description", "x", "y");
 	return queryOptions({
@@ -423,8 +400,7 @@ export const SharedVehicleAddDamageQueryOptions = (
 };
 
 export const SharedVehicleAdminListQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleAdminList"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAdminList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -439,8 +415,7 @@ export const SharedVehicleAdminListQueryOptions = (
 };
 
 export const SharedVehicleAdminSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleAdminSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAdminSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -455,8 +430,7 @@ export const SharedVehicleAdminSingleQueryOptions = (
 };
 
 export const SharedVehicleAdminUpdateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleAdminUpdate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAdminUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -471,8 +445,7 @@ export const SharedVehicleAdminUpdateQueryOptions = (
 };
 
 export const SharedVehicleAvailabilityQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleAvailability"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAvailability>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "datePickup", "dateReturn", "mainCategoryId");
 	return queryOptions({
@@ -487,8 +460,7 @@ export const SharedVehicleAvailabilityQueryOptions = (
 };
 
 export const SharedVehicleAvailabilityCalendarQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleAvailabilityCalendar"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAvailabilityCalendar>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "startDate", "endDate");
 	return queryOptions({
@@ -503,8 +475,7 @@ export const SharedVehicleAvailabilityCalendarQueryOptions = (
 };
 
 export const SharedVehicleCreateBookingQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleCreateBooking"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleCreateBooking>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "locale", "datePickup", "dateReturn");
 	return queryOptions({
@@ -519,8 +490,7 @@ export const SharedVehicleCreateBookingQueryOptions = (
 };
 
 export const SharedVehicleDamageImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleDamageImage"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleDamageImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "fileId", "accessToken", "w");
 	return queryOptions({
@@ -535,8 +505,7 @@ export const SharedVehicleDamageImageQueryOptions = (
 };
 
 export const SharedVehicleDamageTemplateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleDamageTemplate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleDamageTemplate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "w");
 	return queryOptions({
@@ -551,8 +520,7 @@ export const SharedVehicleDamageTemplateQueryOptions = (
 };
 
 export const SharedVehicleFavoriteQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleFavorite"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -567,8 +535,7 @@ export const SharedVehicleFavoriteQueryOptions = (
 };
 
 export const SharedVehicleImageQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleImage"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "fileId", "w");
 	return queryOptions({
@@ -583,8 +550,7 @@ export const SharedVehicleImageQueryOptions = (
 };
 
 export const SharedVehicleListDamagesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleListDamages"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleListDamages>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "locale");
 	return queryOptions({
@@ -599,8 +565,7 @@ export const SharedVehicleListDamagesQueryOptions = (
 };
 
 export const SharedVehiclePricingQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehiclePricing"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehiclePricing>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "locale", "datePickup", "dateReturn");
 	return queryOptions({
@@ -615,8 +580,7 @@ export const SharedVehiclePricingQueryOptions = (
 };
 
 export const SharedVehicleSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -631,8 +595,7 @@ export const SharedVehicleSingleQueryOptions = (
 };
 
 export const SharedVehicleStateOfChargeQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleStateOfCharge"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleStateOfCharge>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -647,8 +610,7 @@ export const SharedVehicleStateOfChargeQueryOptions = (
 };
 
 export const AuthPasswordBasedForgotPasswordQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPasswordBasedForgotPassword"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedForgotPassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({
@@ -662,7 +624,7 @@ export const AuthPasswordBasedForgotPasswordQueryOptions = (
 	});
 };
 
-export const AuthPasswordBasedListEmailsQueryOptions = (apiClient: ApiClient) => {
+export const AuthPasswordBasedListEmailsQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthPasswordBasedListEmails", undefined],
@@ -676,8 +638,7 @@ export const AuthPasswordBasedListEmailsQueryOptions = (apiClient: ApiClient) =>
 };
 
 export const AuthPasswordBasedLoginQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPasswordBasedLogin"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedLogin>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "password");
 	return queryOptions({
@@ -692,8 +653,7 @@ export const AuthPasswordBasedLoginQueryOptions = (
 };
 
 export const AuthPasswordBasedResetPasswordQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPasswordBasedResetPassword"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedResetPassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "resetToken", "password");
 	return queryOptions({
@@ -708,8 +668,7 @@ export const AuthPasswordBasedResetPasswordQueryOptions = (
 };
 
 export const AuthPasswordBasedUpdateEmailQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPasswordBasedUpdateEmail"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedUpdateEmail>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({
@@ -724,8 +683,7 @@ export const AuthPasswordBasedUpdateEmailQueryOptions = (
 };
 
 export const AuthPasswordBasedUpdatePasswordQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPasswordBasedUpdatePassword"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedUpdatePassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "password");
 	return queryOptions({
@@ -740,8 +698,7 @@ export const AuthPasswordBasedUpdatePasswordQueryOptions = (
 };
 
 export const AuthPasswordBasedVerifyEmailQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPasswordBasedVerifyEmail"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedVerifyEmail>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "verifyToken");
 	return queryOptions({
@@ -756,8 +713,7 @@ export const AuthPasswordBasedVerifyEmailQueryOptions = (
 };
 
 export const AuthPasswordBasedVerifyOtpQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPasswordBasedVerifyOtp"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedVerifyOtp>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "otp");
 	return queryOptions({
@@ -772,8 +728,7 @@ export const AuthPasswordBasedVerifyOtpQueryOptions = (
 };
 
 export const ReservationUpdateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ReservationUpdate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ReservationUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -794,8 +749,7 @@ export const ReservationUpdateQueryOptions = (
 };
 
 export const ReservationCancelQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ReservationCancel"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ReservationCancel>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
@@ -810,8 +764,7 @@ export const ReservationCancelQueryOptions = (
 };
 
 export const ReservationDownloadInvoiceQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ReservationDownloadInvoice"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ReservationDownloadInvoice>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "invoiceId");
 	return queryOptions({
@@ -826,8 +779,7 @@ export const ReservationDownloadInvoiceQueryOptions = (
 };
 
 export const ReservationFetchByIdsQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ReservationFetchByIds"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ReservationFetchByIds>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationIds");
 	return queryOptions({
@@ -842,8 +794,7 @@ export const ReservationFetchByIdsQueryOptions = (
 };
 
 export const ReservationRepeatQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ReservationRepeat"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ReservationRepeat>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "datePickup", "dateReturn");
 	return queryOptions({
@@ -857,7 +808,7 @@ export const ReservationRepeatQueryOptions = (
 	});
 };
 
-export const LocationListQueryOptions = (apiClient: ApiClient) => {
+export const LocationListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["LocationList", undefined],
@@ -871,8 +822,7 @@ export const LocationListQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const LocationReorderQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["LocationReorder"]>[0]>
+	params: Partial<Parameters<typeof apiClient.LocationReorder>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locationIds");
 	return queryOptions({
@@ -887,8 +837,7 @@ export const LocationReorderQueryOptions = (
 };
 
 export const LocationSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["LocationSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.LocationSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -903,8 +852,7 @@ export const LocationSingleQueryOptions = (
 };
 
 export const AdminDeleteUserQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AdminDeleteUser"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AdminDeleteUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
@@ -919,8 +867,7 @@ export const AdminDeleteUserQueryOptions = (
 };
 
 export const AdminInviteUserQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AdminInviteUser"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AdminInviteUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "name", "roles");
 	return queryOptions({
@@ -934,7 +881,7 @@ export const AdminInviteUserQueryOptions = (
 	});
 };
 
-export const AdminListUsersQueryOptions = (apiClient: ApiClient) => {
+export const AdminListUsersQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AdminListUsers", undefined],
@@ -948,8 +895,7 @@ export const AdminListUsersQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const AppRedirectAccountDriversLicenseVerificationCompleteQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AppRedirectAccountDriversLicenseVerificationComplete"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AppRedirectAccountDriversLicenseVerificationComplete>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "dossierId", "processId", "status");
 	return queryOptions({
@@ -963,10 +909,7 @@ export const AppRedirectAccountDriversLicenseVerificationCompleteQueryOptions = 
 	});
 };
 
-export const AuthGetUserQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthGetUser"]>[0]>
-) => {
+export const AuthGetUserQueryOptions = (params: Partial<Parameters<typeof apiClient.AuthGetUser>[0]>) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
 		queryKey: ["AuthGetUser", params],
@@ -979,7 +922,7 @@ export const AuthGetUserQueryOptions = (
 	});
 };
 
-export const AuthImpersonateStopSessionQueryOptions = (apiClient: ApiClient) => {
+export const AuthImpersonateStopSessionQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthImpersonateStopSession", undefined],
@@ -992,7 +935,7 @@ export const AuthImpersonateStopSessionQueryOptions = (apiClient: ApiClient) => 
 	});
 };
 
-export const AuthLogoutQueryOptions = (apiClient: ApiClient) => {
+export const AuthLogoutQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthLogout", undefined],
@@ -1005,7 +948,7 @@ export const AuthLogoutQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const AuthMeQueryOptions = (apiClient: ApiClient) => {
+export const AuthMeQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthMe", undefined],
@@ -1019,8 +962,7 @@ export const AuthMeQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const AuthRefreshTokensQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthRefreshTokens"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthRefreshTokens>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "refreshToken");
 	return queryOptions({
@@ -1035,8 +977,7 @@ export const AuthRefreshTokensQueryOptions = (
 };
 
 export const AuthSetUserActiveQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthSetUserActive"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthSetUserActive>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "active");
 	return queryOptions({
@@ -1051,8 +992,7 @@ export const AuthSetUserActiveQueryOptions = (
 };
 
 export const AuthUpdateUserQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthUpdateUser"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthUpdateUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
@@ -1066,10 +1006,7 @@ export const AuthUpdateUserQueryOptions = (
 	});
 };
 
-export const AuthUserListQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthUserList"]>[0]>
-) => {
+export const AuthUserListQueryOptions = (params: Partial<Parameters<typeof apiClient.AuthUserList>[0]>) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
 		queryKey: ["AuthUserList", params],
@@ -1083,8 +1020,7 @@ export const AuthUserListQueryOptions = (
 };
 
 export const AuthPermissionCreateRoleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPermissionCreateRole"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPermissionCreateRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "identifier");
 	return queryOptions({
@@ -1098,7 +1034,7 @@ export const AuthPermissionCreateRoleQueryOptions = (
 	});
 };
 
-export const AuthPermissionPermissionListQueryOptions = (apiClient: ApiClient) => {
+export const AuthPermissionPermissionListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthPermissionPermissionList", undefined],
@@ -1112,8 +1048,7 @@ export const AuthPermissionPermissionListQueryOptions = (apiClient: ApiClient) =
 };
 
 export const AuthPermissionRemoveRoleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPermissionRemoveRole"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRemoveRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role");
 	return queryOptions({
@@ -1128,8 +1063,7 @@ export const AuthPermissionRemoveRoleQueryOptions = (
 };
 
 export const AuthPermissionRoleAddPermissionsQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPermissionRoleAddPermissions"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRoleAddPermissions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role", "permissions");
 	return queryOptions({
@@ -1143,7 +1077,7 @@ export const AuthPermissionRoleAddPermissionsQueryOptions = (
 	});
 };
 
-export const AuthPermissionRoleListQueryOptions = (apiClient: ApiClient) => {
+export const AuthPermissionRoleListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthPermissionRoleList", undefined],
@@ -1157,8 +1091,7 @@ export const AuthPermissionRoleListQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const AuthPermissionRoleRemovePermissionsQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPermissionRoleRemovePermissions"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRoleRemovePermissions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role", "permissions");
 	return queryOptions({
@@ -1172,7 +1105,7 @@ export const AuthPermissionRoleRemovePermissionsQueryOptions = (
 	});
 };
 
-export const AuthPermissionSummaryQueryOptions = (apiClient: ApiClient) => {
+export const AuthPermissionSummaryQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthPermissionSummary", undefined],
@@ -1186,8 +1119,7 @@ export const AuthPermissionSummaryQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const AuthPermissionUserAssignRoleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPermissionUserAssignRole"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserAssignRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "role");
 	return queryOptions({
@@ -1202,8 +1134,7 @@ export const AuthPermissionUserAssignRoleQueryOptions = (
 };
 
 export const AuthPermissionUserRemoveRoleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPermissionUserRemoveRole"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserRemoveRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "role");
 	return queryOptions({
@@ -1218,8 +1149,7 @@ export const AuthPermissionUserRemoveRoleQueryOptions = (
 };
 
 export const AuthPermissionUserSummaryQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthPermissionUserSummary"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserSummary>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
@@ -1234,8 +1164,7 @@ export const AuthPermissionUserSummaryQueryOptions = (
 };
 
 export const AuthAnonymousBasedLoginQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthAnonymousBasedLogin"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthAnonymousBasedLogin>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "token");
 	return queryOptions({
@@ -1249,7 +1178,7 @@ export const AuthAnonymousBasedLoginQueryOptions = (
 	});
 };
 
-export const SessionListQueryOptions = (apiClient: ApiClient) => {
+export const SessionListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["SessionList", undefined],
@@ -1262,10 +1191,7 @@ export const SessionListQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const SessionLogoutQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SessionLogout"]>[0]>
-) => {
+export const SessionLogoutQueryOptions = (params: Partial<Parameters<typeof apiClient.SessionLogout>[0]>) => {
 	const enabled = hasDefinedProps(params, "sessionId");
 	return queryOptions({
 		queryKey: ["SessionLogout", params],
@@ -1279,8 +1205,7 @@ export const SessionLogoutQueryOptions = (
 };
 
 export const SessionSetDeviceNotificationTokenQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SessionSetDeviceNotificationToken"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SessionSetDeviceNotificationToken>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1294,7 +1219,7 @@ export const SessionSetDeviceNotificationTokenQueryOptions = (
 	});
 };
 
-export const AuthTotpProviderInfoQueryOptions = (apiClient: ApiClient) => {
+export const AuthTotpProviderInfoQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthTotpProviderInfo", undefined],
@@ -1307,7 +1232,7 @@ export const AuthTotpProviderInfoQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const AuthTotpProviderRemoveQueryOptions = (apiClient: ApiClient) => {
+export const AuthTotpProviderRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["AuthTotpProviderRemove", undefined],
@@ -1321,8 +1246,7 @@ export const AuthTotpProviderRemoveQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const AuthTotpProviderRemoveForUserQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthTotpProviderRemoveForUser"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderRemoveForUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
@@ -1337,8 +1261,7 @@ export const AuthTotpProviderRemoveForUserQueryOptions = (
 };
 
 export const AuthTotpProviderSetupQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthTotpProviderSetup"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderSetup>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1353,8 +1276,7 @@ export const AuthTotpProviderSetupQueryOptions = (
 };
 
 export const AuthTotpProviderSetupVerifyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthTotpProviderSetupVerify"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderSetupVerify>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "totp");
 	return queryOptions({
@@ -1369,8 +1291,7 @@ export const AuthTotpProviderSetupVerifyQueryOptions = (
 };
 
 export const AuthTotpProviderVerifyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["AuthTotpProviderVerify"]>[0]>
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderVerify>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "totp");
 	return queryOptions({
@@ -1385,8 +1306,7 @@ export const AuthTotpProviderVerifyQueryOptions = (
 };
 
 export const BusinessAddressPrefillQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["BusinessAddressPrefill"]>[0]>
+	params: Partial<Parameters<typeof apiClient.BusinessAddressPrefill>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "postalCode", "houseNumber");
 	return queryOptions({
@@ -1401,8 +1321,7 @@ export const BusinessAddressPrefillQueryOptions = (
 };
 
 export const ClientAdminListQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ClientAdminList"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ClientAdminList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "q");
 	return queryOptions({
@@ -1417,8 +1336,7 @@ export const ClientAdminListQueryOptions = (
 };
 
 export const ClientAdminProplannerAccountQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ClientAdminProplannerAccount"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ClientAdminProplannerAccount>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -1433,8 +1351,7 @@ export const ClientAdminProplannerAccountQueryOptions = (
 };
 
 export const ClientAdminRemoveQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ClientAdminRemove"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ClientAdminRemove>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -1449,8 +1366,7 @@ export const ClientAdminRemoveQueryOptions = (
 };
 
 export const ClientAdminUpdateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ClientAdminUpdate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ClientAdminUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -1465,8 +1381,7 @@ export const ClientAdminUpdateQueryOptions = (
 };
 
 export const ConfirmedOrderListQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ConfirmedOrderList"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ConfirmedOrderList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -1481,8 +1396,7 @@ export const ConfirmedOrderListQueryOptions = (
 };
 
 export const ConfirmedStorageOrderSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ConfirmedStorageOrderSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ConfirmedStorageOrderSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -1497,8 +1411,7 @@ export const ConfirmedStorageOrderSingleQueryOptions = (
 };
 
 export const StorageContractDownloadContractQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageContractDownloadContract"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageContractDownloadContract>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId", "contractId");
 	return queryOptions({
@@ -1513,8 +1426,7 @@ export const StorageContractDownloadContractQueryOptions = (
 };
 
 export const StorageContractDownloadInvoiceQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageContractDownloadInvoice"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageContractDownloadInvoice>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId", "invoiceNumber");
 	return queryOptions({
@@ -1529,8 +1441,7 @@ export const StorageContractDownloadInvoiceQueryOptions = (
 };
 
 export const StorageContractInvoicesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageContractInvoices"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageContractInvoices>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1545,8 +1456,7 @@ export const StorageContractInvoicesQueryOptions = (
 };
 
 export const StorageContractOverviewQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageContractOverview"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageContractOverview>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1561,8 +1471,7 @@ export const StorageContractOverviewQueryOptions = (
 };
 
 export const StorageContractTerminateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageContractTerminate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageContractTerminate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -1583,8 +1492,7 @@ export const StorageContractTerminateQueryOptions = (
 };
 
 export const StorageOrderCheckoutQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageOrderCheckout"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageOrderCheckout>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale");
 	return queryOptions({
@@ -1599,8 +1507,7 @@ export const StorageOrderCheckoutQueryOptions = (
 };
 
 export const StorageOrderOverviewQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageOrderOverview"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageOrderOverview>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1615,8 +1522,7 @@ export const StorageOrderOverviewQueryOptions = (
 };
 
 export const StorageOrderConfigureQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageOrderConfigure"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageOrderConfigure>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1631,8 +1537,7 @@ export const StorageOrderConfigureQueryOptions = (
 };
 
 export const StorageOrderDiscountApplyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageOrderDiscountApply"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageOrderDiscountApply>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "discountCode");
 	return queryOptions({
@@ -1646,7 +1551,7 @@ export const StorageOrderDiscountApplyQueryOptions = (
 	});
 };
 
-export const StorageOrderDiscountRemoveQueryOptions = (apiClient: ApiClient) => {
+export const StorageOrderDiscountRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["StorageOrderDiscountRemove", undefined],
@@ -1660,8 +1565,7 @@ export const StorageOrderDiscountRemoveQueryOptions = (apiClient: ApiClient) => 
 };
 
 export const ContinentalCreateSessionQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ContinentalCreateSession"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ContinentalCreateSession>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "token", "deviceName");
 	return queryOptions({
@@ -1676,8 +1580,7 @@ export const ContinentalCreateSessionQueryOptions = (
 };
 
 export const ContinentalCreateVirtualKeyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ContinentalCreateVirtualKey"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ContinentalCreateVirtualKey>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "bookingId", "clientDeviceId");
 	return queryOptions({
@@ -1692,8 +1595,7 @@ export const ContinentalCreateVirtualKeyQueryOptions = (
 };
 
 export const ContinentalRevokeVirtualKeyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ContinentalRevokeVirtualKey"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ContinentalRevokeVirtualKey>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "virtualKeyId");
 	return queryOptions({
@@ -1708,8 +1610,7 @@ export const ContinentalRevokeVirtualKeyQueryOptions = (
 };
 
 export const ContinentalUpdateVirtualKeyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ContinentalUpdateVirtualKey"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ContinentalUpdateVirtualKey>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "virtualKeyId", "fromDate", "toDate");
 	return queryOptions({
@@ -1724,8 +1625,7 @@ export const ContinentalUpdateVirtualKeyQueryOptions = (
 };
 
 export const DivergentOpeningHoursCreateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["DivergentOpeningHoursCreate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursCreate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -1748,8 +1648,7 @@ export const DivergentOpeningHoursCreateQueryOptions = (
 };
 
 export const DivergentOpeningHoursSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["DivergentOpeningHoursSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -1764,8 +1663,7 @@ export const DivergentOpeningHoursSingleQueryOptions = (
 };
 
 export const DivergentOpeningHoursUpdateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["DivergentOpeningHoursUpdate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -1789,8 +1687,7 @@ export const DivergentOpeningHoursUpdateQueryOptions = (
 };
 
 export const DivergentOpeningHoursDeleteQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["DivergentOpeningHoursDelete"]>[0]>
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursDelete>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -1805,8 +1702,7 @@ export const DivergentOpeningHoursDeleteQueryOptions = (
 };
 
 export const DivergentOpeningHoursListQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["DivergentOpeningHoursList"]>[0]>
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1820,7 +1716,7 @@ export const DivergentOpeningHoursListQueryOptions = (
 	});
 };
 
-export const FeatureFlagCurrentQueryOptions = (apiClient: ApiClient) => {
+export const FeatureFlagCurrentQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["FeatureFlagCurrent", undefined],
@@ -1833,7 +1729,7 @@ export const FeatureFlagCurrentQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const JobStartProplannerMirrorQueryOptions = (apiClient: ApiClient) => {
+export const JobStartProplannerMirrorQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["JobStartProplannerMirror", undefined],
@@ -1847,8 +1743,7 @@ export const JobStartProplannerMirrorQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const ManagementRequestMagicLinkQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ManagementRequestMagicLink"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ManagementRequestMagicLink>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "slackUserId");
 	return queryOptions({
@@ -1863,8 +1758,7 @@ export const ManagementRequestMagicLinkQueryOptions = (
 };
 
 export const ManagementFeatureFlagListQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ManagementFeatureFlagList"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ManagementFeatureFlagList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1879,8 +1773,7 @@ export const ManagementFeatureFlagListQueryOptions = (
 };
 
 export const ManagementFeatureFlagSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ManagementFeatureFlagSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ManagementFeatureFlagSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "featureFlagId");
 	return queryOptions({
@@ -1895,8 +1788,7 @@ export const ManagementFeatureFlagSingleQueryOptions = (
 };
 
 export const ManagementFeatureFlagUpdateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["ManagementFeatureFlagUpdate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.ManagementFeatureFlagUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "featureFlagId");
 	return queryOptions({
@@ -1910,7 +1802,7 @@ export const ManagementFeatureFlagUpdateQueryOptions = (
 	});
 };
 
-export const MultitenantCurrentQueryOptions = (apiClient: ApiClient) => {
+export const MultitenantCurrentQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["MultitenantCurrent", undefined],
@@ -1924,8 +1816,7 @@ export const MultitenantCurrentQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const OnfidoStartDriversLicenseVerificationQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OnfidoStartDriversLicenseVerification"]>[0]>
+	params: Partial<Parameters<typeof apiClient.OnfidoStartDriversLicenseVerification>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -1939,10 +1830,7 @@ export const OnfidoStartDriversLicenseVerificationQueryOptions = (
 	});
 };
 
-export const OnfidoWebhookQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OnfidoWebhook"]>[0]>
-) => {
+export const OnfidoWebhookQueryOptions = (params: Partial<Parameters<typeof apiClient.OnfidoWebhook>[0]>) => {
 	const enabled = hasDefinedProps(params, "eventData");
 	return queryOptions({
 		queryKey: ["OnfidoWebhook", params],
@@ -1955,10 +1843,7 @@ export const OnfidoWebhookQueryOptions = (
 	});
 };
 
-export const OrderAddQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderAdd"]>[0]>
-) => {
+export const OrderAddQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderAdd>[0]>) => {
 	const enabled = hasDefinedProps(
 		params,
 		"categoryId",
@@ -1983,8 +1868,7 @@ export const OrderAddQueryOptions = (
 };
 
 export const OrderDiscountApplyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderDiscountApply"]>[0]>
+	params: Partial<Parameters<typeof apiClient.OrderDiscountApply>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "discountCode");
 	return queryOptions({
@@ -1998,7 +1882,7 @@ export const OrderDiscountApplyQueryOptions = (
 	});
 };
 
-export const OrderDiscountRemoveQueryOptions = (apiClient: ApiClient) => {
+export const OrderDiscountRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["OrderDiscountRemove", undefined],
@@ -2011,10 +1895,7 @@ export const OrderDiscountRemoveQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const OrderOverviewQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderOverview"]>[0]>
-) => {
+export const OrderOverviewQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderOverview>[0]>) => {
 	const enabled = hasDefinedProps(params, "locale");
 	return queryOptions({
 		queryKey: ["OrderOverview", params],
@@ -2027,7 +1908,7 @@ export const OrderOverviewQueryOptions = (
 	});
 };
 
-export const OrderOverviewCountQueryOptions = (apiClient: ApiClient) => {
+export const OrderOverviewCountQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["OrderOverviewCount", undefined],
@@ -2040,10 +1921,7 @@ export const OrderOverviewCountQueryOptions = (apiClient: ApiClient) => {
 	});
 };
 
-export const OrderSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderSingle"]>[0]>
-) => {
+export const OrderSingleQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderSingle>[0]>) => {
 	const enabled = hasDefinedProps(params, "lineId");
 	return queryOptions({
 		queryKey: ["OrderSingle", params],
@@ -2056,10 +1934,7 @@ export const OrderSingleQueryOptions = (
 	});
 };
 
-export const OrderUpdateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderUpdate"]>[0]>
-) => {
+export const OrderUpdateQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderUpdate>[0]>) => {
 	const enabled = hasDefinedProps(
 		params,
 		"lineId",
@@ -2084,10 +1959,7 @@ export const OrderUpdateQueryOptions = (
 	});
 };
 
-export const OrderRemoveQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderRemove"]>[0]>
-) => {
+export const OrderRemoveQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderRemove>[0]>) => {
 	const enabled = hasDefinedProps(params, "lineId");
 	return queryOptions({
 		queryKey: ["OrderRemove", params],
@@ -2101,8 +1973,7 @@ export const OrderRemoveQueryOptions = (
 };
 
 export const OrderCheckoutFlowCheckoutQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderCheckoutFlowCheckout"]>[0]>
+	params: Partial<Parameters<typeof apiClient.OrderCheckoutFlowCheckout>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "paymentMethod");
 	return queryOptions({
@@ -2117,8 +1988,7 @@ export const OrderCheckoutFlowCheckoutQueryOptions = (
 };
 
 export const OrderCheckoutFlowInfoQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderCheckoutFlowInfo"]>[0]>
+	params: Partial<Parameters<typeof apiClient.OrderCheckoutFlowInfo>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale");
 	return queryOptions({
@@ -2133,8 +2003,7 @@ export const OrderCheckoutFlowInfoQueryOptions = (
 };
 
 export const OrderCheckoutFlowPreferencesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderCheckoutFlowPreferences"]>[0]>
+	params: Partial<Parameters<typeof apiClient.OrderCheckoutFlowPreferences>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "preferences");
 	return queryOptions({
@@ -2149,8 +2018,7 @@ export const OrderCheckoutFlowPreferencesQueryOptions = (
 };
 
 export const OrderShareApplyQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["OrderShareApply"]>[0]>
+	params: Partial<Parameters<typeof apiClient.OrderShareApply>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "shareId");
 	return queryOptions({
@@ -2164,7 +2032,7 @@ export const OrderShareApplyQueryOptions = (
 	});
 };
 
-export const OrderShareCreateQueryOptions = (apiClient: ApiClient) => {
+export const OrderShareCreateQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["OrderShareCreate", undefined],
@@ -2178,8 +2046,7 @@ export const OrderShareCreateQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const RabobankWebhookOmnikassaQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["RabobankWebhookOmnikassa"]>[0]>
+	params: Partial<Parameters<typeof apiClient.RabobankWebhookOmnikassa>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "authentication", "expiry", "eventName", "poiId", "signature");
 	return queryOptions({
@@ -2193,7 +2060,7 @@ export const RabobankWebhookOmnikassaQueryOptions = (
 	});
 };
 
-export const SharedVehicleReservationActiveQueryOptions = (apiClient: ApiClient) => {
+export const SharedVehicleReservationActiveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["SharedVehicleReservationActive", undefined],
@@ -2207,8 +2074,7 @@ export const SharedVehicleReservationActiveQueryOptions = (apiClient: ApiClient)
 };
 
 export const SharedVehicleReservationAvailabilityExtendBookingQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationAvailabilityExtendBooking"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationAvailabilityExtendBooking>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale", "dateReturn");
 	return queryOptions({
@@ -2223,8 +2089,7 @@ export const SharedVehicleReservationAvailabilityExtendBookingQueryOptions = (
 };
 
 export const SharedVehicleReservationSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
@@ -2239,8 +2104,7 @@ export const SharedVehicleReservationSingleQueryOptions = (
 };
 
 export const SharedVehicleReservationUpdateQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationUpdate"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale", "datePickup", "dateReturn");
 	return queryOptions({
@@ -2255,8 +2119,7 @@ export const SharedVehicleReservationUpdateQueryOptions = (
 };
 
 export const SharedVehicleReservationCancelQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationCancel"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationCancel>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
@@ -2271,8 +2134,7 @@ export const SharedVehicleReservationCancelQueryOptions = (
 };
 
 export const SharedVehicleReservationExtendBookingQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationExtendBooking"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationExtendBooking>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale", "dateReturn");
 	return queryOptions({
@@ -2287,8 +2149,7 @@ export const SharedVehicleReservationExtendBookingQueryOptions = (
 };
 
 export const SharedVehicleReservationGeneratePaymentUrlQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationGeneratePaymentUrl"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationGeneratePaymentUrl>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale");
 	return queryOptions({
@@ -2303,8 +2164,7 @@ export const SharedVehicleReservationGeneratePaymentUrlQueryOptions = (
 };
 
 export const SharedVehicleReservationGetFuelInstructionsQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationGetFuelInstructions"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationGetFuelInstructions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
@@ -2319,8 +2179,7 @@ export const SharedVehicleReservationGetFuelInstructionsQueryOptions = (
 };
 
 export const SharedVehicleReservationListQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationList"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "status", "filters");
 	return queryOptions({
@@ -2335,8 +2194,7 @@ export const SharedVehicleReservationListQueryOptions = (
 };
 
 export const SharedVehicleReservationStartRideQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationStartRide"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationStartRide>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
@@ -2351,8 +2209,7 @@ export const SharedVehicleReservationStartRideQueryOptions = (
 };
 
 export const SharedVehicleReservationStopRideQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SharedVehicleReservationStopRide"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationStopRide>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
@@ -2366,10 +2223,7 @@ export const SharedVehicleReservationStopRideQueryOptions = (
 	});
 };
 
-export const StorageAddonsQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageAddons"]>[0]>
-) => {
+export const StorageAddonsQueryOptions = (params: Partial<Parameters<typeof apiClient.StorageAddons>[0]>) => {
 	const enabled = hasDefinedProps(params, "storageLocationId");
 	return queryOptions({
 		queryKey: ["StorageAddons", params],
@@ -2383,8 +2237,7 @@ export const StorageAddonsQueryOptions = (
 };
 
 export const StorageCategoriesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageCategories"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageCategories>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId");
 	return queryOptions({
@@ -2398,7 +2251,7 @@ export const StorageCategoriesQueryOptions = (
 	});
 };
 
-export const StorageTerminationTypesQueryOptions = (apiClient: ApiClient) => {
+export const StorageTerminationTypesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
 		queryKey: ["StorageTerminationTypes", undefined],
@@ -2412,8 +2265,7 @@ export const StorageTerminationTypesQueryOptions = (apiClient: ApiClient) => {
 };
 
 export const StorageUnitTypesQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageUnitTypes"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageUnitTypes>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId", "storageLocationId");
 	return queryOptions({
@@ -2428,8 +2280,7 @@ export const StorageUnitTypesQueryOptions = (
 };
 
 export const StorageLocationSingleQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["StorageLocationSingle"]>[0]>
+	params: Partial<Parameters<typeof apiClient.StorageLocationSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId");
 	return queryOptions({
@@ -2444,8 +2295,7 @@ export const StorageLocationSingleQueryOptions = (
 };
 
 export const SupportContactQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SupportContact"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SupportContact>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "name", "phone", "email", "department", "question");
 	return queryOptions({
@@ -2460,8 +2310,7 @@ export const SupportContactQueryOptions = (
 };
 
 export const SupportSubscribeNewsletterQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["SupportSubscribeNewsletter"]>[0]>
+	params: Partial<Parameters<typeof apiClient.SupportSubscribeNewsletter>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({

@@ -41,8 +41,7 @@ function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document
 
 	return `
 export const ${operationId}QueryOptions = (
-  apiClient: ApiClient,
-  ${hasData ? `params: Partial<Parameters<ApiClient['${operationId}']>[0]>` : ""}
+  ${hasData ? `params: Partial<Parameters<typeof apiClient.${operationId}>[0]>` : ""}
 ) => {
   const enabled = ${hasData ? `hasDefinedProps(params, ${requiredParams.join(", ")})` : "true"};
   return queryOptions({
@@ -82,11 +81,8 @@ export function generateReactQuery(spec: OpenAPIV3.Document): string {
 		});
 	});
 
-	const title = spec.info.title.toLowerCase().replace(/\s+/g, "-");
-
 	return `import { queryOptions, skipToken } from '@tanstack/react-query';
-import type { ApiClient } from './${title}.client';
-
+	import * as apiClient from './${spec.info.title}.client';
 const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
   obj: T,
   ...keys: K[]

@@ -1,6 +1,5 @@
 import { queryOptions, skipToken } from "@tanstack/react-query";
-import type { ApiClient } from "./location-api.client";
-
+import * as apiClient from "./Location API.client";
 const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 	obj: T,
 	...keys: K[]
@@ -9,8 +8,7 @@ const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 };
 
 export const _api__external_location_filters_get_collectionQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["_api__external_location_filters_get_collection"]>[0]>
+	params: Partial<Parameters<typeof apiClient._api__external_location_filters_get_collection>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "service");
 	return queryOptions({
@@ -25,9 +23,8 @@ export const _api__external_location_filters_get_collectionQueryOptions = (
 };
 
 export const _api__external_locations_truckcharging_availability_get_collectionQueryOptions = (
-	apiClient: ApiClient,
 	params: Partial<
-		Parameters<ApiClient["_api__external_locations_truckcharging_availability_get_collection"]>[0]
+		Parameters<typeof apiClient._api__external_locations_truckcharging_availability_get_collection>[0]
 	>
 ) => {
 	const enabled = hasDefinedProps(params);
@@ -44,8 +41,7 @@ export const _api__external_locations_truckcharging_availability_get_collectionQ
 };
 
 export const _api__external_locations__id__wash_programs_get_collectionQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["_api__external_locations__id__wash_programs_get_collection"]>[0]>
+	params: Partial<Parameters<typeof apiClient._api__external_locations__id__wash_programs_get_collection>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
@@ -60,9 +56,8 @@ export const _api__external_locations__id__wash_programs_get_collectionQueryOpti
 };
 
 export const _api__external_locations__locationId__service__service__description_getQueryOptions = (
-	apiClient: ApiClient,
 	params: Partial<
-		Parameters<ApiClient["_api__external_locations__locationId__service__service__description_get"]>[0]
+		Parameters<typeof apiClient._api__external_locations__locationId__service__service__description_get>[0]
 	>
 ) => {
 	const enabled = hasDefinedProps(params, "locationId", "service");
@@ -79,8 +74,7 @@ export const _api__external_locations__locationId__service__service__description
 };
 
 export const get_v1_locationsQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["get_v1_locations"]>[0]>
+	params: Partial<Parameters<typeof apiClient.get_v1_locations>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
@@ -95,8 +89,7 @@ export const get_v1_locationsQueryOptions = (
 };
 
 export const get_v1_locations_locationId_QueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["get_v1_locations_locationId_"]>[0]>
+	params: Partial<Parameters<typeof apiClient.get_v1_locations_locationId_>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locationId");
 	return queryOptions({
@@ -111,8 +104,7 @@ export const get_v1_locations_locationId_QueryOptions = (
 };
 
 export const get_v1_locations_parking_availabilityQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["get_v1_locations_parking_availability"]>[0]>
+	params: Partial<Parameters<typeof apiClient.get_v1_locations_parking_availability>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locationIds[]", "arrivalDateTime", "departureDateTime");
 	return queryOptions({
@@ -127,8 +119,7 @@ export const get_v1_locations_parking_availabilityQueryOptions = (
 };
 
 export const get_v1_locations_poiQueryOptions = (
-	apiClient: ApiClient,
-	params: Partial<Parameters<ApiClient["get_v1_locations_poi"]>[0]>
+	params: Partial<Parameters<typeof apiClient.get_v1_locations_poi>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({

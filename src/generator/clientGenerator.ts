@@ -123,6 +123,8 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
 	const urlWithParams = urlParams.length > 0 ? path.replace(/{(\w+)}/g, "${data.$1}") : path;
 
+	const title = sanitizeOperationId(spec.info.title.toLowerCase().replace(/\s+/g, "-"));
+
 	const methodBody = [
 		`const url = \`${urlWithParams}\`;`,
 		queryParams.length > 0
@@ -151,9 +153,9 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 				})
 				.join("\n			")}`
 			: "",
-		`return this.axios.${method.toLowerCase()}<${responseType}>(url, {
+		`return get${title}Instance().${method.toLowerCase()}<${responseType}>(url, {
 			${queryParams.length > 0 ? "params: queryData," : ""}
-			${requestBody ? `data: ${isFormData ? "formData" : queryParams.length > 0 ? "bodyData" : "data"},` : ""}
+			${requestBody ? `data: ${isFormData ? "formData" : "bodyData"},` : ""}
 			${isFormData ? `headers: { 'Content-Type': 'multipart/form-data', ...headers },` : "headers"}
 		});`,
 	]
@@ -162,7 +164,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
 	return `
 	${jsDocLines.join("\n	")}
-	async ${sanitizedOperationId}(data${hasData ? `: ${dataType}` : "?: undefined"}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
+	export async function ${sanitizedOperationId}(data${hasData ? `: ${dataType}` : "?: undefined"}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
 		${methodBody}
 	}`;
 }
@@ -248,27 +250,15 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
 		}
 	});
 
-	const title = spec.info.title.toLowerCase().replace(/\s+/g, "-");
+	const title = sanitizeOperationId(spec.info.title.toLowerCase().replace(/\s+/g, "-"));
 
 	// Generate the client class
-	return `import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { 
+	return `import { get${title}Instance } from './${title}.axios';
+import type { AxiosResponse } from 'axios';
+import type { 
 	${Array.from(usedTypes).join(",\n	")}
 } from './${title}.schema';
 
-export class ApiClient {
-	private axios: AxiosInstance;
 
-	constructor(baseURL: string, headers?: Record<string, string>) {
-		this.axios = axios.create({
-			baseURL,
-			headers: {
-				'Content-Type': 'application/json',
-				...headers
-			}
-		});
-	}
-${operations.map((op) => generateAxiosMethod(op, spec)).join("\n\n")}
-}
-`;
+${operations.map((op) => generateAxiosMethod(op, spec)).join("\n\n")}`;
 }
