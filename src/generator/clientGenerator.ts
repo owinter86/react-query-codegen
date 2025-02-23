@@ -11,8 +11,18 @@ export interface OperationInfo {
   responses: OpenAPIV3.ResponsesObject;
 }
 
+function sanitizeOperationId(operationId: string): string {
+  return operationId.replace(/[^a-zA-Z0-9_]/g, '_');
+}
+
+function sanitizePropertyName(name: string): string {
+  return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
+}
+
 function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document): string {
-  const { method, path, operationId, summary, description, parameters, requestBody, responses } = operation;
+  const { method, path, operationId: rawOperationId, summary, description, parameters, requestBody, responses } = operation;
+  const operationId = rawOperationId || `${method.toLowerCase()}${path.replace(/\W+/g, '_')}`;
+  const sanitizedOperationId = sanitizeOperationId(operationId);
   
   // Generate JSDoc
   const jsDocLines = ['/**'];
@@ -36,7 +46,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
     const responseObj = response as OpenAPIV3.ResponseObject;
     const desc = 'description' in responseObj ? responseObj.description : '';
     const contentType = responseObj.content?.['application/json']?.schema;
-    const typeName = `${operationId}Response${code}`;
+    const typeName = `${sanitizedOperationId}Response${code}`;
     
     if (contentType) {
       if (desc) {
@@ -68,23 +78,25 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
   
   // Add path and query parameters
   urlParams.forEach(p => {
-    dataProps.push(`${p.name}: ${getTypeFromParam(p)}`);
+    const safeName = sanitizePropertyName(p.name);
+    dataProps.push(`${safeName}: ${getTypeFromParam(p)}`);
   });
   queryParams.forEach(p => {
-    dataProps.push(`${p.name}${p.required ? '' : '?'}: ${getTypeFromParam(p)}`);
+    const safeName = sanitizePropertyName(p.name);
+    dataProps.push(`${safeName}${p.required ? '' : '?'}: ${getTypeFromParam(p)}`);
   });
 
   // Add request body type if it exists
   const hasData = (parameters && parameters.length > 0) || operation.requestBody;
   const dataType = hasData 
     ? requestBody 
-      ? `${operationId}Request & { ${dataProps.join('; ')} }`
+      ? `${sanitizedOperationId}Request & { ${dataProps.join('; ')} }`
       : `{ ${dataProps.join('; ')} }`
     : 'undefined';
 
   // Get response type from 2xx response
   const successResponse = Object.entries(responses).find(([code]) => code.startsWith('2'));
-  const responseType = successResponse ? `${operationId}Response${successResponse[0]}` : 'any';
+  const responseType = successResponse ? `${sanitizedOperationId}Response${successResponse[0]}` : 'any';
 
   const urlWithParams = urlParams.length > 0 
     ? path.replace(/{(\w+)}/g, '${data.$1}')
@@ -116,7 +128,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
   return `
   ${jsDocLines.join('\n  ')}
-  async ${operationId}(data${hasData ? `: ${dataType}` : '?: undefined'}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
+  async ${sanitizedOperationId}(data${hasData ? `: ${dataType}` : '?: undefined'}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
     ${methodBody}
   }`;
 }
@@ -150,7 +162,7 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
       operations.push({
         method: method.toUpperCase(),
         path,
-        operationId: operation.operationId || `${method}${path.replace(/\W+/g, '_')}`,
+        operationId: sanitizeOperationId(operation.operationId || `${method}${path.replace(/\W+/g, '_')}`),
         summary: operation.summary,
         description: operation.description,
         parameters: [...(pathItem.parameters || []), ...(operation.parameters || [])] as OpenAPIV3.ParameterObject[],
@@ -174,11 +186,13 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
     }
   });
 
+  const title = spec.info.title.toLowerCase().replace(/\s+/g, '-');
+
   // Generate the client class
   return `import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { 
   ${Array.from(usedTypes).join(',\n  ')}
-} from './types';
+} from './${title}.schema';
 
 export class ApiClient {
   private axios: AxiosInstance;

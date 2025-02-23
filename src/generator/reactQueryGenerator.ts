@@ -1,8 +1,17 @@
 import { OpenAPIV3 } from 'openapi-types';
 import { OperationInfo } from './clientGenerator';
 
+function sanitizeOperationId(operationId: string): string {
+  return operationId.replace(/[^a-zA-Z0-9_]/g, '_');
+}
+
+function sanitizePropertyName(name: string): string {
+  return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
+}
+
 function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document): string {
-  const { operationId, parameters, requestBody } = operation;
+  const { operationId: rawOperationId, parameters, requestBody } = operation;
+  const operationId = sanitizeOperationId(rawOperationId);
   
   const hasData = (parameters && parameters.length > 0) || operation.requestBody;
 
@@ -60,7 +69,7 @@ export function generateReactQuery(spec: OpenAPIV3.Document): string {
       operations.push({
         method: method.toUpperCase(),
         path,
-        operationId: operation.operationId || `${method}${path.replace(/\W+/g, '_')}`,
+        operationId: sanitizeOperationId(operation.operationId || `${method}${path.replace(/\W+/g, '_')}`),
         summary: operation.summary,
         description: operation.description,
         parameters: [...(pathItem.parameters || []), ...(operation.parameters || [])] as OpenAPIV3.ParameterObject[],
@@ -70,8 +79,10 @@ export function generateReactQuery(spec: OpenAPIV3.Document): string {
     });
   });
 
+  const title = spec.info.title.toLowerCase().replace(/\s+/g, '-');
+
   return `import { queryOptions, skipToken } from '@tanstack/react-query';
-import type { ApiClient } from './client';
+import type { ApiClient } from './${title}.client';
 
 const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
   obj: T,

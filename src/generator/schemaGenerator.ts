@@ -8,12 +8,17 @@ interface SchemaContext {
 /**
  * Converts OpenAPI schema type to TypeScript type
  */
+function sanitizePropertyName(name: string): string {
+  // If property name has special characters, wrap it in quotes
+  return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
+}
+
 function getTypeFromSchema(schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject, context: SchemaContext): string {
   if (!schema) return 'any';
 
   if ('$ref' in schema) {
     const refType = schema.$ref.split('/').pop()!;
-    return refType;
+    return sanitizeString(refType);
   }
 
   // Handle enum types properly
@@ -38,7 +43,8 @@ function getTypeFromSchema(schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceO
           .map(([key, prop]) => {
             const isRequired = schema.required?.includes(key);
             const propertyType = getTypeFromSchema(prop as OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject, context);
-            return `  ${key}${isRequired ? '' : '?'}: ${propertyType};`;
+            const safeName = sanitizePropertyName(key);
+            return `  ${safeName}${isRequired ? '' : '?'}: ${propertyType};`;
           })
           .join('\n');
         return `{\n${properties}\n}`;
@@ -55,10 +61,12 @@ function getTypeFromSchema(schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceO
   }
 }
 
-function generateTypeDefinition(name: string, schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject, context: SchemaContext): string {
+function generateTypeDefinition(badName: string, schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject, context: SchemaContext): string {
   const description = !('$ref' in schema) && schema.description 
     ? `/**\n * ${schema.description}\n */\n`
     : '';
+
+  const name = sanitizeString(badName)
 
   const typeValue = getTypeFromSchema(schema, context);
   
@@ -69,6 +77,10 @@ function generateTypeDefinition(name: string, schema: OpenAPIV3.SchemaObject | O
   return isInterface
     ? `${description}export interface ${name} ${typeValue}\n\n`
     : `${description}export type ${name} = ${typeValue}\n\n`;
+}
+
+function sanitizeString(operationId: string): string {
+  return operationId.replace(/[^a-zA-Z0-9_]/g, '_');
 }
 
 /**
@@ -103,7 +115,7 @@ export function generateTypeDefinitions(spec: OpenAPIV3.Document): string {
           const content = (operationObject.requestBody as OpenAPIV3.RequestBodyObject).content;
           const jsonContent = content['application/json'] || content['multipart/form-data']
           if (jsonContent?.schema) {
-            const typeName = `${operationObject.operationId}Request`;
+            const typeName = sanitizeString(`${operationObject.operationId}Request`);
             output += generateTypeDefinition(typeName, jsonContent.schema as OpenAPIV3.SchemaObject, context);
           }
         }
@@ -114,7 +126,7 @@ export function generateTypeDefinitions(spec: OpenAPIV3.Document): string {
             const responseObj = response as OpenAPIV3.ResponseObject;
             const content = responseObj.content?.['application/json'];
             if (content?.schema) {
-              const typeName = `${operationObject.operationId}Response${code}`;
+              const typeName = sanitizeString(`${operationObject.operationId || `${method.toLowerCase()}${path.replace(/\W+/g, '_')}`}Response${code}`);
               output += generateTypeDefinition(typeName, content.schema as OpenAPIV3.SchemaObject, context);
             }
           }
