@@ -1,5 +1,8 @@
 {
-  "specSource": "https://api.jaarbeurs.acc.lightbase.nl/_compas/structure.json?format=openapi",
+  "specSource": ["https://api.diks.acc.lightbase.nl/_compas/structure.json?format=openapi", 
+  "https://api.jaarbeurs.acc.lightbase.nl/_compas/structure.json?format=openapi", 
+  "https://app.yourtravis.com/docs/api/location_api"
+],
   "exportDir": "./test/generated",
   "options": {
     "generateMocks": true,

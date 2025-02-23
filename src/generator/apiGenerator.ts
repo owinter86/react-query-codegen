@@ -36,40 +36,46 @@ async function loadOpenAPISpec(specSource: string): Promise<OpenAPIV3.Document> 
  */
 export async function generateApiClient(config: OpenAPIConfig): Promise<void> {
   try {
-    // Load the OpenAPI specification
-    const spec = await loadOpenAPISpec(config.specSource);
-    console.log('Generated TypeScript interfaces successfully');
+    // Load specs
+    const specs = Array.isArray(config.specSource)
+      ? await Promise.all(config.specSource.map(loadOpenAPISpec))
+      : [await loadOpenAPISpec(config.specSource)];
+    // Generate for each spec...
+    for (const spec of specs) {
+      console.log('Generated TypeScript interfaces successfully');
+      const title = spec.info.title.toLowerCase().replace(/\s+/g, '-');
 
-    // Create export directory if it doesn't exist
-    await mkdir(config.exportDir, { recursive: true });
-    
-    // Generate and write type definitions
-    const typeDefinitions = generateTypeDefinitions(spec);
-    await writeFile(
-      resolve(config.exportDir, 'types.ts'),
-      typeDefinitions,
-      'utf-8'
-    );
-    
-    // Generate and write API client
-    const clientCode = generateApiClientCode(spec);
-    await writeFile(
-      resolve(config.exportDir, 'client.ts'),
-      clientCode,
-      'utf-8'
-    );
-    
-    // Generate and write React Query options
-    const queryCode = generateReactQuery(spec);
-    await writeFile(
-      resolve(config.exportDir, 'queries.ts'),
-      queryCode,
-      'utf-8'
-    );
-    
-    console.log('Generated API client successfully');
-    console.log('Generated React Query options successfully');
-    
+      // Create export directory if it doesn't exist
+      await mkdir(config.exportDir, { recursive: true });
+      
+      // Generate and write type definitions
+      const typeDefinitions = generateTypeDefinitions(spec);
+      await writeFile(
+        resolve(config.exportDir, `${title}.schema.ts`),
+        typeDefinitions,
+        'utf-8'
+      );
+
+      
+      // Generate and write API client
+      const clientCode = generateApiClientCode(spec);
+      await writeFile(
+        resolve(config.exportDir, `${title}.client.ts`),
+        clientCode,
+        'utf-8'
+      );
+      
+      // Generate and write React Query options
+      const queryCode = generateReactQuery(spec);
+      await writeFile(
+        resolve(config.exportDir, `${title}.queryOptions.ts`),
+        queryCode,
+        'utf-8'
+      );
+      
+      console.log('Generated API client successfully');
+      console.log('Generated React Query options successfully');
+    }
   } catch (error) {
     if (error instanceof Error) {
       throw new Error(`Failed to generate API client: ${error.message}`);
