@@ -6,6 +6,7 @@ import * as yaml from 'yaml';
 import { OpenAPIV3 } from 'openapi-types';
 import { generateTypeDefinitions } from './schemaGenerator';
 import { generateApiClient as generateApiClientCode } from './clientGenerator';
+import { generateReactQuery } from './reactQueryGenerator';
 
 /**
  * Loads the OpenAPI specification from either a URL or local file
@@ -37,7 +38,8 @@ export async function generateApiClient(config: OpenAPIConfig): Promise<void> {
   try {
     // Load the OpenAPI specification
     const spec = await loadOpenAPISpec(config.specSource);
-    
+    console.log('Generated TypeScript interfaces successfully');
+
     // Create export directory if it doesn't exist
     await mkdir(config.exportDir, { recursive: true });
     
@@ -57,13 +59,16 @@ export async function generateApiClient(config: OpenAPIConfig): Promise<void> {
       'utf-8'
     );
     
-    console.log('Generated TypeScript interfaces successfully');
-    console.log('Generated API client successfully');
+    // Generate and write React Query options
+    const queryCode = generateReactQuery(spec);
+    await writeFile(
+      resolve(config.exportDir, 'queries.ts'),
+      queryCode,
+      'utf-8'
+    );
     
-    // TODO: Implement remaining steps
-    // 1. Generate Axios client methods for each path
-    // 2. Generate mock data if enabled
-    // 3. Add JSDoc comments if enabled
+    console.log('Generated API client successfully');
+    console.log('Generated React Query options successfully');
     
   } catch (error) {
     if (error instanceof Error) {

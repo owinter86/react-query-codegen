@@ -1,6 +1,6 @@
 import { OpenAPIV3 } from 'openapi-types';
 
-interface OperationInfo {
+export interface OperationInfo {
   method: string;
   path: string;
   operationId: string;
