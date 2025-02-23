@@ -21,6 +21,9 @@ function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document
     ...(parameters?.filter(p => p.required).map(p => `'${p.name}'`) || []),
     ...(requestBody && 'content' in requestBody && requestBody.content?.['application/json']?.schema
       ? getRequiredFields(requestBody.content['application/json'].schema, { schemas: spec.components?.schemas as { [key: string]: OpenAPIV3.SchemaObject } || {} })
+      : []),
+    ...(requestBody && 'content' in requestBody && requestBody.content?.['multipart/form-data']?.schema
+      ? getRequiredFields(requestBody.content['multipart/form-data'].schema, { schemas: spec.components?.schemas as { [key: string]: OpenAPIV3.SchemaObject } || {} })
       : [])
   ];
 

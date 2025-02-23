@@ -101,7 +101,7 @@ export function generateTypeDefinitions(spec: OpenAPIV3.Document): string {
         // Generate request body type
         if (operationObject.requestBody) {
           const content = (operationObject.requestBody as OpenAPIV3.RequestBodyObject).content;
-          const jsonContent = content['application/json'];
+          const jsonContent = content['application/json'] || content['multipart/form-data']
           if (jsonContent?.schema) {
             const typeName = `${operationObject.operationId}Request`;
             output += generateTypeDefinition(typeName, jsonContent.schema as OpenAPIV3.SchemaObject, context);

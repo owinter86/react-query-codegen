@@ -11,7 +11,7 @@ export interface OperationInfo {
   responses: OpenAPIV3.ResponsesObject;
 }
 
-function generateAxiosMethod(operation: OperationInfo): string {
+function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document): string {
   const { method, path, operationId, summary, description, parameters, requestBody, responses } = operation;
   
   // Generate JSDoc
@@ -50,59 +50,67 @@ function generateAxiosMethod(operation: OperationInfo): string {
   
   jsDocLines.push(' */');
 
-  // Generate method parameters
   const urlParams = parameters?.filter(p => p.in === 'path') || [];
   const queryParams = parameters?.filter(p => p.in === 'query') || [];
   
-  // Build data type parts
-  const typeComponents: string[] = [];
-  
-  // Add request body type if it exists
-  if (requestBody) {
-    typeComponents.push(operationId + 'Request');
-  }
+  const isFormData = requestBody && 
+    'content' in requestBody && 
+    requestBody.content?.['multipart/form-data'];
 
-  // Add path and query parameters if any
-  const additionalProps: string[] = [];
+  const formDataSchema = isFormData && requestBody.content['multipart/form-data'].schema ? (
+    '$ref' in requestBody.content['multipart/form-data'].schema
+      ? spec.components?.schemas?.[requestBody.content['multipart/form-data'].schema.$ref.split('/').pop()!]
+      : requestBody.content['multipart/form-data'].schema
+  ) as OpenAPIV3.SchemaObject : undefined;
+
+  // Build data type parts
+  const dataProps: string[] = [];
+  
+  // Add path and query parameters
   urlParams.forEach(p => {
-    additionalProps.push(`${p.name}: ${getTypeFromParam(p)}`);
+    dataProps.push(`${p.name}: ${getTypeFromParam(p)}`);
   });
   queryParams.forEach(p => {
-    additionalProps.push(`${p.name}${p.required ? '' : '?'}: ${getTypeFromParam(p)}`);
+    dataProps.push(`${p.name}${p.required ? '' : '?'}: ${getTypeFromParam(p)}`);
   });
 
-  if (additionalProps.length > 0) {
-    typeComponents.push(`{ ${additionalProps.join('; ')} }`);
-  }
-
-  const hasData = typeComponents.length > 0;
-  const dataType = typeComponents.length > 1 
-    ? typeComponents.join(' & ')
-    : typeComponents[0] || 'undefined';
+  // Add request body type if it exists
+  const hasData = (parameters && parameters.length > 0) || operation.requestBody;
+  const dataType = hasData 
+    ? requestBody 
+      ? `${operationId}Request & { ${dataProps.join('; ')} }`
+      : `{ ${dataProps.join('; ')} }`
+    : 'undefined';
 
   // Get response type from 2xx response
   const successResponse = Object.entries(responses).find(([code]) => code.startsWith('2'));
   const responseType = successResponse ? `${operationId}Response${successResponse[0]}` : 'any';
 
-  // Generate method
   const urlWithParams = urlParams.length > 0 
     ? path.replace(/{(\w+)}/g, '${data.$1}')
     : path;
 
   const methodBody = [
     `const url = \`${urlWithParams}\`;`,
-    // Combine query and path params to filter from body
-    (queryParams.length > 0 || urlParams.length > 0) ? 
-      `const paramsToFilter = ${JSON.stringify([...queryParams, ...urlParams].map(p => p.name))};` : '',
     queryParams.length > 0 ? 
       `const queryData = Object.fromEntries(Object.entries(data).filter(([key]) => ${JSON.stringify(queryParams.map(p => p.name))}.includes(key)));` : '',
-    (requestBody && (queryParams.length > 0 || urlParams.length > 0)) ? 
-      `const bodyData = Object.fromEntries(Object.entries(data).filter(([key]) => !paramsToFilter.includes(key)));` : '',
-    queryParams.length > 0 ? 
-      'const queryString = `?${new URLSearchParams(queryData)}`;' : '',
-    `return this.axios.${method.toLowerCase()}<${responseType}>(url${queryParams.length > 0 ? ' + queryString' : ''}, {
-      ${requestBody ? `data: ${(queryParams.length > 0 || urlParams.length > 0) ? 'bodyData' : 'data'},` : ''}
-      headers
+    requestBody && queryParams.length > 0 ? 
+      `const bodyData = Object.fromEntries(Object.entries(data).filter(([key]) => !${JSON.stringify(queryParams.map(p => p.name))}.includes(key)));` : '',
+    isFormData ? 
+      `const formData = new FormData();
+      ${Object.entries((formDataSchema?.properties || {})
+      ).map(([key, prop]: [string, any]) => {
+        const isBinary = prop.format === 'binary';
+        return formDataSchema?.required?.includes(key)
+          ? `formData.append("${key}", ${isBinary ? '' : 'String('}${queryParams.length > 0 ? 'bodyData' : 'data'}.${key}${isBinary ? '' : ')'});`
+          : `if (${queryParams.length > 0 ? 'bodyData' : 'data'}.${key} != null) {
+              formData.append("${key}", ${isBinary ? '' : 'String('}${queryParams.length > 0 ? 'bodyData' : 'data'}.${key}${isBinary ? '' : ')'});
+            }`
+      }).join('\n      ')}` : '',
+    `return this.axios.${method.toLowerCase()}<${responseType}>(url, {
+      ${queryParams.length > 0 ? `params: queryData,` : ''}
+      ${requestBody ? `data: ${isFormData ? 'formData' : queryParams.length > 0 ? 'bodyData' : 'data'},` : ''}
+      ${isFormData ? `headers: { 'Content-Type': 'multipart/form-data', ...headers },` : 'headers'}
     });`
   ].filter(Boolean).join('\n    ');
 
@@ -184,7 +192,7 @@ export class ApiClient {
       }
     });
   }
-${operations.map(op => generateAxiosMethod(op)).join('\n\n')}
+${operations.map(op => generateAxiosMethod(op, spec)).join('\n\n')}
 }
 `;
 } 
