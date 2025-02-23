@@ -1,14 +1,24 @@
-# Build output
-dist/
-test/generated/
+# Source files
+src/
+example/
+test/
 
-# Dependencies
-node_modules/
+# Config files
+tsconfig.json
+.release-it.json
+.gitignore
+.npmignore
+biome.json
 
 # IDE files
 .vscode/
 .idea/
 *.sublime-*
+
+# Test files
+*.test.ts
+*.spec.ts
+coverage/
 
 # Logs
 logs/
@@ -26,12 +36,9 @@ yarn-error.log*
 .DS_Store
 Thumbs.db
 
-# Test coverage
-coverage/
-
 # TypeScript cache
 *.tsbuildinfo
 
-# npm package files
+# Package manager files
 package-lock.json
-yarn.lock
+yarn.lock 
