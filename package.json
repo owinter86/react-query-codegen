@@ -1,15 +1,22 @@
 {
-	"name": "openapi-axios-generator",
-	"version": "1.0.0",
-	"description": "Generate Axios API clients from OpenAPI specifications",
-	"main": "dist/index.js",
-	"bin": {
-		"generate-api": "./dist/cli.js"
+	"name": "@lightbase/react-query-codegen",
+	"version": "2.0.0",
+	"description": "Generate Axios API clients and React Query options from OpenAPI specifications",
+	"type": "module",
+	"exports": "./dist/index.js",
+	"files": ["src", "dist"],
+	"author": {
+		"name": "Oliver Winter",
+		"email": "owinter86@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/owinter86/react-query-codegen"
 	},
 	"scripts": {
-		"build": "tsc",
+		"build": "tsc -p tsconfig.json",
 		"start": "node dist/cli.js",
-		"test": "tsc -p test/tsconfig.json && node dist/test/index.js",
+		"example": "ts-node example/index.ts",
 		"check": "biome check --write .",
 		"updates": "npx npm-check-updates -i"
 	},
@@ -22,9 +29,11 @@
 		"@biomejs/biome": "1.9.4",
 		"@tanstack/react-query": "^5.66.9",
 		"@types/node": "^22.13.5",
+		"ts-node": "^10.9.2",
 		"typescript": "^5.7.3"
 	},
 	"peerDependencies": {
-		"@tanstack/react-query": "^5.0.0"
+		"@tanstack/react-query": "^5.0.0",
+		"axios": "^1.7.0"
 	}
 }

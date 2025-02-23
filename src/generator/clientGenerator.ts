@@ -19,6 +19,18 @@ function sanitizePropertyName(name: string): string {
 	return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
 }
 
+function resolveSchema(
+	schema: OpenAPIV3.ReferenceObject | OpenAPIV3.SchemaObject | undefined,
+	spec: OpenAPIV3.Document
+): OpenAPIV3.SchemaObject | undefined {
+	if (!schema) return undefined;
+	if ("$ref" in schema) {
+		const index = schema.$ref.split("/").pop();
+		return spec.components?.schemas?.[index as string] as OpenAPIV3.SchemaObject;
+	}
+	return schema;
+}
+
 function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document): string {
 	const {
 		method,
@@ -76,14 +88,13 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
 	const isFormData = requestBody && "content" in requestBody && requestBody.content?.["multipart/form-data"];
 
-	const formDataSchema =
-		isFormData && requestBody.content["multipart/form-data"].schema
-			? (("$ref" in requestBody.content["multipart/form-data"].schema
-					? spec.components?.schemas?.[
-							requestBody.content["multipart/form-data"].schema.$ref.split("/").pop()!
-						]
-					: requestBody.content["multipart/form-data"].schema) as OpenAPIV3.SchemaObject)
-			: undefined;
+	const formDataSchema = isFormData
+		? resolveSchema(requestBody.content["multipart/form-data"].schema, spec)
+		: undefined;
+
+	const requestBodySchema = requestBody?.content?.["application/json"]?.schema
+		? resolveSchema(requestBody.content["application/json"].schema, spec)
+		: undefined;
 
 	// Build data type parts
 	const dataProps: string[] = [];
@@ -115,39 +126,45 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 	const methodBody = [
 		`const url = \`${urlWithParams}\`;`,
 		queryParams.length > 0
-			? `const queryData = Object.fromEntries(Object.entries(data).filter(([key]) => ${JSON.stringify(queryParams.map((p) => p.name))}.includes(key)));`
+			? `const queryData = {
+				${queryParams.map((p) => `${p.name}: data.${p.name}`).join(",\n				")}
+			};`
 			: "",
-		requestBody && queryParams.length > 0
-			? `const bodyData = Object.fromEntries(Object.entries(data).filter(([key]) => !${JSON.stringify(queryParams.map((p) => p.name))}.includes(key)));`
+		requestBodySchema?.properties
+			? `const bodyData = {
+				${Object.entries(requestBodySchema.properties)
+					.map(([key]) => `${key}: data.${key}`)
+					.join(",\n				")}
+			};`
 			: "",
-		isFormData
+		formDataSchema?.properties
 			? `const formData = new FormData();
-      ${Object.entries(formDataSchema?.properties || {})
+			${Object.entries(formDataSchema.properties)
 				.map(([key, prop]) => {
 					const schemaProperty = prop as OpenAPIV3.SchemaObject;
 					const isBinary = schemaProperty.format === "binary";
 					return formDataSchema?.required?.includes(key)
 						? `formData.append("${key}", ${isBinary ? "" : "String("}${queryParams.length > 0 ? "bodyData" : "data"}.${key}${isBinary ? "" : ")"});`
 						: `if (${queryParams.length > 0 ? "bodyData" : "data"}.${key} != null) {
-              formData.append("${key}", ${isBinary ? "" : "String("}${queryParams.length > 0 ? "bodyData" : "data"}.${key}${isBinary ? "" : ")"});
-            }`;
+							formData.append("${key}", ${isBinary ? "" : "String("}${queryParams.length > 0 ? "bodyData" : "data"}.${key}${isBinary ? "" : ")"});
+						}`;
 				})
-				.join("\n      ")}`
+				.join("\n			")}`
 			: "",
 		`return this.axios.${method.toLowerCase()}<${responseType}>(url, {
-      ${queryParams.length > 0 ? "params: queryData," : ""}
-      ${requestBody ? `data: ${isFormData ? "formData" : queryParams.length > 0 ? "bodyData" : "data"},` : ""}
-      ${isFormData ? `headers: { 'Content-Type': 'multipart/form-data', ...headers },` : "headers"}
-    });`,
+			${queryParams.length > 0 ? "params: queryData," : ""}
+			${requestBody ? `data: ${isFormData ? "formData" : queryParams.length > 0 ? "bodyData" : "data"},` : ""}
+			${isFormData ? `headers: { 'Content-Type': 'multipart/form-data', ...headers },` : "headers"}
+		});`,
 	]
 		.filter(Boolean)
-		.join("\n    ");
+		.join("\n	");
 
 	return `
-  ${jsDocLines.join("\n  ")}
-  async ${sanitizedOperationId}(data${hasData ? `: ${dataType}` : "?: undefined"}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
-    ${methodBody}
-  }`;
+	${jsDocLines.join("\n	")}
+	async ${sanitizedOperationId}(data${hasData ? `: ${dataType}` : "?: undefined"}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
+		${methodBody}
+	}`;
 }
 
 function getTypeFromParam(param: OpenAPIV3.ParameterObject): string {
@@ -173,10 +190,33 @@ function getTypeFromParam(param: OpenAPIV3.ParameterObject): string {
 export function generateApiClient(spec: OpenAPIV3.Document): string {
 	const operations: OperationInfo[] = [];
 
+	const resolveParameters = (
+		parameters: (OpenAPIV3.ParameterObject | OpenAPIV3.ReferenceObject)[]
+	): OpenAPIV3.ParameterObject[] => {
+		return parameters.map((p) => {
+			if ("$ref" in p) {
+				const index = p.$ref.split("/").pop();
+				return spec.components?.schemas?.[index as string] as OpenAPIV3.ParameterObject;
+			}
+			return p;
+		});
+	};
+
+	const resolveRequestBody = (
+		requestBody: OpenAPIV3.RequestBodyObject | OpenAPIV3.ReferenceObject | undefined
+	): OpenAPIV3.RequestBodyObject | undefined => {
+		if (!requestBody) return undefined;
+		if ("$ref" in requestBody) {
+			console.log(requestBody);
+			const index = requestBody.$ref.split("/").pop();
+			return spec.components?.schemas?.[index as string] as OpenAPIV3.RequestBodyObject;
+		}
+		return requestBody;
+	};
+
 	// Collect all operations
 	Object.entries(spec.paths || {}).forEach(([path, pathItem]) => {
 		if (!pathItem) return;
-
 		["get", "post", "put", "delete", "patch"].forEach((method) => {
 			const operation = pathItem[method as keyof OpenAPIV3.PathItemObject] as OpenAPIV3.OperationObject;
 			if (!operation) return;
@@ -187,11 +227,8 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
 				operationId: sanitizeOperationId(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
 				summary: operation.summary,
 				description: operation.description,
-				parameters: [
-					...(pathItem.parameters || []),
-					...(operation.parameters || []),
-				] as OpenAPIV3.ParameterObject[],
-				requestBody: operation.requestBody as OpenAPIV3.RequestBodyObject,
+				parameters: resolveParameters([...(pathItem.parameters || []), ...(operation.parameters || [])]),
+				requestBody: resolveRequestBody(operation.requestBody),
 				responses: operation.responses,
 			});
 		});
@@ -216,21 +253,21 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
 	// Generate the client class
 	return `import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { 
-  ${Array.from(usedTypes).join(",\n  ")}
+	${Array.from(usedTypes).join(",\n	")}
 } from './${title}.schema';
 
 export class ApiClient {
-  private axios: AxiosInstance;
+	private axios: AxiosInstance;
 
-  constructor(baseURL: string, headers?: Record<string, string>) {
-    this.axios = axios.create({
-      baseURL,
-      headers: {
-        'Content-Type': 'application/json',
-        ...headers
-      }
-    });
-  }
+	constructor(baseURL: string, headers?: Record<string, string>) {
+		this.axios = axios.create({
+			baseURL,
+			headers: {
+				'Content-Type': 'application/json',
+				...headers
+			}
+		});
+	}
 ${operations.map((op) => generateAxiosMethod(op, spec)).join("\n\n")}
 }
 `;

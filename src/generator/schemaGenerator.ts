@@ -20,8 +20,8 @@ function getTypeFromSchema(
 	if (!schema) return "any";
 
 	if ("$ref" in schema) {
-		const refType = schema.$ref.split("/").pop()!;
-		return sanitizeString(refType);
+		const refType = schema.$ref.split("/").pop();
+		return sanitizeString(refType as string);
 	}
 
 	// Handle enum types properly
@@ -38,10 +38,7 @@ function getTypeFromSchema(
 		case "boolean":
 			return "boolean";
 		case "array": {
-			const itemType = getTypeFromSchema(
-				schema.items as OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject,
-				context
-			);
+			const itemType = getTypeFromSchema(schema.items, context);
 			return `Array<${itemType}>`;
 		}
 		case "object":
@@ -49,10 +46,7 @@ function getTypeFromSchema(
 				const properties = Object.entries(schema.properties)
 					.map(([key, prop]) => {
 						const isRequired = schema.required?.includes(key);
-						const propertyType = getTypeFromSchema(
-							prop as OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject,
-							context
-						);
+						const propertyType = getTypeFromSchema(prop, context);
 						const safeName = sanitizePropertyName(key);
 						return `  ${safeName}${isRequired ? "" : "?"}: ${propertyType};`;
 					})
@@ -63,10 +57,7 @@ function getTypeFromSchema(
 				const valueType =
 					typeof schema.additionalProperties === "boolean"
 						? "any"
-						: getTypeFromSchema(
-								schema.additionalProperties as OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject,
-								context
-							);
+						: getTypeFromSchema(schema.additionalProperties, context);
 				return `Record<string, ${valueType}>`;
 			}
 			return "Record<string, any>";

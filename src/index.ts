@@ -3,10 +3,10 @@ import { resolve } from "node:path";
 import axios from "axios";
 import type { OpenAPIV3 } from "openapi-types";
 import * as yaml from "yaml";
-import type { OpenAPIConfig } from "../types/config";
-import { generateApiClient as generateApiClientCode } from "./clientGenerator";
-import { generateReactQuery } from "./reactQueryGenerator";
-import { generateTypeDefinitions } from "./schemaGenerator";
+import { generateApiClient } from "./generator/clientGenerator";
+import { generateReactQuery } from "./generator/reactQueryGenerator";
+import { generateTypeDefinitions } from "./generator/schemaGenerator";
+import type { OpenAPIConfig } from "./types/config";
 
 /**
  * Loads the OpenAPI specification from either a URL or local file
@@ -31,7 +31,7 @@ async function loadOpenAPISpec(specSource: string): Promise<OpenAPIV3.Document> 
 /**
  * Main function to generate the API client
  */
-export async function generateApiClient(config: OpenAPIConfig): Promise<void> {
+export async function codegenerate(config: OpenAPIConfig): Promise<void> {
 	try {
 		// Load specs
 		const specs = Array.isArray(config.specSource)
@@ -39,26 +39,22 @@ export async function generateApiClient(config: OpenAPIConfig): Promise<void> {
 			: [await loadOpenAPISpec(config.specSource)];
 		// Generate for each spec...
 		for (const spec of specs) {
-			console.log("Generated TypeScript interfaces successfully");
-			const title = spec.info.title.toLowerCase().replace(/\s+/g, "-");
-
 			// Create export directory if it doesn't exist
 			await mkdir(config.exportDir, { recursive: true });
+
+			const title = spec.info.title.toLowerCase().replace(/\s+/g, "-");
 
 			// Generate and write type definitions
 			const typeDefinitions = generateTypeDefinitions(spec);
 			await writeFile(resolve(config.exportDir, `${title}.schema.ts`), typeDefinitions, "utf-8");
 
 			// Generate and write API client
-			const clientCode = generateApiClientCode(spec);
+			const clientCode = generateApiClient(spec);
 			await writeFile(resolve(config.exportDir, `${title}.client.ts`), clientCode, "utf-8");
 
 			// Generate and write React Query options
 			const queryCode = generateReactQuery(spec);
 			await writeFile(resolve(config.exportDir, `${title}.queryOptions.ts`), queryCode, "utf-8");
-
-			console.log("Generated API client successfully");
-			console.log("Generated React Query options successfully");
 		}
 	} catch (error) {
 		if (error instanceof Error) {

@@ -1,8 +1,0 @@
-{
-	"specSource": "https://api.example.com/swagger.json",
-	"exportDir": "./generated",
-	"options": {
-		"generateMocks": true,
-		"includeJSDocs": true
-	}
-}

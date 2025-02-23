@@ -1,17 +1,13 @@
 import type { OpenAPIV3 } from "openapi-types";
 import type { OperationInfo } from "./clientGenerator";
 
-function sanitizeOperationId(operationId: string): string {
+function sanitizeString(operationId: string): string {
 	return operationId.replace(/[^a-zA-Z0-9_]/g, "_");
-}
-
-function sanitizePropertyName(name: string): string {
-	return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
 }
 
 function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document): string {
 	const { operationId: rawOperationId, parameters, requestBody } = operation;
-	const operationId = sanitizeOperationId(rawOperationId);
+	const operationId = sanitizeString(rawOperationId);
 
 	const hasData = (parameters && parameters.length > 0) || operation.requestBody;
 
@@ -21,8 +17,8 @@ function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document
 		context: { schemas: { [key: string]: OpenAPIV3.SchemaObject } }
 	): string[] => {
 		if ("$ref" in schema) {
-			const refType = schema.$ref.split("/").pop()!;
-			const refSchema = context.schemas[refType];
+			const refType = schema.$ref.split("/").pop();
+			const refSchema = context.schemas[refType as string];
 			return refSchema?.required?.map((p) => `'${p}'`) || [];
 		}
 		return schema.required?.map((p) => `'${p}'`) || [];
@@ -42,8 +38,6 @@ function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document
 				})
 			: []),
 	];
-
-	const hasRequiredParams = requiredParams.length > 0;
 
 	return `
 export const ${operationId}QueryOptions = (
@@ -75,7 +69,7 @@ export function generateReactQuery(spec: OpenAPIV3.Document): string {
 			operations.push({
 				method: method.toUpperCase(),
 				path,
-				operationId: sanitizeOperationId(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
+				operationId: sanitizeString(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
 				summary: operation.summary,
 				description: operation.description,
 				parameters: [
