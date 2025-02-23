@@ -5,6 +5,7 @@ import axios from 'axios';
 import * as yaml from 'yaml';
 import { OpenAPIV3 } from 'openapi-types';
 import { generateTypeDefinitions } from './schemaGenerator';
+import { generateApiClient as generateApiClientCode } from './clientGenerator';
 
 /**
  * Loads the OpenAPI specification from either a URL or local file
@@ -48,7 +49,16 @@ export async function generateApiClient(config: OpenAPIConfig): Promise<void> {
       'utf-8'
     );
     
+    // Generate and write API client
+    const clientCode = generateApiClientCode(spec);
+    await writeFile(
+      resolve(config.exportDir, 'client.ts'),
+      clientCode,
+      'utf-8'
+    );
+    
     console.log('Generated TypeScript interfaces successfully');
+    console.log('Generated API client successfully');
     
     // TODO: Implement remaining steps
     // 1. Generate Axios client methods for each path
