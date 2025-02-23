@@ -127,7 +127,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 		`const url = \`${urlWithParams}\`;`,
 		queryParams.length > 0
 			? `const queryData = {
-				${queryParams.map((p) => `${p.name}: data.${p.name}`).join(",\n				")}
+				${queryParams.map((p) => `["${p.name}"]: data["${p.name}"]`).join(",\n				")}
 			};`
 			: "",
 		requestBodySchema?.properties
