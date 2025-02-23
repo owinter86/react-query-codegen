@@ -112,7 +112,7 @@ export class ApiClient {
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountMeResponse200>> {
-		const url = `/account/me`;
+		const url = "/account/me";
 		return this.axios.get<AccountMeResponse200>(url, {
 			headers,
 		});
@@ -126,7 +126,7 @@ export class ApiClient {
 		data: AccountRegisterRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountRegisterResponse200>> {
-		const url = `/account/register`;
+		const url = "/account/register";
 		const bodyData = {
 			email: data.email,
 			password: data.password,
@@ -149,7 +149,7 @@ export class ApiClient {
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountRemoveResponse200>> {
-		const url = `/account/remove`;
+		const url = "/account/remove";
 		return this.axios.delete<AccountRemoveResponse200>(url, {
 			headers,
 		});
@@ -165,7 +165,7 @@ export class ApiClient {
 		data: AccountUpdatePushNotificationsRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountUpdatePushNotificationsResponse200>> {
-		const url = `/account/me/update-push-notifications`;
+		const url = "/account/me/update-push-notifications";
 		const bodyData = {
 			pushNotificationSettings: data.pushNotificationSettings,
 		};
@@ -190,7 +190,7 @@ export class ApiClient {
 		data: TicketAddRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<TicketAddResponse200>> {
-		const url = `/ticket/add`;
+		const url = "/ticket/add";
 		const bodyData = {
 			email: data.email,
 			barcode: data.barcode,
@@ -233,7 +233,7 @@ Errors:
 		data: AuthPasswordBasedForgotPasswordRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedForgotPasswordResponse200>> {
-		const url = `/auth/password-based/forgot-password`;
+		const url = "/auth/password-based/forgot-password";
 		const bodyData = {
 			email: data.email,
 		};
@@ -250,7 +250,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedListEmailsResponse200>> {
-		const url = `/auth/password-based`;
+		const url = "/auth/password-based";
 		return this.axios.get<AuthPasswordBasedListEmailsResponse200>(url, {
 			headers,
 		});
@@ -271,7 +271,7 @@ Errors:
 		data: AuthPasswordBasedLoginRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedLoginResponse200>> {
-		const url = `/auth/password-based/login`;
+		const url = "/auth/password-based/login";
 		const bodyData = {
 			email: data.email,
 			password: data.password,
@@ -298,7 +298,7 @@ Errors:
 		data: AuthPasswordBasedResetPasswordRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedResetPasswordResponse200>> {
-		const url = `/auth/password-based/reset-password`;
+		const url = "/auth/password-based/reset-password";
 		const bodyData = {
 			resetToken: data.resetToken,
 			password: data.password,
@@ -324,7 +324,7 @@ Errors:
 		data: AuthPasswordBasedUpdateEmailRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedUpdateEmailResponse200>> {
-		const url = `/auth/password-based/update-email`;
+		const url = "/auth/password-based/update-email";
 		const bodyData = {
 			email: data.email,
 		};
@@ -347,7 +347,7 @@ Errors:
 		data: AuthPasswordBasedUpdatePasswordRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedUpdatePasswordResponse200>> {
-		const url = `/auth/password-based/update-password`;
+		const url = "/auth/password-based/update-password";
 		const bodyData = {
 			password: data.password,
 		};
@@ -374,7 +374,7 @@ Errors:
 		data: AuthPasswordBasedVerifyEmailRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedVerifyEmailResponse200>> {
-		const url = `/auth/password-based/verify-email`;
+		const url = "/auth/password-based/verify-email";
 		const bodyData = {
 			verifyToken: data.verifyToken,
 			device: data.device,
@@ -447,7 +447,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthImpersonateStopSessionResponse200>> {
-		const url = `/auth/impersonate-stop-session`;
+		const url = "/auth/impersonate-stop-session";
 		return this.axios.post<AuthImpersonateStopSessionResponse200>(url, {
 			headers,
 		});
@@ -461,7 +461,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthLogoutResponse200>> {
-		const url = `/auth/logout`;
+		const url = "/auth/logout";
 		return this.axios.post<AuthLogoutResponse200>(url, {
 			headers,
 		});
@@ -477,7 +477,7 @@ do two-step verification (via 'session.type === checkTwoStep'), the user object 
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthMeResponse200>> {
-		const url = `/auth/me`;
+		const url = "/auth/me";
 		return this.axios.get<AuthMeResponse200>(url, {
 			headers,
 		});
@@ -494,7 +494,7 @@ Errors:
 		data: AuthRefreshTokensRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthRefreshTokensResponse200>> {
-		const url = `/auth/refresh-tokens`;
+		const url = "/auth/refresh-tokens";
 		const bodyData = {
 			refreshToken: data.refreshToken,
 		};
@@ -560,7 +560,7 @@ are returned. The filters are combinable.
 		data: AuthUserListRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthUserListResponse200>> {
-		const url = `/auth/list-users`;
+		const url = "/auth/list-users";
 		const bodyData = {
 			search: data.search,
 			filters: data.filters,
@@ -579,7 +579,7 @@ are returned. The filters are combinable.
 		data: AuthPermissionCreateRoleRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionCreateRoleResponse200>> {
-		const url = `/auth/permission/role`;
+		const url = "/auth/permission/role";
 		const bodyData = {
 			identifier: data.identifier,
 		};
@@ -598,7 +598,7 @@ known permissions and disable selection of unknowns.
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionPermissionListResponse200>> {
-		const url = `/auth/permission/permission/list`;
+		const url = "/auth/permission/permission/list";
 		return this.axios.get<AuthPermissionPermissionListResponse200>(url, {
 			headers,
 		});
@@ -654,7 +654,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionRoleListResponse200>> {
-		const url = `/auth/permission/role/list`;
+		const url = "/auth/permission/role/list";
 		return this.axios.get<AuthPermissionRoleListResponse200>(url, {
 			headers,
 		});
@@ -694,7 +694,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionSummaryResponse200>> {
-		const url = `/auth/permission/summary`;
+		const url = "/auth/permission/summary";
 		return this.axios.get<AuthPermissionSummaryResponse200>(url, {
 			headers,
 		});
@@ -777,7 +777,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SessionListResponse200>> {
-		const url = `/session/list`;
+		const url = "/session/list";
 		return this.axios.get<SessionListResponse200>(url, {
 			headers,
 		});
@@ -793,7 +793,7 @@ Errors:
 		data: SessionLogoutRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SessionLogoutResponse200>> {
-		const url = `/session/logout`;
+		const url = "/session/logout";
 		const bodyData = {
 			sessionId: data.sessionId,
 		};
@@ -813,7 +813,7 @@ Errors:
 		data: SessionSetDeviceNotificationTokenRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SessionSetDeviceNotificationTokenResponse200>> {
-		const url = `/session/set-notification-token`;
+		const url = "/session/set-notification-token";
 		const bodyData = {
 			notificationToken: data.notificationToken,
 			webPushInformation: data.webPushInformation,
@@ -841,7 +841,7 @@ Errors:
 		data: DatoWebhookExhibitionRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DatoWebhookExhibitionResponse200>> {
-		const url = `/dato/webhook-exhibition`;
+		const url = "/dato/webhook-exhibition";
 		const bodyData = {
 			environment: data.environment,
 			entity_type: data.entity_type,
@@ -869,7 +869,7 @@ Errors:
 		data: DatoWebhookExhibitionCreateRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DatoWebhookExhibitionCreateResponse200>> {
-		const url = `/dato/webhook-exhibition-create`;
+		const url = "/dato/webhook-exhibition-create";
 		const bodyData = {
 			environment: data.environment,
 			entity_type: data.entity_type,
@@ -895,7 +895,7 @@ Errors:
 		data: DatoWebhookExhibitionRssFeedRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DatoWebhookExhibitionRssFeedResponse200>> {
-		const url = `/dato/webhook-exhibition-rss-feed`;
+		const url = "/dato/webhook-exhibition-rss-feed";
 		const bodyData = {
 			environment: data.environment,
 			entity_type: data.entity_type,
@@ -926,7 +926,7 @@ Errors:
 		data: DatoWebhookNotificationRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DatoWebhookNotificationResponse200>> {
-		const url = `/dato/webhook-notification`;
+		const url = "/dato/webhook-notification";
 		const bodyData = {
 			environment: data.environment,
 			entity_type: data.entity_type,
@@ -981,7 +981,7 @@ Errors:
 		data: DatoWebhookRecurringScheduleItemRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DatoWebhookRecurringScheduleItemResponse200>> {
-		const url = `/dato/webhook-recurring-schedule-item`;
+		const url = "/dato/webhook-recurring-schedule-item";
 		const bodyData = {
 			environment: data.environment,
 			entity_type: data.entity_type,
@@ -1011,7 +1011,7 @@ Errors:
 		data: DatoWebhookScheduleRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DatoWebhookScheduleResponse200>> {
-		const url = `/dato/webhook-schedule`;
+		const url = "/dato/webhook-schedule";
 		const bodyData = {
 			environment: data.environment,
 			entity_type: data.entity_type,
@@ -1079,7 +1079,7 @@ Errors:
 		data: ExhibitionSyncRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ExhibitionSyncResponse200>> {
-		const url = `/exhibition/sync`;
+		const url = "/exhibition/sync";
 		const bodyData = {
 			exhibitions: data.exhibitions,
 		};
@@ -1104,7 +1104,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ExhibitionSyncAllResponse200>> {
-		const url = `/exhibition/syncAll`;
+		const url = "/exhibition/syncAll";
 		return this.axios.post<ExhibitionSyncAllResponse200>(url, {
 			headers,
 		});
@@ -1213,7 +1213,7 @@ Errors:
 		data: ExhibitorSyncRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ExhibitorSyncResponse200>> {
-		const url = `/exhibitor/sync`;
+		const url = "/exhibitor/sync";
 		const bodyData = {
 			exhibitors: data.exhibitors,
 		};
@@ -1238,7 +1238,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ExhibitorSyncAllResponse200>> {
-		const url = `/exhibitor/syncAll`;
+		const url = "/exhibitor/syncAll";
 		return this.axios.post<ExhibitorSyncAllResponse200>(url, {
 			headers,
 		});
@@ -1252,7 +1252,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<FeatureFlagCurrentResponse200>> {
-		const url = `/feature-flag/current`;
+		const url = "/feature-flag/current";
 		return this.axios.get<FeatureFlagCurrentResponse200>(url, {
 			headers,
 		});
@@ -1266,7 +1266,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<MultitenantCurrentResponse200>> {
-		const url = `/multitenant/current`;
+		const url = "/multitenant/current";
 		return this.axios.get<MultitenantCurrentResponse200>(url, {
 			headers,
 		});
@@ -1286,7 +1286,7 @@ Errors:
 		data: NewsletterSubscribeRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<NewsletterSubscribeResponse200>> {
-		const url = `/newsletter/subscribe`;
+		const url = "/newsletter/subscribe";
 		const bodyData = {
 			email: data.email,
 			sourceCode: data.sourceCode,

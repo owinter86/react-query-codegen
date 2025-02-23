@@ -255,7 +255,7 @@ export class ApiClient {
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountFavoritesResponse200>> {
-		const url = `/account/favorites`;
+		const url = "/account/favorites";
 		return this.axios.get<AccountFavoritesResponse200>(url, {
 			headers,
 		});
@@ -268,7 +268,7 @@ export class ApiClient {
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountGetAppPreferencesResponse200>> {
-		const url = `/account/preferences/app`;
+		const url = "/account/preferences/app";
 		return this.axios.get<AccountGetAppPreferencesResponse200>(url, {
 			headers,
 		});
@@ -281,7 +281,7 @@ export class ApiClient {
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountGetCompanyPreferencesResponse200>> {
-		const url = `/account/preferences/company`;
+		const url = "/account/preferences/company";
 		return this.axios.get<AccountGetCompanyPreferencesResponse200>(url, {
 			headers,
 		});
@@ -294,7 +294,7 @@ export class ApiClient {
 		data: AccountUpdateCompanyPreferencesRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountUpdateCompanyPreferencesResponse200>> {
-		const url = `/account/preferences/company`;
+		const url = "/account/preferences/company";
 		const bodyData = {
 			companyPreferences: data.companyPreferences,
 		};
@@ -311,7 +311,7 @@ export class ApiClient {
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountGetPersonalPreferencesResponse200>> {
-		const url = `/account/preferences/personal`;
+		const url = "/account/preferences/personal";
 		return this.axios.get<AccountGetPersonalPreferencesResponse200>(url, {
 			headers,
 		});
@@ -324,7 +324,7 @@ export class ApiClient {
 		data: AccountUpdatePersonalPreferencesRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountUpdatePersonalPreferencesResponse200>> {
-		const url = `/account/preferences/personal`;
+		const url = "/account/preferences/personal";
 		const bodyData = {
 			personalPreferences: data.personalPreferences,
 		};
@@ -342,7 +342,7 @@ export class ApiClient {
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountMeResponse200>> {
-		const url = `/account/me`;
+		const url = "/account/me";
 		return this.axios.get<AccountMeResponse200>(url, {
 			headers,
 		});
@@ -361,7 +361,7 @@ Error(s):
 		data: AccountRegisterRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountRegisterResponse200>> {
-		const url = `/account/register`;
+		const url = "/account/register";
 		const bodyData = {
 			email: data.email,
 			password: data.password,
@@ -400,7 +400,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountRemoveResponse200>> {
-		const url = `/account/remove`;
+		const url = "/account/remove";
 		return this.axios.delete<AccountRemoveResponse200>(url, {
 			headers,
 		});
@@ -418,7 +418,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountRemoveDriversLicenseDataResponse200>> {
-		const url = `/account/remove-drivers-license-data`;
+		const url = "/account/remove-drivers-license-data";
 		return this.axios.delete<AccountRemoveDriversLicenseDataResponse200>(url, {
 			headers,
 		});
@@ -434,7 +434,7 @@ Error(s):
 		data: AccountReservationsRequest & { offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AccountReservationsResponse200>> {
-		const url = `/account/reservations`;
+		const url = "/account/reservations";
 		const queryData = {
 			offset: data.offset,
 			limit: data.limit,
@@ -492,7 +492,7 @@ Error(s):
 		data: CategoryAvailabilityRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<CategoryAvailabilityResponse200>> {
-		const url = `/category/availability`;
+		const url = "/category/availability";
 		const bodyData = {
 			locale: data.locale,
 			datePickup: data.datePickup,
@@ -520,7 +520,7 @@ Error(s):
 		data: CategoryCompareRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<CategoryCompareResponse200>> {
-		const url = `/category/compare`;
+		const url = "/category/compare";
 		const bodyData = {
 			categoryIds: data.categoryIds,
 			locationPickup: data.locationPickup,
@@ -596,7 +596,7 @@ Error(s):
 		data: CategoryInsuranceProfileRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<CategoryInsuranceProfileResponse200>> {
-		const url = `/category/insuranceProfile`;
+		const url = "/category/insuranceProfile";
 		const bodyData = {
 			locale: data.locale,
 			categoryId: data.categoryId,
@@ -617,7 +617,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<CategoryListResponse200>> {
-		const url = `/category/list`;
+		const url = "/category/list";
 		return this.axios.get<CategoryListResponse200>(url, {
 			headers,
 		});
@@ -674,7 +674,7 @@ Addon input error(s):
 		data: CategoryPriceCalculationRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<CategoryPriceCalculationResponse200>> {
-		const url = `/category/priceCalculation`;
+		const url = "/category/priceCalculation";
 		const bodyData = {
 			locale: data.locale,
 			categoryId: data.categoryId,
@@ -744,7 +744,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<MainCategoryListResponse200>> {
-		const url = `/main-category`;
+		const url = "/main-category";
 		return this.axios.get<MainCategoryListResponse200>(url, {
 			headers,
 		});
@@ -870,7 +870,7 @@ Error(s):
 		data: { offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SharedVehicleAdminListResponse200>> {
-		const url = `/shared-vehicle/admin/list`;
+		const url = "/shared-vehicle/admin/list";
 		const queryData = {
 			offset: data.offset,
 			limit: data.limit,
@@ -949,7 +949,7 @@ Error(s):
 		data: SharedVehicleAvailabilityRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SharedVehicleAvailabilityResponse200>> {
-		const url = `/shared-vehicle/availability`;
+		const url = "/shared-vehicle/availability";
 		const bodyData = {
 			locale: data.locale,
 			datePickup: data.datePickup,
@@ -1246,7 +1246,7 @@ Errors:
 		data: AuthPasswordBasedForgotPasswordRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedForgotPasswordResponse200>> {
-		const url = `/auth/password-based/forgot-password`;
+		const url = "/auth/password-based/forgot-password";
 		const bodyData = {
 			email: data.email,
 		};
@@ -1263,7 +1263,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedListEmailsResponse200>> {
-		const url = `/auth/password-based`;
+		const url = "/auth/password-based";
 		return this.axios.get<AuthPasswordBasedListEmailsResponse200>(url, {
 			headers,
 		});
@@ -1284,7 +1284,7 @@ Errors:
 		data: AuthPasswordBasedLoginRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedLoginResponse200>> {
-		const url = `/auth/password-based/login`;
+		const url = "/auth/password-based/login";
 		const bodyData = {
 			email: data.email,
 			password: data.password,
@@ -1311,7 +1311,7 @@ Errors:
 		data: AuthPasswordBasedResetPasswordRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedResetPasswordResponse200>> {
-		const url = `/auth/password-based/reset-password`;
+		const url = "/auth/password-based/reset-password";
 		const bodyData = {
 			resetToken: data.resetToken,
 			password: data.password,
@@ -1337,7 +1337,7 @@ Errors:
 		data: AuthPasswordBasedUpdateEmailRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedUpdateEmailResponse200>> {
-		const url = `/auth/password-based/update-email`;
+		const url = "/auth/password-based/update-email";
 		const bodyData = {
 			email: data.email,
 		};
@@ -1360,7 +1360,7 @@ Errors:
 		data: AuthPasswordBasedUpdatePasswordRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedUpdatePasswordResponse200>> {
-		const url = `/auth/password-based/update-password`;
+		const url = "/auth/password-based/update-password";
 		const bodyData = {
 			password: data.password,
 		};
@@ -1387,7 +1387,7 @@ Errors:
 		data: AuthPasswordBasedVerifyEmailRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedVerifyEmailResponse200>> {
-		const url = `/auth/password-based/verify-email`;
+		const url = "/auth/password-based/verify-email";
 		const bodyData = {
 			verifyToken: data.verifyToken,
 			device: data.device,
@@ -1407,7 +1407,7 @@ Errors:
 		data: AuthPasswordBasedVerifyOtpRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPasswordBasedVerifyOtpResponse200>> {
-		const url = `/auth/password-based/verify-otp`;
+		const url = "/auth/password-based/verify-otp";
 		const bodyData = {
 			otp: data.otp,
 		};
@@ -1501,7 +1501,7 @@ Error(s):
 		data: ReservationFetchByIdsRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ReservationFetchByIdsResponse200>> {
-		const url = `/reservation/reservations`;
+		const url = "/reservation/reservations";
 		const bodyData = {
 			reservationIds: data.reservationIds,
 		};
@@ -1543,7 +1543,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<LocationListResponse200>> {
-		const url = `/location`;
+		const url = "/location";
 		return this.axios.get<LocationListResponse200>(url, {
 			headers,
 		});
@@ -1562,7 +1562,7 @@ Error(s):
 		data: LocationReorderRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<LocationReorderResponse200>> {
-		const url = `/location/reorder`;
+		const url = "/location/reorder";
 		const bodyData = {
 			locationIds: data.locationIds,
 		};
@@ -1619,7 +1619,7 @@ Error(s):
 		data: AdminInviteUserRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AdminInviteUserResponse200>> {
-		const url = `/admin/invite-user`;
+		const url = "/admin/invite-user";
 		const bodyData = {
 			email: data.email,
 			name: data.name,
@@ -1639,7 +1639,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AdminListUsersResponse200>> {
-		const url = `/admin/users`;
+		const url = "/admin/users";
 		return this.axios.get<AdminListUsersResponse200>(url, {
 			headers,
 		});
@@ -1657,7 +1657,7 @@ Error(s):
 		data: { dossierId: string; processId: string; status: string },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AppRedirectAccountDriversLicenseVerificationCompleteResponse200>> {
-		const url = `/app-redirect/account/drivers-license-verification-complete`;
+		const url = "/app-redirect/account/drivers-license-verification-complete";
 		const queryData = {
 			dossierId: data.dossierId,
 			processId: data.processId,
@@ -1700,7 +1700,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthImpersonateStopSessionResponse200>> {
-		const url = `/auth/impersonate-stop-session`;
+		const url = "/auth/impersonate-stop-session";
 		return this.axios.post<AuthImpersonateStopSessionResponse200>(url, {
 			headers,
 		});
@@ -1714,7 +1714,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthLogoutResponse200>> {
-		const url = `/auth/logout`;
+		const url = "/auth/logout";
 		return this.axios.post<AuthLogoutResponse200>(url, {
 			headers,
 		});
@@ -1730,7 +1730,7 @@ do two-step verification (via 'session.type === checkTwoStep'), the user object 
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthMeResponse200>> {
-		const url = `/auth/me`;
+		const url = "/auth/me";
 		return this.axios.get<AuthMeResponse200>(url, {
 			headers,
 		});
@@ -1747,7 +1747,7 @@ Errors:
 		data: AuthRefreshTokensRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthRefreshTokensResponse200>> {
-		const url = `/auth/refresh-tokens`;
+		const url = "/auth/refresh-tokens";
 		const bodyData = {
 			refreshToken: data.refreshToken,
 		};
@@ -1813,7 +1813,7 @@ are returned. The filters are combinable.
 		data: AuthUserListRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthUserListResponse200>> {
-		const url = `/auth/list-users`;
+		const url = "/auth/list-users";
 		const bodyData = {
 			search: data.search,
 			filters: data.filters,
@@ -1832,7 +1832,7 @@ are returned. The filters are combinable.
 		data: AuthPermissionCreateRoleRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionCreateRoleResponse200>> {
-		const url = `/auth/permission/role`;
+		const url = "/auth/permission/role";
 		const bodyData = {
 			identifier: data.identifier,
 		};
@@ -1851,7 +1851,7 @@ known permissions and disable selection of unknowns.
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionPermissionListResponse200>> {
-		const url = `/auth/permission/permission/list`;
+		const url = "/auth/permission/permission/list";
 		return this.axios.get<AuthPermissionPermissionListResponse200>(url, {
 			headers,
 		});
@@ -1907,7 +1907,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionRoleListResponse200>> {
-		const url = `/auth/permission/role/list`;
+		const url = "/auth/permission/role/list";
 		return this.axios.get<AuthPermissionRoleListResponse200>(url, {
 			headers,
 		});
@@ -1947,7 +1947,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthPermissionSummaryResponse200>> {
-		const url = `/auth/permission/summary`;
+		const url = "/auth/permission/summary";
 		return this.axios.get<AuthPermissionSummaryResponse200>(url, {
 			headers,
 		});
@@ -2034,7 +2034,7 @@ Errors:
 		data: AuthAnonymousBasedLoginRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthAnonymousBasedLoginResponse200>> {
-		const url = `/auth/anonymous-based/login`;
+		const url = "/auth/anonymous-based/login";
 		const bodyData = {
 			token: data.token,
 			device: data.device,
@@ -2055,7 +2055,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SessionListResponse200>> {
-		const url = `/session/list`;
+		const url = "/session/list";
 		return this.axios.get<SessionListResponse200>(url, {
 			headers,
 		});
@@ -2071,7 +2071,7 @@ Errors:
 		data: SessionLogoutRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SessionLogoutResponse200>> {
-		const url = `/session/logout`;
+		const url = "/session/logout";
 		const bodyData = {
 			sessionId: data.sessionId,
 		};
@@ -2091,7 +2091,7 @@ Errors:
 		data: SessionSetDeviceNotificationTokenRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SessionSetDeviceNotificationTokenResponse200>> {
-		const url = `/session/set-notification-token`;
+		const url = "/session/set-notification-token";
 		const bodyData = {
 			notificationToken: data.notificationToken,
 			webPushInformation: data.webPushInformation,
@@ -2110,7 +2110,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthTotpProviderInfoResponse200>> {
-		const url = `/auth/totp-provider`;
+		const url = "/auth/totp-provider";
 		return this.axios.get<AuthTotpProviderInfoResponse200>(url, {
 			headers,
 		});
@@ -2129,7 +2129,7 @@ Errors:
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthTotpProviderRemoveResponse200>> {
-		const url = `/auth/totp-provider/remove`;
+		const url = "/auth/totp-provider/remove";
 		return this.axios.delete<AuthTotpProviderRemoveResponse200>(url, {
 			headers,
 		});
@@ -2170,7 +2170,7 @@ Errors:
 		data: AuthTotpProviderSetupRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthTotpProviderSetupResponse200>> {
-		const url = `/auth/totp-provider/setup`;
+		const url = "/auth/totp-provider/setup";
 		const bodyData = {};
 		return this.axios.post<AuthTotpProviderSetupResponse200>(url, {
 			data: data,
@@ -2194,7 +2194,7 @@ Errors:
 		data: AuthTotpProviderSetupVerifyRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthTotpProviderSetupVerifyResponse200>> {
-		const url = `/auth/totp-provider/setup/verify`;
+		const url = "/auth/totp-provider/setup/verify";
 		const bodyData = {
 			totp: data.totp,
 		};
@@ -2222,7 +2222,7 @@ Errors:
 		data: AuthTotpProviderVerifyRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<AuthTotpProviderVerifyResponse200>> {
-		const url = `/auth/totp-provider/verify`;
+		const url = "/auth/totp-provider/verify";
 		const bodyData = {
 			totp: data.totp,
 		};
@@ -2244,7 +2244,7 @@ Error(s):
 		data: BusinessAddressPrefillRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<BusinessAddressPrefillResponse200>> {
-		const url = `/business/address-prefill`;
+		const url = "/business/address-prefill";
 		const bodyData = {
 			postalCode: data.postalCode,
 			houseNumber: data.houseNumber,
@@ -2267,7 +2267,7 @@ Error(s):
 		data: { q: string; offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ClientAdminListResponse200>> {
-		const url = `/client/admin/list`;
+		const url = "/client/admin/list";
 		const queryData = {
 			q: data.q,
 			offset: data.offset,
@@ -2430,7 +2430,7 @@ Error(s):
 		data: { offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageContractInvoicesResponse200>> {
-		const url = `/storage-contract/invoices`;
+		const url = "/storage-contract/invoices";
 		const queryData = {
 			offset: data.offset,
 			limit: data.limit,
@@ -2452,7 +2452,7 @@ Error(s):
 		data: { offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageContractOverviewResponse200>> {
-		const url = `/storage-contract/overview`;
+		const url = "/storage-contract/overview";
 		const queryData = {
 			offset: data.offset,
 			limit: data.limit,
@@ -2511,7 +2511,7 @@ Error(s):
 		data: StorageOrderCheckoutRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageOrderCheckoutResponse200>> {
-		const url = `/storage-order/checkout`;
+		const url = "/storage-order/checkout";
 		const bodyData = {
 			locale: data.locale,
 			password: data.password,
@@ -2540,7 +2540,7 @@ Error(s):
 		data: { locale?: any },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageOrderOverviewResponse200>> {
-		const url = `/storage-order`;
+		const url = "/storage-order";
 		const queryData = {
 			locale: data.locale,
 		};
@@ -2568,7 +2568,7 @@ Error(s):
 		data: StorageOrderConfigureRequest & { locale?: any },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageOrderConfigureResponse200>> {
-		const url = `/storage-order`;
+		const url = "/storage-order";
 		const queryData = {
 			locale: data.locale,
 		};
@@ -2604,7 +2604,7 @@ Error(s):
 		data: StorageOrderDiscountApplyRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageOrderDiscountApplyResponse200>> {
-		const url = `/storage-order/discount`;
+		const url = "/storage-order/discount";
 		const bodyData = {
 			discountCode: data.discountCode,
 		};
@@ -2627,7 +2627,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageOrderDiscountRemoveResponse200>> {
-		const url = `/storage-order/discount`;
+		const url = "/storage-order/discount";
 		return this.axios.delete<StorageOrderDiscountRemoveResponse200>(url, {
 			headers,
 		});
@@ -2640,7 +2640,7 @@ Error(s):
 		data: ContinentalCreateSessionRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ContinentalCreateSessionResponse200>> {
-		const url = `/continental/create-session`;
+		const url = "/continental/create-session";
 		const bodyData = {
 			token: data.token,
 			deviceName: data.deviceName,
@@ -2665,7 +2665,7 @@ Error(s):
 		data: ContinentalCreateVirtualKeyRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ContinentalCreateVirtualKeyResponse200>> {
-		const url = `/continental/create-virtual-key`;
+		const url = "/continental/create-virtual-key";
 		const bodyData = {
 			bookingId: data.bookingId,
 			clientDeviceId: data.clientDeviceId,
@@ -2717,7 +2717,7 @@ Error(s):
 		data: DivergentOpeningHoursCreateRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DivergentOpeningHoursCreateResponse200>> {
-		const url = `/divergent-opening-hours`;
+		const url = "/divergent-opening-hours";
 		const bodyData = {
 			description: data.description,
 			from: data.from,
@@ -2809,7 +2809,7 @@ Error(s):
 		data: { offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<DivergentOpeningHoursListResponse200>> {
-		const url = `/divergent-opening-hours/list`;
+		const url = "/divergent-opening-hours/list";
 		const queryData = {
 			offset: data.offset,
 			limit: data.limit,
@@ -2829,7 +2829,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<FeatureFlagCurrentResponse200>> {
-		const url = `/feature-flag/current`;
+		const url = "/feature-flag/current";
 		return this.axios.get<FeatureFlagCurrentResponse200>(url, {
 			headers,
 		});
@@ -2848,7 +2848,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<JobStartProplannerMirrorResponse200>> {
-		const url = `/job/admin/start/proplannerMirrorCategory`;
+		const url = "/job/admin/start/proplannerMirrorCategory";
 		return this.axios.post<JobStartProplannerMirrorResponse200>(url, {
 			headers,
 		});
@@ -2862,7 +2862,7 @@ Error(s):
 		data: ManagementRequestMagicLinkRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ManagementRequestMagicLinkResponse200>> {
-		const url = `/_lightbase/management/request-magic-link`;
+		const url = "/_lightbase/management/request-magic-link";
 		const bodyData = {
 			slackUserId: data.slackUserId,
 		};
@@ -2882,7 +2882,7 @@ Error(s):
 		data: ManagementFeatureFlagListRequest & { offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<ManagementFeatureFlagListResponse200>> {
-		const url = `/_lightbase/management/feature-flag/list`;
+		const url = "/_lightbase/management/feature-flag/list";
 		const queryData = {
 			offset: data.offset,
 			limit: data.limit,
@@ -2944,7 +2944,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<MultitenantCurrentResponse200>> {
-		const url = `/multitenant/current`;
+		const url = "/multitenant/current";
 		return this.axios.get<MultitenantCurrentResponse200>(url, {
 			headers,
 		});
@@ -2965,7 +2965,7 @@ Error(s):
 		data: OnfidoStartDriversLicenseVerificationRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OnfidoStartDriversLicenseVerificationResponse200>> {
-		const url = `/onfido/start-drivers-license-verification`;
+		const url = "/onfido/start-drivers-license-verification";
 		const bodyData = {};
 		return this.axios.post<OnfidoStartDriversLicenseVerificationResponse200>(url, {
 			data: data,
@@ -2988,7 +2988,7 @@ Error(s):
 		data: OnfidoWebhookRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OnfidoWebhookResponse200>> {
-		const url = `/onfido/webhook`;
+		const url = "/onfido/webhook";
 		const bodyData = {
 			id: data.id,
 			timestamp: data.timestamp,
@@ -3024,7 +3024,7 @@ Error(s):
 		data: OrderAddRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderAddResponse200>> {
-		const url = `/order/line`;
+		const url = "/order/line";
 		const bodyData = {
 			categoryId: data.categoryId,
 			datePickup: data.datePickup,
@@ -3061,7 +3061,7 @@ Error(s):
 		data: OrderDiscountApplyRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderDiscountApplyResponse200>> {
-		const url = `/order/discount`;
+		const url = "/order/discount";
 		const bodyData = {
 			discountCode: data.discountCode,
 		};
@@ -3084,7 +3084,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderDiscountRemoveResponse200>> {
-		const url = `/order/discount`;
+		const url = "/order/discount";
 		return this.axios.delete<OrderDiscountRemoveResponse200>(url, {
 			headers,
 		});
@@ -3104,7 +3104,7 @@ Error(s):
 		data: OrderOverviewRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderOverviewResponse200>> {
-		const url = `/order`;
+		const url = "/order";
 		const bodyData = {
 			locale: data.locale,
 		};
@@ -3122,7 +3122,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderOverviewCountResponse200>> {
-		const url = `/order/overview/count`;
+		const url = "/order/overview/count";
 		return this.axios.get<OrderOverviewCountResponse200>(url, {
 			headers,
 		});
@@ -3233,7 +3233,7 @@ Error(s):
 		data: OrderCheckoutFlowCheckoutRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderCheckoutFlowCheckoutResponse200>> {
-		const url = `/order-checkout/checkout/flow/checkout`;
+		const url = "/order-checkout/checkout/flow/checkout";
 		const bodyData = {
 			locale: data.locale,
 			paymentMethod: data.paymentMethod,
@@ -3259,7 +3259,7 @@ Error(s):
 		data: OrderCheckoutFlowInfoRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderCheckoutFlowInfoResponse200>> {
-		const url = `/order-checkout/checkout/flow/info`;
+		const url = "/order-checkout/checkout/flow/info";
 		const bodyData = {
 			locale: data.locale,
 		};
@@ -3291,7 +3291,7 @@ Error(s):
 		data: OrderCheckoutFlowPreferencesRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderCheckoutFlowPreferencesResponse200>> {
-		const url = `/order-checkout/checkout/flow/preferences`;
+		const url = "/order-checkout/checkout/flow/preferences";
 		const bodyData = {
 			preferences: data.preferences,
 			accountType: data.accountType,
@@ -3316,7 +3316,7 @@ Error(s):
 		data: OrderShareApplyRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderShareApplyResponse200>> {
-		const url = `/order-share/apply`;
+		const url = "/order-share/apply";
 		const bodyData = {
 			shareId: data.shareId,
 		};
@@ -3338,7 +3338,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<OrderShareCreateResponse200>> {
-		const url = `/order-share/create`;
+		const url = "/order-share/create";
 		return this.axios.post<OrderShareCreateResponse200>(url, {
 			headers,
 		});
@@ -3352,7 +3352,7 @@ Error(s):
 		data: RabobankWebhookOmnikassaRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<RabobankWebhookOmnikassaResponse200>> {
-		const url = `/rabobank/webhook/omnikassa`;
+		const url = "/rabobank/webhook/omnikassa";
 		const bodyData = {
 			authentication: data.authentication,
 			expiry: data.expiry,
@@ -3380,7 +3380,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SharedVehicleReservationActiveResponse200>> {
-		const url = `/shared-vehicle-reservation/active`;
+		const url = "/shared-vehicle-reservation/active";
 		return this.axios.get<SharedVehicleReservationActiveResponse200>(url, {
 			headers,
 		});
@@ -3565,7 +3565,7 @@ Error(s):
 		data: SharedVehicleReservationListRequest & { offset?: number; limit?: number },
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SharedVehicleReservationListResponse200>> {
-		const url = `/shared-vehicle-reservation/list`;
+		const url = "/shared-vehicle-reservation/list";
 		const queryData = {
 			offset: data.offset,
 			limit: data.limit,
@@ -3689,7 +3689,7 @@ Error(s):
 		data?: undefined,
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<StorageTerminationTypesResponse200>> {
-		const url = `/storage/terminationTypes`;
+		const url = "/storage/terminationTypes";
 		return this.axios.get<StorageTerminationTypesResponse200>(url, {
 			headers,
 		});
@@ -3740,7 +3740,7 @@ Error(s):
 		data: SupportContactRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SupportContactResponse200>> {
-		const url = `/support/contact`;
+		const url = "/support/contact";
 		const bodyData = {
 			name: data.name,
 			phone: data.phone,
@@ -3761,7 +3761,7 @@ Error(s):
 		data: SupportSubscribeNewsletterRequest & {},
 		headers?: Record<string, string>
 	): Promise<AxiosResponse<SupportSubscribeNewsletterResponse200>> {
-		const url = `/support/mailing-list/newsletter/subscribe`;
+		const url = "/support/mailing-list/newsletter/subscribe";
 		const bodyData = {
 			email: data.email,
 		};

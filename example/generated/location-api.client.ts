@@ -1,5 +1,5 @@
-import axios, { type AxiosInstance, type AxiosResponse } from 'axios';
-import type { 
+import axios, { type AxiosInstance, type AxiosResponse } from "axios";
+import type {
 	_api__external_location_filters_get_collectionResponse200,
 	_api__external_locations__id__wash_programs_get_collectionResponse200,
 	_api__external_locations__locationId__service__service__description_getResponse200,
@@ -7,8 +7,8 @@ import type {
 	get_v1_locationsResponse200,
 	get_v1_locations_locationId_Response200,
 	get_v1_locations_parking_availabilityResponse200,
-	get_v1_locations_poiResponse200
-} from './location-api.schema';
+	get_v1_locations_poiResponse200,
+} from "./location-api.schema";
 
 export class ApiClient {
 	private axios: AxiosInstance;
@@ -17,9 +17,9 @@ export class ApiClient {
 		this.axios = axios.create({
 			baseURL,
 			headers: {
-				'Content-Type': 'application/json',
-				...headers
-			}
+				"Content-Type": "application/json",
+				...headers,
+			},
 		});
 	}
 
@@ -34,22 +34,30 @@ export class ApiClient {
 	 * @returns LocationFilterResource collection
 	 * @see _api__external_location_filters_get_collectionResponse200
 	 */
-	async _api__external_location_filters_get_collection(data: { language?: string; service: string; vehicleCombination?: number; cleaningType?: string; disinfection?: boolean }, headers?: Record<string, string>): Promise<AxiosResponse<_api__external_location_filters_get_collectionResponse200>> {
-		const url = `/v1/location_filters`;
-	const queryData = {
-				language: data.language,
-				service: data.service,
-				vehicleCombination: data.vehicleCombination,
-				cleaningType: data.cleaningType,
-				disinfection: data.disinfection
-			};
-	return this.axios.get<_api__external_location_filters_get_collectionResponse200>(url, {
+	async _api__external_location_filters_get_collection(
+		data: {
+			language?: string;
+			service: string;
+			vehicleCombination?: number;
+			cleaningType?: string;
+			disinfection?: boolean;
+		},
+		headers?: Record<string, string>
+	): Promise<AxiosResponse<_api__external_location_filters_get_collectionResponse200>> {
+		const url = "/v1/location_filters";
+		const queryData = {
+			language: data.language,
+			service: data.service,
+			vehicleCombination: data.vehicleCombination,
+			cleaningType: data.cleaningType,
+			disinfection: data.disinfection,
+		};
+		return this.axios.get<_api__external_location_filters_get_collectionResponse200>(url, {
 			params: queryData,
-			
-			headers
+
+			headers,
 		});
 	}
-
 
 	/**
 	 * Retrieves the collection of TruckChargingAvailabilityResource resources.
@@ -64,24 +72,37 @@ export class ApiClient {
 	 * @returns TruckChargingAvailabilityResource collection
 	 * @see _api__external_locations_truckcharging_availability_get_collectionResponse200
 	 */
-	async _api__external_locations_truckcharging_availability_get_collection(data: { locationIds?: Array<any>; arrivalDateTime?: string; departureDateTime?: string; bayCapacity?: Array<any>; baySize?: string; page?: number; itemsPerPage?: number }, headers?: Record<string, string>): Promise<AxiosResponse<_api__external_locations_truckcharging_availability_get_collectionResponse200>> {
-		const url = `/v1/locations/truckcharging/availability`;
-	const queryData = {
-				locationIds: data.locationIds,
-				arrivalDateTime: data.arrivalDateTime,
-				departureDateTime: data.departureDateTime,
-				bayCapacity: data.bayCapacity,
-				baySize: data.baySize,
-				page: data.page,
-				itemsPerPage: data.itemsPerPage
-			};
-	return this.axios.get<_api__external_locations_truckcharging_availability_get_collectionResponse200>(url, {
-			params: queryData,
-			
-			headers
-		});
-	}
+	async _api__external_locations_truckcharging_availability_get_collection(
+		data: {
+			locationIds?: Array<any>;
+			arrivalDateTime?: string;
+			departureDateTime?: string;
+			bayCapacity?: Array<any>;
+			baySize?: string;
+			page?: number;
+			itemsPerPage?: number;
+		},
+		headers?: Record<string, string>
+	): Promise<AxiosResponse<_api__external_locations_truckcharging_availability_get_collectionResponse200>> {
+		const url = "/v1/locations/truckcharging/availability";
+		const queryData = {
+			locationIds: data.locationIds,
+			arrivalDateTime: data.arrivalDateTime,
+			departureDateTime: data.departureDateTime,
+			bayCapacity: data.bayCapacity,
+			baySize: data.baySize,
+			page: data.page,
+			itemsPerPage: data.itemsPerPage,
+		};
+		return this.axios.get<_api__external_locations_truckcharging_availability_get_collectionResponse200>(
+			url,
+			{
+				params: queryData,
 
+				headers,
+			}
+		);
+	}
 
 	/**
 	 * Retrieves wash programs.
@@ -95,22 +116,31 @@ export class ApiClient {
 	 * @returns WashProgramsPricelistResource collection
 	 * @see _api__external_locations__id__wash_programs_get_collectionResponse200
 	 */
-	async _api__external_locations__id__wash_programs_get_collection(data: { id: string; vehicleTypes?: Array<any>; cleaningType?: string; disinfection?: boolean; page?: number; itemsPerPage?: number }, headers?: Record<string, string>): Promise<AxiosResponse<_api__external_locations__id__wash_programs_get_collectionResponse200>> {
+	async _api__external_locations__id__wash_programs_get_collection(
+		data: {
+			id: string;
+			vehicleTypes?: Array<any>;
+			cleaningType?: string;
+			disinfection?: boolean;
+			page?: number;
+			itemsPerPage?: number;
+		},
+		headers?: Record<string, string>
+	): Promise<AxiosResponse<_api__external_locations__id__wash_programs_get_collectionResponse200>> {
 		const url = `/v1/locations/${data.id}/wash_programs`;
-	const queryData = {
-				vehicleTypes: data.vehicleTypes,
-				cleaningType: data.cleaningType,
-				disinfection: data.disinfection,
-				page: data.page,
-				itemsPerPage: data.itemsPerPage
-			};
-	return this.axios.get<_api__external_locations__id__wash_programs_get_collectionResponse200>(url, {
+		const queryData = {
+			vehicleTypes: data.vehicleTypes,
+			cleaningType: data.cleaningType,
+			disinfection: data.disinfection,
+			page: data.page,
+			itemsPerPage: data.itemsPerPage,
+		};
+		return this.axios.get<_api__external_locations__id__wash_programs_get_collectionResponse200>(url, {
 			params: queryData,
-			
-			headers
+
+			headers,
 		});
 	}
-
 
 	/**
 	 * Retrieves a location service description.
@@ -120,15 +150,20 @@ export class ApiClient {
 	 * @returns ServiceDescriptionResource resource
 	 * @see _api__external_locations__locationId__service__service__description_getResponse200
 	 */
-	async _api__external_locations__locationId__service__service__description_get(data: { locationId: number; service: string }, headers?: Record<string, string>): Promise<AxiosResponse<_api__external_locations__locationId__service__service__description_getResponse200>> {
+	async _api__external_locations__locationId__service__service__description_get(
+		data: { locationId: number; service: string },
+		headers?: Record<string, string>
+	): Promise<
+		AxiosResponse<_api__external_locations__locationId__service__service__description_getResponse200>
+	> {
 		const url = `/v1/locations/${data.locationId}/service/${data.service}/description`;
-	return this.axios.get<_api__external_locations__locationId__service__service__description_getResponse200>(url, {
-			
-			
-			headers
-		});
+		return this.axios.get<_api__external_locations__locationId__service__service__description_getResponse200>(
+			url,
+			{
+				headers,
+			}
+		);
 	}
-
 
 	/**
 	 * Search locations
@@ -164,41 +199,68 @@ export class ApiClient {
 	 * @returns OK
 	 * @see get_v1_locationsResponse200
 	 */
-	async get_v1_locations(data: { page?: number; itemsPerPage?: number; arrivalDate?: string; services?: Array<any>; paymentMethodId?: number; 'id[]'?: Array<any>; country?: string; geoPoint?: string; radius?: number; name?: string; includeBookable?: boolean; vehicleCombination?: string; 'vehicleType[]'?: Array<any>; cleaningType?: string; 'option[]'?: Array<any>; disinfection?: boolean; 'security[]'?: Array<any>; 'vehicleFacility[]'?: Array<any>; 'driverFacility[]'?: Array<any>; 'boundingBox[]'?: Array<any>; 'baySize[]'?: Array<any>; 'chargingCapacity[]'?: Array<any>; 'cargoType[]'?: Array<any>; 'tankCleaningOptions[]'?: Array<any> }, headers?: Record<string, string>): Promise<AxiosResponse<get_v1_locationsResponse200>> {
-		const url = `/v1/locations`;
-	const queryData = {
-				page: data.page,
-				itemsPerPage: data.itemsPerPage,
-				arrivalDate: data.arrivalDate,
-				services: data.services,
-				paymentMethodId: data.paymentMethodId,
-				id[]: data.id[],
-				country: data.country,
-				geoPoint: data.geoPoint,
-				radius: data.radius,
-				name: data.name,
-				includeBookable: data.includeBookable,
-				vehicleCombination: data.vehicleCombination,
-				vehicleType[]: data.vehicleType[],
-				cleaningType: data.cleaningType,
-				option[]: data.option[],
-				disinfection: data.disinfection,
-				security[]: data.security[],
-				vehicleFacility[]: data.vehicleFacility[],
-				driverFacility[]: data.driverFacility[],
-				boundingBox[]: data.boundingBox[],
-				baySize[]: data.baySize[],
-				chargingCapacity[]: data.chargingCapacity[],
-				cargoType[]: data.cargoType[],
-				tankCleaningOptions[]: data.tankCleaningOptions[]
-			};
-	return this.axios.get<get_v1_locationsResponse200>(url, {
+	async get_v1_locations(
+		data: {
+			page?: number;
+			itemsPerPage?: number;
+			arrivalDate?: string;
+			services?: Array<any>;
+			paymentMethodId?: number;
+			"id[]"?: Array<any>;
+			country?: string;
+			geoPoint?: string;
+			radius?: number;
+			name?: string;
+			includeBookable?: boolean;
+			vehicleCombination?: string;
+			"vehicleType[]"?: Array<any>;
+			cleaningType?: string;
+			"option[]"?: Array<any>;
+			disinfection?: boolean;
+			"security[]"?: Array<any>;
+			"vehicleFacility[]"?: Array<any>;
+			"driverFacility[]"?: Array<any>;
+			"boundingBox[]"?: Array<any>;
+			"baySize[]"?: Array<any>;
+			"chargingCapacity[]"?: Array<any>;
+			"cargoType[]"?: Array<any>;
+			"tankCleaningOptions[]"?: Array<any>;
+		},
+		headers?: Record<string, string>
+	): Promise<AxiosResponse<get_v1_locationsResponse200>> {
+		const url = "/v1/locations";
+		const queryData = {
+			page: data.page,
+			itemsPerPage: data.itemsPerPage,
+			arrivalDate: data.arrivalDate,
+			services: data.services,
+			paymentMethodId: data.paymentMethodId,
+			"id[]": data["id[]"],
+			country: data.country,
+			geoPoint: data.geoPoint,
+			radius: data.radius,
+			name: data.name,
+			includeBookable: data.includeBookable,
+			vehicleCombination: data.vehicleCombination,
+			"vehicleType[]": data["vehicleType[]"],
+			cleaningType: data.cleaningType,
+			"option[]": data["option[]"],
+			disinfection: data.disinfection,
+			"security[]": data["security[]"],
+			"vehicleFacility[]": data["vehicleFacility[]"],
+			"driverFacility[]": data["driverFacility[]"],
+			"boundingBox[]": data["boundingBox[]"],
+			"baySize[]": data["baySize[]"],
+			"chargingCapacity[]": data["chargingCapacity[]"],
+			"cargoType[]": data["cargoType[]"],
+			"tankCleaningOptions[]": data["tankCleaningOptions[]"],
+		};
+		return this.axios.get<get_v1_locationsResponse200>(url, {
 			params: queryData,
-			
-			headers
+
+			headers,
 		});
 	}
-
 
 	/**
 	 * Get a single location by ID
@@ -206,15 +268,15 @@ export class ApiClient {
 	 * @returns OK
 	 * @see get_v1_locations_locationId_Response200
 	 */
-	async get_v1_locations_locationId_(data: { locationId: number }, headers?: Record<string, string>): Promise<AxiosResponse<get_v1_locations_locationId_Response200>> {
+	async get_v1_locations_locationId_(
+		data: { locationId: number },
+		headers?: Record<string, string>
+	): Promise<AxiosResponse<get_v1_locations_locationId_Response200>> {
 		const url = `/v1/locations/${data.locationId}`;
-	return this.axios.get<get_v1_locations_locationId_Response200>(url, {
-			
-			
-			headers
+		return this.axios.get<get_v1_locations_locationId_Response200>(url, {
+			headers,
 		});
 	}
-
 
 	/**
 	 * Get parking availability
@@ -226,21 +288,23 @@ export class ApiClient {
 	 * @returns OK
 	 * @see get_v1_locations_parking_availabilityResponse200
 	 */
-	async get_v1_locations_parking_availability(data: { 'locationIds[]': any; page?: number; arrivalDateTime: string; departureDateTime: string }, headers?: Record<string, string>): Promise<AxiosResponse<get_v1_locations_parking_availabilityResponse200>> {
-		const url = `/v1/locations/parking/availability`;
-	const queryData = {
-				locationIds[]: data.locationIds[],
-				page: data.page,
-				arrivalDateTime: data.arrivalDateTime,
-				departureDateTime: data.departureDateTime
-			};
-	return this.axios.get<get_v1_locations_parking_availabilityResponse200>(url, {
+	async get_v1_locations_parking_availability(
+		data: { "locationIds[]": any; page?: number; arrivalDateTime: string; departureDateTime: string },
+		headers?: Record<string, string>
+	): Promise<AxiosResponse<get_v1_locations_parking_availabilityResponse200>> {
+		const url = "/v1/locations/parking/availability";
+		const queryData = {
+			"locationIds[]": data["locationIds[]"],
+			page: data.page,
+			arrivalDateTime: data.arrivalDateTime,
+			departureDateTime: data.departureDateTime,
+		};
+		return this.axios.get<get_v1_locations_parking_availabilityResponse200>(url, {
 			params: queryData,
-			
-			headers
+
+			headers,
 		});
 	}
-
 
 	/**
 	 * Find points of interest
@@ -274,36 +338,62 @@ export class ApiClient {
 	 * @returns OK
 	 * @see get_v1_locations_poiResponse200
 	 */
-	async get_v1_locations_poi(data: { arrivalDate?: string; services?: Array<any>; paymentMethodId?: number; 'id[]'?: Array<any>; country?: string; geoPoint?: string; radius?: number; name?: string; includeBookable?: boolean; vehicleCombination?: string; 'vehicleType[]'?: Array<any>; cleaningType?: string; 'option[]'?: Array<any>; disinfection?: boolean; 'security[]'?: Array<any>; 'vehicleFacility[]'?: Array<any>; 'driverFacility[]'?: Array<any>; 'boundingBox[]'?: Array<any>; 'baySize[]'?: Array<any>; 'chargingCapacity[]'?: Array<any>; 'cargoType[]'?: Array<any>; 'tankCleaningOptions[]'?: Array<any> }, headers?: Record<string, string>): Promise<AxiosResponse<get_v1_locations_poiResponse200>> {
-		const url = `/v1/locations/poi`;
-	const queryData = {
-				arrivalDate: data.arrivalDate,
-				services: data.services,
-				paymentMethodId: data.paymentMethodId,
-				id[]: data.id[],
-				country: data.country,
-				geoPoint: data.geoPoint,
-				radius: data.radius,
-				name: data.name,
-				includeBookable: data.includeBookable,
-				vehicleCombination: data.vehicleCombination,
-				vehicleType[]: data.vehicleType[],
-				cleaningType: data.cleaningType,
-				option[]: data.option[],
-				disinfection: data.disinfection,
-				security[]: data.security[],
-				vehicleFacility[]: data.vehicleFacility[],
-				driverFacility[]: data.driverFacility[],
-				boundingBox[]: data.boundingBox[],
-				baySize[]: data.baySize[],
-				chargingCapacity[]: data.chargingCapacity[],
-				cargoType[]: data.cargoType[],
-				tankCleaningOptions[]: data.tankCleaningOptions[]
-			};
-	return this.axios.get<get_v1_locations_poiResponse200>(url, {
+	async get_v1_locations_poi(
+		data: {
+			arrivalDate?: string;
+			services?: Array<any>;
+			paymentMethodId?: number;
+			"id[]"?: Array<any>;
+			country?: string;
+			geoPoint?: string;
+			radius?: number;
+			name?: string;
+			includeBookable?: boolean;
+			vehicleCombination?: string;
+			"vehicleType[]"?: Array<any>;
+			cleaningType?: string;
+			"option[]"?: Array<any>;
+			disinfection?: boolean;
+			"security[]"?: Array<any>;
+			"vehicleFacility[]"?: Array<any>;
+			"driverFacility[]"?: Array<any>;
+			"boundingBox[]"?: Array<any>;
+			"baySize[]"?: Array<any>;
+			"chargingCapacity[]"?: Array<any>;
+			"cargoType[]"?: Array<any>;
+			"tankCleaningOptions[]"?: Array<any>;
+		},
+		headers?: Record<string, string>
+	): Promise<AxiosResponse<get_v1_locations_poiResponse200>> {
+		const url = "/v1/locations/poi";
+		const queryData = {
+			arrivalDate: data.arrivalDate,
+			services: data.services,
+			paymentMethodId: data.paymentMethodId,
+			"id[]": data["id[]"],
+			country: data.country,
+			geoPoint: data.geoPoint,
+			radius: data.radius,
+			name: data.name,
+			includeBookable: data.includeBookable,
+			vehicleCombination: data.vehicleCombination,
+			"vehicleType[]": data["vehicleType[]"],
+			cleaningType: data.cleaningType,
+			"option[]": data["option[]"],
+			disinfection: data.disinfection,
+			"security[]": data["security[]"],
+			"vehicleFacility[]": data["vehicleFacility[]"],
+			"driverFacility[]": data["driverFacility[]"],
+			"boundingBox[]": data["boundingBox[]"],
+			"baySize[]": data["baySize[]"],
+			"chargingCapacity[]": data["chargingCapacity[]"],
+			"cargoType[]": data["cargoType[]"],
+			"tankCleaningOptions[]": data["tankCleaningOptions[]"],
+		};
+		return this.axios.get<get_v1_locations_poiResponse200>(url, {
 			params: queryData,
-			
-			headers
+
+			headers,
 		});
 	}
 }

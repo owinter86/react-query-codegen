@@ -14,7 +14,7 @@
 	},
 	"scripts": {
 		"build": "tsc -p tsconfig.json",
-		"example": "ts-node example/index.ts && npm run check",
+		"example": "ts-node example/index.ts && biome check --fix --unsafe",
 		"check": "biome check --write .",
 		"updates": "npx npm-check-updates -i",
 		"release": "release-it"
