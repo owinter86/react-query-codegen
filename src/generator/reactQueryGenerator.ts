@@ -1,87 +1,96 @@
-import { OpenAPIV3 } from 'openapi-types';
-import { OperationInfo } from './clientGenerator';
+import type { OpenAPIV3 } from "openapi-types";
+import type { OperationInfo } from "./clientGenerator";
 
 function sanitizeOperationId(operationId: string): string {
-  return operationId.replace(/[^a-zA-Z0-9_]/g, '_');
+	return operationId.replace(/[^a-zA-Z0-9_]/g, "_");
 }
 
 function sanitizePropertyName(name: string): string {
-  return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
+	return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
 }
 
 function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document): string {
-  const { operationId: rawOperationId, parameters, requestBody } = operation;
-  const operationId = sanitizeOperationId(rawOperationId);
-  
-  const hasData = (parameters && parameters.length > 0) || operation.requestBody;
+	const { operationId: rawOperationId, parameters, requestBody } = operation;
+	const operationId = sanitizeOperationId(rawOperationId);
 
-  // Helper to get required fields from a schema
-  const getRequiredFields = (schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject, context: { schemas: { [key: string]: OpenAPIV3.SchemaObject } }): string[] => {
-    if ('$ref' in schema) {
-      const refType = schema.$ref.split('/').pop()!;
-      const refSchema = context.schemas[refType];
-      return refSchema?.required?.map(p => `'${p}'`) || [];
-    }
-    return schema.required?.map(p => `'${p}'`) || [];
-  };
+	const hasData = (parameters && parameters.length > 0) || operation.requestBody;
 
-  // Get required parameter names from both parameters and request body
-  const requiredParams = [
-    ...(parameters?.filter(p => p.required).map(p => `'${p.name}'`) || []),
-    ...(requestBody && 'content' in requestBody && requestBody.content?.['application/json']?.schema
-      ? getRequiredFields(requestBody.content['application/json'].schema, { schemas: spec.components?.schemas as { [key: string]: OpenAPIV3.SchemaObject } || {} })
-      : []),
-    ...(requestBody && 'content' in requestBody && requestBody.content?.['multipart/form-data']?.schema
-      ? getRequiredFields(requestBody.content['multipart/form-data'].schema, { schemas: spec.components?.schemas as { [key: string]: OpenAPIV3.SchemaObject } || {} })
-      : [])
-  ];
+	// Helper to get required fields from a schema
+	const getRequiredFields = (
+		schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject,
+		context: { schemas: { [key: string]: OpenAPIV3.SchemaObject } }
+	): string[] => {
+		if ("$ref" in schema) {
+			const refType = schema.$ref.split("/").pop()!;
+			const refSchema = context.schemas[refType];
+			return refSchema?.required?.map((p) => `'${p}'`) || [];
+		}
+		return schema.required?.map((p) => `'${p}'`) || [];
+	};
 
-  const hasRequiredParams = requiredParams.length > 0;
+	// Get required parameter names from both parameters and request body
+	const requiredParams = [
+		...(parameters?.filter((p) => p.required).map((p) => `'${p.name}'`) || []),
+		...(requestBody && "content" in requestBody && requestBody.content?.["application/json"]?.schema
+			? getRequiredFields(requestBody.content["application/json"].schema, {
+					schemas: (spec.components?.schemas as { [key: string]: OpenAPIV3.SchemaObject }) || {},
+				})
+			: []),
+		...(requestBody && "content" in requestBody && requestBody.content?.["multipart/form-data"]?.schema
+			? getRequiredFields(requestBody.content["multipart/form-data"].schema, {
+					schemas: (spec.components?.schemas as { [key: string]: OpenAPIV3.SchemaObject }) || {},
+				})
+			: []),
+	];
 
-  return `
+	const hasRequiredParams = requiredParams.length > 0;
+
+	return `
 export const ${operationId}QueryOptions = (
   apiClient: ApiClient,
-  ${hasData ? `params: Partial<Parameters<ApiClient['${operationId}']>[0]>` : ''}
+  ${hasData ? `params: Partial<Parameters<ApiClient['${operationId}']>[0]>` : ""}
 ) => {
-  const enabled = ${hasData ? `hasDefinedProps(params, ${requiredParams.join(', ')})` : 'true'};
+  const enabled = ${hasData ? `hasDefinedProps(params, ${requiredParams.join(", ")})` : "true"};
   return queryOptions({
-    queryKey: ['${operationId}', ${hasData ? 'params' : 'undefined'}],
+    queryKey: ['${operationId}', ${hasData ? "params" : "undefined"}],
     queryFn: enabled ? async () => {
-      const response = await apiClient.${operationId}(${hasData ? 'params' : 'undefined'});
+      const response = await apiClient.${operationId}(${hasData ? "params" : "undefined"});
       return response.data;
     } : skipToken,
   });
 };`;
 }
 
-
 export function generateReactQuery(spec: OpenAPIV3.Document): string {
-  let operations: OperationInfo[] = [];
+	const operations: OperationInfo[] = [];
 
-  // Collect operations (same as in clientGenerator)
-  Object.entries(spec.paths || {}).forEach(([path, pathItem]) => {
-    if (!pathItem) return;
+	// Collect operations (same as in clientGenerator)
+	Object.entries(spec.paths || {}).forEach(([path, pathItem]) => {
+		if (!pathItem) return;
 
-    ['get', 'post', 'put', 'delete', 'patch'].forEach(method => {
-      const operation = pathItem[method as keyof OpenAPIV3.PathItemObject] as OpenAPIV3.OperationObject;
-      if (!operation) return;
+		["get", "post", "put", "delete", "patch"].forEach((method) => {
+			const operation = pathItem[method as keyof OpenAPIV3.PathItemObject] as OpenAPIV3.OperationObject;
+			if (!operation) return;
 
-      operations.push({
-        method: method.toUpperCase(),
-        path,
-        operationId: sanitizeOperationId(operation.operationId || `${method}${path.replace(/\W+/g, '_')}`),
-        summary: operation.summary,
-        description: operation.description,
-        parameters: [...(pathItem.parameters || []), ...(operation.parameters || [])] as OpenAPIV3.ParameterObject[],
-        requestBody: operation.requestBody as OpenAPIV3.RequestBodyObject,
-        responses: operation.responses
-      });
-    });
-  });
+			operations.push({
+				method: method.toUpperCase(),
+				path,
+				operationId: sanitizeOperationId(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
+				summary: operation.summary,
+				description: operation.description,
+				parameters: [
+					...(pathItem.parameters || []),
+					...(operation.parameters || []),
+				] as OpenAPIV3.ParameterObject[],
+				requestBody: operation.requestBody as OpenAPIV3.RequestBodyObject,
+				responses: operation.responses,
+			});
+		});
+	});
 
-  const title = spec.info.title.toLowerCase().replace(/\s+/g, '-');
+	const title = spec.info.title.toLowerCase().replace(/\s+/g, "-");
 
-  return `import { queryOptions, skipToken } from '@tanstack/react-query';
+	return `import { queryOptions, skipToken } from '@tanstack/react-query';
 import type { ApiClient } from './${title}.client';
 
 const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
@@ -91,6 +100,6 @@ const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
   return keys.every((k) => obj[k] !== undefined);
 };
 
-${operations.map(op => generateQueryOptions(op, spec)).join('\n\n')}
+${operations.map((op) => generateQueryOptions(op, spec)).join("\n\n")}
 `;
-} 
+}
