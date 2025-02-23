@@ -2,7 +2,6 @@
 	"name": "@lightbase/react-query-codegen",
 	"version": "2.0.0",
 	"description": "Generate Axios API clients and React Query options from OpenAPI specifications",
-	"type": "module",
 	"exports": "./dist/index.js",
 	"files": ["src", "dist"],
 	"author": {
@@ -15,7 +14,7 @@
 	},
 	"scripts": {
 		"build": "tsc -p tsconfig.json",
-		"example": "ts-node example/index.ts",
+		"example": "ts-node example/index.ts && npm run check",
 		"check": "biome check --write .",
 		"updates": "npx npm-check-updates -i",
 		"release": "release-it"

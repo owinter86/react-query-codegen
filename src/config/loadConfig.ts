@@ -15,13 +15,6 @@ export async function loadConfig(configPath: string): Promise<OpenAPIConfig> {
 			throw new Error("exportDir is required in configuration");
 		}
 
-		// Set default options
-		config.options = {
-			generateMocks: true,
-			includeJSDocs: true,
-			...config.options,
-		};
-
 		return config;
 	} catch (error) {
 		if (error instanceof Error) {

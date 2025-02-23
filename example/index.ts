@@ -4,7 +4,7 @@ import { codegenerate } from "../src/index";
 
 async function runTest() {
 	try {
-		const configPath = resolve(__dirname, "../test/configs/test-config.json");
+		const configPath = resolve(__dirname, "../example/configs/test-config.json");
 		const config = await loadConfig(configPath);
 
 		await codegenerate(config);
