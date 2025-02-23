@@ -51,31 +51,34 @@ function generateAxiosMethod(operation: OperationInfo): string {
   jsDocLines.push(' */');
 
   // Generate method parameters
-  const params: string[] = [];
   const urlParams = parameters?.filter(p => p.in === 'path') || [];
   const queryParams = parameters?.filter(p => p.in === 'query') || [];
   
-  // Add request body parameter if it exists
+  // Build data type parts
+  const typeComponents: string[] = [];
+  
+  // Add request body type if it exists
   if (requestBody) {
-    params.push(`data: ${operationId}Request`);
+    typeComponents.push(operationId + 'Request');
   }
 
-  // Add path parameters
-  if (urlParams.length > 0) {
-    params.push(`params: { ${
-      urlParams.map(p => `${p.name}: ${getTypeFromParam(p)}`).join(', ')
-    } }`);
+  // Add path and query parameters if any
+  const additionalProps: string[] = [];
+  urlParams.forEach(p => {
+    additionalProps.push(`${p.name}: ${getTypeFromParam(p)}`);
+  });
+  queryParams.forEach(p => {
+    additionalProps.push(`${p.name}${p.required ? '' : '?'}: ${getTypeFromParam(p)}`);
+  });
+
+  if (additionalProps.length > 0) {
+    typeComponents.push(`{ ${additionalProps.join('; ')} }`);
   }
 
-  // Add query parameters
-  if (queryParams.length > 0) {
-    params.push(`query?: { ${
-      queryParams.map(p => `${p.name}${p.required ? '' : '?'}: ${getTypeFromParam(p)}`).join(', ')
-    } }`);
-  }
-
-  // Add headers parameter
-  params.push('headers?: Record<string, string>');
+  const hasData = typeComponents.length > 0;
+  const dataType = typeComponents.length > 1 
+    ? typeComponents.join(' & ')
+    : typeComponents[0] || 'undefined';
 
   // Get response type from 2xx response
   const successResponse = Object.entries(responses).find(([code]) => code.startsWith('2'));
@@ -83,21 +86,29 @@ function generateAxiosMethod(operation: OperationInfo): string {
 
   // Generate method
   const urlWithParams = urlParams.length > 0 
-    ? path.replace(/{(\w+)}/g, '${params.$1}')
+    ? path.replace(/{(\w+)}/g, '${data.$1}')
     : path;
 
   const methodBody = [
     `const url = \`${urlWithParams}\`;`,
-    queryParams.length > 0 ? 'const queryString = query ? `?${new URLSearchParams(query)}` : \'\';' : '',
+    // Combine query and path params to filter from body
+    (queryParams.length > 0 || urlParams.length > 0) ? 
+      `const paramsToFilter = ${JSON.stringify([...queryParams, ...urlParams].map(p => p.name))};` : '',
+    queryParams.length > 0 ? 
+      `const queryData = Object.fromEntries(Object.entries(data).filter(([key]) => ${JSON.stringify(queryParams.map(p => p.name))}.includes(key)));` : '',
+    (requestBody && (queryParams.length > 0 || urlParams.length > 0)) ? 
+      `const bodyData = Object.fromEntries(Object.entries(data).filter(([key]) => !paramsToFilter.includes(key)));` : '',
+    queryParams.length > 0 ? 
+      'const queryString = `?${new URLSearchParams(queryData)}`;' : '',
     `return this.axios.${method.toLowerCase()}<${responseType}>(url${queryParams.length > 0 ? ' + queryString' : ''}, {
-      ${requestBody ? 'data,' : ''}
+      ${requestBody ? `data: ${(queryParams.length > 0 || urlParams.length > 0) ? 'bodyData' : 'data'},` : ''}
       headers
     });`
   ].filter(Boolean).join('\n    ');
 
   return `
   ${jsDocLines.join('\n  ')}
-  async ${operationId}(${params.join(', ')}): Promise<AxiosResponse<${responseType}>> {
+  async ${operationId}(data${hasData ? `: ${dataType}` : '?: undefined'}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
     ${methodBody}
   }`;
 }
