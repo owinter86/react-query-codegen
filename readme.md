@@ -48,9 +48,9 @@ setApiClient(api);
 
 ```typescript
 import { useQuery } from '@tanstack/react-query';
-import { AccountFavoritesQueryOptions } from './src/generated/api';
+import { characteristicListQueryOptions } from './src/generated/pokiApi.queryOptions';
 
-const { data, isLoading, error } = useQuery(AccountFavoritesQueryOptions());
+const { data, isLoading, error } = useQuery(characteristicListQueryOptions());
 ```
 
 and more complex queries: 
