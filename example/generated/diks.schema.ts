@@ -1571,6 +1571,7 @@ export interface FeatureFlagCurrentResponse {
 	__FEATURE_PAY_STORAGE_ORDER_AT_OFFICE_DIKS_1582: boolean;
 	__FEATURE_VALIDATE_ONFIDO_WEBHOOK_DIKSAPP_315: boolean;
 	__FEATURE_CANCEL_STORAGE_ORDER_DIKS_1591: boolean;
+	__FEATURE_LOCATION_AND_VEHICLE_ALTERNATIVES_DIKS_1211: boolean;
 }
 
 export type JobStartProplannerMirrorResponse = {};
