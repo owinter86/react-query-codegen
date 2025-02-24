@@ -1,8 +1,4 @@
 {
-	"specSource": [
-		"https://api.diks.acc.lightbase.nl/_compas/structure.json?format=openapi",
-		"https://api.jaarbeurs.acc.lightbase.nl/_compas/structure.json?format=openapi",
-		"https://app.yourtravis.com/docs/api/location_api"
-	],
+	"specSource": "https://raw.githubusercontent.com/PokeAPI/pokeapi/refs/heads/master/openapi.yml",
 	"exportDir": "./example/generated"
 }

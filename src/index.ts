@@ -17,8 +17,14 @@ async function loadOpenAPISpec(specSource: string): Promise<OpenAPIV3.Document> 
 	try {
 		if (specSource.startsWith("http")) {
 			const response = await axios.get(specSource);
-			return response.data;
+			// Check if response is YAML by looking for common YAML indicators
+			const isYaml =
+				typeof response.data === "string" &&
+				(response.data.trim().startsWith("openapi:") || response.data.trim().startsWith("swagger:"));
+
+			return isYaml ? yaml.parse(response.data) : response.data;
 		}
+
 		const content = await readFile(specSource, "utf-8");
 		// Handle both JSON and YAML formats
 		return specSource.endsWith(".json") ? JSON.parse(content) : yaml.parse(content);

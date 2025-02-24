@@ -1,5 +1,5 @@
 import type { OpenAPIV3 } from "openapi-types";
-import { sanitizeTypeName } from "../utils";
+import { sanitizeTypeName, specTitle } from "../utils";
 import type { OperationInfo } from "./clientGenerator";
 
 function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document): string {
@@ -79,7 +79,7 @@ export function generateReactQuery(spec: OpenAPIV3.Document): string {
 	});
 
 	return `import { queryOptions, skipToken } from '@tanstack/react-query';
-	import * as apiClient from './${spec.info.title}.client';
+	import * as apiClient from './${specTitle(spec)}.client';
 const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
   obj: T,
   ...keys: K[]
