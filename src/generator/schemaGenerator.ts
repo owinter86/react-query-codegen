@@ -1,5 +1,5 @@
 import type { OpenAPIV3 } from "openapi-types";
-import { camelCase, sanitizePropertyName, sanitizeTypeName } from "../utils";
+import { sanitizePropertyName, sanitizeTypeName } from "../utils";
 
 interface SchemaContext {
 	schemas: { [key: string]: OpenAPIV3.SchemaObject };
