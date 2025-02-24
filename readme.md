@@ -27,8 +27,8 @@ Create a script to generate your API code (e.g., `scripts/generate.ts`):
 ```typescript
 import { codegenerate } from '@lightbase/react-query-codegen';
 await codegenerate({
-specSource: './specs/api.yaml', // or array of specs
-exportDir: './src/generated'
+  specSource: './specs/api.yaml', // or array of specs
+  exportDir: './src/generated'
 });
 ```
 
@@ -37,7 +37,7 @@ exportDir: './src/generated'
 ```typescript
 import { createApiClient } from './src/generated/api';
 const apiClient = createApiClient({
-baseURL: 'https://api.example.com'
+  baseURL: 'https://api.example.com'
 });
 ```
 
