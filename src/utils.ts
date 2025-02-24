@@ -7,6 +7,13 @@ export function camelCase(str: string): string {
 		.replace(/^[A-Z]/, (c) => c.toLowerCase());
 }
 
+export function pascalCase(str: string): string {
+	return str
+		.toLowerCase()
+		.replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase())
+		.replace(/^[a-z]/, (c) => c.toUpperCase());
+}
+
 export function sanitizePropertyName(name: string): string {
 	return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
 }

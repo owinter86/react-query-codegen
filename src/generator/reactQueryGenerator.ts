@@ -1,5 +1,5 @@
 import type { OpenAPIV3 } from "openapi-types";
-import { sanitizeTypeName, specTitle } from "../utils";
+import { camelCase, sanitizeTypeName, specTitle } from "../utils";
 import type { OperationInfo } from "./clientGenerator";
 
 function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document): string {
@@ -36,15 +36,17 @@ function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document
 			: []),
 	];
 
+	const namedQuery = camelCase(operationId);
+
 	return `
-export const ${operationId}QueryOptions = (
-  ${hasData ? `params: Partial<Parameters<typeof apiClient.${operationId}>[0]>` : ""}
+export const ${namedQuery}QueryOptions = (
+  ${hasData ? `params: Partial<Parameters<typeof apiClient.${namedQuery}>[0]>` : ""}
 ) => {
   const enabled = ${hasData ? `hasDefinedProps(params, ${requiredParams.join(", ")})` : "true"};
   return queryOptions({
     queryKey: ['${operationId}', ${hasData ? "params" : "undefined"}],
     queryFn: enabled ? async () => {
-      const response = await apiClient.${operationId}(${hasData ? "params" : "undefined"});
+      const response = await apiClient.${namedQuery}(${hasData ? "params" : "undefined"});
       return response.data;
     } : skipToken,
   });

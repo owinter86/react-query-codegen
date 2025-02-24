@@ -10,10 +10,10 @@ import type * as T from "./pokApi.schema";
 Case-insensitive query applied on the `name` property. 
 	 * @see ability_listResponse200
 	 */
-export async function ability_list(
+export function abilityList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ability_listResponse200>> {
+): Promise<AxiosResponse<T.AbilityListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/ability/";
 	const queryData = {
@@ -21,7 +21,7 @@ export async function ability_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ability_listResponse200>(url, {
+	return apiClient.get<T.AbilityListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -33,13 +33,13 @@ export async function ability_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see ability_retrieveResponse200
  */
-export async function ability_retrieve(
+export function abilityRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ability_retrieveResponse200>> {
+): Promise<AxiosResponse<T.AbilityRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/ability/${data.id}/`;
-	return apiClient.get<T.ability_retrieveResponse200>(url, {
+	return apiClient.get<T.AbilityRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -53,10 +53,10 @@ export async function ability_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see berry_listResponse200
 	 */
-export async function berry_list(
+export function berryList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.berry_listResponse200>> {
+): Promise<AxiosResponse<T.BerryListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/berry/";
 	const queryData = {
@@ -64,7 +64,7 @@ export async function berry_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.berry_listResponse200>(url, {
+	return apiClient.get<T.BerryListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -77,13 +77,13 @@ export async function berry_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see berry_retrieveResponse200
  */
-export async function berry_retrieve(
+export function berryRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.berry_retrieveResponse200>> {
+): Promise<AxiosResponse<T.BerryRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/berry/${data.id}/`;
-	return apiClient.get<T.berry_retrieveResponse200>(url, {
+	return apiClient.get<T.BerryRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -97,10 +97,10 @@ export async function berry_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see berry_firmness_listResponse200
 	 */
-export async function berry_firmness_list(
+export function berryFirmnessList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.berry_firmness_listResponse200>> {
+): Promise<AxiosResponse<T.BerryFirmnessListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/berry-firmness/";
 	const queryData = {
@@ -108,7 +108,7 @@ export async function berry_firmness_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.berry_firmness_listResponse200>(url, {
+	return apiClient.get<T.BerryFirmnessListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -121,13 +121,13 @@ export async function berry_firmness_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see berry_firmness_retrieveResponse200
  */
-export async function berry_firmness_retrieve(
+export function berryFirmnessRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.berry_firmness_retrieveResponse200>> {
+): Promise<AxiosResponse<T.BerryFirmnessRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/berry-firmness/${data.id}/`;
-	return apiClient.get<T.berry_firmness_retrieveResponse200>(url, {
+	return apiClient.get<T.BerryFirmnessRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -141,10 +141,10 @@ export async function berry_firmness_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see berry_flavor_listResponse200
 	 */
-export async function berry_flavor_list(
+export function berryFlavorList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.berry_flavor_listResponse200>> {
+): Promise<AxiosResponse<T.BerryFlavorListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/berry-flavor/";
 	const queryData = {
@@ -152,7 +152,7 @@ export async function berry_flavor_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.berry_flavor_listResponse200>(url, {
+	return apiClient.get<T.BerryFlavorListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -165,13 +165,13 @@ export async function berry_flavor_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see berry_flavor_retrieveResponse200
  */
-export async function berry_flavor_retrieve(
+export function berryFlavorRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.berry_flavor_retrieveResponse200>> {
+): Promise<AxiosResponse<T.BerryFlavorRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/berry-flavor/${data.id}/`;
-	return apiClient.get<T.berry_flavor_retrieveResponse200>(url, {
+	return apiClient.get<T.BerryFlavorRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -185,10 +185,10 @@ export async function berry_flavor_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see characteristic_listResponse200
 	 */
-export async function characteristic_list(
+export function characteristicList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.characteristic_listResponse200>> {
+): Promise<AxiosResponse<T.CharacteristicListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/characteristic/";
 	const queryData = {
@@ -196,7 +196,7 @@ export async function characteristic_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.characteristic_listResponse200>(url, {
+	return apiClient.get<T.CharacteristicListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -209,13 +209,13 @@ export async function characteristic_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see characteristic_retrieveResponse200
  */
-export async function characteristic_retrieve(
+export function characteristicRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.characteristic_retrieveResponse200>> {
+): Promise<AxiosResponse<T.CharacteristicRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/characteristic/${data.id}/`;
-	return apiClient.get<T.characteristic_retrieveResponse200>(url, {
+	return apiClient.get<T.CharacteristicRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -229,10 +229,10 @@ export async function characteristic_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see contest_type_listResponse200
 	 */
-export async function contest_type_list(
+export function contestTypeList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.contest_type_listResponse200>> {
+): Promise<AxiosResponse<T.ContestTypeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/contest-type/";
 	const queryData = {
@@ -240,7 +240,7 @@ export async function contest_type_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.contest_type_listResponse200>(url, {
+	return apiClient.get<T.ContestTypeListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -253,13 +253,13 @@ export async function contest_type_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see contest_type_retrieveResponse200
  */
-export async function contest_type_retrieve(
+export function contestTypeRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.contest_type_retrieveResponse200>> {
+): Promise<AxiosResponse<T.ContestTypeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/contest-type/${data.id}/`;
-	return apiClient.get<T.contest_type_retrieveResponse200>(url, {
+	return apiClient.get<T.ContestTypeRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -273,10 +273,10 @@ export async function contest_type_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see contest_effect_listResponse200
 	 */
-export async function contest_effect_list(
+export function contestEffectList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.contest_effect_listResponse200>> {
+): Promise<AxiosResponse<T.ContestEffectListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/contest-effect/";
 	const queryData = {
@@ -284,7 +284,7 @@ export async function contest_effect_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.contest_effect_listResponse200>(url, {
+	return apiClient.get<T.ContestEffectListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -297,13 +297,13 @@ export async function contest_effect_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see contest_effect_retrieveResponse200
  */
-export async function contest_effect_retrieve(
+export function contestEffectRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.contest_effect_retrieveResponse200>> {
+): Promise<AxiosResponse<T.ContestEffectRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/contest-effect/${data.id}/`;
-	return apiClient.get<T.contest_effect_retrieveResponse200>(url, {
+	return apiClient.get<T.ContestEffectRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -317,10 +317,10 @@ export async function contest_effect_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see egg_group_listResponse200
 	 */
-export async function egg_group_list(
+export function eggGroupList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.egg_group_listResponse200>> {
+): Promise<AxiosResponse<T.EggGroupListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/egg-group/";
 	const queryData = {
@@ -328,7 +328,7 @@ export async function egg_group_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.egg_group_listResponse200>(url, {
+	return apiClient.get<T.EggGroupListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -341,13 +341,13 @@ export async function egg_group_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see egg_group_retrieveResponse200
  */
-export async function egg_group_retrieve(
+export function eggGroupRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.egg_group_retrieveResponse200>> {
+): Promise<AxiosResponse<T.EggGroupRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/egg-group/${data.id}/`;
-	return apiClient.get<T.egg_group_retrieveResponse200>(url, {
+	return apiClient.get<T.EggGroupRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -361,10 +361,10 @@ export async function egg_group_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see encounter_method_listResponse200
 	 */
-export async function encounter_method_list(
+export function encounterMethodList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.encounter_method_listResponse200>> {
+): Promise<AxiosResponse<T.EncounterMethodListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/encounter-method/";
 	const queryData = {
@@ -372,7 +372,7 @@ export async function encounter_method_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.encounter_method_listResponse200>(url, {
+	return apiClient.get<T.EncounterMethodListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -385,13 +385,13 @@ export async function encounter_method_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see encounter_method_retrieveResponse200
  */
-export async function encounter_method_retrieve(
+export function encounterMethodRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.encounter_method_retrieveResponse200>> {
+): Promise<AxiosResponse<T.EncounterMethodRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/encounter-method/${data.id}/`;
-	return apiClient.get<T.encounter_method_retrieveResponse200>(url, {
+	return apiClient.get<T.EncounterMethodRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -405,10 +405,10 @@ export async function encounter_method_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see encounter_condition_listResponse200
 	 */
-export async function encounter_condition_list(
+export function encounterConditionList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.encounter_condition_listResponse200>> {
+): Promise<AxiosResponse<T.EncounterConditionListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/encounter-condition/";
 	const queryData = {
@@ -416,7 +416,7 @@ export async function encounter_condition_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.encounter_condition_listResponse200>(url, {
+	return apiClient.get<T.EncounterConditionListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -429,13 +429,13 @@ export async function encounter_condition_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see encounter_condition_retrieveResponse200
  */
-export async function encounter_condition_retrieve(
+export function encounterConditionRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.encounter_condition_retrieveResponse200>> {
+): Promise<AxiosResponse<T.EncounterConditionRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/encounter-condition/${data.id}/`;
-	return apiClient.get<T.encounter_condition_retrieveResponse200>(url, {
+	return apiClient.get<T.EncounterConditionRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -449,10 +449,10 @@ export async function encounter_condition_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see encounter_condition_value_listResponse200
 	 */
-export async function encounter_condition_value_list(
+export function encounterConditionValueList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.encounter_condition_value_listResponse200>> {
+): Promise<AxiosResponse<T.EncounterConditionValueListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/encounter-condition-value/";
 	const queryData = {
@@ -460,7 +460,7 @@ export async function encounter_condition_value_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.encounter_condition_value_listResponse200>(url, {
+	return apiClient.get<T.EncounterConditionValueListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -473,13 +473,13 @@ export async function encounter_condition_value_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see encounter_condition_value_retrieveResponse200
  */
-export async function encounter_condition_value_retrieve(
+export function encounterConditionValueRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.encounter_condition_value_retrieveResponse200>> {
+): Promise<AxiosResponse<T.EncounterConditionValueRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/encounter-condition-value/${data.id}/`;
-	return apiClient.get<T.encounter_condition_value_retrieveResponse200>(url, {
+	return apiClient.get<T.EncounterConditionValueRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -493,10 +493,10 @@ export async function encounter_condition_value_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see evolution_chain_listResponse200
 	 */
-export async function evolution_chain_list(
+export function evolutionChainList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.evolution_chain_listResponse200>> {
+): Promise<AxiosResponse<T.EvolutionChainListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/evolution-chain/";
 	const queryData = {
@@ -504,7 +504,7 @@ export async function evolution_chain_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.evolution_chain_listResponse200>(url, {
+	return apiClient.get<T.EvolutionChainListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -517,13 +517,13 @@ export async function evolution_chain_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see evolution_chain_retrieveResponse200
  */
-export async function evolution_chain_retrieve(
+export function evolutionChainRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.evolution_chain_retrieveResponse200>> {
+): Promise<AxiosResponse<T.EvolutionChainRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/evolution-chain/${data.id}/`;
-	return apiClient.get<T.evolution_chain_retrieveResponse200>(url, {
+	return apiClient.get<T.EvolutionChainRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -537,10 +537,10 @@ export async function evolution_chain_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see evolution_trigger_listResponse200
 	 */
-export async function evolution_trigger_list(
+export function evolutionTriggerList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.evolution_trigger_listResponse200>> {
+): Promise<AxiosResponse<T.EvolutionTriggerListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/evolution-trigger/";
 	const queryData = {
@@ -548,7 +548,7 @@ export async function evolution_trigger_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.evolution_trigger_listResponse200>(url, {
+	return apiClient.get<T.EvolutionTriggerListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -561,13 +561,13 @@ export async function evolution_trigger_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see evolution_trigger_retrieveResponse200
  */
-export async function evolution_trigger_retrieve(
+export function evolutionTriggerRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.evolution_trigger_retrieveResponse200>> {
+): Promise<AxiosResponse<T.EvolutionTriggerRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/evolution-trigger/${data.id}/`;
-	return apiClient.get<T.evolution_trigger_retrieveResponse200>(url, {
+	return apiClient.get<T.EvolutionTriggerRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -581,10 +581,10 @@ export async function evolution_trigger_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see generation_listResponse200
 	 */
-export async function generation_list(
+export function generationList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.generation_listResponse200>> {
+): Promise<AxiosResponse<T.GenerationListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/generation/";
 	const queryData = {
@@ -592,7 +592,7 @@ export async function generation_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.generation_listResponse200>(url, {
+	return apiClient.get<T.GenerationListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -605,13 +605,13 @@ export async function generation_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see generation_retrieveResponse200
  */
-export async function generation_retrieve(
+export function generationRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.generation_retrieveResponse200>> {
+): Promise<AxiosResponse<T.GenerationRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/generation/${data.id}/`;
-	return apiClient.get<T.generation_retrieveResponse200>(url, {
+	return apiClient.get<T.GenerationRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -625,10 +625,10 @@ export async function generation_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see gender_listResponse200
 	 */
-export async function gender_list(
+export function genderList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.gender_listResponse200>> {
+): Promise<AxiosResponse<T.GenderListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/gender/";
 	const queryData = {
@@ -636,7 +636,7 @@ export async function gender_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.gender_listResponse200>(url, {
+	return apiClient.get<T.GenderListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -649,13 +649,13 @@ export async function gender_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see gender_retrieveResponse200
  */
-export async function gender_retrieve(
+export function genderRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.gender_retrieveResponse200>> {
+): Promise<AxiosResponse<T.GenderRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/gender/${data.id}/`;
-	return apiClient.get<T.gender_retrieveResponse200>(url, {
+	return apiClient.get<T.GenderRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -669,10 +669,10 @@ export async function gender_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see growth_rate_listResponse200
 	 */
-export async function growth_rate_list(
+export function growthRateList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.growth_rate_listResponse200>> {
+): Promise<AxiosResponse<T.GrowthRateListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/growth-rate/";
 	const queryData = {
@@ -680,7 +680,7 @@ export async function growth_rate_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.growth_rate_listResponse200>(url, {
+	return apiClient.get<T.GrowthRateListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -693,13 +693,13 @@ export async function growth_rate_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see growth_rate_retrieveResponse200
  */
-export async function growth_rate_retrieve(
+export function growthRateRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.growth_rate_retrieveResponse200>> {
+): Promise<AxiosResponse<T.GrowthRateRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/growth-rate/${data.id}/`;
-	return apiClient.get<T.growth_rate_retrieveResponse200>(url, {
+	return apiClient.get<T.GrowthRateRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -713,10 +713,10 @@ export async function growth_rate_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see item_listResponse200
 	 */
-export async function item_list(
+export function itemList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_listResponse200>> {
+): Promise<AxiosResponse<T.ItemListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item/";
 	const queryData = {
@@ -724,7 +724,7 @@ export async function item_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.item_listResponse200>(url, {
+	return apiClient.get<T.ItemListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -737,13 +737,13 @@ export async function item_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see item_retrieveResponse200
  */
-export async function item_retrieve(
+export function itemRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_retrieveResponse200>> {
+): Promise<AxiosResponse<T.ItemRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item/${data.id}/`;
-	return apiClient.get<T.item_retrieveResponse200>(url, {
+	return apiClient.get<T.ItemRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -757,10 +757,10 @@ export async function item_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see item_category_listResponse200
 	 */
-export async function item_category_list(
+export function itemCategoryList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_category_listResponse200>> {
+): Promise<AxiosResponse<T.ItemCategoryListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-category/";
 	const queryData = {
@@ -768,7 +768,7 @@ export async function item_category_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.item_category_listResponse200>(url, {
+	return apiClient.get<T.ItemCategoryListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -781,13 +781,13 @@ export async function item_category_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see item_category_retrieveResponse200
  */
-export async function item_category_retrieve(
+export function itemCategoryRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_category_retrieveResponse200>> {
+): Promise<AxiosResponse<T.ItemCategoryRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-category/${data.id}/`;
-	return apiClient.get<T.item_category_retrieveResponse200>(url, {
+	return apiClient.get<T.ItemCategoryRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -801,10 +801,10 @@ export async function item_category_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see item_attribute_listResponse200
 	 */
-export async function item_attribute_list(
+export function itemAttributeList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_attribute_listResponse200>> {
+): Promise<AxiosResponse<T.ItemAttributeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-attribute/";
 	const queryData = {
@@ -812,7 +812,7 @@ export async function item_attribute_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.item_attribute_listResponse200>(url, {
+	return apiClient.get<T.ItemAttributeListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -825,13 +825,13 @@ export async function item_attribute_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see item_attribute_retrieveResponse200
  */
-export async function item_attribute_retrieve(
+export function itemAttributeRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_attribute_retrieveResponse200>> {
+): Promise<AxiosResponse<T.ItemAttributeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-attribute/${data.id}/`;
-	return apiClient.get<T.item_attribute_retrieveResponse200>(url, {
+	return apiClient.get<T.ItemAttributeRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -845,10 +845,10 @@ export async function item_attribute_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see item_fling_effect_listResponse200
 	 */
-export async function item_fling_effect_list(
+export function itemFlingEffectList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_fling_effect_listResponse200>> {
+): Promise<AxiosResponse<T.ItemFlingEffectListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-fling-effect/";
 	const queryData = {
@@ -856,7 +856,7 @@ export async function item_fling_effect_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.item_fling_effect_listResponse200>(url, {
+	return apiClient.get<T.ItemFlingEffectListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -869,13 +869,13 @@ export async function item_fling_effect_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see item_fling_effect_retrieveResponse200
  */
-export async function item_fling_effect_retrieve(
+export function itemFlingEffectRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_fling_effect_retrieveResponse200>> {
+): Promise<AxiosResponse<T.ItemFlingEffectRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-fling-effect/${data.id}/`;
-	return apiClient.get<T.item_fling_effect_retrieveResponse200>(url, {
+	return apiClient.get<T.ItemFlingEffectRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -889,10 +889,10 @@ export async function item_fling_effect_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see item_pocket_listResponse200
 	 */
-export async function item_pocket_list(
+export function itemPocketList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_pocket_listResponse200>> {
+): Promise<AxiosResponse<T.ItemPocketListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-pocket/";
 	const queryData = {
@@ -900,7 +900,7 @@ export async function item_pocket_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.item_pocket_listResponse200>(url, {
+	return apiClient.get<T.ItemPocketListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -913,13 +913,13 @@ export async function item_pocket_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see item_pocket_retrieveResponse200
  */
-export async function item_pocket_retrieve(
+export function itemPocketRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.item_pocket_retrieveResponse200>> {
+): Promise<AxiosResponse<T.ItemPocketRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-pocket/${data.id}/`;
-	return apiClient.get<T.item_pocket_retrieveResponse200>(url, {
+	return apiClient.get<T.ItemPocketRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -933,10 +933,10 @@ export async function item_pocket_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see language_listResponse200
 	 */
-export async function language_list(
+export function languageList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.language_listResponse200>> {
+): Promise<AxiosResponse<T.LanguageListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/language/";
 	const queryData = {
@@ -944,7 +944,7 @@ export async function language_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.language_listResponse200>(url, {
+	return apiClient.get<T.LanguageListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -957,13 +957,13 @@ export async function language_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see language_retrieveResponse200
  */
-export async function language_retrieve(
+export function languageRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.language_retrieveResponse200>> {
+): Promise<AxiosResponse<T.LanguageRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/language/${data.id}/`;
-	return apiClient.get<T.language_retrieveResponse200>(url, {
+	return apiClient.get<T.LanguageRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -977,10 +977,10 @@ export async function language_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see location_listResponse200
 	 */
-export async function location_list(
+export function locationList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.location_listResponse200>> {
+): Promise<AxiosResponse<T.LocationListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/location/";
 	const queryData = {
@@ -988,7 +988,7 @@ export async function location_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.location_listResponse200>(url, {
+	return apiClient.get<T.LocationListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1001,13 +1001,13 @@ export async function location_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see location_retrieveResponse200
  */
-export async function location_retrieve(
+export function locationRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.location_retrieveResponse200>> {
+): Promise<AxiosResponse<T.LocationRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/location/${data.id}/`;
-	return apiClient.get<T.location_retrieveResponse200>(url, {
+	return apiClient.get<T.LocationRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1019,17 +1019,17 @@ export async function location_retrieve(
  * @param query.offset - The initial index from which to return the results.
  * @see location_area_listResponse200
  */
-export async function location_area_list(
+export function locationAreaList(
 	data: { limit?: number; offset?: number },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.location_area_listResponse200>> {
+): Promise<AxiosResponse<T.LocationAreaListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/location-area/";
 	const queryData = {
 		limit: data.limit,
 		offset: data.offset,
 	};
-	return apiClient.get<T.location_area_listResponse200>(url, {
+	return apiClient.get<T.LocationAreaListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1042,13 +1042,13 @@ export async function location_area_list(
  * @param params.id - A unique integer value identifying this location area.
  * @see location_area_retrieveResponse200
  */
-export async function location_area_retrieve(
+export function locationAreaRetrieve(
 	data: { id: number },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.location_area_retrieveResponse200>> {
+): Promise<AxiosResponse<T.LocationAreaRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/location-area/${data.id}/`;
-	return apiClient.get<T.location_area_retrieveResponse200>(url, {
+	return apiClient.get<T.LocationAreaRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1062,10 +1062,10 @@ export async function location_area_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see machine_listResponse200
 	 */
-export async function machine_list(
+export function machineList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.machine_listResponse200>> {
+): Promise<AxiosResponse<T.MachineListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/machine/";
 	const queryData = {
@@ -1073,7 +1073,7 @@ export async function machine_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.machine_listResponse200>(url, {
+	return apiClient.get<T.MachineListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1086,13 +1086,13 @@ export async function machine_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see machine_retrieveResponse200
  */
-export async function machine_retrieve(
+export function machineRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.machine_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MachineRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/machine/${data.id}/`;
-	return apiClient.get<T.machine_retrieveResponse200>(url, {
+	return apiClient.get<T.MachineRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1106,10 +1106,10 @@ export async function machine_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see move_listResponse200
 	 */
-export async function move_list(
+export function moveList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_listResponse200>> {
+): Promise<AxiosResponse<T.MoveListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move/";
 	const queryData = {
@@ -1117,7 +1117,7 @@ export async function move_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.move_listResponse200>(url, {
+	return apiClient.get<T.MoveListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1130,13 +1130,13 @@ export async function move_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see move_retrieveResponse200
  */
-export async function move_retrieve(
+export function moveRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MoveRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move/${data.id}/`;
-	return apiClient.get<T.move_retrieveResponse200>(url, {
+	return apiClient.get<T.MoveRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1150,10 +1150,10 @@ export async function move_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see move_ailment_listResponse200
 	 */
-export async function move_ailment_list(
+export function moveAilmentList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_ailment_listResponse200>> {
+): Promise<AxiosResponse<T.MoveAilmentListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-ailment/";
 	const queryData = {
@@ -1161,7 +1161,7 @@ export async function move_ailment_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.move_ailment_listResponse200>(url, {
+	return apiClient.get<T.MoveAilmentListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1174,13 +1174,13 @@ export async function move_ailment_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see move_ailment_retrieveResponse200
  */
-export async function move_ailment_retrieve(
+export function moveAilmentRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_ailment_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MoveAilmentRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-ailment/${data.id}/`;
-	return apiClient.get<T.move_ailment_retrieveResponse200>(url, {
+	return apiClient.get<T.MoveAilmentRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1194,10 +1194,10 @@ export async function move_ailment_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see move_battle_style_listResponse200
 	 */
-export async function move_battle_style_list(
+export function moveBattleStyleList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_battle_style_listResponse200>> {
+): Promise<AxiosResponse<T.MoveBattleStyleListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-battle-style/";
 	const queryData = {
@@ -1205,7 +1205,7 @@ export async function move_battle_style_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.move_battle_style_listResponse200>(url, {
+	return apiClient.get<T.MoveBattleStyleListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1218,13 +1218,13 @@ export async function move_battle_style_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see move_battle_style_retrieveResponse200
  */
-export async function move_battle_style_retrieve(
+export function moveBattleStyleRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_battle_style_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MoveBattleStyleRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-battle-style/${data.id}/`;
-	return apiClient.get<T.move_battle_style_retrieveResponse200>(url, {
+	return apiClient.get<T.MoveBattleStyleRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1238,10 +1238,10 @@ export async function move_battle_style_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see move_category_listResponse200
 	 */
-export async function move_category_list(
+export function moveCategoryList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_category_listResponse200>> {
+): Promise<AxiosResponse<T.MoveCategoryListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-category/";
 	const queryData = {
@@ -1249,7 +1249,7 @@ export async function move_category_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.move_category_listResponse200>(url, {
+	return apiClient.get<T.MoveCategoryListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1262,13 +1262,13 @@ export async function move_category_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see move_category_retrieveResponse200
  */
-export async function move_category_retrieve(
+export function moveCategoryRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_category_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MoveCategoryRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-category/${data.id}/`;
-	return apiClient.get<T.move_category_retrieveResponse200>(url, {
+	return apiClient.get<T.MoveCategoryRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1282,10 +1282,10 @@ export async function move_category_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see move_damage_class_listResponse200
 	 */
-export async function move_damage_class_list(
+export function moveDamageClassList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_damage_class_listResponse200>> {
+): Promise<AxiosResponse<T.MoveDamageClassListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-damage-class/";
 	const queryData = {
@@ -1293,7 +1293,7 @@ export async function move_damage_class_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.move_damage_class_listResponse200>(url, {
+	return apiClient.get<T.MoveDamageClassListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1306,13 +1306,13 @@ export async function move_damage_class_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see move_damage_class_retrieveResponse200
  */
-export async function move_damage_class_retrieve(
+export function moveDamageClassRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_damage_class_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MoveDamageClassRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-damage-class/${data.id}/`;
-	return apiClient.get<T.move_damage_class_retrieveResponse200>(url, {
+	return apiClient.get<T.MoveDamageClassRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1326,10 +1326,10 @@ export async function move_damage_class_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see move_learn_method_listResponse200
 	 */
-export async function move_learn_method_list(
+export function moveLearnMethodList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_learn_method_listResponse200>> {
+): Promise<AxiosResponse<T.MoveLearnMethodListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-learn-method/";
 	const queryData = {
@@ -1337,7 +1337,7 @@ export async function move_learn_method_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.move_learn_method_listResponse200>(url, {
+	return apiClient.get<T.MoveLearnMethodListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1350,13 +1350,13 @@ export async function move_learn_method_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see move_learn_method_retrieveResponse200
  */
-export async function move_learn_method_retrieve(
+export function moveLearnMethodRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_learn_method_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MoveLearnMethodRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-learn-method/${data.id}/`;
-	return apiClient.get<T.move_learn_method_retrieveResponse200>(url, {
+	return apiClient.get<T.MoveLearnMethodRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1370,10 +1370,10 @@ export async function move_learn_method_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see move_target_listResponse200
 	 */
-export async function move_target_list(
+export function moveTargetList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_target_listResponse200>> {
+): Promise<AxiosResponse<T.MoveTargetListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-target/";
 	const queryData = {
@@ -1381,7 +1381,7 @@ export async function move_target_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.move_target_listResponse200>(url, {
+	return apiClient.get<T.MoveTargetListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1394,13 +1394,13 @@ export async function move_target_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see move_target_retrieveResponse200
  */
-export async function move_target_retrieve(
+export function moveTargetRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.move_target_retrieveResponse200>> {
+): Promise<AxiosResponse<T.MoveTargetRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-target/${data.id}/`;
-	return apiClient.get<T.move_target_retrieveResponse200>(url, {
+	return apiClient.get<T.MoveTargetRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1414,10 +1414,10 @@ export async function move_target_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see nature_listResponse200
 	 */
-export async function nature_list(
+export function natureList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.nature_listResponse200>> {
+): Promise<AxiosResponse<T.NatureListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/nature/";
 	const queryData = {
@@ -1425,7 +1425,7 @@ export async function nature_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.nature_listResponse200>(url, {
+	return apiClient.get<T.NatureListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1438,13 +1438,13 @@ export async function nature_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see nature_retrieveResponse200
  */
-export async function nature_retrieve(
+export function natureRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.nature_retrieveResponse200>> {
+): Promise<AxiosResponse<T.NatureRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/nature/${data.id}/`;
-	return apiClient.get<T.nature_retrieveResponse200>(url, {
+	return apiClient.get<T.NatureRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1458,10 +1458,10 @@ export async function nature_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pal_park_area_listResponse200
 	 */
-export async function pal_park_area_list(
+export function palParkAreaList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pal_park_area_listResponse200>> {
+): Promise<AxiosResponse<T.PalParkAreaListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pal-park-area/";
 	const queryData = {
@@ -1469,7 +1469,7 @@ export async function pal_park_area_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pal_park_area_listResponse200>(url, {
+	return apiClient.get<T.PalParkAreaListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1482,13 +1482,13 @@ export async function pal_park_area_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pal_park_area_retrieveResponse200
  */
-export async function pal_park_area_retrieve(
+export function palParkAreaRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pal_park_area_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PalParkAreaRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pal-park-area/${data.id}/`;
-	return apiClient.get<T.pal_park_area_retrieveResponse200>(url, {
+	return apiClient.get<T.PalParkAreaRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1502,10 +1502,10 @@ export async function pal_park_area_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokedex_listResponse200
 	 */
-export async function pokedex_list(
+export function pokedexList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokedex_listResponse200>> {
+): Promise<AxiosResponse<T.PokedexListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokedex/";
 	const queryData = {
@@ -1513,7 +1513,7 @@ export async function pokedex_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokedex_listResponse200>(url, {
+	return apiClient.get<T.PokedexListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1526,13 +1526,13 @@ export async function pokedex_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokedex_retrieveResponse200
  */
-export async function pokedex_retrieve(
+export function pokedexRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokedex_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokedexRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokedex/${data.id}/`;
-	return apiClient.get<T.pokedex_retrieveResponse200>(url, {
+	return apiClient.get<T.PokedexRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1546,10 +1546,10 @@ export async function pokedex_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokemon_listResponse200
 	 */
-export async function pokemon_list(
+export function pokemonList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_listResponse200>> {
+): Promise<AxiosResponse<T.PokemonListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon/";
 	const queryData = {
@@ -1557,7 +1557,7 @@ export async function pokemon_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokemon_listResponse200>(url, {
+	return apiClient.get<T.PokemonListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1570,13 +1570,13 @@ export async function pokemon_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokemon_retrieveResponse200
  */
-export async function pokemon_retrieve(
+export function pokemonRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokemonRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon/${data.id}/`;
-	return apiClient.get<T.pokemon_retrieveResponse200>(url, {
+	return apiClient.get<T.PokemonRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1590,10 +1590,10 @@ export async function pokemon_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokemon_color_listResponse200
 	 */
-export async function pokemon_color_list(
+export function pokemonColorList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_color_listResponse200>> {
+): Promise<AxiosResponse<T.PokemonColorListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-color/";
 	const queryData = {
@@ -1601,7 +1601,7 @@ export async function pokemon_color_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokemon_color_listResponse200>(url, {
+	return apiClient.get<T.PokemonColorListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1614,13 +1614,13 @@ export async function pokemon_color_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokemon_color_retrieveResponse200
  */
-export async function pokemon_color_retrieve(
+export function pokemonColorRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_color_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokemonColorRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-color/${data.id}/`;
-	return apiClient.get<T.pokemon_color_retrieveResponse200>(url, {
+	return apiClient.get<T.PokemonColorRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1634,10 +1634,10 @@ export async function pokemon_color_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokemon_form_listResponse200
 	 */
-export async function pokemon_form_list(
+export function pokemonFormList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_form_listResponse200>> {
+): Promise<AxiosResponse<T.PokemonFormListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-form/";
 	const queryData = {
@@ -1645,7 +1645,7 @@ export async function pokemon_form_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokemon_form_listResponse200>(url, {
+	return apiClient.get<T.PokemonFormListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1658,13 +1658,13 @@ export async function pokemon_form_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokemon_form_retrieveResponse200
  */
-export async function pokemon_form_retrieve(
+export function pokemonFormRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_form_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokemonFormRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-form/${data.id}/`;
-	return apiClient.get<T.pokemon_form_retrieveResponse200>(url, {
+	return apiClient.get<T.PokemonFormRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1678,10 +1678,10 @@ export async function pokemon_form_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokemon_habitat_listResponse200
 	 */
-export async function pokemon_habitat_list(
+export function pokemonHabitatList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_habitat_listResponse200>> {
+): Promise<AxiosResponse<T.PokemonHabitatListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-habitat/";
 	const queryData = {
@@ -1689,7 +1689,7 @@ export async function pokemon_habitat_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokemon_habitat_listResponse200>(url, {
+	return apiClient.get<T.PokemonHabitatListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1702,13 +1702,13 @@ export async function pokemon_habitat_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokemon_habitat_retrieveResponse200
  */
-export async function pokemon_habitat_retrieve(
+export function pokemonHabitatRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_habitat_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokemonHabitatRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-habitat/${data.id}/`;
-	return apiClient.get<T.pokemon_habitat_retrieveResponse200>(url, {
+	return apiClient.get<T.PokemonHabitatRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1722,10 +1722,10 @@ export async function pokemon_habitat_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokemon_shape_listResponse200
 	 */
-export async function pokemon_shape_list(
+export function pokemonShapeList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_shape_listResponse200>> {
+): Promise<AxiosResponse<T.PokemonShapeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-shape/";
 	const queryData = {
@@ -1733,7 +1733,7 @@ export async function pokemon_shape_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokemon_shape_listResponse200>(url, {
+	return apiClient.get<T.PokemonShapeListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1746,13 +1746,13 @@ export async function pokemon_shape_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokemon_shape_retrieveResponse200
  */
-export async function pokemon_shape_retrieve(
+export function pokemonShapeRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_shape_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokemonShapeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-shape/${data.id}/`;
-	return apiClient.get<T.pokemon_shape_retrieveResponse200>(url, {
+	return apiClient.get<T.PokemonShapeRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1766,10 +1766,10 @@ export async function pokemon_shape_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokemon_species_listResponse200
 	 */
-export async function pokemon_species_list(
+export function pokemonSpeciesList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_species_listResponse200>> {
+): Promise<AxiosResponse<T.PokemonSpeciesListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-species/";
 	const queryData = {
@@ -1777,7 +1777,7 @@ export async function pokemon_species_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokemon_species_listResponse200>(url, {
+	return apiClient.get<T.PokemonSpeciesListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1790,13 +1790,13 @@ export async function pokemon_species_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokemon_species_retrieveResponse200
  */
-export async function pokemon_species_retrieve(
+export function pokemonSpeciesRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_species_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokemonSpeciesRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-species/${data.id}/`;
-	return apiClient.get<T.pokemon_species_retrieveResponse200>(url, {
+	return apiClient.get<T.PokemonSpeciesRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1810,10 +1810,10 @@ export async function pokemon_species_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see pokeathlon_stat_listResponse200
 	 */
-export async function pokeathlon_stat_list(
+export function pokeathlonStatList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokeathlon_stat_listResponse200>> {
+): Promise<AxiosResponse<T.PokeathlonStatListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokeathlon-stat/";
 	const queryData = {
@@ -1821,7 +1821,7 @@ export async function pokeathlon_stat_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.pokeathlon_stat_listResponse200>(url, {
+	return apiClient.get<T.PokeathlonStatListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1834,13 +1834,13 @@ export async function pokeathlon_stat_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see pokeathlon_stat_retrieveResponse200
  */
-export async function pokeathlon_stat_retrieve(
+export function pokeathlonStatRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokeathlon_stat_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokeathlonStatRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokeathlon-stat/${data.id}/`;
-	return apiClient.get<T.pokeathlon_stat_retrieveResponse200>(url, {
+	return apiClient.get<T.PokeathlonStatRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1854,10 +1854,10 @@ export async function pokeathlon_stat_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see region_listResponse200
 	 */
-export async function region_list(
+export function regionList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.region_listResponse200>> {
+): Promise<AxiosResponse<T.RegionListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/region/";
 	const queryData = {
@@ -1865,7 +1865,7 @@ export async function region_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.region_listResponse200>(url, {
+	return apiClient.get<T.RegionListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1878,13 +1878,13 @@ export async function region_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see region_retrieveResponse200
  */
-export async function region_retrieve(
+export function regionRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.region_retrieveResponse200>> {
+): Promise<AxiosResponse<T.RegionRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/region/${data.id}/`;
-	return apiClient.get<T.region_retrieveResponse200>(url, {
+	return apiClient.get<T.RegionRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1898,10 +1898,10 @@ export async function region_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see stat_listResponse200
 	 */
-export async function stat_list(
+export function statList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.stat_listResponse200>> {
+): Promise<AxiosResponse<T.StatListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/stat/";
 	const queryData = {
@@ -1909,7 +1909,7 @@ export async function stat_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.stat_listResponse200>(url, {
+	return apiClient.get<T.StatListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1922,13 +1922,13 @@ export async function stat_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see stat_retrieveResponse200
  */
-export async function stat_retrieve(
+export function statRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.stat_retrieveResponse200>> {
+): Promise<AxiosResponse<T.StatRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/stat/${data.id}/`;
-	return apiClient.get<T.stat_retrieveResponse200>(url, {
+	return apiClient.get<T.StatRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1942,10 +1942,10 @@ export async function stat_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see super_contest_effect_listResponse200
 	 */
-export async function super_contest_effect_list(
+export function superContestEffectList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.super_contest_effect_listResponse200>> {
+): Promise<AxiosResponse<T.SuperContestEffectListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/super-contest-effect/";
 	const queryData = {
@@ -1953,7 +1953,7 @@ export async function super_contest_effect_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.super_contest_effect_listResponse200>(url, {
+	return apiClient.get<T.SuperContestEffectListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1966,13 +1966,13 @@ export async function super_contest_effect_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see super_contest_effect_retrieveResponse200
  */
-export async function super_contest_effect_retrieve(
+export function superContestEffectRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.super_contest_effect_retrieveResponse200>> {
+): Promise<AxiosResponse<T.SuperContestEffectRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/super-contest-effect/${data.id}/`;
-	return apiClient.get<T.super_contest_effect_retrieveResponse200>(url, {
+	return apiClient.get<T.SuperContestEffectRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -1986,10 +1986,10 @@ export async function super_contest_effect_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see type_listResponse200
 	 */
-export async function type_list(
+export function typeList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.type_listResponse200>> {
+): Promise<AxiosResponse<T.TypeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/type/";
 	const queryData = {
@@ -1997,7 +1997,7 @@ export async function type_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.type_listResponse200>(url, {
+	return apiClient.get<T.TypeListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2010,13 +2010,13 @@ export async function type_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see type_retrieveResponse200
  */
-export async function type_retrieve(
+export function typeRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.type_retrieveResponse200>> {
+): Promise<AxiosResponse<T.TypeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/type/${data.id}/`;
-	return apiClient.get<T.type_retrieveResponse200>(url, {
+	return apiClient.get<T.TypeRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -2030,10 +2030,10 @@ export async function type_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see version_listResponse200
 	 */
-export async function version_list(
+export function versionList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.version_listResponse200>> {
+): Promise<AxiosResponse<T.VersionListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/version/";
 	const queryData = {
@@ -2041,7 +2041,7 @@ export async function version_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.version_listResponse200>(url, {
+	return apiClient.get<T.VersionListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2054,13 +2054,13 @@ export async function version_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see version_retrieveResponse200
  */
-export async function version_retrieve(
+export function versionRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.version_retrieveResponse200>> {
+): Promise<AxiosResponse<T.VersionRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/version/${data.id}/`;
-	return apiClient.get<T.version_retrieveResponse200>(url, {
+	return apiClient.get<T.VersionRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -2074,10 +2074,10 @@ export async function version_retrieve(
 Case-insensitive query applied on the `name` property. 
 	 * @see version_group_listResponse200
 	 */
-export async function version_group_list(
+export function versionGroupList(
 	data: { limit?: number; offset?: number; q?: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.version_group_listResponse200>> {
+): Promise<AxiosResponse<T.VersionGroupListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/version-group/";
 	const queryData = {
@@ -2085,7 +2085,7 @@ export async function version_group_list(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.version_group_listResponse200>(url, {
+	return apiClient.get<T.VersionGroupListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2098,13 +2098,13 @@ export async function version_group_list(
  * @param params.id - This parameter can be a string or an integer.
  * @see version_group_retrieveResponse200
  */
-export async function version_group_retrieve(
+export function versionGroupRetrieve(
 	data: { id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.version_group_retrieveResponse200>> {
+): Promise<AxiosResponse<T.VersionGroupRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/version-group/${data.id}/`;
-	return apiClient.get<T.version_group_retrieveResponse200>(url, {
+	return apiClient.get<T.VersionGroupRetrieveResponse200>(url, {
 		headers,
 	});
 }
@@ -2115,13 +2115,13 @@ export async function version_group_retrieve(
  * @param params.pokemon_id
  * @see pokemon_encounters_retrieveResponse200
  */
-export async function pokemon_encounters_retrieve(
+export function pokemonEncountersRetrieve(
 	data: { pokemon_id: string },
 	headers?: Record<string, string>
-): Promise<AxiosResponse<T.pokemon_encounters_retrieveResponse200>> {
+): Promise<AxiosResponse<T.PokemonEncountersRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon/${data.pokemon_id}/encounters`;
-	return apiClient.get<T.pokemon_encounters_retrieveResponse200>(url, {
+	return apiClient.get<T.PokemonEncountersRetrieveResponse200>(url, {
 		headers,
 	});
 }

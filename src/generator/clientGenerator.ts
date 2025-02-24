@@ -1,6 +1,6 @@
 import type { OpenAPIV3 } from "openapi-types";
 import type { OpenAPIConfig } from "../types/config";
-import { sanitizePropertyName, sanitizeTypeName, specTitle } from "../utils";
+import { camelCase, pascalCase, sanitizePropertyName, sanitizeTypeName, specTitle } from "../utils";
 
 export interface OperationInfo {
 	method: string;
@@ -106,11 +106,13 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 	const hasData = (parameters && parameters.length > 0) || operation.requestBody;
 
 	let dataType = "undefined";
+	const namedType = pascalCase(sanitizedOperationId);
+	console.log({ sanitizedOperationId });
 	if (hasData) {
 		if (requestBody && dataProps.length > 0) {
-			dataType = `T.${sanitizedOperationId}Request & { ${dataProps.join("; ")} }`;
+			dataType = `T.${namedType}Request & { ${dataProps.join("; ")} }`;
 		} else if (requestBody) {
-			dataType = `T.${sanitizedOperationId}Request`;
+			dataType = `T.${namedType}Request`;
 		} else if (dataProps.length > 0) {
 			dataType = `{ ${dataProps.join("; ")} }`;
 		} else {
@@ -120,7 +122,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
 	// Get response type from 2xx response
 	const successResponse = Object.entries(responses).find(([code]) => code.startsWith("2"));
-	const responseType = successResponse ? `T.${sanitizedOperationId}Response${successResponse[0]}` : "any";
+	const responseType = successResponse ? `T.${namedType}Response${successResponse[0]}` : "any";
 
 	const urlWithParams = urlParams.length > 0 ? path.replace(/{(\w+)}/g, "${data.$1}") : path;
 
@@ -164,7 +166,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
 	return `
 	${jsDocLines.join("\n	")}
-	export async function ${sanitizedOperationId}(data${hasData ? `: ${dataType}` : "?: undefined"}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
+	export function ${camelCase(sanitizedOperationId)}(data${hasData ? `: ${dataType}` : "?: undefined"}, headers?: Record<string, string>): Promise<AxiosResponse<${responseType}>> {
 		${methodBody}
 	}`;
 }
@@ -226,7 +228,7 @@ export function generateApiClient(spec: OpenAPIV3.Document, config: OpenAPIConfi
 			operations.push({
 				method: method.toUpperCase(),
 				path,
-				operationId: sanitizeTypeName(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
+				operationId: operation.operationId || `${method}${path.replace(/\W+/g, "_")}`,
 				summary: operation.summary,
 				description: operation.description,
 				parameters: resolveParameters([...(pathItem.parameters || []), ...(operation.parameters || [])]),

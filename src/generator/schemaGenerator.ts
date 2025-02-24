@@ -1,5 +1,5 @@
 import type { OpenAPIV3 } from "openapi-types";
-import { sanitizePropertyName, sanitizeTypeName } from "../utils";
+import { camelCase, pascalCase, sanitizePropertyName, sanitizeTypeName } from "../utils";
 
 interface SchemaContext {
 	schemas: { [key: string]: OpenAPIV3.SchemaObject };
@@ -76,10 +76,11 @@ function generateTypeDefinition(
 	// Use 'type' for primitives, unions, and simple types
 	// Use 'interface' only for complex objects with properties
 	const isInterface = !("$ref" in schema) && schema.type === "object" && schema.properties;
-
+	const namedInterface = pascalCase(name);
+	console.log(name);
 	return isInterface
 		? `${description}export interface ${name} ${typeValue}\n\n`
-		: `${description}export type ${name} = ${typeValue}\n\n`;
+		: `${description}export type ${namedInterface} = ${typeValue}\n\n`;
 }
 
 /**
@@ -126,7 +127,7 @@ export function generateTypeDefinitions(spec: OpenAPIV3.Document): string {
 						const content = responseObj.content?.["application/json"];
 						if (content?.schema) {
 							const typeName = sanitizeTypeName(
-								`${operationObject.operationId || `${method.toLowerCase()}${path.replace(/\W+/g, "_")}`}Response${code}`
+								`${operationObject.operationId || `${method.toLowerCase()}${path.replace(/\W+/g, "_")}`}_Response${code}`
 							);
 							output += generateTypeDefinition(typeName, content.schema as OpenAPIV3.SchemaObject, context);
 						}
