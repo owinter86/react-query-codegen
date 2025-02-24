@@ -1,13 +1,10 @@
 import type { OpenAPIV3 } from "openapi-types";
+import { camelCase } from "../utils";
 import type { OperationInfo } from "./clientGenerator";
-
-function sanitizeString(operationId: string): string {
-	return operationId.replace(/[^a-zA-Z0-9_]/g, "_");
-}
 
 function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document): string {
 	const { operationId: rawOperationId, parameters, requestBody } = operation;
-	const operationId = sanitizeString(rawOperationId);
+	const operationId = camelCase(rawOperationId);
 
 	const hasData = (parameters && parameters.length > 0) || operation.requestBody;
 
@@ -68,7 +65,7 @@ export function generateReactQuery(spec: OpenAPIV3.Document): string {
 			operations.push({
 				method: method.toUpperCase(),
 				path,
-				operationId: sanitizeString(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
+				operationId: camelCase(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
 				summary: operation.summary,
 				description: operation.description,
 				parameters: [

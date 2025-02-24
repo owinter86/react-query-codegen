@@ -8,6 +8,7 @@ import { generateApiClient } from "./generator/clientGenerator";
 import { generateReactQuery } from "./generator/reactQueryGenerator";
 import { generateTypeDefinitions } from "./generator/schemaGenerator";
 import type { OpenAPIConfig } from "./types/config";
+import { specTitle } from "./utils";
 
 /**
  * Loads the OpenAPI specification from either a URL or local file
@@ -47,7 +48,7 @@ export async function codegenerate(config: OpenAPIConfig): Promise<void> {
 			// Create export directory if it doesn't exist
 			await mkdir(config.exportDir, { recursive: true });
 
-			const title = sanitizeOperationId(spec.info.title.toLowerCase().replace(/\s+/g, "-"));
+			const title = specTitle(spec);
 
 			// Generate and write type definitions
 			const typeDefinitions = generateTypeDefinitions(spec);

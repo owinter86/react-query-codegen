@@ -1,11 +1,8 @@
 import type { OpenAPIV3 } from "openapi-types";
-
-function sanitizeOperationId(operationId: string): string {
-	return operationId.replace(/[^a-zA-Z0-9_]/g, "_");
-}
+import { specTitle } from "../utils";
 
 export function generateAxiosInstance(spec: OpenAPIV3.Document): string {
-	const title = sanitizeOperationId(spec.info.title.toLowerCase().replace(/\s+/g, "-"));
+	const title = specTitle(spec);
 
 	return `import type { AxiosInstance } from 'axios';
 

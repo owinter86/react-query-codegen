@@ -1,4 +1,5 @@
 import type { OpenAPIV3 } from "openapi-types";
+import { sanitizePropertyName, sanitizeTypeName, specTitle } from "../utils";
 
 export interface OperationInfo {
 	method: string;
@@ -9,14 +10,6 @@ export interface OperationInfo {
 	parameters?: OpenAPIV3.ParameterObject[];
 	requestBody?: OpenAPIV3.RequestBodyObject;
 	responses: OpenAPIV3.ResponsesObject;
-}
-
-function sanitizeOperationId(operationId: string): string {
-	return operationId.replace(/[^a-zA-Z0-9_]/g, "_");
-}
-
-function sanitizePropertyName(name: string): string {
-	return /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(name) ? name : `'${name}'`;
 }
 
 function resolveSchema(
@@ -43,8 +36,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 		responses,
 	} = operation;
 	const operationId = rawOperationId || `${method.toLowerCase()}${path.replace(/\W+/g, "_")}`;
-	const sanitizedOperationId = sanitizeOperationId(operationId);
-
+	const sanitizedOperationId = sanitizeTypeName(operationId);
 	// Generate JSDoc
 	const jsDocLines = ["/**"];
 	if (summary) jsDocLines.push(` * ${summary}`);
@@ -111,19 +103,27 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
 	// Add request body type if it exists
 	const hasData = (parameters && parameters.length > 0) || operation.requestBody;
-	const dataType = hasData
-		? requestBody
-			? `${sanitizedOperationId}Request & { ${dataProps.join("; ")} }`
-			: `{ ${dataProps.join("; ")} }`
-		: "undefined";
+
+	let dataType = "undefined";
+	if (hasData) {
+		if (requestBody && dataProps.length > 0) {
+			dataType = `T.${sanitizedOperationId}Request & { ${dataProps.join("; ")} }`;
+		} else if (requestBody) {
+			dataType = `T.${sanitizedOperationId}Request`;
+		} else if (dataProps.length > 0) {
+			dataType = `{ ${dataProps.join("; ")} }`;
+		} else {
+			dataType = "Record<string, never>";
+		}
+	}
 
 	// Get response type from 2xx response
 	const successResponse = Object.entries(responses).find(([code]) => code.startsWith("2"));
-	const responseType = successResponse ? `${sanitizedOperationId}Response${successResponse[0]}` : "any";
+	const responseType = successResponse ? `T.${sanitizedOperationId}Response${successResponse[0]}` : "any";
 
 	const urlWithParams = urlParams.length > 0 ? path.replace(/{(\w+)}/g, "${data.$1}") : path;
 
-	const title = sanitizeOperationId(spec.info.title.toLowerCase().replace(/\s+/g, "-"));
+	const title = specTitle(spec);
 
 	const methodBody = [
 		`const url = \`${urlWithParams}\`;`,
@@ -226,7 +226,7 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
 			operations.push({
 				method: method.toUpperCase(),
 				path,
-				operationId: sanitizeOperationId(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
+				operationId: sanitizeTypeName(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
 				summary: operation.summary,
 				description: operation.description,
 				parameters: resolveParameters([...(pathItem.parameters || []), ...(operation.parameters || [])]),
@@ -236,28 +236,12 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
 		});
 	});
 
-	// Collect actually used types
-	const usedTypes = new Set<string>();
-	operations.forEach((op) => {
-		// Add request type if method has request body
-		if (op.requestBody) {
-			usedTypes.add(`${op.operationId}Request`);
-		}
-		// Add only the 2xx response type that's used
-		const successResponse = Object.entries(op.responses).find(([code]) => code.startsWith("2"));
-		if (successResponse) {
-			usedTypes.add(`${op.operationId}Response${successResponse[0]}`);
-		}
-	});
-
-	const title = sanitizeOperationId(spec.info.title.toLowerCase().replace(/\s+/g, "-"));
+	const title = specTitle(spec);
 
 	// Generate the client class
 	return `import { get${title}Instance } from './${title}.axios';
 import type { AxiosResponse } from 'axios';
-import type { 
-	${Array.from(usedTypes).join(",\n	")}
-} from './${title}.schema';
+import type * as T from './${title}.schema';
 
 
 ${operations.map((op) => generateAxiosMethod(op, spec)).join("\n\n")}`;
