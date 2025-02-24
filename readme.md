@@ -56,17 +56,17 @@ const { data, isLoading, error } = useQuery(AccountFavoritesQueryOptions());
 and more complex queries: 
 ```typescript
 import { useQuery } from '@tanstack/react-query';
-import { AccountFavoritesQueryOptions } from './src/generated/api';
+import { characteristicListQueryOptions } from './src/generated/pokiApi.queryOptions';
 
 const { data, isLoading, error } = useQuery({
-  ...AccountFavoritesQueryOptions(),
-  select: (data) => data.favorites,
+  ...characteristicListQueryOptions(),
+  select: (data) => data.results.find(item => item.id === itemId),
 });
 ```
 
 easier query invalidation:
 ```typescript
-queryClient.invalidateQueries(AccountFavoritesQueryOptions());
+queryClient.invalidateQueries(characteristicListQueryOptions());
 ```
 
 
