@@ -7,275 +7,275 @@ const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 	return keys.every((k) => obj[k] !== undefined);
 };
 
-export const accountfavoritesQueryOptions = () => {
+export const AccountFavoritesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountfavorites", undefined],
+		queryKey: ["AccountFavorites", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountfavorites(undefined);
+					const response = await apiClient.AccountFavorites(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountgetapppreferencesQueryOptions = () => {
+export const AccountGetAppPreferencesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountgetapppreferences", undefined],
+		queryKey: ["AccountGetAppPreferences", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountgetapppreferences(undefined);
+					const response = await apiClient.AccountGetAppPreferences(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountgetcompanypreferencesQueryOptions = () => {
+export const AccountGetCompanyPreferencesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountgetcompanypreferences", undefined],
+		queryKey: ["AccountGetCompanyPreferences", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountgetcompanypreferences(undefined);
+					const response = await apiClient.AccountGetCompanyPreferences(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountupdatecompanypreferencesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.accountupdatecompanypreferences>[0]>
+export const AccountUpdateCompanyPreferencesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AccountUpdateCompanyPreferences>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "companyPreferences");
 	return queryOptions({
-		queryKey: ["accountupdatecompanypreferences", params],
+		queryKey: ["AccountUpdateCompanyPreferences", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountupdatecompanypreferences(params);
+					const response = await apiClient.AccountUpdateCompanyPreferences(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountgetpersonalpreferencesQueryOptions = () => {
+export const AccountGetPersonalPreferencesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountgetpersonalpreferences", undefined],
+		queryKey: ["AccountGetPersonalPreferences", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountgetpersonalpreferences(undefined);
+					const response = await apiClient.AccountGetPersonalPreferences(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountupdatepersonalpreferencesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.accountupdatepersonalpreferences>[0]>
+export const AccountUpdatePersonalPreferencesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AccountUpdatePersonalPreferences>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "personalPreferences");
 	return queryOptions({
-		queryKey: ["accountupdatepersonalpreferences", params],
+		queryKey: ["AccountUpdatePersonalPreferences", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountupdatepersonalpreferences(params);
+					const response = await apiClient.AccountUpdatePersonalPreferences(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountmeQueryOptions = () => {
+export const AccountMeQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountme", undefined],
+		queryKey: ["AccountMe", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountme(undefined);
+					const response = await apiClient.AccountMe(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountregisterQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.accountregister>[0]>
+export const AccountRegisterQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AccountRegister>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "password", "type", "subscribeNewsletter", "phone");
 	return queryOptions({
-		queryKey: ["accountregister", params],
+		queryKey: ["AccountRegister", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountregister(params);
+					const response = await apiClient.AccountRegister(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountremoveQueryOptions = () => {
+export const AccountRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountremove", undefined],
+		queryKey: ["AccountRemove", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountremove(undefined);
+					const response = await apiClient.AccountRemove(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountremovedriverslicensedataQueryOptions = () => {
+export const AccountRemoveDriversLicenseDataQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountremovedriverslicensedata", undefined],
+		queryKey: ["AccountRemoveDriversLicenseData", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountremovedriverslicensedata(undefined);
+					const response = await apiClient.AccountRemoveDriversLicenseData(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountreservationsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.accountreservations>[0]>
+export const AccountReservationsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AccountReservations>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "status", "filters");
 	return queryOptions({
-		queryKey: ["accountreservations", params],
+		queryKey: ["AccountReservations", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountreservations(params);
+					const response = await apiClient.AccountReservations(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categoryalternativesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categoryalternatives>[0]>
+export const CategoryAlternativesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategoryAlternatives>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId");
 	return queryOptions({
-		queryKey: ["categoryalternatives", params],
+		queryKey: ["CategoryAlternatives", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categoryalternatives(params);
+					const response = await apiClient.CategoryAlternatives(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categoryavailabilityQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categoryavailability>[0]>
+export const CategoryAvailabilityQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategoryAvailability>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "datePickup", "dateReturn", "mainCategoryId");
 	return queryOptions({
-		queryKey: ["categoryavailability", params],
+		queryKey: ["CategoryAvailability", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categoryavailability(params);
+					const response = await apiClient.CategoryAvailability(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categorycompareQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categorycompare>[0]>
+export const CategoryCompareQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategoryCompare>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryIds");
 	return queryOptions({
-		queryKey: ["categorycompare", params],
+		queryKey: ["CategoryCompare", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categorycompare(params);
+					const response = await apiClient.CategoryCompare(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categoryfavoriteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categoryfavorite>[0]>
+export const CategoryFavoriteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategoryFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId");
 	return queryOptions({
-		queryKey: ["categoryfavorite", params],
+		queryKey: ["CategoryFavorite", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categoryfavorite(params);
+					const response = await apiClient.CategoryFavorite(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categoryimageQueryOptions = (params: Partial<Parameters<typeof apiClient.categoryimage>[0]>) => {
+export const CategoryImageQueryOptions = (params: Partial<Parameters<typeof apiClient.CategoryImage>[0]>) => {
 	const enabled = hasDefinedProps(params, "categoryId", "fileId", "w");
 	return queryOptions({
-		queryKey: ["categoryimage", params],
+		queryKey: ["CategoryImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categoryimage(params);
+					const response = await apiClient.CategoryImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categoryinsuranceprofileQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categoryinsuranceprofile>[0]>
+export const CategoryInsuranceProfileQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategoryInsuranceProfile>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "categoryId", "datePickup", "dateReturn");
 	return queryOptions({
-		queryKey: ["categoryinsuranceprofile", params],
+		queryKey: ["CategoryInsuranceProfile", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categoryinsuranceprofile(params);
+					const response = await apiClient.CategoryInsuranceProfile(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categorylistQueryOptions = () => {
+export const CategoryListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["categorylist", undefined],
+		queryKey: ["CategoryList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categorylist(undefined);
+					const response = await apiClient.CategoryList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categorymainimageQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categorymainimage>[0]>
+export const CategoryMainImageQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategoryMainImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId", "w");
 	return queryOptions({
-		queryKey: ["categorymainimage", params],
+		queryKey: ["CategoryMainImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categorymainimage(params);
+					const response = await apiClient.CategoryMainImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categorypricecalculationQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categorypricecalculation>[0]>
+export const CategoryPriceCalculationQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategoryPriceCalculation>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -288,447 +288,447 @@ export const categorypricecalculationQueryOptions = (
 		"addons"
 	);
 	return queryOptions({
-		queryKey: ["categorypricecalculation", params],
+		queryKey: ["CategoryPriceCalculation", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categorypricecalculation(params);
+					const response = await apiClient.CategoryPriceCalculation(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const categorysingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.categorysingle>[0]>
+export const CategorySingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.CategorySingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId");
 	return queryOptions({
-		queryKey: ["categorysingle", params],
+		queryKey: ["CategorySingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.categorysingle(params);
+					const response = await apiClient.CategorySingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const maincategoryimageQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.maincategoryimage>[0]>
+export const MainCategoryImageQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.MainCategoryImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "mainCategoryId", "fileId", "w");
 	return queryOptions({
-		queryKey: ["maincategoryimage", params],
+		queryKey: ["MainCategoryImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.maincategoryimage(params);
+					const response = await apiClient.MainCategoryImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const maincategorylistQueryOptions = () => {
+export const MainCategoryListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["maincategorylist", undefined],
+		queryKey: ["MainCategoryList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.maincategorylist(undefined);
+					const response = await apiClient.MainCategoryList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const maincategorymainimageQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.maincategorymainimage>[0]>
+export const MainCategoryMainImageQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.MainCategoryMainImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "mainCategoryId", "w");
 	return queryOptions({
-		queryKey: ["maincategorymainimage", params],
+		queryKey: ["MainCategoryMainImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.maincategorymainimage(params);
+					const response = await apiClient.MainCategoryMainImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const addonimageQueryOptions = (params: Partial<Parameters<typeof apiClient.addonimage>[0]>) => {
+export const AddonImageQueryOptions = (params: Partial<Parameters<typeof apiClient.AddonImage>[0]>) => {
 	const enabled = hasDefinedProps(params, "addonId", "fileId", "w");
 	return queryOptions({
-		queryKey: ["addonimage", params],
+		queryKey: ["AddonImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.addonimage(params);
+					const response = await apiClient.AddonImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const addonmainimageQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.addonmainimage>[0]>
+export const AddonMainImageQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AddonMainImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "addonId", "w");
 	return queryOptions({
-		queryKey: ["addonmainimage", params],
+		queryKey: ["AddonMainImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.addonmainimage(params);
+					const response = await apiClient.AddonMainImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicleadddamageQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicleadddamage>[0]>
+export const SharedVehicleAddDamageQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAddDamage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "image", "description", "x", "y");
 	return queryOptions({
-		queryKey: ["sharedvehicleadddamage", params],
+		queryKey: ["SharedVehicleAddDamage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicleadddamage(params);
+					const response = await apiClient.SharedVehicleAddDamage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicleadminlistQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicleadminlist>[0]>
+export const SharedVehicleAdminListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAdminList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["sharedvehicleadminlist", params],
+		queryKey: ["SharedVehicleAdminList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicleadminlist(params);
+					const response = await apiClient.SharedVehicleAdminList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicleadminsingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicleadminsingle>[0]>
+export const SharedVehicleAdminSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAdminSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["sharedvehicleadminsingle", params],
+		queryKey: ["SharedVehicleAdminSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicleadminsingle(params);
+					const response = await apiClient.SharedVehicleAdminSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicleadminupdateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicleadminupdate>[0]>
+export const SharedVehicleAdminUpdateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAdminUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["sharedvehicleadminupdate", params],
+		queryKey: ["SharedVehicleAdminUpdate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicleadminupdate(params);
+					const response = await apiClient.SharedVehicleAdminUpdate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicleavailabilityQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicleavailability>[0]>
+export const SharedVehicleAvailabilityQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAvailability>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "datePickup", "dateReturn", "mainCategoryId");
 	return queryOptions({
-		queryKey: ["sharedvehicleavailability", params],
+		queryKey: ["SharedVehicleAvailability", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicleavailability(params);
+					const response = await apiClient.SharedVehicleAvailability(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicleavailabilitycalendarQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicleavailabilitycalendar>[0]>
+export const SharedVehicleAvailabilityCalendarQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleAvailabilityCalendar>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "startDate", "endDate");
 	return queryOptions({
-		queryKey: ["sharedvehicleavailabilitycalendar", params],
+		queryKey: ["SharedVehicleAvailabilityCalendar", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicleavailabilitycalendar(params);
+					const response = await apiClient.SharedVehicleAvailabilityCalendar(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclecreatebookingQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclecreatebooking>[0]>
+export const SharedVehicleCreateBookingQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleCreateBooking>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "locale", "datePickup", "dateReturn");
 	return queryOptions({
-		queryKey: ["sharedvehiclecreatebooking", params],
+		queryKey: ["SharedVehicleCreateBooking", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclecreatebooking(params);
+					const response = await apiClient.SharedVehicleCreateBooking(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicledamageimageQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicledamageimage>[0]>
+export const SharedVehicleDamageImageQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleDamageImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "fileId", "accessToken", "w");
 	return queryOptions({
-		queryKey: ["sharedvehicledamageimage", params],
+		queryKey: ["SharedVehicleDamageImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicledamageimage(params);
+					const response = await apiClient.SharedVehicleDamageImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicledamagetemplateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicledamagetemplate>[0]>
+export const SharedVehicleDamageTemplateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleDamageTemplate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "w");
 	return queryOptions({
-		queryKey: ["sharedvehicledamagetemplate", params],
+		queryKey: ["SharedVehicleDamageTemplate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicledamagetemplate(params);
+					const response = await apiClient.SharedVehicleDamageTemplate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclefavoriteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclefavorite>[0]>
+export const SharedVehicleFavoriteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["sharedvehiclefavorite", params],
+		queryKey: ["SharedVehicleFavorite", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclefavorite(params);
+					const response = await apiClient.SharedVehicleFavorite(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehicleimageQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehicleimage>[0]>
+export const SharedVehicleImageQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleImage>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "fileId", "w");
 	return queryOptions({
-		queryKey: ["sharedvehicleimage", params],
+		queryKey: ["SharedVehicleImage", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehicleimage(params);
+					const response = await apiClient.SharedVehicleImage(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclelistdamagesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclelistdamages>[0]>
+export const SharedVehicleListDamagesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleListDamages>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "locale");
 	return queryOptions({
-		queryKey: ["sharedvehiclelistdamages", params],
+		queryKey: ["SharedVehicleListDamages", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclelistdamages(params);
+					const response = await apiClient.SharedVehicleListDamages(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclepricingQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclepricing>[0]>
+export const SharedVehiclePricingQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehiclePricing>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "locale", "datePickup", "dateReturn");
 	return queryOptions({
-		queryKey: ["sharedvehiclepricing", params],
+		queryKey: ["SharedVehiclePricing", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclepricing(params);
+					const response = await apiClient.SharedVehiclePricing(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclesingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclesingle>[0]>
+export const SharedVehicleSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["sharedvehiclesingle", params],
+		queryKey: ["SharedVehicleSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclesingle(params);
+					const response = await apiClient.SharedVehicleSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclestateofchargeQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclestateofcharge>[0]>
+export const SharedVehicleStateOfChargeQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleStateOfCharge>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["sharedvehiclestateofcharge", params],
+		queryKey: ["SharedVehicleStateOfCharge", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclestateofcharge(params);
+					const response = await apiClient.SharedVehicleStateOfCharge(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedforgotpasswordQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedforgotpassword>[0]>
+export const AuthPasswordBasedForgotPasswordQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedForgotPassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({
-		queryKey: ["authpasswordbasedforgotpassword", params],
+		queryKey: ["AuthPasswordBasedForgotPassword", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedforgotpassword(params);
+					const response = await apiClient.AuthPasswordBasedForgotPassword(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedlistemailsQueryOptions = () => {
+export const AuthPasswordBasedListEmailsQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpasswordbasedlistemails", undefined],
+		queryKey: ["AuthPasswordBasedListEmails", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedlistemails(undefined);
+					const response = await apiClient.AuthPasswordBasedListEmails(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedloginQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedlogin>[0]>
+export const AuthPasswordBasedLoginQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedLogin>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "password");
 	return queryOptions({
-		queryKey: ["authpasswordbasedlogin", params],
+		queryKey: ["AuthPasswordBasedLogin", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedlogin(params);
+					const response = await apiClient.AuthPasswordBasedLogin(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedresetpasswordQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedresetpassword>[0]>
+export const AuthPasswordBasedResetPasswordQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedResetPassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "resetToken", "password");
 	return queryOptions({
-		queryKey: ["authpasswordbasedresetpassword", params],
+		queryKey: ["AuthPasswordBasedResetPassword", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedresetpassword(params);
+					const response = await apiClient.AuthPasswordBasedResetPassword(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedupdateemailQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedupdateemail>[0]>
+export const AuthPasswordBasedUpdateEmailQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedUpdateEmail>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({
-		queryKey: ["authpasswordbasedupdateemail", params],
+		queryKey: ["AuthPasswordBasedUpdateEmail", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedupdateemail(params);
+					const response = await apiClient.AuthPasswordBasedUpdateEmail(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedupdatepasswordQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedupdatepassword>[0]>
+export const AuthPasswordBasedUpdatePasswordQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedUpdatePassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "password");
 	return queryOptions({
-		queryKey: ["authpasswordbasedupdatepassword", params],
+		queryKey: ["AuthPasswordBasedUpdatePassword", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedupdatepassword(params);
+					const response = await apiClient.AuthPasswordBasedUpdatePassword(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedverifyemailQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedverifyemail>[0]>
+export const AuthPasswordBasedVerifyEmailQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedVerifyEmail>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "verifyToken");
 	return queryOptions({
-		queryKey: ["authpasswordbasedverifyemail", params],
+		queryKey: ["AuthPasswordBasedVerifyEmail", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedverifyemail(params);
+					const response = await apiClient.AuthPasswordBasedVerifyEmail(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedverifyotpQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedverifyotp>[0]>
+export const AuthPasswordBasedVerifyOtpQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedVerifyOtp>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "otp");
 	return queryOptions({
-		queryKey: ["authpasswordbasedverifyotp", params],
+		queryKey: ["AuthPasswordBasedVerifyOtp", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedverifyotp(params);
+					const response = await apiClient.AuthPasswordBasedVerifyOtp(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const reservationupdateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.reservationupdate>[0]>
+export const ReservationUpdateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ReservationUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -738,740 +738,740 @@ export const reservationupdateQueryOptions = (
 		"selectedAddons"
 	);
 	return queryOptions({
-		queryKey: ["reservationupdate", params],
+		queryKey: ["ReservationUpdate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.reservationupdate(params);
+					const response = await apiClient.ReservationUpdate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const reservationcancelQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.reservationcancel>[0]>
+export const ReservationCancelQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ReservationCancel>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
-		queryKey: ["reservationcancel", params],
+		queryKey: ["ReservationCancel", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.reservationcancel(params);
+					const response = await apiClient.ReservationCancel(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const reservationdownloadinvoiceQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.reservationdownloadinvoice>[0]>
+export const ReservationDownloadInvoiceQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ReservationDownloadInvoice>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "invoiceId");
 	return queryOptions({
-		queryKey: ["reservationdownloadinvoice", params],
+		queryKey: ["ReservationDownloadInvoice", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.reservationdownloadinvoice(params);
+					const response = await apiClient.ReservationDownloadInvoice(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const reservationfetchbyidsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.reservationfetchbyids>[0]>
+export const ReservationFetchByIdsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ReservationFetchByIds>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationIds");
 	return queryOptions({
-		queryKey: ["reservationfetchbyids", params],
+		queryKey: ["ReservationFetchByIds", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.reservationfetchbyids(params);
+					const response = await apiClient.ReservationFetchByIds(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const reservationrepeatQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.reservationrepeat>[0]>
+export const ReservationRepeatQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ReservationRepeat>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "datePickup", "dateReturn");
 	return queryOptions({
-		queryKey: ["reservationrepeat", params],
+		queryKey: ["ReservationRepeat", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.reservationrepeat(params);
+					const response = await apiClient.ReservationRepeat(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const locationlistQueryOptions = () => {
+export const LocationListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["locationlist", undefined],
+		queryKey: ["LocationList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.locationlist(undefined);
+					const response = await apiClient.LocationList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const locationreorderQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.locationreorder>[0]>
+export const LocationReorderQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.LocationReorder>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locationIds");
 	return queryOptions({
-		queryKey: ["locationreorder", params],
+		queryKey: ["LocationReorder", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.locationreorder(params);
+					const response = await apiClient.LocationReorder(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const locationsingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.locationsingle>[0]>
+export const LocationSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.LocationSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["locationsingle", params],
+		queryKey: ["LocationSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.locationsingle(params);
+					const response = await apiClient.LocationSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const admindeleteuserQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.admindeleteuser>[0]>
+export const AdminDeleteUserQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AdminDeleteUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["admindeleteuser", params],
+		queryKey: ["AdminDeleteUser", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.admindeleteuser(params);
+					const response = await apiClient.AdminDeleteUser(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const admininviteuserQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.admininviteuser>[0]>
+export const AdminInviteUserQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AdminInviteUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "name", "roles");
 	return queryOptions({
-		queryKey: ["admininviteuser", params],
+		queryKey: ["AdminInviteUser", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.admininviteuser(params);
+					const response = await apiClient.AdminInviteUser(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const adminlistusersQueryOptions = () => {
+export const AdminListUsersQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["adminlistusers", undefined],
+		queryKey: ["AdminListUsers", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.adminlistusers(undefined);
+					const response = await apiClient.AdminListUsers(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const appredirectaccountdriverslicenseverificationcompleteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.appredirectaccountdriverslicenseverificationcomplete>[0]>
+export const AppRedirectAccountDriversLicenseVerificationCompleteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AppRedirectAccountDriversLicenseVerificationComplete>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "dossierId", "processId", "status");
 	return queryOptions({
-		queryKey: ["appredirectaccountdriverslicenseverificationcomplete", params],
+		queryKey: ["AppRedirectAccountDriversLicenseVerificationComplete", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.appredirectaccountdriverslicenseverificationcomplete(params);
+					const response = await apiClient.AppRedirectAccountDriversLicenseVerificationComplete(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authgetuserQueryOptions = (params: Partial<Parameters<typeof apiClient.authgetuser>[0]>) => {
+export const AuthGetUserQueryOptions = (params: Partial<Parameters<typeof apiClient.AuthGetUser>[0]>) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["authgetuser", params],
+		queryKey: ["AuthGetUser", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authgetuser(params);
+					const response = await apiClient.AuthGetUser(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authimpersonatestopsessionQueryOptions = () => {
+export const AuthImpersonateStopSessionQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authimpersonatestopsession", undefined],
+		queryKey: ["AuthImpersonateStopSession", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authimpersonatestopsession(undefined);
+					const response = await apiClient.AuthImpersonateStopSession(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authlogoutQueryOptions = () => {
+export const AuthLogoutQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authlogout", undefined],
+		queryKey: ["AuthLogout", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authlogout(undefined);
+					const response = await apiClient.AuthLogout(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authmeQueryOptions = () => {
+export const AuthMeQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authme", undefined],
+		queryKey: ["AuthMe", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authme(undefined);
+					const response = await apiClient.AuthMe(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authrefreshtokensQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authrefreshtokens>[0]>
+export const AuthRefreshTokensQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthRefreshTokens>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "refreshToken");
 	return queryOptions({
-		queryKey: ["authrefreshtokens", params],
+		queryKey: ["AuthRefreshTokens", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authrefreshtokens(params);
+					const response = await apiClient.AuthRefreshTokens(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authsetuseractiveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authsetuseractive>[0]>
+export const AuthSetUserActiveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthSetUserActive>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "active");
 	return queryOptions({
-		queryKey: ["authsetuseractive", params],
+		queryKey: ["AuthSetUserActive", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authsetuseractive(params);
+					const response = await apiClient.AuthSetUserActive(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authupdateuserQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authupdateuser>[0]>
+export const AuthUpdateUserQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthUpdateUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["authupdateuser", params],
+		queryKey: ["AuthUpdateUser", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authupdateuser(params);
+					const response = await apiClient.AuthUpdateUser(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authuserlistQueryOptions = (params: Partial<Parameters<typeof apiClient.authuserlist>[0]>) => {
+export const AuthUserListQueryOptions = (params: Partial<Parameters<typeof apiClient.AuthUserList>[0]>) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["authuserlist", params],
+		queryKey: ["AuthUserList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authuserlist(params);
+					const response = await apiClient.AuthUserList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissioncreateroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissioncreaterole>[0]>
+export const AuthPermissionCreateRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionCreateRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "identifier");
 	return queryOptions({
-		queryKey: ["authpermissioncreaterole", params],
+		queryKey: ["AuthPermissionCreateRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissioncreaterole(params);
+					const response = await apiClient.AuthPermissionCreateRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionpermissionlistQueryOptions = () => {
+export const AuthPermissionPermissionListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpermissionpermissionlist", undefined],
+		queryKey: ["AuthPermissionPermissionList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionpermissionlist(undefined);
+					const response = await apiClient.AuthPermissionPermissionList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionremoveroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionremoverole>[0]>
+export const AuthPermissionRemoveRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRemoveRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role");
 	return queryOptions({
-		queryKey: ["authpermissionremoverole", params],
+		queryKey: ["AuthPermissionRemoveRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionremoverole(params);
+					const response = await apiClient.AuthPermissionRemoveRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionroleaddpermissionsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionroleaddpermissions>[0]>
+export const AuthPermissionRoleAddPermissionsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRoleAddPermissions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role", "permissions");
 	return queryOptions({
-		queryKey: ["authpermissionroleaddpermissions", params],
+		queryKey: ["AuthPermissionRoleAddPermissions", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionroleaddpermissions(params);
+					const response = await apiClient.AuthPermissionRoleAddPermissions(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionrolelistQueryOptions = () => {
+export const AuthPermissionRoleListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpermissionrolelist", undefined],
+		queryKey: ["AuthPermissionRoleList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionrolelist(undefined);
+					const response = await apiClient.AuthPermissionRoleList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionroleremovepermissionsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionroleremovepermissions>[0]>
+export const AuthPermissionRoleRemovePermissionsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRoleRemovePermissions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role", "permissions");
 	return queryOptions({
-		queryKey: ["authpermissionroleremovepermissions", params],
+		queryKey: ["AuthPermissionRoleRemovePermissions", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionroleremovepermissions(params);
+					const response = await apiClient.AuthPermissionRoleRemovePermissions(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionsummaryQueryOptions = () => {
+export const AuthPermissionSummaryQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpermissionsummary", undefined],
+		queryKey: ["AuthPermissionSummary", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionsummary(undefined);
+					const response = await apiClient.AuthPermissionSummary(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionuserassignroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionuserassignrole>[0]>
+export const AuthPermissionUserAssignRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserAssignRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "role");
 	return queryOptions({
-		queryKey: ["authpermissionuserassignrole", params],
+		queryKey: ["AuthPermissionUserAssignRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionuserassignrole(params);
+					const response = await apiClient.AuthPermissionUserAssignRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionuserremoveroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionuserremoverole>[0]>
+export const AuthPermissionUserRemoveRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserRemoveRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "role");
 	return queryOptions({
-		queryKey: ["authpermissionuserremoverole", params],
+		queryKey: ["AuthPermissionUserRemoveRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionuserremoverole(params);
+					const response = await apiClient.AuthPermissionUserRemoveRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionusersummaryQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionusersummary>[0]>
+export const AuthPermissionUserSummaryQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserSummary>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["authpermissionusersummary", params],
+		queryKey: ["AuthPermissionUserSummary", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionusersummary(params);
+					const response = await apiClient.AuthPermissionUserSummary(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authanonymousbasedloginQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authanonymousbasedlogin>[0]>
+export const AuthAnonymousBasedLoginQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthAnonymousBasedLogin>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "token");
 	return queryOptions({
-		queryKey: ["authanonymousbasedlogin", params],
+		queryKey: ["AuthAnonymousBasedLogin", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authanonymousbasedlogin(params);
+					const response = await apiClient.AuthAnonymousBasedLogin(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sessionlistQueryOptions = () => {
+export const SessionListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["sessionlist", undefined],
+		queryKey: ["SessionList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sessionlist(undefined);
+					const response = await apiClient.SessionList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sessionlogoutQueryOptions = (params: Partial<Parameters<typeof apiClient.sessionlogout>[0]>) => {
+export const SessionLogoutQueryOptions = (params: Partial<Parameters<typeof apiClient.SessionLogout>[0]>) => {
 	const enabled = hasDefinedProps(params, "sessionId");
 	return queryOptions({
-		queryKey: ["sessionlogout", params],
+		queryKey: ["SessionLogout", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sessionlogout(params);
+					const response = await apiClient.SessionLogout(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sessionsetdevicenotificationtokenQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sessionsetdevicenotificationtoken>[0]>
+export const SessionSetDeviceNotificationTokenQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SessionSetDeviceNotificationToken>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["sessionsetdevicenotificationtoken", params],
+		queryKey: ["SessionSetDeviceNotificationToken", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sessionsetdevicenotificationtoken(params);
+					const response = await apiClient.SessionSetDeviceNotificationToken(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authtotpproviderinfoQueryOptions = () => {
+export const AuthTotpProviderInfoQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authtotpproviderinfo", undefined],
+		queryKey: ["AuthTotpProviderInfo", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authtotpproviderinfo(undefined);
+					const response = await apiClient.AuthTotpProviderInfo(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authtotpproviderremoveQueryOptions = () => {
+export const AuthTotpProviderRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authtotpproviderremove", undefined],
+		queryKey: ["AuthTotpProviderRemove", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authtotpproviderremove(undefined);
+					const response = await apiClient.AuthTotpProviderRemove(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authtotpproviderremoveforuserQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authtotpproviderremoveforuser>[0]>
+export const AuthTotpProviderRemoveForUserQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderRemoveForUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["authtotpproviderremoveforuser", params],
+		queryKey: ["AuthTotpProviderRemoveForUser", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authtotpproviderremoveforuser(params);
+					const response = await apiClient.AuthTotpProviderRemoveForUser(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authtotpprovidersetupQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authtotpprovidersetup>[0]>
+export const AuthTotpProviderSetupQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderSetup>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["authtotpprovidersetup", params],
+		queryKey: ["AuthTotpProviderSetup", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authtotpprovidersetup(params);
+					const response = await apiClient.AuthTotpProviderSetup(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authtotpprovidersetupverifyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authtotpprovidersetupverify>[0]>
+export const AuthTotpProviderSetupVerifyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderSetupVerify>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "totp");
 	return queryOptions({
-		queryKey: ["authtotpprovidersetupverify", params],
+		queryKey: ["AuthTotpProviderSetupVerify", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authtotpprovidersetupverify(params);
+					const response = await apiClient.AuthTotpProviderSetupVerify(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authtotpproviderverifyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authtotpproviderverify>[0]>
+export const AuthTotpProviderVerifyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthTotpProviderVerify>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "totp");
 	return queryOptions({
-		queryKey: ["authtotpproviderverify", params],
+		queryKey: ["AuthTotpProviderVerify", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authtotpproviderverify(params);
+					const response = await apiClient.AuthTotpProviderVerify(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const businessaddressprefillQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.businessaddressprefill>[0]>
+export const BusinessAddressPrefillQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.BusinessAddressPrefill>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "postalCode", "houseNumber");
 	return queryOptions({
-		queryKey: ["businessaddressprefill", params],
+		queryKey: ["BusinessAddressPrefill", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.businessaddressprefill(params);
+					const response = await apiClient.BusinessAddressPrefill(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const clientadminlistQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.clientadminlist>[0]>
+export const ClientAdminListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ClientAdminList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "q");
 	return queryOptions({
-		queryKey: ["clientadminlist", params],
+		queryKey: ["ClientAdminList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.clientadminlist(params);
+					const response = await apiClient.ClientAdminList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const clientadminproplanneraccountQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.clientadminproplanneraccount>[0]>
+export const ClientAdminProplannerAccountQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ClientAdminProplannerAccount>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["clientadminproplanneraccount", params],
+		queryKey: ["ClientAdminProplannerAccount", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.clientadminproplanneraccount(params);
+					const response = await apiClient.ClientAdminProplannerAccount(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const clientadminremoveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.clientadminremove>[0]>
+export const ClientAdminRemoveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ClientAdminRemove>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["clientadminremove", params],
+		queryKey: ["ClientAdminRemove", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.clientadminremove(params);
+					const response = await apiClient.ClientAdminRemove(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const clientadminupdateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.clientadminupdate>[0]>
+export const ClientAdminUpdateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ClientAdminUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["clientadminupdate", params],
+		queryKey: ["ClientAdminUpdate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.clientadminupdate(params);
+					const response = await apiClient.ClientAdminUpdate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const confirmedorderlistQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.confirmedorderlist>[0]>
+export const ConfirmedOrderListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ConfirmedOrderList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["confirmedorderlist", params],
+		queryKey: ["ConfirmedOrderList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.confirmedorderlist(params);
+					const response = await apiClient.ConfirmedOrderList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const confirmedstorageordersingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.confirmedstorageordersingle>[0]>
+export const ConfirmedStorageOrderSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ConfirmedStorageOrderSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["confirmedstorageordersingle", params],
+		queryKey: ["ConfirmedStorageOrderSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.confirmedstorageordersingle(params);
+					const response = await apiClient.ConfirmedStorageOrderSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storagecontractdownloadcontractQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storagecontractdownloadcontract>[0]>
+export const StorageContractDownloadContractQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageContractDownloadContract>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId", "contractId");
 	return queryOptions({
-		queryKey: ["storagecontractdownloadcontract", params],
+		queryKey: ["StorageContractDownloadContract", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storagecontractdownloadcontract(params);
+					const response = await apiClient.StorageContractDownloadContract(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storagecontractdownloadinvoiceQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storagecontractdownloadinvoice>[0]>
+export const StorageContractDownloadInvoiceQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageContractDownloadInvoice>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId", "invoiceNumber");
 	return queryOptions({
-		queryKey: ["storagecontractdownloadinvoice", params],
+		queryKey: ["StorageContractDownloadInvoice", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storagecontractdownloadinvoice(params);
+					const response = await apiClient.StorageContractDownloadInvoice(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storagecontractinvoicesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storagecontractinvoices>[0]>
+export const StorageContractInvoicesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageContractInvoices>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["storagecontractinvoices", params],
+		queryKey: ["StorageContractInvoices", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storagecontractinvoices(params);
+					const response = await apiClient.StorageContractInvoices(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storagecontractoverviewQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storagecontractoverview>[0]>
+export const StorageContractOverviewQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageContractOverview>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["storagecontractoverview", params],
+		queryKey: ["StorageContractOverview", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storagecontractoverview(params);
+					const response = await apiClient.StorageContractOverview(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storagecontractterminateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storagecontractterminate>[0]>
+export const StorageContractTerminateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageContractTerminate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -1481,151 +1481,151 @@ export const storagecontractterminateQueryOptions = (
 		"terminationReasonId"
 	);
 	return queryOptions({
-		queryKey: ["storagecontractterminate", params],
+		queryKey: ["StorageContractTerminate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storagecontractterminate(params);
+					const response = await apiClient.StorageContractTerminate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageordercheckoutQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storageordercheckout>[0]>
+export const StorageOrderCheckoutQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageOrderCheckout>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale");
 	return queryOptions({
-		queryKey: ["storageordercheckout", params],
+		queryKey: ["StorageOrderCheckout", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageordercheckout(params);
+					const response = await apiClient.StorageOrderCheckout(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageorderoverviewQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storageorderoverview>[0]>
+export const StorageOrderOverviewQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageOrderOverview>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["storageorderoverview", params],
+		queryKey: ["StorageOrderOverview", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageorderoverview(params);
+					const response = await apiClient.StorageOrderOverview(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageorderconfigureQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storageorderconfigure>[0]>
+export const StorageOrderConfigureQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageOrderConfigure>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["storageorderconfigure", params],
+		queryKey: ["StorageOrderConfigure", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageorderconfigure(params);
+					const response = await apiClient.StorageOrderConfigure(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageorderdiscountapplyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storageorderdiscountapply>[0]>
+export const StorageOrderDiscountApplyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageOrderDiscountApply>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "discountCode");
 	return queryOptions({
-		queryKey: ["storageorderdiscountapply", params],
+		queryKey: ["StorageOrderDiscountApply", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageorderdiscountapply(params);
+					const response = await apiClient.StorageOrderDiscountApply(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageorderdiscountremoveQueryOptions = () => {
+export const StorageOrderDiscountRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["storageorderdiscountremove", undefined],
+		queryKey: ["StorageOrderDiscountRemove", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageorderdiscountremove(undefined);
+					const response = await apiClient.StorageOrderDiscountRemove(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const continentalcreatesessionQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.continentalcreatesession>[0]>
+export const ContinentalCreateSessionQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ContinentalCreateSession>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "token", "deviceName");
 	return queryOptions({
-		queryKey: ["continentalcreatesession", params],
+		queryKey: ["ContinentalCreateSession", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.continentalcreatesession(params);
+					const response = await apiClient.ContinentalCreateSession(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const continentalcreatevirtualkeyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.continentalcreatevirtualkey>[0]>
+export const ContinentalCreateVirtualKeyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ContinentalCreateVirtualKey>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "bookingId", "clientDeviceId");
 	return queryOptions({
-		queryKey: ["continentalcreatevirtualkey", params],
+		queryKey: ["ContinentalCreateVirtualKey", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.continentalcreatevirtualkey(params);
+					const response = await apiClient.ContinentalCreateVirtualKey(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const continentalrevokevirtualkeyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.continentalrevokevirtualkey>[0]>
+export const ContinentalRevokeVirtualKeyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ContinentalRevokeVirtualKey>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "virtualKeyId");
 	return queryOptions({
-		queryKey: ["continentalrevokevirtualkey", params],
+		queryKey: ["ContinentalRevokeVirtualKey", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.continentalrevokevirtualkey(params);
+					const response = await apiClient.ContinentalRevokeVirtualKey(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const continentalupdatevirtualkeyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.continentalupdatevirtualkey>[0]>
+export const ContinentalUpdateVirtualKeyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ContinentalUpdateVirtualKey>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "virtualKeyId", "fromDate", "toDate");
 	return queryOptions({
-		queryKey: ["continentalupdatevirtualkey", params],
+		queryKey: ["ContinentalUpdateVirtualKey", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.continentalupdatevirtualkey(params);
+					const response = await apiClient.ContinentalUpdateVirtualKey(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const divergentopeninghourscreateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.divergentopeninghourscreate>[0]>
+export const DivergentOpeningHoursCreateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursCreate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -1637,33 +1637,33 @@ export const divergentopeninghourscreateQueryOptions = (
 		"locations"
 	);
 	return queryOptions({
-		queryKey: ["divergentopeninghourscreate", params],
+		queryKey: ["DivergentOpeningHoursCreate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.divergentopeninghourscreate(params);
+					const response = await apiClient.DivergentOpeningHoursCreate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const divergentopeninghourssingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.divergentopeninghourssingle>[0]>
+export const DivergentOpeningHoursSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["divergentopeninghourssingle", params],
+		queryKey: ["DivergentOpeningHoursSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.divergentopeninghourssingle(params);
+					const response = await apiClient.DivergentOpeningHoursSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const divergentopeninghoursupdateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.divergentopeninghoursupdate>[0]>
+export const DivergentOpeningHoursUpdateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(
 		params,
@@ -1676,174 +1676,174 @@ export const divergentopeninghoursupdateQueryOptions = (
 		"locations"
 	);
 	return queryOptions({
-		queryKey: ["divergentopeninghoursupdate", params],
+		queryKey: ["DivergentOpeningHoursUpdate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.divergentopeninghoursupdate(params);
+					const response = await apiClient.DivergentOpeningHoursUpdate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const divergentopeninghoursdeleteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.divergentopeninghoursdelete>[0]>
+export const DivergentOpeningHoursDeleteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursDelete>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["divergentopeninghoursdelete", params],
+		queryKey: ["DivergentOpeningHoursDelete", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.divergentopeninghoursdelete(params);
+					const response = await apiClient.DivergentOpeningHoursDelete(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const divergentopeninghourslistQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.divergentopeninghourslist>[0]>
+export const DivergentOpeningHoursListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DivergentOpeningHoursList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["divergentopeninghourslist", params],
+		queryKey: ["DivergentOpeningHoursList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.divergentopeninghourslist(params);
+					const response = await apiClient.DivergentOpeningHoursList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const featureflagcurrentQueryOptions = () => {
+export const FeatureFlagCurrentQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["featureflagcurrent", undefined],
+		queryKey: ["FeatureFlagCurrent", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.featureflagcurrent(undefined);
+					const response = await apiClient.FeatureFlagCurrent(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const jobstartproplannermirrorQueryOptions = () => {
+export const JobStartProplannerMirrorQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["jobstartproplannermirror", undefined],
+		queryKey: ["JobStartProplannerMirror", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.jobstartproplannermirror(undefined);
+					const response = await apiClient.JobStartProplannerMirror(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const managementrequestmagiclinkQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.managementrequestmagiclink>[0]>
+export const ManagementRequestMagicLinkQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ManagementRequestMagicLink>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "slackUserId");
 	return queryOptions({
-		queryKey: ["managementrequestmagiclink", params],
+		queryKey: ["ManagementRequestMagicLink", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.managementrequestmagiclink(params);
+					const response = await apiClient.ManagementRequestMagicLink(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const managementfeatureflaglistQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.managementfeatureflaglist>[0]>
+export const ManagementFeatureFlagListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ManagementFeatureFlagList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["managementfeatureflaglist", params],
+		queryKey: ["ManagementFeatureFlagList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.managementfeatureflaglist(params);
+					const response = await apiClient.ManagementFeatureFlagList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const managementfeatureflagsingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.managementfeatureflagsingle>[0]>
+export const ManagementFeatureFlagSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ManagementFeatureFlagSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "featureFlagId");
 	return queryOptions({
-		queryKey: ["managementfeatureflagsingle", params],
+		queryKey: ["ManagementFeatureFlagSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.managementfeatureflagsingle(params);
+					const response = await apiClient.ManagementFeatureFlagSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const managementfeatureflagupdateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.managementfeatureflagupdate>[0]>
+export const ManagementFeatureFlagUpdateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ManagementFeatureFlagUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "featureFlagId");
 	return queryOptions({
-		queryKey: ["managementfeatureflagupdate", params],
+		queryKey: ["ManagementFeatureFlagUpdate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.managementfeatureflagupdate(params);
+					const response = await apiClient.ManagementFeatureFlagUpdate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const multitenantcurrentQueryOptions = () => {
+export const MultitenantCurrentQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["multitenantcurrent", undefined],
+		queryKey: ["MultitenantCurrent", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.multitenantcurrent(undefined);
+					const response = await apiClient.MultitenantCurrent(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const onfidostartdriverslicenseverificationQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.onfidostartdriverslicenseverification>[0]>
+export const OnfidoStartDriversLicenseVerificationQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.OnfidoStartDriversLicenseVerification>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["onfidostartdriverslicenseverification", params],
+		queryKey: ["OnfidoStartDriversLicenseVerification", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.onfidostartdriverslicenseverification(params);
+					const response = await apiClient.OnfidoStartDriversLicenseVerification(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const onfidowebhookQueryOptions = (params: Partial<Parameters<typeof apiClient.onfidowebhook>[0]>) => {
+export const OnfidoWebhookQueryOptions = (params: Partial<Parameters<typeof apiClient.OnfidoWebhook>[0]>) => {
 	const enabled = hasDefinedProps(params, "eventData");
 	return queryOptions({
-		queryKey: ["onfidowebhook", params],
+		queryKey: ["OnfidoWebhook", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.onfidowebhook(params);
+					const response = await apiClient.OnfidoWebhook(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const orderaddQueryOptions = (params: Partial<Parameters<typeof apiClient.orderadd>[0]>) => {
+export const OrderAddQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderAdd>[0]>) => {
 	const enabled = hasDefinedProps(
 		params,
 		"categoryId",
@@ -1857,84 +1857,84 @@ export const orderaddQueryOptions = (params: Partial<Parameters<typeof apiClient
 		"quantity"
 	);
 	return queryOptions({
-		queryKey: ["orderadd", params],
+		queryKey: ["OrderAdd", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.orderadd(params);
+					const response = await apiClient.OrderAdd(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const orderdiscountapplyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.orderdiscountapply>[0]>
+export const OrderDiscountApplyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.OrderDiscountApply>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "discountCode");
 	return queryOptions({
-		queryKey: ["orderdiscountapply", params],
+		queryKey: ["OrderDiscountApply", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.orderdiscountapply(params);
+					const response = await apiClient.OrderDiscountApply(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const orderdiscountremoveQueryOptions = () => {
+export const OrderDiscountRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["orderdiscountremove", undefined],
+		queryKey: ["OrderDiscountRemove", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.orderdiscountremove(undefined);
+					const response = await apiClient.OrderDiscountRemove(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const orderoverviewQueryOptions = (params: Partial<Parameters<typeof apiClient.orderoverview>[0]>) => {
+export const OrderOverviewQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderOverview>[0]>) => {
 	const enabled = hasDefinedProps(params, "locale");
 	return queryOptions({
-		queryKey: ["orderoverview", params],
+		queryKey: ["OrderOverview", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.orderoverview(params);
+					const response = await apiClient.OrderOverview(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const orderoverviewcountQueryOptions = () => {
+export const OrderOverviewCountQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["orderoverviewcount", undefined],
+		queryKey: ["OrderOverviewCount", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.orderoverviewcount(undefined);
+					const response = await apiClient.OrderOverviewCount(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ordersingleQueryOptions = (params: Partial<Parameters<typeof apiClient.ordersingle>[0]>) => {
+export const OrderSingleQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderSingle>[0]>) => {
 	const enabled = hasDefinedProps(params, "lineId");
 	return queryOptions({
-		queryKey: ["ordersingle", params],
+		queryKey: ["OrderSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ordersingle(params);
+					const response = await apiClient.OrderSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const orderupdateQueryOptions = (params: Partial<Parameters<typeof apiClient.orderupdate>[0]>) => {
+export const OrderUpdateQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderUpdate>[0]>) => {
 	const enabled = hasDefinedProps(
 		params,
 		"lineId",
@@ -1949,375 +1949,375 @@ export const orderupdateQueryOptions = (params: Partial<Parameters<typeof apiCli
 		"quantity"
 	);
 	return queryOptions({
-		queryKey: ["orderupdate", params],
+		queryKey: ["OrderUpdate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.orderupdate(params);
+					const response = await apiClient.OrderUpdate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const orderremoveQueryOptions = (params: Partial<Parameters<typeof apiClient.orderremove>[0]>) => {
+export const OrderRemoveQueryOptions = (params: Partial<Parameters<typeof apiClient.OrderRemove>[0]>) => {
 	const enabled = hasDefinedProps(params, "lineId");
 	return queryOptions({
-		queryKey: ["orderremove", params],
+		queryKey: ["OrderRemove", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.orderremove(params);
+					const response = await apiClient.OrderRemove(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ordercheckoutflowcheckoutQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.ordercheckoutflowcheckout>[0]>
+export const OrderCheckoutFlowCheckoutQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.OrderCheckoutFlowCheckout>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale", "paymentMethod");
 	return queryOptions({
-		queryKey: ["ordercheckoutflowcheckout", params],
+		queryKey: ["OrderCheckoutFlowCheckout", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ordercheckoutflowcheckout(params);
+					const response = await apiClient.OrderCheckoutFlowCheckout(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ordercheckoutflowinfoQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.ordercheckoutflowinfo>[0]>
+export const OrderCheckoutFlowInfoQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.OrderCheckoutFlowInfo>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locale");
 	return queryOptions({
-		queryKey: ["ordercheckoutflowinfo", params],
+		queryKey: ["OrderCheckoutFlowInfo", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ordercheckoutflowinfo(params);
+					const response = await apiClient.OrderCheckoutFlowInfo(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ordercheckoutflowpreferencesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.ordercheckoutflowpreferences>[0]>
+export const OrderCheckoutFlowPreferencesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.OrderCheckoutFlowPreferences>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "preferences");
 	return queryOptions({
-		queryKey: ["ordercheckoutflowpreferences", params],
+		queryKey: ["OrderCheckoutFlowPreferences", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ordercheckoutflowpreferences(params);
+					const response = await apiClient.OrderCheckoutFlowPreferences(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ordershareapplyQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.ordershareapply>[0]>
+export const OrderShareApplyQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.OrderShareApply>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "shareId");
 	return queryOptions({
-		queryKey: ["ordershareapply", params],
+		queryKey: ["OrderShareApply", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ordershareapply(params);
+					const response = await apiClient.OrderShareApply(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ordersharecreateQueryOptions = () => {
+export const OrderShareCreateQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["ordersharecreate", undefined],
+		queryKey: ["OrderShareCreate", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ordersharecreate(undefined);
+					const response = await apiClient.OrderShareCreate(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const rabobankwebhookomnikassaQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.rabobankwebhookomnikassa>[0]>
+export const RabobankWebhookOmnikassaQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.RabobankWebhookOmnikassa>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "authentication", "expiry", "eventName", "poiId", "signature");
 	return queryOptions({
-		queryKey: ["rabobankwebhookomnikassa", params],
+		queryKey: ["RabobankWebhookOmnikassa", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.rabobankwebhookomnikassa(params);
+					const response = await apiClient.RabobankWebhookOmnikassa(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationactiveQueryOptions = () => {
+export const SharedVehicleReservationActiveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationactive", undefined],
+		queryKey: ["SharedVehicleReservationActive", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationactive(undefined);
+					const response = await apiClient.SharedVehicleReservationActive(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationavailabilityextendbookingQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationavailabilityextendbooking>[0]>
+export const SharedVehicleReservationAvailabilityExtendBookingQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationAvailabilityExtendBooking>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale", "dateReturn");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationavailabilityextendbooking", params],
+		queryKey: ["SharedVehicleReservationAvailabilityExtendBooking", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationavailabilityextendbooking(params);
+					const response = await apiClient.SharedVehicleReservationAvailabilityExtendBooking(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationsingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationsingle>[0]>
+export const SharedVehicleReservationSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationsingle", params],
+		queryKey: ["SharedVehicleReservationSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationsingle(params);
+					const response = await apiClient.SharedVehicleReservationSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationupdateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationupdate>[0]>
+export const SharedVehicleReservationUpdateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationUpdate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale", "datePickup", "dateReturn");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationupdate", params],
+		queryKey: ["SharedVehicleReservationUpdate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationupdate(params);
+					const response = await apiClient.SharedVehicleReservationUpdate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationcancelQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationcancel>[0]>
+export const SharedVehicleReservationCancelQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationCancel>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationcancel", params],
+		queryKey: ["SharedVehicleReservationCancel", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationcancel(params);
+					const response = await apiClient.SharedVehicleReservationCancel(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationextendbookingQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationextendbooking>[0]>
+export const SharedVehicleReservationExtendBookingQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationExtendBooking>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale", "dateReturn");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationextendbooking", params],
+		queryKey: ["SharedVehicleReservationExtendBooking", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationextendbooking(params);
+					const response = await apiClient.SharedVehicleReservationExtendBooking(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationgeneratepaymenturlQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationgeneratepaymenturl>[0]>
+export const SharedVehicleReservationGeneratePaymentUrlQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationGeneratePaymentUrl>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId", "locale");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationgeneratepaymenturl", params],
+		queryKey: ["SharedVehicleReservationGeneratePaymentUrl", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationgeneratepaymenturl(params);
+					const response = await apiClient.SharedVehicleReservationGeneratePaymentUrl(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationgetfuelinstructionsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationgetfuelinstructions>[0]>
+export const SharedVehicleReservationGetFuelInstructionsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationGetFuelInstructions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationgetfuelinstructions", params],
+		queryKey: ["SharedVehicleReservationGetFuelInstructions", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationgetfuelinstructions(params);
+					const response = await apiClient.SharedVehicleReservationGetFuelInstructions(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationlistQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationlist>[0]>
+export const SharedVehicleReservationListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationList>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "status", "filters");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationlist", params],
+		queryKey: ["SharedVehicleReservationList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationlist(params);
+					const response = await apiClient.SharedVehicleReservationList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationstartrideQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationstartride>[0]>
+export const SharedVehicleReservationStartRideQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationStartRide>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationstartride", params],
+		queryKey: ["SharedVehicleReservationStartRide", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationstartride(params);
+					const response = await apiClient.SharedVehicleReservationStartRide(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sharedvehiclereservationstoprideQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sharedvehiclereservationstopride>[0]>
+export const SharedVehicleReservationStopRideQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SharedVehicleReservationStopRide>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "reservationId");
 	return queryOptions({
-		queryKey: ["sharedvehiclereservationstopride", params],
+		queryKey: ["SharedVehicleReservationStopRide", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sharedvehiclereservationstopride(params);
+					const response = await apiClient.SharedVehicleReservationStopRide(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageaddonsQueryOptions = (params: Partial<Parameters<typeof apiClient.storageaddons>[0]>) => {
+export const StorageAddonsQueryOptions = (params: Partial<Parameters<typeof apiClient.StorageAddons>[0]>) => {
 	const enabled = hasDefinedProps(params, "storageLocationId");
 	return queryOptions({
-		queryKey: ["storageaddons", params],
+		queryKey: ["StorageAddons", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageaddons(params);
+					const response = await apiClient.StorageAddons(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storagecategoriesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storagecategories>[0]>
+export const StorageCategoriesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageCategories>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId");
 	return queryOptions({
-		queryKey: ["storagecategories", params],
+		queryKey: ["StorageCategories", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storagecategories(params);
+					const response = await apiClient.StorageCategories(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageterminationtypesQueryOptions = () => {
+export const StorageTerminationTypesQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["storageterminationtypes", undefined],
+		queryKey: ["StorageTerminationTypes", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageterminationtypes(undefined);
+					const response = await apiClient.StorageTerminationTypes(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storageunittypesQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storageunittypes>[0]>
+export const StorageUnitTypesQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageUnitTypes>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "categoryId", "storageLocationId");
 	return queryOptions({
-		queryKey: ["storageunittypes", params],
+		queryKey: ["StorageUnitTypes", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storageunittypes(params);
+					const response = await apiClient.StorageUnitTypes(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const storagelocationsingleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.storagelocationsingle>[0]>
+export const StorageLocationSingleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.StorageLocationSingle>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "storageLocationId");
 	return queryOptions({
-		queryKey: ["storagelocationsingle", params],
+		queryKey: ["StorageLocationSingle", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.storagelocationsingle(params);
+					const response = await apiClient.StorageLocationSingle(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const supportcontactQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.supportcontact>[0]>
+export const SupportContactQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SupportContact>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "name", "phone", "email", "department", "question");
 	return queryOptions({
-		queryKey: ["supportcontact", params],
+		queryKey: ["SupportContact", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.supportcontact(params);
+					const response = await apiClient.SupportContact(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const supportsubscribenewsletterQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.supportsubscribenewsletter>[0]>
+export const SupportSubscribeNewsletterQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SupportSubscribeNewsletter>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({
-		queryKey: ["supportsubscribenewsletter", params],
+		queryKey: ["SupportSubscribeNewsletter", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.supportsubscribenewsletter(params);
+					const response = await apiClient.SupportSubscribeNewsletter(params);
 					return response.data;
 				}
 			: skipToken,

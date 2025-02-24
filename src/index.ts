@@ -3,8 +3,8 @@ import { resolve } from "node:path";
 import axios from "axios";
 import type { OpenAPIV3 } from "openapi-types";
 import * as yaml from "yaml";
-import { generateAxiosInstance } from "./generator/axiosInstanceGenerator";
 import { generateApiClient } from "./generator/clientGenerator";
+import { generateInstance } from "./generator/instanceGenerator";
 import { generateReactQuery } from "./generator/reactQueryGenerator";
 import { generateTypeDefinitions } from "./generator/schemaGenerator";
 import type { OpenAPIConfig } from "./types/config";
@@ -30,10 +30,6 @@ async function loadOpenAPISpec(specSource: string): Promise<OpenAPIV3.Document> 
 	}
 }
 
-function sanitizeOperationId(operationId: string): string {
-	return operationId.replace(/[^a-zA-Z0-9_]/g, "_");
-}
-
 /**
  * Main function to generate the API client
  */
@@ -43,23 +39,24 @@ export async function codegenerate(config: OpenAPIConfig): Promise<void> {
 		const specs = Array.isArray(config.specSource)
 			? await Promise.all(config.specSource.map(loadOpenAPISpec))
 			: [await loadOpenAPISpec(config.specSource)];
+
+		// Create export directory if it doesn't exist
+		await mkdir(config.exportDir, { recursive: true });
+
+		// Generate and write type definitions
+		const instance = generateInstance();
+		await writeFile(resolve(config.exportDir, "apiClient.ts"), instance, "utf-8");
+
 		// Generate for each spec...
 		for (const spec of specs) {
-			// Create export directory if it doesn't exist
-			await mkdir(config.exportDir, { recursive: true });
-
 			const title = specTitle(spec);
 
 			// Generate and write type definitions
 			const typeDefinitions = generateTypeDefinitions(spec);
 			await writeFile(resolve(config.exportDir, `${title}.schema.ts`), typeDefinitions, "utf-8");
 
-			// Generate and write axios instance
-			const axiosInstance = generateAxiosInstance(spec);
-			await writeFile(resolve(config.exportDir, `${title}.axios.ts`), axiosInstance, "utf-8");
-
 			// Generate and write API client
-			const clientCode = generateApiClient(spec);
+			const clientCode = generateApiClient(spec, config);
 			await writeFile(resolve(config.exportDir, `${title}.client.ts`), clientCode, "utf-8");
 
 			// Generate and write React Query options

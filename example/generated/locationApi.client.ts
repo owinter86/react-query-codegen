@@ -1,5 +1,5 @@
 import type { AxiosResponse } from "axios";
-import { getlocationApiInstance } from "./locationApi.axios";
+import { getApiClient } from "./apiClient";
 import type * as T from "./locationApi.schema";
 
 /**
@@ -23,6 +23,7 @@ export async function _api__external_location_filters_get_collection(
 	},
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T._api__external_location_filters_get_collectionResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/v1/location_filters";
 	const queryData = {
 		language: data.language,
@@ -31,7 +32,7 @@ export async function _api__external_location_filters_get_collection(
 		cleaningType: data.cleaningType,
 		disinfection: data.disinfection,
 	};
-	return getlocationApiInstance().get<T._api__external_location_filters_get_collectionResponse200>(url, {
+	return apiClient.get<T._api__external_location_filters_get_collectionResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -63,6 +64,7 @@ export async function _api__external_locations_truckcharging_availability_get_co
 	},
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T._api__external_locations_truckcharging_availability_get_collectionResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/v1/locations/truckcharging/availability";
 	const queryData = {
 		locationIds: data.locationIds,
@@ -73,14 +75,11 @@ export async function _api__external_locations_truckcharging_availability_get_co
 		page: data.page,
 		itemsPerPage: data.itemsPerPage,
 	};
-	return getlocationApiInstance().get<T._api__external_locations_truckcharging_availability_get_collectionResponse200>(
-		url,
-		{
-			params: queryData,
+	return apiClient.get<T._api__external_locations_truckcharging_availability_get_collectionResponse200>(url, {
+		params: queryData,
 
-			headers,
-		}
-	);
+		headers,
+	});
 }
 
 /**
@@ -106,6 +105,7 @@ export async function _api__external_locations__id__wash_programs_get_collection
 	},
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T._api__external_locations__id__wash_programs_get_collectionResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/v1/locations/${data.id}/wash_programs`;
 	const queryData = {
 		vehicleTypes: data.vehicleTypes,
@@ -114,14 +114,11 @@ export async function _api__external_locations__id__wash_programs_get_collection
 		page: data.page,
 		itemsPerPage: data.itemsPerPage,
 	};
-	return getlocationApiInstance().get<T._api__external_locations__id__wash_programs_get_collectionResponse200>(
-		url,
-		{
-			params: queryData,
+	return apiClient.get<T._api__external_locations__id__wash_programs_get_collectionResponse200>(url, {
+		params: queryData,
 
-			headers,
-		}
-	);
+		headers,
+	});
 }
 
 /**
@@ -138,8 +135,9 @@ export async function _api__external_locations__locationId__service__service__de
 ): Promise<
 	AxiosResponse<T._api__external_locations__locationId__service__service__description_getResponse200>
 > {
+	const apiClient = getApiClient();
 	const url = `/v1/locations/${data.locationId}/service/${data.service}/description`;
-	return getlocationApiInstance().get<T._api__external_locations__locationId__service__service__description_getResponse200>(
+	return apiClient.get<T._api__external_locations__locationId__service__service__description_getResponse200>(
 		url,
 		{
 			headers,
@@ -210,6 +208,7 @@ export async function get_v1_locations(
 	},
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.get_v1_locationsResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/v1/locations";
 	const queryData = {
 		page: data.page,
@@ -237,7 +236,7 @@ export async function get_v1_locations(
 		"cargoType[]": data["cargoType[]"],
 		"tankCleaningOptions[]": data["tankCleaningOptions[]"],
 	};
-	return getlocationApiInstance().get<T.get_v1_locationsResponse200>(url, {
+	return apiClient.get<T.get_v1_locationsResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -254,8 +253,9 @@ export async function get_v1_locations_locationId_(
 	data: { locationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.get_v1_locations_locationId_Response200>> {
+	const apiClient = getApiClient();
 	const url = `/v1/locations/${data.locationId}`;
-	return getlocationApiInstance().get<T.get_v1_locations_locationId_Response200>(url, {
+	return apiClient.get<T.get_v1_locations_locationId_Response200>(url, {
 		headers,
 	});
 }
@@ -274,6 +274,7 @@ export async function get_v1_locations_parking_availability(
 	data: { "locationIds[]": any; page?: number; arrivalDateTime: string; departureDateTime: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.get_v1_locations_parking_availabilityResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/v1/locations/parking/availability";
 	const queryData = {
 		"locationIds[]": data["locationIds[]"],
@@ -281,7 +282,7 @@ export async function get_v1_locations_parking_availability(
 		arrivalDateTime: data.arrivalDateTime,
 		departureDateTime: data.departureDateTime,
 	};
-	return getlocationApiInstance().get<T.get_v1_locations_parking_availabilityResponse200>(url, {
+	return apiClient.get<T.get_v1_locations_parking_availabilityResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -347,6 +348,7 @@ export async function get_v1_locations_poi(
 	},
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.get_v1_locations_poiResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/v1/locations/poi";
 	const queryData = {
 		arrivalDate: data.arrivalDate,
@@ -372,7 +374,7 @@ export async function get_v1_locations_poi(
 		"cargoType[]": data["cargoType[]"],
 		"tankCleaningOptions[]": data["tankCleaningOptions[]"],
 	};
-	return getlocationApiInstance().get<T.get_v1_locations_poiResponse200>(url, {
+	return apiClient.get<T.get_v1_locations_poiResponse200>(url, {
 		params: queryData,
 
 		headers,

@@ -7,120 +7,126 @@ const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 	return keys.every((k) => obj[k] !== undefined);
 };
 
-export const apiexternallocationfiltersgetcollectionQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.apiexternallocationfiltersgetcollection>[0]>
+export const _api__external_location_filters_get_collectionQueryOptions = (
+	params: Partial<Parameters<typeof apiClient._api__external_location_filters_get_collection>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "service");
 	return queryOptions({
-		queryKey: ["apiexternallocationfiltersgetcollection", params],
+		queryKey: ["_api__external_location_filters_get_collection", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.apiexternallocationfiltersgetcollection(params);
+					const response = await apiClient._api__external_location_filters_get_collection(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const apiexternallocationstruckchargingavailabilitygetcollectionQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.apiexternallocationstruckchargingavailabilitygetcollection>[0]>
+export const _api__external_locations_truckcharging_availability_get_collectionQueryOptions = (
+	params: Partial<
+		Parameters<typeof apiClient._api__external_locations_truckcharging_availability_get_collection>[0]
+	>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["apiexternallocationstruckchargingavailabilitygetcollection", params],
+		queryKey: ["_api__external_locations_truckcharging_availability_get_collection", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.apiexternallocationstruckchargingavailabilitygetcollection(params);
+					const response =
+						await apiClient._api__external_locations_truckcharging_availability_get_collection(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const apiexternallocationsidwashprogramsgetcollectionQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.apiexternallocationsidwashprogramsgetcollection>[0]>
+export const _api__external_locations__id__wash_programs_get_collectionQueryOptions = (
+	params: Partial<Parameters<typeof apiClient._api__external_locations__id__wash_programs_get_collection>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["apiexternallocationsidwashprogramsgetcollection", params],
+		queryKey: ["_api__external_locations__id__wash_programs_get_collection", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.apiexternallocationsidwashprogramsgetcollection(params);
+					const response = await apiClient._api__external_locations__id__wash_programs_get_collection(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const apiexternallocationslocationidserviceservicedescriptiongetQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.apiexternallocationslocationidserviceservicedescriptionget>[0]>
+export const _api__external_locations__locationId__service__service__description_getQueryOptions = (
+	params: Partial<
+		Parameters<typeof apiClient._api__external_locations__locationId__service__service__description_get>[0]
+	>
 ) => {
 	const enabled = hasDefinedProps(params, "locationId", "service");
 	return queryOptions({
-		queryKey: ["apiexternallocationslocationidserviceservicedescriptionget", params],
+		queryKey: ["_api__external_locations__locationId__service__service__description_get", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.apiexternallocationslocationidserviceservicedescriptionget(params);
+					const response =
+						await apiClient._api__external_locations__locationId__service__service__description_get(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const getv1locationsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.getv1locations>[0]>
+export const get_v1_locationsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.get_v1_locations>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["getv1locations", params],
+		queryKey: ["get_v1_locations", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.getv1locations(params);
+					const response = await apiClient.get_v1_locations(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const getv1locationslocationid_QueryOptions = (
-	params: Partial<Parameters<typeof apiClient.getv1locationslocationid_>[0]>
+export const get_v1_locations_locationId_QueryOptions = (
+	params: Partial<Parameters<typeof apiClient.get_v1_locations_locationId_>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locationId");
 	return queryOptions({
-		queryKey: ["getv1locationslocationid_", params],
+		queryKey: ["get_v1_locations_locationId_", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.getv1locationslocationid_(params);
+					const response = await apiClient.get_v1_locations_locationId_(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const getv1locationsparkingavailabilityQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.getv1locationsparkingavailability>[0]>
+export const get_v1_locations_parking_availabilityQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.get_v1_locations_parking_availability>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "locationIds[]", "arrivalDateTime", "departureDateTime");
 	return queryOptions({
-		queryKey: ["getv1locationsparkingavailability", params],
+		queryKey: ["get_v1_locations_parking_availability", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.getv1locationsparkingavailability(params);
+					const response = await apiClient.get_v1_locations_parking_availability(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const getv1locationspoiQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.getv1locationspoi>[0]>
+export const get_v1_locations_poiQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.get_v1_locations_poi>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["getv1locationspoi", params],
+		queryKey: ["get_v1_locations_poi", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.getv1locationspoi(params);
+					const response = await apiClient.get_v1_locations_poi(params);
 					return response.data;
 				}
 			: skipToken,

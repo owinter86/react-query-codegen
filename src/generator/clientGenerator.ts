@@ -1,4 +1,5 @@
 import type { OpenAPIV3 } from "openapi-types";
+import type { OpenAPIConfig } from "../types/config";
 import { sanitizePropertyName, sanitizeTypeName, specTitle } from "../utils";
 
 export interface OperationInfo {
@@ -123,9 +124,8 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 
 	const urlWithParams = urlParams.length > 0 ? path.replace(/{(\w+)}/g, "${data.$1}") : path;
 
-	const title = specTitle(spec);
-
 	const methodBody = [
+		"const apiClient = getApiClient();",
 		`const url = \`${urlWithParams}\`;`,
 		queryParams.length > 0
 			? `const queryData = {
@@ -153,7 +153,7 @@ function generateAxiosMethod(operation: OperationInfo, spec: OpenAPIV3.Document)
 				})
 				.join("\n			")}`
 			: "",
-		`return get${title}Instance().${method.toLowerCase()}<${responseType}>(url, {
+		`return apiClient.${method.toLowerCase()}<${responseType}>(url, {
 			${queryParams.length > 0 ? "params: queryData," : ""}
 			${requestBody ? `data: ${isFormData ? "formData" : "bodyData"},` : ""}
 			${isFormData ? `headers: { 'Content-Type': 'multipart/form-data', ...headers },` : "headers"}
@@ -189,7 +189,7 @@ function getTypeFromParam(param: OpenAPIV3.ParameterObject): string {
 	return "any";
 }
 
-export function generateApiClient(spec: OpenAPIV3.Document): string {
+export function generateApiClient(spec: OpenAPIV3.Document, config: OpenAPIConfig): string {
 	const operations: OperationInfo[] = [];
 
 	const resolveParameters = (
@@ -238,11 +238,9 @@ export function generateApiClient(spec: OpenAPIV3.Document): string {
 
 	const title = specTitle(spec);
 
-	// Generate the client class
-	return `import { get${title}Instance } from './${title}.axios';
-import type { AxiosResponse } from 'axios';
+	return `import type { AxiosResponse } from 'axios';
+import { getApiClient } from './apiClient';
 import type * as T from './${title}.schema';
-
 
 ${operations.map((op) => generateAxiosMethod(op, spec)).join("\n\n")}`;
 }

@@ -7,828 +7,828 @@ const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 	return keys.every((k) => obj[k] !== undefined);
 };
 
-export const accountmeQueryOptions = () => {
+export const AccountMeQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountme", undefined],
+		queryKey: ["AccountMe", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountme(undefined);
+					const response = await apiClient.AccountMe(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountregisterQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.accountregister>[0]>
+export const AccountRegisterQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AccountRegister>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "password");
 	return queryOptions({
-		queryKey: ["accountregister", params],
+		queryKey: ["AccountRegister", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountregister(params);
+					const response = await apiClient.AccountRegister(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountremoveQueryOptions = () => {
+export const AccountRemoveQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["accountremove", undefined],
+		queryKey: ["AccountRemove", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountremove(undefined);
+					const response = await apiClient.AccountRemove(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const accountupdatepushnotificationsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.accountupdatepushnotifications>[0]>
+export const AccountUpdatePushNotificationsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AccountUpdatePushNotifications>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "pushNotificationSettings");
 	return queryOptions({
-		queryKey: ["accountupdatepushnotifications", params],
+		queryKey: ["AccountUpdatePushNotifications", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.accountupdatepushnotifications(params);
+					const response = await apiClient.AccountUpdatePushNotifications(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ticketaddQueryOptions = (params: Partial<Parameters<typeof apiClient.ticketadd>[0]>) => {
+export const TicketAddQueryOptions = (params: Partial<Parameters<typeof apiClient.TicketAdd>[0]>) => {
 	const enabled = hasDefinedProps(params, "email", "barcode", "exhibitionId");
 	return queryOptions({
-		queryKey: ["ticketadd", params],
+		queryKey: ["TicketAdd", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ticketadd(params);
+					const response = await apiClient.TicketAdd(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const ticketremoveQueryOptions = (params: Partial<Parameters<typeof apiClient.ticketremove>[0]>) => {
+export const TicketRemoveQueryOptions = (params: Partial<Parameters<typeof apiClient.TicketRemove>[0]>) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["ticketremove", params],
+		queryKey: ["TicketRemove", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.ticketremove(params);
+					const response = await apiClient.TicketRemove(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedforgotpasswordQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedforgotpassword>[0]>
+export const AuthPasswordBasedForgotPasswordQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedForgotPassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({
-		queryKey: ["authpasswordbasedforgotpassword", params],
+		queryKey: ["AuthPasswordBasedForgotPassword", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedforgotpassword(params);
+					const response = await apiClient.AuthPasswordBasedForgotPassword(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedlistemailsQueryOptions = () => {
+export const AuthPasswordBasedListEmailsQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpasswordbasedlistemails", undefined],
+		queryKey: ["AuthPasswordBasedListEmails", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedlistemails(undefined);
+					const response = await apiClient.AuthPasswordBasedListEmails(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedloginQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedlogin>[0]>
+export const AuthPasswordBasedLoginQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedLogin>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "password");
 	return queryOptions({
-		queryKey: ["authpasswordbasedlogin", params],
+		queryKey: ["AuthPasswordBasedLogin", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedlogin(params);
+					const response = await apiClient.AuthPasswordBasedLogin(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedresetpasswordQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedresetpassword>[0]>
+export const AuthPasswordBasedResetPasswordQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedResetPassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "resetToken", "password");
 	return queryOptions({
-		queryKey: ["authpasswordbasedresetpassword", params],
+		queryKey: ["AuthPasswordBasedResetPassword", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedresetpassword(params);
+					const response = await apiClient.AuthPasswordBasedResetPassword(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedupdateemailQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedupdateemail>[0]>
+export const AuthPasswordBasedUpdateEmailQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedUpdateEmail>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email");
 	return queryOptions({
-		queryKey: ["authpasswordbasedupdateemail", params],
+		queryKey: ["AuthPasswordBasedUpdateEmail", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedupdateemail(params);
+					const response = await apiClient.AuthPasswordBasedUpdateEmail(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedupdatepasswordQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedupdatepassword>[0]>
+export const AuthPasswordBasedUpdatePasswordQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedUpdatePassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "password");
 	return queryOptions({
-		queryKey: ["authpasswordbasedupdatepassword", params],
+		queryKey: ["AuthPasswordBasedUpdatePassword", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedupdatepassword(params);
+					const response = await apiClient.AuthPasswordBasedUpdatePassword(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpasswordbasedverifyemailQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpasswordbasedverifyemail>[0]>
+export const AuthPasswordBasedVerifyEmailQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPasswordBasedVerifyEmail>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "verifyToken");
 	return queryOptions({
-		queryKey: ["authpasswordbasedverifyemail", params],
+		queryKey: ["AuthPasswordBasedVerifyEmail", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpasswordbasedverifyemail(params);
+					const response = await apiClient.AuthPasswordBasedVerifyEmail(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const appredirectaccountresetpasswordQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.appredirectaccountresetpassword>[0]>
+export const AppRedirectAccountResetPasswordQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AppRedirectAccountResetPassword>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "token");
 	return queryOptions({
-		queryKey: ["appredirectaccountresetpassword", params],
+		queryKey: ["AppRedirectAccountResetPassword", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.appredirectaccountresetpassword(params);
+					const response = await apiClient.AppRedirectAccountResetPassword(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const appredirectaccountverificationQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.appredirectaccountverification>[0]>
+export const AppRedirectAccountVerificationQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AppRedirectAccountVerification>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "token");
 	return queryOptions({
-		queryKey: ["appredirectaccountverification", params],
+		queryKey: ["AppRedirectAccountVerification", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.appredirectaccountverification(params);
+					const response = await apiClient.AppRedirectAccountVerification(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authgetuserQueryOptions = (params: Partial<Parameters<typeof apiClient.authgetuser>[0]>) => {
+export const AuthGetUserQueryOptions = (params: Partial<Parameters<typeof apiClient.AuthGetUser>[0]>) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["authgetuser", params],
+		queryKey: ["AuthGetUser", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authgetuser(params);
+					const response = await apiClient.AuthGetUser(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authimpersonatestopsessionQueryOptions = () => {
+export const AuthImpersonateStopSessionQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authimpersonatestopsession", undefined],
+		queryKey: ["AuthImpersonateStopSession", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authimpersonatestopsession(undefined);
+					const response = await apiClient.AuthImpersonateStopSession(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authlogoutQueryOptions = () => {
+export const AuthLogoutQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authlogout", undefined],
+		queryKey: ["AuthLogout", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authlogout(undefined);
+					const response = await apiClient.AuthLogout(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authmeQueryOptions = () => {
+export const AuthMeQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authme", undefined],
+		queryKey: ["AuthMe", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authme(undefined);
+					const response = await apiClient.AuthMe(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authrefreshtokensQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authrefreshtokens>[0]>
+export const AuthRefreshTokensQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthRefreshTokens>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "refreshToken");
 	return queryOptions({
-		queryKey: ["authrefreshtokens", params],
+		queryKey: ["AuthRefreshTokens", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authrefreshtokens(params);
+					const response = await apiClient.AuthRefreshTokens(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authsetuseractiveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authsetuseractive>[0]>
+export const AuthSetUserActiveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthSetUserActive>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "active");
 	return queryOptions({
-		queryKey: ["authsetuseractive", params],
+		queryKey: ["AuthSetUserActive", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authsetuseractive(params);
+					const response = await apiClient.AuthSetUserActive(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authupdateuserQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authupdateuser>[0]>
+export const AuthUpdateUserQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthUpdateUser>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["authupdateuser", params],
+		queryKey: ["AuthUpdateUser", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authupdateuser(params);
+					const response = await apiClient.AuthUpdateUser(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authuserlistQueryOptions = (params: Partial<Parameters<typeof apiClient.authuserlist>[0]>) => {
+export const AuthUserListQueryOptions = (params: Partial<Parameters<typeof apiClient.AuthUserList>[0]>) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["authuserlist", params],
+		queryKey: ["AuthUserList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authuserlist(params);
+					const response = await apiClient.AuthUserList(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissioncreateroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissioncreaterole>[0]>
+export const AuthPermissionCreateRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionCreateRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "identifier");
 	return queryOptions({
-		queryKey: ["authpermissioncreaterole", params],
+		queryKey: ["AuthPermissionCreateRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissioncreaterole(params);
+					const response = await apiClient.AuthPermissionCreateRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionpermissionlistQueryOptions = () => {
+export const AuthPermissionPermissionListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpermissionpermissionlist", undefined],
+		queryKey: ["AuthPermissionPermissionList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionpermissionlist(undefined);
+					const response = await apiClient.AuthPermissionPermissionList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionremoveroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionremoverole>[0]>
+export const AuthPermissionRemoveRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRemoveRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role");
 	return queryOptions({
-		queryKey: ["authpermissionremoverole", params],
+		queryKey: ["AuthPermissionRemoveRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionremoverole(params);
+					const response = await apiClient.AuthPermissionRemoveRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionroleaddpermissionsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionroleaddpermissions>[0]>
+export const AuthPermissionRoleAddPermissionsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRoleAddPermissions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role", "permissions");
 	return queryOptions({
-		queryKey: ["authpermissionroleaddpermissions", params],
+		queryKey: ["AuthPermissionRoleAddPermissions", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionroleaddpermissions(params);
+					const response = await apiClient.AuthPermissionRoleAddPermissions(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionrolelistQueryOptions = () => {
+export const AuthPermissionRoleListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpermissionrolelist", undefined],
+		queryKey: ["AuthPermissionRoleList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionrolelist(undefined);
+					const response = await apiClient.AuthPermissionRoleList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionroleremovepermissionsQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionroleremovepermissions>[0]>
+export const AuthPermissionRoleRemovePermissionsQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionRoleRemovePermissions>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "role", "permissions");
 	return queryOptions({
-		queryKey: ["authpermissionroleremovepermissions", params],
+		queryKey: ["AuthPermissionRoleRemovePermissions", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionroleremovepermissions(params);
+					const response = await apiClient.AuthPermissionRoleRemovePermissions(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionsummaryQueryOptions = () => {
+export const AuthPermissionSummaryQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["authpermissionsummary", undefined],
+		queryKey: ["AuthPermissionSummary", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionsummary(undefined);
+					const response = await apiClient.AuthPermissionSummary(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionuserassignroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionuserassignrole>[0]>
+export const AuthPermissionUserAssignRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserAssignRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "role");
 	return queryOptions({
-		queryKey: ["authpermissionuserassignrole", params],
+		queryKey: ["AuthPermissionUserAssignRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionuserassignrole(params);
+					const response = await apiClient.AuthPermissionUserAssignRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionuserremoveroleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionuserremoverole>[0]>
+export const AuthPermissionUserRemoveRoleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserRemoveRole>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user", "role");
 	return queryOptions({
-		queryKey: ["authpermissionuserremoverole", params],
+		queryKey: ["AuthPermissionUserRemoveRole", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionuserremoverole(params);
+					const response = await apiClient.AuthPermissionUserRemoveRole(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const authpermissionusersummaryQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.authpermissionusersummary>[0]>
+export const AuthPermissionUserSummaryQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.AuthPermissionUserSummary>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "user");
 	return queryOptions({
-		queryKey: ["authpermissionusersummary", params],
+		queryKey: ["AuthPermissionUserSummary", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.authpermissionusersummary(params);
+					const response = await apiClient.AuthPermissionUserSummary(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sessionlistQueryOptions = () => {
+export const SessionListQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["sessionlist", undefined],
+		queryKey: ["SessionList", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sessionlist(undefined);
+					const response = await apiClient.SessionList(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sessionlogoutQueryOptions = (params: Partial<Parameters<typeof apiClient.sessionlogout>[0]>) => {
+export const SessionLogoutQueryOptions = (params: Partial<Parameters<typeof apiClient.SessionLogout>[0]>) => {
 	const enabled = hasDefinedProps(params, "sessionId");
 	return queryOptions({
-		queryKey: ["sessionlogout", params],
+		queryKey: ["SessionLogout", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sessionlogout(params);
+					const response = await apiClient.SessionLogout(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const sessionsetdevicenotificationtokenQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.sessionsetdevicenotificationtoken>[0]>
+export const SessionSetDeviceNotificationTokenQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.SessionSetDeviceNotificationToken>[0]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["sessionsetdevicenotificationtoken", params],
+		queryKey: ["SessionSetDeviceNotificationToken", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.sessionsetdevicenotificationtoken(params);
+					const response = await apiClient.SessionSetDeviceNotificationToken(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const datowebhookexhibitionQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.datowebhookexhibition>[0]>
+export const DatoWebhookExhibitionQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DatoWebhookExhibition>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "environment", "entity_type", "event_type", "entity");
 	return queryOptions({
-		queryKey: ["datowebhookexhibition", params],
+		queryKey: ["DatoWebhookExhibition", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.datowebhookexhibition(params);
+					const response = await apiClient.DatoWebhookExhibition(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const datowebhookexhibitioncreateQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.datowebhookexhibitioncreate>[0]>
+export const DatoWebhookExhibitionCreateQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DatoWebhookExhibitionCreate>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "environment", "entity_type", "event_type", "entity");
 	return queryOptions({
-		queryKey: ["datowebhookexhibitioncreate", params],
+		queryKey: ["DatoWebhookExhibitionCreate", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.datowebhookexhibitioncreate(params);
+					const response = await apiClient.DatoWebhookExhibitionCreate(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const datowebhookexhibitionrssfeedQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.datowebhookexhibitionrssfeed>[0]>
+export const DatoWebhookExhibitionRssFeedQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DatoWebhookExhibitionRssFeed>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "environment", "entity_type", "event_type", "entity");
 	return queryOptions({
-		queryKey: ["datowebhookexhibitionrssfeed", params],
+		queryKey: ["DatoWebhookExhibitionRssFeed", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.datowebhookexhibitionrssfeed(params);
+					const response = await apiClient.DatoWebhookExhibitionRssFeed(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const datowebhooknotificationQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.datowebhooknotification>[0]>
+export const DatoWebhookNotificationQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DatoWebhookNotification>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "environment", "entity_type", "event_type", "entity");
 	return queryOptions({
-		queryKey: ["datowebhooknotification", params],
+		queryKey: ["DatoWebhookNotification", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.datowebhooknotification(params);
+					const response = await apiClient.DatoWebhookNotification(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const datowebhookrecurringscheduleitemQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.datowebhookrecurringscheduleitem>[0]>
+export const DatoWebhookRecurringScheduleItemQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DatoWebhookRecurringScheduleItem>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "environment", "entity_type", "event_type", "entity");
 	return queryOptions({
-		queryKey: ["datowebhookrecurringscheduleitem", params],
+		queryKey: ["DatoWebhookRecurringScheduleItem", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.datowebhookrecurringscheduleitem(params);
+					const response = await apiClient.DatoWebhookRecurringScheduleItem(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const datowebhookscheduleQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.datowebhookschedule>[0]>
+export const DatoWebhookScheduleQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.DatoWebhookSchedule>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "environment", "entity_type", "event_type", "entity");
 	return queryOptions({
-		queryKey: ["datowebhookschedule", params],
+		queryKey: ["DatoWebhookSchedule", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.datowebhookschedule(params);
+					const response = await apiClient.DatoWebhookSchedule(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitiondeleteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.exhibitiondelete>[0]>
+export const ExhibitionDeleteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ExhibitionDelete>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["exhibitiondelete", params],
+		queryKey: ["ExhibitionDelete", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitiondelete(params);
+					const response = await apiClient.ExhibitionDelete(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitionfavoriteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.exhibitionfavorite>[0]>
+export const ExhibitionFavoriteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ExhibitionFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["exhibitionfavorite", params],
+		queryKey: ["ExhibitionFavorite", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitionfavorite(params);
+					const response = await apiClient.ExhibitionFavorite(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitionsyncQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.exhibitionsync>[0]>
+export const ExhibitionSyncQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ExhibitionSync>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "exhibitions");
 	return queryOptions({
-		queryKey: ["exhibitionsync", params],
+		queryKey: ["ExhibitionSync", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitionsync(params);
+					const response = await apiClient.ExhibitionSync(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitionsyncallQueryOptions = () => {
+export const ExhibitionSyncAllQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["exhibitionsyncall", undefined],
+		queryKey: ["ExhibitionSyncAll", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitionsyncall(undefined);
+					const response = await apiClient.ExhibitionSyncAll(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitordeleteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.exhibitordelete>[0]>
+export const ExhibitorDeleteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ExhibitorDelete>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["exhibitordelete", params],
+		queryKey: ["ExhibitorDelete", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitordelete(params);
+					const response = await apiClient.ExhibitorDelete(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitorfavoriteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.exhibitorfavorite>[0]>
+export const ExhibitorFavoriteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ExhibitorFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["exhibitorfavorite", params],
+		queryKey: ["ExhibitorFavorite", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitorfavorite(params);
+					const response = await apiClient.ExhibitorFavorite(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitorlogoQueryOptions = (params: Partial<Parameters<typeof apiClient.exhibitorlogo>[0]>) => {
+export const ExhibitorLogoQueryOptions = (params: Partial<Parameters<typeof apiClient.ExhibitorLogo>[0]>) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["exhibitorlogo", params],
+		queryKey: ["ExhibitorLogo", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitorlogo(params);
+					const response = await apiClient.ExhibitorLogo(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitorsendmailQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.exhibitorsendmail>[0]>
+export const ExhibitorSendMailQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ExhibitorSendMail>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id", "email", "name", "message");
 	return queryOptions({
-		queryKey: ["exhibitorsendmail", params],
+		queryKey: ["ExhibitorSendMail", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitorsendmail(params);
+					const response = await apiClient.ExhibitorSendMail(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitorsyncQueryOptions = (params: Partial<Parameters<typeof apiClient.exhibitorsync>[0]>) => {
+export const ExhibitorSyncQueryOptions = (params: Partial<Parameters<typeof apiClient.ExhibitorSync>[0]>) => {
 	const enabled = hasDefinedProps(params, "exhibitors");
 	return queryOptions({
-		queryKey: ["exhibitorsync", params],
+		queryKey: ["ExhibitorSync", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitorsync(params);
+					const response = await apiClient.ExhibitorSync(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const exhibitorsyncallQueryOptions = () => {
+export const ExhibitorSyncAllQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["exhibitorsyncall", undefined],
+		queryKey: ["ExhibitorSyncAll", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.exhibitorsyncall(undefined);
+					const response = await apiClient.ExhibitorSyncAll(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const featureflagcurrentQueryOptions = () => {
+export const FeatureFlagCurrentQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["featureflagcurrent", undefined],
+		queryKey: ["FeatureFlagCurrent", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.featureflagcurrent(undefined);
+					const response = await apiClient.FeatureFlagCurrent(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const multitenantcurrentQueryOptions = () => {
+export const MultitenantCurrentQueryOptions = () => {
 	const enabled = true;
 	return queryOptions({
-		queryKey: ["multitenantcurrent", undefined],
+		queryKey: ["MultitenantCurrent", undefined],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.multitenantcurrent(undefined);
+					const response = await apiClient.MultitenantCurrent(undefined);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const newslettersubscribeQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.newslettersubscribe>[0]>
+export const NewsletterSubscribeQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.NewsletterSubscribe>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "email", "sourceCode", "contactMomentTypeCode");
 	return queryOptions({
-		queryKey: ["newslettersubscribe", params],
+		queryKey: ["NewsletterSubscribe", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.newslettersubscribe(params);
+					const response = await apiClient.NewsletterSubscribe(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const schedulefavoriteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.schedulefavorite>[0]>
+export const ScheduleFavoriteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.ScheduleFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["schedulefavorite", params],
+		queryKey: ["ScheduleFavorite", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.schedulefavorite(params);
+					const response = await apiClient.ScheduleFavorite(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const workshopfavoriteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.workshopfavorite>[0]>
+export const WorkshopFavoriteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.WorkshopFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "datoId", "date");
 	return queryOptions({
-		queryKey: ["workshopfavorite", params],
+		queryKey: ["WorkshopFavorite", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.workshopfavorite(params);
+					const response = await apiClient.WorkshopFavorite(params);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const workshopremovefavoriteQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.workshopremovefavorite>[0]>
+export const WorkshopRemoveFavoriteQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.WorkshopRemoveFavorite>[0]>
 ) => {
 	const enabled = hasDefinedProps(params, "datoId", "id");
 	return queryOptions({
-		queryKey: ["workshopremovefavorite", params],
+		queryKey: ["WorkshopRemoveFavorite", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.workshopremovefavorite(params);
+					const response = await apiClient.WorkshopRemoveFavorite(params);
 					return response.data;
 				}
 			: skipToken,

@@ -35,10 +35,13 @@ await codegenerate({
 ### 2. Configure API Instance
 
 ```typescript
-import { createApiClient } from './src/generated/api';
-const apiClient = createApiClient({
-  baseURL: 'https://api.example.com'
-});
+import axios from "axios";
+import { setApiClient } from "../generated/apiClient";
+
+const api = axios.create({ baseURL: "https://api.diks.acc.lightbase.nl" });
+// Set the API client instance to be used by the generated client functions
+setApiClient(api);
+
 ```
 
 ### 3. Use Generated Query Options
@@ -55,7 +58,7 @@ const { data, isLoading, error } = useQuery(AccountFavoritesQueryOptions());
 For each API specification, the following files are generated:
 
 - `{api}.schema.ts` - TypeScript types for requests/responses
-- `{api}.axios.ts` - Axios instance configuration
+- `apiClient.ts` - Global Axios instance configuration to be used by all generated clients
 - `{api}.client.ts` - Type-safe API client functions
 - `{api}.queryOptions.ts` - React Query integration
 

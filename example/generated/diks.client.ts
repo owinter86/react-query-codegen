@@ -1,5 +1,5 @@
 import type { AxiosResponse } from "axios";
-import { getdiksInstance } from "./diks.axios";
+import { getApiClient } from "./apiClient";
 import type * as T from "./diks.schema";
 
 /**
@@ -10,8 +10,9 @@ export async function AccountFavorites(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountFavoritesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/favorites";
-	return getdiksInstance().get<T.AccountFavoritesResponse200>(url, {
+	return apiClient.get<T.AccountFavoritesResponse200>(url, {
 		headers,
 	});
 }
@@ -23,8 +24,9 @@ export async function AccountGetAppPreferences(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountGetAppPreferencesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/preferences/app";
-	return getdiksInstance().get<T.AccountGetAppPreferencesResponse200>(url, {
+	return apiClient.get<T.AccountGetAppPreferencesResponse200>(url, {
 		headers,
 	});
 }
@@ -36,8 +38,9 @@ export async function AccountGetCompanyPreferences(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountGetCompanyPreferencesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/preferences/company";
-	return getdiksInstance().get<T.AccountGetCompanyPreferencesResponse200>(url, {
+	return apiClient.get<T.AccountGetCompanyPreferencesResponse200>(url, {
 		headers,
 	});
 }
@@ -49,11 +52,12 @@ export async function AccountUpdateCompanyPreferences(
 	data: T.AccountUpdateCompanyPreferencesRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountUpdateCompanyPreferencesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/preferences/company";
 	const bodyData = {
 		companyPreferences: data.companyPreferences,
 	};
-	return getdiksInstance().put<T.AccountUpdateCompanyPreferencesResponse200>(url, {
+	return apiClient.put<T.AccountUpdateCompanyPreferencesResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -66,8 +70,9 @@ export async function AccountGetPersonalPreferences(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountGetPersonalPreferencesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/preferences/personal";
-	return getdiksInstance().get<T.AccountGetPersonalPreferencesResponse200>(url, {
+	return apiClient.get<T.AccountGetPersonalPreferencesResponse200>(url, {
 		headers,
 	});
 }
@@ -79,11 +84,12 @@ export async function AccountUpdatePersonalPreferences(
 	data: T.AccountUpdatePersonalPreferencesRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountUpdatePersonalPreferencesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/preferences/personal";
 	const bodyData = {
 		personalPreferences: data.personalPreferences,
 	};
-	return getdiksInstance().put<T.AccountUpdatePersonalPreferencesResponse200>(url, {
+	return apiClient.put<T.AccountUpdatePersonalPreferencesResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -97,8 +103,9 @@ export async function AccountMe(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountMeResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/me";
-	return getdiksInstance().get<T.AccountMeResponse200>(url, {
+	return apiClient.get<T.AccountMeResponse200>(url, {
 		headers,
 	});
 }
@@ -116,6 +123,7 @@ export async function AccountRegister(
 	data: T.AccountRegisterRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountRegisterResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/register";
 	const bodyData = {
 		email: data.email,
@@ -137,7 +145,7 @@ export async function AccountRegister(
 		kvk: data.kvk,
 		birthDate: data.birthDate,
 	};
-	return getdiksInstance().post<T.AccountRegisterResponse200>(url, {
+	return apiClient.post<T.AccountRegisterResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -155,8 +163,9 @@ export async function AccountRemove(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/remove";
-	return getdiksInstance().delete<T.AccountRemoveResponse200>(url, {
+	return apiClient.delete<T.AccountRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -173,8 +182,9 @@ export async function AccountRemoveDriversLicenseData(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountRemoveDriversLicenseDataResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/remove-drivers-license-data";
-	return getdiksInstance().delete<T.AccountRemoveDriversLicenseDataResponse200>(url, {
+	return apiClient.delete<T.AccountRemoveDriversLicenseDataResponse200>(url, {
 		headers,
 	});
 }
@@ -189,6 +199,7 @@ export async function AccountReservations(
 	data: T.AccountReservationsRequest & { offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountReservationsResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/reservations";
 	const queryData = {
 		offset: data.offset,
@@ -198,7 +209,7 @@ export async function AccountReservations(
 		status: data.status,
 		filters: data.filters,
 	};
-	return getdiksInstance().post<T.AccountReservationsResponse200>(url, {
+	return apiClient.post<T.AccountReservationsResponse200>(url, {
 		params: queryData,
 		data: bodyData,
 		headers,
@@ -219,6 +230,7 @@ export async function CategoryAlternatives(
 	data: T.CategoryAlternativesRequest & { categoryId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryAlternativesResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/category/${data.categoryId}/alternatives`;
 	const bodyData = {
 		locationPickup: data.locationPickup,
@@ -227,7 +239,7 @@ export async function CategoryAlternatives(
 		dateReturn: data.dateReturn,
 		expectedKilometers: data.expectedKilometers,
 	};
-	return getdiksInstance().post<T.CategoryAlternativesResponse200>(url, {
+	return apiClient.post<T.CategoryAlternativesResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -247,6 +259,7 @@ export async function CategoryAvailability(
 	data: T.CategoryAvailabilityRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryAvailabilityResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/category/availability";
 	const bodyData = {
 		locale: data.locale,
@@ -257,7 +270,7 @@ export async function CategoryAvailability(
 		filters: data.filters,
 		sorting: data.sorting,
 	};
-	return getdiksInstance().post<T.CategoryAvailabilityResponse200>(url, {
+	return apiClient.post<T.CategoryAvailabilityResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -275,6 +288,7 @@ export async function CategoryCompare(
 	data: T.CategoryCompareRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryCompareResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/category/compare";
 	const bodyData = {
 		categoryIds: data.categoryIds,
@@ -284,7 +298,7 @@ export async function CategoryCompare(
 		dateReturn: data.dateReturn,
 		expectedKilometers: data.expectedKilometers,
 	};
-	return getdiksInstance().post<T.CategoryCompareResponse200>(url, {
+	return apiClient.post<T.CategoryCompareResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -303,8 +317,9 @@ export async function CategoryFavorite(
 	data: { categoryId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryFavoriteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/category/${data.categoryId}/favorite`;
-	return getdiksInstance().post<T.CategoryFavoriteResponse200>(url, {
+	return apiClient.post<T.CategoryFavoriteResponse200>(url, {
 		headers,
 	});
 }
@@ -325,12 +340,13 @@ export async function CategoryImage(
 	data: { categoryId: number; fileId: string; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/category/${data.categoryId}/image/${data.fileId}`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.CategoryImageResponse200>(url, {
+	return apiClient.get<T.CategoryImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -351,6 +367,7 @@ export async function CategoryInsuranceProfile(
 	data: T.CategoryInsuranceProfileRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryInsuranceProfileResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/category/insuranceProfile";
 	const bodyData = {
 		locale: data.locale,
@@ -358,7 +375,7 @@ export async function CategoryInsuranceProfile(
 		datePickup: data.datePickup,
 		dateReturn: data.dateReturn,
 	};
-	return getdiksInstance().post<T.CategoryInsuranceProfileResponse200>(url, {
+	return apiClient.post<T.CategoryInsuranceProfileResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -372,8 +389,9 @@ export async function CategoryList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/category/list";
-	return getdiksInstance().get<T.CategoryListResponse200>(url, {
+	return apiClient.get<T.CategoryListResponse200>(url, {
 		headers,
 	});
 }
@@ -393,12 +411,13 @@ export async function CategoryMainImage(
 	data: { categoryId: number; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryMainImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/category/${data.categoryId}/main-image`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.CategoryMainImageResponse200>(url, {
+	return apiClient.get<T.CategoryMainImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -429,6 +448,7 @@ export async function CategoryPriceCalculation(
 	data: T.CategoryPriceCalculationRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategoryPriceCalculationResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/category/priceCalculation";
 	const bodyData = {
 		locale: data.locale,
@@ -444,7 +464,7 @@ export async function CategoryPriceCalculation(
 		abroadOptionId: data.abroadOptionId,
 		addons: data.addons,
 	};
-	return getdiksInstance().post<T.CategoryPriceCalculationResponse200>(url, {
+	return apiClient.post<T.CategoryPriceCalculationResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -463,8 +483,9 @@ export async function CategorySingle(
 	data: { categoryId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.CategorySingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/category/${data.categoryId}`;
-	return getdiksInstance().get<T.CategorySingleResponse200>(url, {
+	return apiClient.get<T.CategorySingleResponse200>(url, {
 		headers,
 	});
 }
@@ -480,12 +501,13 @@ export async function MainCategoryImage(
 	data: { mainCategoryId: number; fileId: string; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.MainCategoryImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/main-category/${data.mainCategoryId}/image/${data.fileId}`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.MainCategoryImageResponse200>(url, {
+	return apiClient.get<T.MainCategoryImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -499,8 +521,9 @@ export async function MainCategoryList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.MainCategoryListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/main-category";
-	return getdiksInstance().get<T.MainCategoryListResponse200>(url, {
+	return apiClient.get<T.MainCategoryListResponse200>(url, {
 		headers,
 	});
 }
@@ -520,12 +543,13 @@ export async function MainCategoryMainImage(
 	data: { mainCategoryId: number; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.MainCategoryMainImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/main-category/${data.mainCategoryId}/main-image`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.MainCategoryMainImageResponse200>(url, {
+	return apiClient.get<T.MainCategoryMainImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -543,12 +567,13 @@ export async function AddonImage(
 	data: { addonId: number; fileId: string; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AddonImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/addon/${data.addonId}/image/${data.fileId}`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.AddonImageResponse200>(url, {
+	return apiClient.get<T.AddonImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -570,12 +595,13 @@ export async function AddonMainImage(
 	data: { addonId: number; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AddonMainImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/addon/${data.addonId}/main-image`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.AddonMainImageResponse200>(url, {
+	return apiClient.get<T.AddonMainImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -598,6 +624,7 @@ export async function SharedVehicleAddDamage(
 	data: T.SharedVehicleAddDamageRequest & { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleAddDamageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/add-damage`;
 	const formData = new FormData();
 	formData.append("image", data.image);
@@ -607,7 +634,7 @@ export async function SharedVehicleAddDamage(
 	}
 	formData.append("x", String(data.x));
 	formData.append("y", String(data.y));
-	return getdiksInstance().post<T.SharedVehicleAddDamageResponse200>(url, {
+	return apiClient.post<T.SharedVehicleAddDamageResponse200>(url, {
 		data: formData,
 		headers: { "Content-Type": "multipart/form-data", ...headers },
 	});
@@ -625,12 +652,13 @@ export async function SharedVehicleAdminList(
 	data: { offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleAdminListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/shared-vehicle/admin/list";
 	const queryData = {
 		offset: data.offset,
 		limit: data.limit,
 	};
-	return getdiksInstance().post<T.SharedVehicleAdminListResponse200>(url, {
+	return apiClient.post<T.SharedVehicleAdminListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -651,8 +679,9 @@ export async function SharedVehicleAdminSingle(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleAdminSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/admin/${data.id}`;
-	return getdiksInstance().get<T.SharedVehicleAdminSingleResponse200>(url, {
+	return apiClient.get<T.SharedVehicleAdminSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -670,6 +699,7 @@ export async function SharedVehicleAdminUpdate(
 	data: T.SharedVehicleAdminUpdateRequest & { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleAdminUpdateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/admin/${data.id}/update`;
 	const bodyData = {
 		parkingInstructions: data.parkingInstructions,
@@ -683,7 +713,7 @@ export async function SharedVehicleAdminUpdate(
 		damageCheckBeforeBooking: data.damageCheckBeforeBooking,
 		damageCheckAfterBooking: data.damageCheckAfterBooking,
 	};
-	return getdiksInstance().put<T.SharedVehicleAdminUpdateResponse200>(url, {
+	return apiClient.put<T.SharedVehicleAdminUpdateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -704,6 +734,7 @@ export async function SharedVehicleAvailability(
 	data: T.SharedVehicleAvailabilityRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleAvailabilityResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/shared-vehicle/availability";
 	const bodyData = {
 		locale: data.locale,
@@ -712,7 +743,7 @@ export async function SharedVehicleAvailability(
 		mainCategoryId: data.mainCategoryId,
 		filters: data.filters,
 	};
-	return getdiksInstance().post<T.SharedVehicleAvailabilityResponse200>(url, {
+	return apiClient.post<T.SharedVehicleAvailabilityResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -739,13 +770,14 @@ export async function SharedVehicleAvailabilityCalendar(
 	data: { id: number; startDate: string; endDate: string; reservationId?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleAvailabilityCalendarResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/calendar`;
 	const queryData = {
 		startDate: data.startDate,
 		endDate: data.endDate,
 		reservationId: data.reservationId,
 	};
-	return getdiksInstance().get<T.SharedVehicleAvailabilityCalendarResponse200>(url, {
+	return apiClient.get<T.SharedVehicleAvailabilityCalendarResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -770,6 +802,7 @@ export async function SharedVehicleCreateBooking(
 	data: T.SharedVehicleCreateBookingRequest & { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleCreateBookingResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/create-booking`;
 	const bodyData = {
 		locale: data.locale,
@@ -779,7 +812,7 @@ export async function SharedVehicleCreateBooking(
 		discountCode: data.discountCode,
 		expectedKilometers: data.expectedKilometers,
 	};
-	return getdiksInstance().post<T.SharedVehicleCreateBookingResponse200>(url, {
+	return apiClient.post<T.SharedVehicleCreateBookingResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -802,13 +835,14 @@ export async function SharedVehicleDamageImage(
 	data: { id: number; fileId: string; accessToken: string; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleDamageImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/damage-image/${data.fileId}`;
 	const queryData = {
 		accessToken: data.accessToken,
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.SharedVehicleDamageImageResponse200>(url, {
+	return apiClient.get<T.SharedVehicleDamageImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -830,12 +864,13 @@ export async function SharedVehicleDamageTemplate(
 	data: { id: number; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleDamageTemplateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/damage-template`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.SharedVehicleDamageTemplateResponse200>(url, {
+	return apiClient.get<T.SharedVehicleDamageTemplateResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -855,8 +890,9 @@ export async function SharedVehicleFavorite(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleFavoriteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/favorite`;
-	return getdiksInstance().post<T.SharedVehicleFavoriteResponse200>(url, {
+	return apiClient.post<T.SharedVehicleFavoriteResponse200>(url, {
 		headers,
 	});
 }
@@ -877,12 +913,13 @@ export async function SharedVehicleImage(
 	data: { id: number; fileId: string; q?: number; w: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleImageResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/image/${data.fileId}`;
 	const queryData = {
 		q: data.q,
 		w: data.w,
 	};
-	return getdiksInstance().get<T.SharedVehicleImageResponse200>(url, {
+	return apiClient.get<T.SharedVehicleImageResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -905,11 +942,12 @@ export async function SharedVehicleListDamages(
 	data: T.SharedVehicleListDamagesRequest & { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleListDamagesResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/damages`;
 	const bodyData = {
 		locale: data.locale,
 	};
-	return getdiksInstance().post<T.SharedVehicleListDamagesResponse200>(url, {
+	return apiClient.post<T.SharedVehicleListDamagesResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -933,6 +971,7 @@ export async function SharedVehiclePricing(
 	data: T.SharedVehiclePricingRequest & { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehiclePricingResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/pricing`;
 	const bodyData = {
 		locale: data.locale,
@@ -941,7 +980,7 @@ export async function SharedVehiclePricing(
 		discountCode: data.discountCode,
 		expectedKilometers: data.expectedKilometers,
 	};
-	return getdiksInstance().post<T.SharedVehiclePricingResponse200>(url, {
+	return apiClient.post<T.SharedVehiclePricingResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -961,8 +1000,9 @@ export async function SharedVehicleSingle(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}`;
-	return getdiksInstance().get<T.SharedVehicleSingleResponse200>(url, {
+	return apiClient.get<T.SharedVehicleSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -983,8 +1023,9 @@ export async function SharedVehicleStateOfCharge(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleStateOfChargeResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle/${data.id}/state-of-charge`;
-	return getdiksInstance().get<T.SharedVehicleStateOfChargeResponse200>(url, {
+	return apiClient.get<T.SharedVehicleStateOfChargeResponse200>(url, {
 		headers,
 	});
 }
@@ -1001,11 +1042,12 @@ export async function AuthPasswordBasedForgotPassword(
 	data: T.AuthPasswordBasedForgotPasswordRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedForgotPasswordResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/forgot-password";
 	const bodyData = {
 		email: data.email,
 	};
-	return getdiksInstance().post<T.AuthPasswordBasedForgotPasswordResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedForgotPasswordResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1018,8 +1060,9 @@ export async function AuthPasswordBasedListEmails(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedListEmailsResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based";
-	return getdiksInstance().get<T.AuthPasswordBasedListEmailsResponse200>(url, {
+	return apiClient.get<T.AuthPasswordBasedListEmailsResponse200>(url, {
 		headers,
 	});
 }
@@ -1039,13 +1082,14 @@ export async function AuthPasswordBasedLogin(
 	data: T.AuthPasswordBasedLoginRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedLoginResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/login";
 	const bodyData = {
 		email: data.email,
 		password: data.password,
 		device: data.device,
 	};
-	return getdiksInstance().post<T.AuthPasswordBasedLoginResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedLoginResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1066,12 +1110,13 @@ export async function AuthPasswordBasedResetPassword(
 	data: T.AuthPasswordBasedResetPasswordRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedResetPasswordResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/reset-password";
 	const bodyData = {
 		resetToken: data.resetToken,
 		password: data.password,
 	};
-	return getdiksInstance().post<T.AuthPasswordBasedResetPasswordResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedResetPasswordResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1092,11 +1137,12 @@ export async function AuthPasswordBasedUpdateEmail(
 	data: T.AuthPasswordBasedUpdateEmailRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedUpdateEmailResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/update-email";
 	const bodyData = {
 		email: data.email,
 	};
-	return getdiksInstance().post<T.AuthPasswordBasedUpdateEmailResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedUpdateEmailResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1115,11 +1161,12 @@ export async function AuthPasswordBasedUpdatePassword(
 	data: T.AuthPasswordBasedUpdatePasswordRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedUpdatePasswordResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/update-password";
 	const bodyData = {
 		password: data.password,
 	};
-	return getdiksInstance().post<T.AuthPasswordBasedUpdatePasswordResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedUpdatePasswordResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1142,12 +1189,13 @@ export async function AuthPasswordBasedVerifyEmail(
 	data: T.AuthPasswordBasedVerifyEmailRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedVerifyEmailResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/verify-email";
 	const bodyData = {
 		verifyToken: data.verifyToken,
 		device: data.device,
 	};
-	return getdiksInstance().post<T.AuthPasswordBasedVerifyEmailResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedVerifyEmailResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1162,11 +1210,12 @@ export async function AuthPasswordBasedVerifyOtp(
 	data: T.AuthPasswordBasedVerifyOtpRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedVerifyOtpResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/verify-otp";
 	const bodyData = {
 		otp: data.otp,
 	};
-	return getdiksInstance().post<T.AuthPasswordBasedVerifyOtpResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedVerifyOtpResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1187,6 +1236,7 @@ export async function ReservationUpdate(
 	data: T.ReservationUpdateRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ReservationUpdateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/reservation/${data.reservationId}`;
 	const bodyData = {
 		locationPickup: data.locationPickup,
@@ -1196,7 +1246,7 @@ export async function ReservationUpdate(
 		abroadOptionId: data.abroadOptionId,
 		selectedAddons: data.selectedAddons,
 	};
-	return getdiksInstance().put<T.ReservationUpdateResponse200>(url, {
+	return apiClient.put<T.ReservationUpdateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1217,8 +1267,9 @@ export async function ReservationCancel(
 	data: { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ReservationCancelResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/reservation/${data.reservationId}`;
-	return getdiksInstance().delete<T.ReservationCancelResponse200>(url, {
+	return apiClient.delete<T.ReservationCancelResponse200>(url, {
 		headers,
 	});
 }
@@ -1238,8 +1289,9 @@ export async function ReservationDownloadInvoice(
 	data: { reservationId: number; invoiceId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ReservationDownloadInvoiceResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/reservation/${data.reservationId}/invoice/${data.invoiceId}`;
-	return getdiksInstance().get<T.ReservationDownloadInvoiceResponse200>(url, {
+	return apiClient.get<T.ReservationDownloadInvoiceResponse200>(url, {
 		headers,
 	});
 }
@@ -1256,11 +1308,12 @@ export async function ReservationFetchByIds(
 	data: T.ReservationFetchByIdsRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ReservationFetchByIdsResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/reservation/reservations";
 	const bodyData = {
 		reservationIds: data.reservationIds,
 	};
-	return getdiksInstance().post<T.ReservationFetchByIdsResponse200>(url, {
+	return apiClient.post<T.ReservationFetchByIdsResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1280,12 +1333,13 @@ export async function ReservationRepeat(
 	data: T.ReservationRepeatRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ReservationRepeatResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/reservation/${data.reservationId}/repeat`;
 	const bodyData = {
 		datePickup: data.datePickup,
 		dateReturn: data.dateReturn,
 	};
-	return getdiksInstance().post<T.ReservationRepeatResponse200>(url, {
+	return apiClient.post<T.ReservationRepeatResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1298,8 +1352,9 @@ export async function LocationList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.LocationListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/location";
-	return getdiksInstance().get<T.LocationListResponse200>(url, {
+	return apiClient.get<T.LocationListResponse200>(url, {
 		headers,
 	});
 }
@@ -1317,11 +1372,12 @@ export async function LocationReorder(
 	data: T.LocationReorderRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.LocationReorderResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/location/reorder";
 	const bodyData = {
 		locationIds: data.locationIds,
 	};
-	return getdiksInstance().post<T.LocationReorderResponse200>(url, {
+	return apiClient.post<T.LocationReorderResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1335,8 +1391,9 @@ export async function LocationSingle(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.LocationSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/location/${data.id}`;
-	return getdiksInstance().get<T.LocationSingleResponse200>(url, {
+	return apiClient.get<T.LocationSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -1356,8 +1413,9 @@ export async function AdminDeleteUser(
 	data: { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AdminDeleteUserResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/admin/${data.user}/delete`;
-	return getdiksInstance().post<T.AdminDeleteUserResponse200>(url, {
+	return apiClient.post<T.AdminDeleteUserResponse200>(url, {
 		headers,
 	});
 }
@@ -1374,13 +1432,14 @@ export async function AdminInviteUser(
 	data: T.AdminInviteUserRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AdminInviteUserResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/admin/invite-user";
 	const bodyData = {
 		email: data.email,
 		name: data.name,
 		roles: data.roles,
 	};
-	return getdiksInstance().post<T.AdminInviteUserResponse200>(url, {
+	return apiClient.post<T.AdminInviteUserResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1394,8 +1453,9 @@ export async function AdminListUsers(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AdminListUsersResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/admin/users";
-	return getdiksInstance().get<T.AdminListUsersResponse200>(url, {
+	return apiClient.get<T.AdminListUsersResponse200>(url, {
 		headers,
 	});
 }
@@ -1412,13 +1472,14 @@ export async function AppRedirectAccountDriversLicenseVerificationComplete(
 	data: { dossierId: string; processId: string; status: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AppRedirectAccountDriversLicenseVerificationCompleteResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/app-redirect/account/drivers-license-verification-complete";
 	const queryData = {
 		dossierId: data.dossierId,
 		processId: data.processId,
 		status: data.status,
 	};
-	return getdiksInstance().get<T.AppRedirectAccountDriversLicenseVerificationCompleteResponse200>(url, {
+	return apiClient.get<T.AppRedirectAccountDriversLicenseVerificationCompleteResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -1437,8 +1498,9 @@ export async function AuthGetUser(
 	data: { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthGetUserResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/user/${data.user}`;
-	return getdiksInstance().get<T.AuthGetUserResponse200>(url, {
+	return apiClient.get<T.AuthGetUserResponse200>(url, {
 		headers,
 	});
 }
@@ -1455,8 +1517,9 @@ export async function AuthImpersonateStopSession(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthImpersonateStopSessionResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/impersonate-stop-session";
-	return getdiksInstance().post<T.AuthImpersonateStopSessionResponse200>(url, {
+	return apiClient.post<T.AuthImpersonateStopSessionResponse200>(url, {
 		headers,
 	});
 }
@@ -1469,8 +1532,9 @@ export async function AuthLogout(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthLogoutResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/logout";
-	return getdiksInstance().post<T.AuthLogoutResponse200>(url, {
+	return apiClient.post<T.AuthLogoutResponse200>(url, {
 		headers,
 	});
 }
@@ -1485,8 +1549,9 @@ export async function AuthMe(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthMeResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/me";
-	return getdiksInstance().get<T.AuthMeResponse200>(url, {
+	return apiClient.get<T.AuthMeResponse200>(url, {
 		headers,
 	});
 }
@@ -1502,11 +1567,12 @@ export async function AuthRefreshTokens(
 	data: T.AuthRefreshTokensRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthRefreshTokensResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/refresh-tokens";
 	const bodyData = {
 		refreshToken: data.refreshToken,
 	};
-	return getdiksInstance().post<T.AuthRefreshTokensResponse200>(url, {
+	return apiClient.post<T.AuthRefreshTokensResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1525,11 +1591,12 @@ export async function AuthSetUserActive(
 	data: T.AuthSetUserActiveRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthSetUserActiveResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/user/${data.user}/set-active`;
 	const bodyData = {
 		active: data.active,
 	};
-	return getdiksInstance().post<T.AuthSetUserActiveResponse200>(url, {
+	return apiClient.post<T.AuthSetUserActiveResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1547,11 +1614,12 @@ export async function AuthUpdateUser(
 	data: T.AuthUpdateUserRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthUpdateUserResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/user/${data.user}/update`;
 	const bodyData = {
 		name: data.name,
 	};
-	return getdiksInstance().put<T.AuthUpdateUserResponse200>(url, {
+	return apiClient.put<T.AuthUpdateUserResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1568,12 +1636,13 @@ export async function AuthUserList(
 	data: T.AuthUserListRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthUserListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/list-users";
 	const bodyData = {
 		search: data.search,
 		filters: data.filters,
 	};
-	return getdiksInstance().post<T.AuthUserListResponse200>(url, {
+	return apiClient.post<T.AuthUserListResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1587,11 +1656,12 @@ export async function AuthPermissionCreateRole(
 	data: T.AuthPermissionCreateRoleRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionCreateRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/role";
 	const bodyData = {
 		identifier: data.identifier,
 	};
-	return getdiksInstance().post<T.AuthPermissionCreateRoleResponse200>(url, {
+	return apiClient.post<T.AuthPermissionCreateRoleResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1606,8 +1676,9 @@ export async function AuthPermissionPermissionList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionPermissionListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/permission/list";
-	return getdiksInstance().get<T.AuthPermissionPermissionListResponse200>(url, {
+	return apiClient.get<T.AuthPermissionPermissionListResponse200>(url, {
 		headers,
 	});
 }
@@ -1621,8 +1692,9 @@ export async function AuthPermissionRemoveRole(
 	data: { role: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRemoveRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/role/${data.role}`;
-	return getdiksInstance().delete<T.AuthPermissionRemoveRoleResponse200>(url, {
+	return apiClient.delete<T.AuthPermissionRemoveRoleResponse200>(url, {
 		headers,
 	});
 }
@@ -1644,11 +1716,12 @@ export async function AuthPermissionRoleAddPermissions(
 	data: T.AuthPermissionRoleAddPermissionsRequest & { role: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRoleAddPermissionsResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/role/${data.role}/add-permissions`;
 	const bodyData = {
 		permissions: data.permissions,
 	};
-	return getdiksInstance().post<T.AuthPermissionRoleAddPermissionsResponse200>(url, {
+	return apiClient.post<T.AuthPermissionRoleAddPermissionsResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1662,8 +1735,9 @@ export async function AuthPermissionRoleList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRoleListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/role/list";
-	return getdiksInstance().get<T.AuthPermissionRoleListResponse200>(url, {
+	return apiClient.get<T.AuthPermissionRoleListResponse200>(url, {
 		headers,
 	});
 }
@@ -1684,11 +1758,12 @@ export async function AuthPermissionRoleRemovePermissions(
 	data: T.AuthPermissionRoleRemovePermissionsRequest & { role: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRoleRemovePermissionsResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/role/${data.role}/remove-permissions`;
 	const bodyData = {
 		permissions: data.permissions,
 	};
-	return getdiksInstance().post<T.AuthPermissionRoleRemovePermissionsResponse200>(url, {
+	return apiClient.post<T.AuthPermissionRoleRemovePermissionsResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1702,8 +1777,9 @@ export async function AuthPermissionSummary(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionSummaryResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/summary";
-	return getdiksInstance().get<T.AuthPermissionSummaryResponse200>(url, {
+	return apiClient.get<T.AuthPermissionSummaryResponse200>(url, {
 		headers,
 	});
 }
@@ -1725,11 +1801,12 @@ export async function AuthPermissionUserAssignRole(
 	data: T.AuthPermissionUserAssignRoleRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionUserAssignRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/user/${data.user}/assign-role`;
 	const bodyData = {
 		role: data.role,
 	};
-	return getdiksInstance().post<T.AuthPermissionUserAssignRoleResponse200>(url, {
+	return apiClient.post<T.AuthPermissionUserAssignRoleResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1750,11 +1827,12 @@ export async function AuthPermissionUserRemoveRole(
 	data: T.AuthPermissionUserRemoveRoleRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionUserRemoveRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/user/${data.user}/remove-role`;
 	const bodyData = {
 		role: data.role,
 	};
-	return getdiksInstance().post<T.AuthPermissionUserRemoveRoleResponse200>(url, {
+	return apiClient.post<T.AuthPermissionUserRemoveRoleResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1769,8 +1847,9 @@ export async function AuthPermissionUserSummary(
 	data: { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionUserSummaryResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/user/${data.user}/summary`;
-	return getdiksInstance().get<T.AuthPermissionUserSummaryResponse200>(url, {
+	return apiClient.get<T.AuthPermissionUserSummaryResponse200>(url, {
 		headers,
 	});
 }
@@ -1789,12 +1868,13 @@ export async function AuthAnonymousBasedLogin(
 	data: T.AuthAnonymousBasedLoginRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthAnonymousBasedLoginResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/anonymous-based/login";
 	const bodyData = {
 		token: data.token,
 		device: data.device,
 	};
-	return getdiksInstance().post<T.AuthAnonymousBasedLoginResponse200>(url, {
+	return apiClient.post<T.AuthAnonymousBasedLoginResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1810,8 +1890,9 @@ export async function SessionList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SessionListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/session/list";
-	return getdiksInstance().get<T.SessionListResponse200>(url, {
+	return apiClient.get<T.SessionListResponse200>(url, {
 		headers,
 	});
 }
@@ -1826,11 +1907,12 @@ export async function SessionLogout(
 	data: T.SessionLogoutRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SessionLogoutResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/session/logout";
 	const bodyData = {
 		sessionId: data.sessionId,
 	};
-	return getdiksInstance().post<T.SessionLogoutResponse200>(url, {
+	return apiClient.post<T.SessionLogoutResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1846,12 +1928,13 @@ export async function SessionSetDeviceNotificationToken(
 	data: T.SessionSetDeviceNotificationTokenRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SessionSetDeviceNotificationTokenResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/session/set-notification-token";
 	const bodyData = {
 		notificationToken: data.notificationToken,
 		webPushInformation: data.webPushInformation,
 	};
-	return getdiksInstance().post<T.SessionSetDeviceNotificationTokenResponse200>(url, {
+	return apiClient.post<T.SessionSetDeviceNotificationTokenResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1865,8 +1948,9 @@ export async function AuthTotpProviderInfo(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthTotpProviderInfoResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/totp-provider";
-	return getdiksInstance().get<T.AuthTotpProviderInfoResponse200>(url, {
+	return apiClient.get<T.AuthTotpProviderInfoResponse200>(url, {
 		headers,
 	});
 }
@@ -1884,8 +1968,9 @@ export async function AuthTotpProviderRemove(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthTotpProviderRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/totp-provider/remove";
-	return getdiksInstance().delete<T.AuthTotpProviderRemoveResponse200>(url, {
+	return apiClient.delete<T.AuthTotpProviderRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -1905,8 +1990,9 @@ export async function AuthTotpProviderRemoveForUser(
 	data: { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthTotpProviderRemoveForUserResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/totp-provider/user/${data.user}/remove`;
-	return getdiksInstance().delete<T.AuthTotpProviderRemoveForUserResponse200>(url, {
+	return apiClient.delete<T.AuthTotpProviderRemoveForUserResponse200>(url, {
 		headers,
 	});
 }
@@ -1925,9 +2011,10 @@ export async function AuthTotpProviderSetup(
 	data: T.AuthTotpProviderSetupRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthTotpProviderSetupResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/totp-provider/setup";
 	const bodyData = {};
-	return getdiksInstance().post<T.AuthTotpProviderSetupResponse200>(url, {
+	return apiClient.post<T.AuthTotpProviderSetupResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1949,11 +2036,12 @@ export async function AuthTotpProviderSetupVerify(
 	data: T.AuthTotpProviderSetupVerifyRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthTotpProviderSetupVerifyResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/totp-provider/setup/verify";
 	const bodyData = {
 		totp: data.totp,
 	};
-	return getdiksInstance().post<T.AuthTotpProviderSetupVerifyResponse200>(url, {
+	return apiClient.post<T.AuthTotpProviderSetupVerifyResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1977,11 +2065,12 @@ export async function AuthTotpProviderVerify(
 	data: T.AuthTotpProviderVerifyRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthTotpProviderVerifyResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/totp-provider/verify";
 	const bodyData = {
 		totp: data.totp,
 	};
-	return getdiksInstance().post<T.AuthTotpProviderVerifyResponse200>(url, {
+	return apiClient.post<T.AuthTotpProviderVerifyResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1999,13 +2088,14 @@ export async function BusinessAddressPrefill(
 	data: T.BusinessAddressPrefillRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.BusinessAddressPrefillResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/business/address-prefill";
 	const bodyData = {
 		postalCode: data.postalCode,
 		houseNumber: data.houseNumber,
 		houseNumberAddition: data.houseNumberAddition,
 	};
-	return getdiksInstance().post<T.BusinessAddressPrefillResponse200>(url, {
+	return apiClient.post<T.BusinessAddressPrefillResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2022,13 +2112,14 @@ export async function ClientAdminList(
 	data: { q: string; offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ClientAdminListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/client/admin/list";
 	const queryData = {
 		q: data.q,
 		offset: data.offset,
 		limit: data.limit,
 	};
-	return getdiksInstance().post<T.ClientAdminListResponse200>(url, {
+	return apiClient.post<T.ClientAdminListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2050,8 +2141,9 @@ export async function ClientAdminProplannerAccount(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ClientAdminProplannerAccountResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/client/admin/proplannerAccount/${data.id}`;
-	return getdiksInstance().get<T.ClientAdminProplannerAccountResponse200>(url, {
+	return apiClient.get<T.ClientAdminProplannerAccountResponse200>(url, {
 		headers,
 	});
 }
@@ -2071,8 +2163,9 @@ export async function ClientAdminRemove(
 	data: { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ClientAdminRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/client/admin/${data.id}/remove`;
-	return getdiksInstance().delete<T.ClientAdminRemoveResponse200>(url, {
+	return apiClient.delete<T.ClientAdminRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -2092,13 +2185,14 @@ export async function ClientAdminUpdate(
 	data: T.ClientAdminUpdateRequest & { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ClientAdminUpdateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/client/admin/update/${data.id}`;
 	const bodyData = {
 		proplannerId: data.proplannerId,
 		email: data.email,
 		status: data.status,
 	};
-	return getdiksInstance().patch<T.ClientAdminUpdateResponse200>(url, {
+	return apiClient.patch<T.ClientAdminUpdateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2119,8 +2213,9 @@ export async function ConfirmedOrderList(
 	data: { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ConfirmedOrderListResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/confirmed-order/${data.id}`;
-	return getdiksInstance().get<T.ConfirmedOrderListResponse200>(url, {
+	return apiClient.get<T.ConfirmedOrderListResponse200>(url, {
 		headers,
 	});
 }
@@ -2139,8 +2234,9 @@ export async function ConfirmedStorageOrderSingle(
 	data: { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ConfirmedStorageOrderSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/confirmed-storage-order/${data.id}`;
-	return getdiksInstance().get<T.ConfirmedStorageOrderSingleResponse200>(url, {
+	return apiClient.get<T.ConfirmedStorageOrderSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -2154,8 +2250,9 @@ export async function StorageContractDownloadContract(
 	data: { storageLocationId: string; contractId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageContractDownloadContractResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/storage-contract/contract/${data.storageLocationId}/${data.contractId}`;
-	return getdiksInstance().get<T.StorageContractDownloadContractResponse200>(url, {
+	return apiClient.get<T.StorageContractDownloadContractResponse200>(url, {
 		headers,
 	});
 }
@@ -2169,8 +2266,9 @@ export async function StorageContractDownloadInvoice(
 	data: { storageLocationId: string; invoiceNumber: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageContractDownloadInvoiceResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/storage-contract/invoice/${data.storageLocationId}/${data.invoiceNumber}`;
-	return getdiksInstance().get<T.StorageContractDownloadInvoiceResponse200>(url, {
+	return apiClient.get<T.StorageContractDownloadInvoiceResponse200>(url, {
 		headers,
 	});
 }
@@ -2185,12 +2283,13 @@ export async function StorageContractInvoices(
 	data: { offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageContractInvoicesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage-contract/invoices";
 	const queryData = {
 		offset: data.offset,
 		limit: data.limit,
 	};
-	return getdiksInstance().get<T.StorageContractInvoicesResponse200>(url, {
+	return apiClient.get<T.StorageContractInvoicesResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2207,12 +2306,13 @@ export async function StorageContractOverview(
 	data: { offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageContractOverviewResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage-contract/overview";
 	const queryData = {
 		offset: data.offset,
 		limit: data.limit,
 	};
-	return getdiksInstance().get<T.StorageContractOverviewResponse200>(url, {
+	return apiClient.get<T.StorageContractOverviewResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2235,12 +2335,13 @@ export async function StorageContractTerminate(
 	data: T.StorageContractTerminateRequest & { storageLocationId: string; contractId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageContractTerminateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/storage-contract/contract/${data.storageLocationId}/${data.contractId}/terminate`;
 	const bodyData = {
 		terminationDate: data.terminationDate,
 		terminationReasonId: data.terminationReasonId,
 	};
-	return getdiksInstance().post<T.StorageContractTerminateResponse200>(url, {
+	return apiClient.post<T.StorageContractTerminateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2266,6 +2367,7 @@ export async function StorageOrderCheckout(
 	data: T.StorageOrderCheckoutRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageOrderCheckoutResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage-order/checkout";
 	const bodyData = {
 		locale: data.locale,
@@ -2274,7 +2376,7 @@ export async function StorageOrderCheckout(
 		allowDirectDebit: data.allowDirectDebit,
 		paymentMethod: data.paymentMethod,
 	};
-	return getdiksInstance().post<T.StorageOrderCheckoutResponse200>(url, {
+	return apiClient.post<T.StorageOrderCheckoutResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2295,11 +2397,12 @@ export async function StorageOrderOverview(
 	data: { locale?: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageOrderOverviewResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage-order";
 	const queryData = {
 		locale: data.locale,
 	};
-	return getdiksInstance().get<T.StorageOrderOverviewResponse200>(url, {
+	return apiClient.get<T.StorageOrderOverviewResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2323,6 +2426,7 @@ export async function StorageOrderConfigure(
 	data: T.StorageOrderConfigureRequest & { locale?: any },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageOrderConfigureResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage-order";
 	const queryData = {
 		locale: data.locale,
@@ -2337,7 +2441,7 @@ export async function StorageOrderConfigure(
 		details: data.details,
 		dimensionType: data.dimensionType,
 	};
-	return getdiksInstance().post<T.StorageOrderConfigureResponse200>(url, {
+	return apiClient.post<T.StorageOrderConfigureResponse200>(url, {
 		params: queryData,
 		data: bodyData,
 		headers,
@@ -2359,11 +2463,12 @@ export async function StorageOrderDiscountApply(
 	data: T.StorageOrderDiscountApplyRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageOrderDiscountApplyResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage-order/discount";
 	const bodyData = {
 		discountCode: data.discountCode,
 	};
-	return getdiksInstance().post<T.StorageOrderDiscountApplyResponse200>(url, {
+	return apiClient.post<T.StorageOrderDiscountApplyResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2382,8 +2487,9 @@ export async function StorageOrderDiscountRemove(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageOrderDiscountRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage-order/discount";
-	return getdiksInstance().delete<T.StorageOrderDiscountRemoveResponse200>(url, {
+	return apiClient.delete<T.StorageOrderDiscountRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -2395,12 +2501,13 @@ export async function ContinentalCreateSession(
 	data: T.ContinentalCreateSessionRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ContinentalCreateSessionResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/continental/create-session";
 	const bodyData = {
 		token: data.token,
 		deviceName: data.deviceName,
 	};
-	return getdiksInstance().post<T.ContinentalCreateSessionResponse200>(url, {
+	return apiClient.post<T.ContinentalCreateSessionResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2420,12 +2527,13 @@ export async function ContinentalCreateVirtualKey(
 	data: T.ContinentalCreateVirtualKeyRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ContinentalCreateVirtualKeyResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/continental/create-virtual-key";
 	const bodyData = {
 		bookingId: data.bookingId,
 		clientDeviceId: data.clientDeviceId,
 	};
-	return getdiksInstance().post<T.ContinentalCreateVirtualKeyResponse200>(url, {
+	return apiClient.post<T.ContinentalCreateVirtualKeyResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2439,8 +2547,9 @@ export async function ContinentalRevokeVirtualKey(
 	data: { virtualKeyId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ContinentalRevokeVirtualKeyResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/continental/${data.virtualKeyId}/revoke`;
-	return getdiksInstance().delete<T.ContinentalRevokeVirtualKeyResponse200>(url, {
+	return apiClient.delete<T.ContinentalRevokeVirtualKeyResponse200>(url, {
 		headers,
 	});
 }
@@ -2453,12 +2562,13 @@ export async function ContinentalUpdateVirtualKey(
 	data: T.ContinentalUpdateVirtualKeyRequest & { virtualKeyId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ContinentalUpdateVirtualKeyResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/continental/${data.virtualKeyId}/update`;
 	const bodyData = {
 		fromDate: data.fromDate,
 		toDate: data.toDate,
 	};
-	return getdiksInstance().put<T.ContinentalUpdateVirtualKeyResponse200>(url, {
+	return apiClient.put<T.ContinentalUpdateVirtualKeyResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2472,6 +2582,7 @@ export async function DivergentOpeningHoursCreate(
 	data: T.DivergentOpeningHoursCreateRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DivergentOpeningHoursCreateResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/divergent-opening-hours";
 	const bodyData = {
 		description: data.description,
@@ -2481,7 +2592,7 @@ export async function DivergentOpeningHoursCreate(
 		isClosedForTheWholeDay: data.isClosedForTheWholeDay,
 		locations: data.locations,
 	};
-	return getdiksInstance().post<T.DivergentOpeningHoursCreateResponse200>(url, {
+	return apiClient.post<T.DivergentOpeningHoursCreateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2500,8 +2611,9 @@ export async function DivergentOpeningHoursSingle(
 	data: { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DivergentOpeningHoursSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/divergent-opening-hours/${data.id}`;
-	return getdiksInstance().get<T.DivergentOpeningHoursSingleResponse200>(url, {
+	return apiClient.get<T.DivergentOpeningHoursSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -2520,6 +2632,7 @@ export async function DivergentOpeningHoursUpdate(
 	data: T.DivergentOpeningHoursUpdateRequest & { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DivergentOpeningHoursUpdateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/divergent-opening-hours/${data.id}`;
 	const bodyData = {
 		description: data.description,
@@ -2529,7 +2642,7 @@ export async function DivergentOpeningHoursUpdate(
 		isClosedForTheWholeDay: data.isClosedForTheWholeDay,
 		locations: data.locations,
 	};
-	return getdiksInstance().put<T.DivergentOpeningHoursUpdateResponse200>(url, {
+	return apiClient.put<T.DivergentOpeningHoursUpdateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2548,8 +2661,9 @@ export async function DivergentOpeningHoursDelete(
 	data: { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DivergentOpeningHoursDeleteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/divergent-opening-hours/${data.id}`;
-	return getdiksInstance().delete<T.DivergentOpeningHoursDeleteResponse200>(url, {
+	return apiClient.delete<T.DivergentOpeningHoursDeleteResponse200>(url, {
 		headers,
 	});
 }
@@ -2564,12 +2678,13 @@ export async function DivergentOpeningHoursList(
 	data: { offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DivergentOpeningHoursListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/divergent-opening-hours/list";
 	const queryData = {
 		offset: data.offset,
 		limit: data.limit,
 	};
-	return getdiksInstance().get<T.DivergentOpeningHoursListResponse200>(url, {
+	return apiClient.get<T.DivergentOpeningHoursListResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -2584,8 +2699,9 @@ export async function FeatureFlagCurrent(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.FeatureFlagCurrentResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/feature-flag/current";
-	return getdiksInstance().get<T.FeatureFlagCurrentResponse200>(url, {
+	return apiClient.get<T.FeatureFlagCurrentResponse200>(url, {
 		headers,
 	});
 }
@@ -2603,8 +2719,9 @@ export async function JobStartProplannerMirror(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.JobStartProplannerMirrorResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/job/admin/start/proplannerMirrorCategory";
-	return getdiksInstance().post<T.JobStartProplannerMirrorResponse200>(url, {
+	return apiClient.post<T.JobStartProplannerMirrorResponse200>(url, {
 		headers,
 	});
 }
@@ -2617,11 +2734,12 @@ export async function ManagementRequestMagicLink(
 	data: T.ManagementRequestMagicLinkRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ManagementRequestMagicLinkResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/_lightbase/management/request-magic-link";
 	const bodyData = {
 		slackUserId: data.slackUserId,
 	};
-	return getdiksInstance().post<T.ManagementRequestMagicLinkResponse200>(url, {
+	return apiClient.post<T.ManagementRequestMagicLinkResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2637,6 +2755,7 @@ export async function ManagementFeatureFlagList(
 	data: T.ManagementFeatureFlagListRequest & { offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ManagementFeatureFlagListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/_lightbase/management/feature-flag/list";
 	const queryData = {
 		offset: data.offset,
@@ -2647,7 +2766,7 @@ export async function ManagementFeatureFlagList(
 		orderBy: data.orderBy,
 		orderBySpec: data.orderBySpec,
 	};
-	return getdiksInstance().post<T.ManagementFeatureFlagListResponse200>(url, {
+	return apiClient.post<T.ManagementFeatureFlagListResponse200>(url, {
 		params: queryData,
 		data: bodyData,
 		headers,
@@ -2663,8 +2782,9 @@ export async function ManagementFeatureFlagSingle(
 	data: { featureFlagId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ManagementFeatureFlagSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/_lightbase/management/feature-flag/${data.featureFlagId}/single`;
-	return getdiksInstance().get<T.ManagementFeatureFlagSingleResponse200>(url, {
+	return apiClient.get<T.ManagementFeatureFlagSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -2678,6 +2798,7 @@ export async function ManagementFeatureFlagUpdate(
 	data: T.ManagementFeatureFlagUpdateRequest & { featureFlagId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ManagementFeatureFlagUpdateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/_lightbase/management/feature-flag/${data.featureFlagId}/update`;
 	const bodyData = {
 		globalValue: data.globalValue,
@@ -2685,7 +2806,7 @@ export async function ManagementFeatureFlagUpdate(
 		tenantValues: data.tenantValues,
 		userValues: data.userValues,
 	};
-	return getdiksInstance().put<T.ManagementFeatureFlagUpdateResponse200>(url, {
+	return apiClient.put<T.ManagementFeatureFlagUpdateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2699,8 +2820,9 @@ export async function MultitenantCurrent(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.MultitenantCurrentResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/multitenant/current";
-	return getdiksInstance().get<T.MultitenantCurrentResponse200>(url, {
+	return apiClient.get<T.MultitenantCurrentResponse200>(url, {
 		headers,
 	});
 }
@@ -2720,9 +2842,10 @@ export async function OnfidoStartDriversLicenseVerification(
 	data: T.OnfidoStartDriversLicenseVerificationRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OnfidoStartDriversLicenseVerificationResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/onfido/start-drivers-license-verification";
 	const bodyData = {};
-	return getdiksInstance().post<T.OnfidoStartDriversLicenseVerificationResponse200>(url, {
+	return apiClient.post<T.OnfidoStartDriversLicenseVerificationResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2743,6 +2866,7 @@ export async function OnfidoWebhook(
 	data: T.OnfidoWebhookRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OnfidoWebhookResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/onfido/webhook";
 	const bodyData = {
 		id: data.id,
@@ -2755,7 +2879,7 @@ export async function OnfidoWebhook(
 		isMockEvent: data.isMockEvent,
 		tags: data.tags,
 	};
-	return getdiksInstance().post<T.OnfidoWebhookResponse200>(url, {
+	return apiClient.post<T.OnfidoWebhookResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2779,6 +2903,7 @@ export async function OrderAdd(
 	data: T.OrderAddRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderAddResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order/line";
 	const bodyData = {
 		categoryId: data.categoryId,
@@ -2796,7 +2921,7 @@ export async function OrderAdd(
 		quantity: data.quantity,
 		remarks: data.remarks,
 	};
-	return getdiksInstance().post<T.OrderAddResponse200>(url, {
+	return apiClient.post<T.OrderAddResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2816,11 +2941,12 @@ export async function OrderDiscountApply(
 	data: T.OrderDiscountApplyRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderDiscountApplyResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order/discount";
 	const bodyData = {
 		discountCode: data.discountCode,
 	};
-	return getdiksInstance().post<T.OrderDiscountApplyResponse200>(url, {
+	return apiClient.post<T.OrderDiscountApplyResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2839,8 +2965,9 @@ export async function OrderDiscountRemove(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderDiscountRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order/discount";
-	return getdiksInstance().delete<T.OrderDiscountRemoveResponse200>(url, {
+	return apiClient.delete<T.OrderDiscountRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -2859,11 +2986,12 @@ export async function OrderOverview(
 	data: T.OrderOverviewRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderOverviewResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order";
 	const bodyData = {
 		locale: data.locale,
 	};
-	return getdiksInstance().post<T.OrderOverviewResponse200>(url, {
+	return apiClient.post<T.OrderOverviewResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2877,8 +3005,9 @@ export async function OrderOverviewCount(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderOverviewCountResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order/overview/count";
-	return getdiksInstance().get<T.OrderOverviewCountResponse200>(url, {
+	return apiClient.get<T.OrderOverviewCountResponse200>(url, {
 		headers,
 	});
 }
@@ -2897,8 +3026,9 @@ export async function OrderSingle(
 	data: { lineId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/order/line/${data.lineId}`;
-	return getdiksInstance().get<T.OrderSingleResponse200>(url, {
+	return apiClient.get<T.OrderSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -2924,6 +3054,7 @@ export async function OrderUpdate(
 	data: T.OrderUpdateRequest & { lineId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderUpdateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/order/line/${data.lineId}`;
 	const bodyData = {
 		categoryId: data.categoryId,
@@ -2941,7 +3072,7 @@ export async function OrderUpdate(
 		quantity: data.quantity,
 		remarks: data.remarks,
 	};
-	return getdiksInstance().put<T.OrderUpdateResponse200>(url, {
+	return apiClient.put<T.OrderUpdateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -2960,8 +3091,9 @@ export async function OrderRemove(
 	data: { lineId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/order/line/${data.lineId}`;
-	return getdiksInstance().delete<T.OrderRemoveResponse200>(url, {
+	return apiClient.delete<T.OrderRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -2988,13 +3120,14 @@ export async function OrderCheckoutFlowCheckout(
 	data: T.OrderCheckoutFlowCheckoutRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderCheckoutFlowCheckoutResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order-checkout/checkout/flow/checkout";
 	const bodyData = {
 		locale: data.locale,
 		paymentMethod: data.paymentMethod,
 		password: data.password,
 	};
-	return getdiksInstance().post<T.OrderCheckoutFlowCheckoutResponse200>(url, {
+	return apiClient.post<T.OrderCheckoutFlowCheckoutResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3014,11 +3147,12 @@ export async function OrderCheckoutFlowInfo(
 	data: T.OrderCheckoutFlowInfoRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderCheckoutFlowInfoResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order-checkout/checkout/flow/info";
 	const bodyData = {
 		locale: data.locale,
 	};
-	return getdiksInstance().post<T.OrderCheckoutFlowInfoResponse200>(url, {
+	return apiClient.post<T.OrderCheckoutFlowInfoResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3046,6 +3180,7 @@ export async function OrderCheckoutFlowPreferences(
 	data: T.OrderCheckoutFlowPreferencesRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderCheckoutFlowPreferencesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order-checkout/checkout/flow/preferences";
 	const bodyData = {
 		preferences: data.preferences,
@@ -3053,7 +3188,7 @@ export async function OrderCheckoutFlowPreferences(
 		email: data.email,
 		birthDate: data.birthDate,
 	};
-	return getdiksInstance().put<T.OrderCheckoutFlowPreferencesResponse200>(url, {
+	return apiClient.put<T.OrderCheckoutFlowPreferencesResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3071,11 +3206,12 @@ export async function OrderShareApply(
 	data: T.OrderShareApplyRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderShareApplyResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order-share/apply";
 	const bodyData = {
 		shareId: data.shareId,
 	};
-	return getdiksInstance().post<T.OrderShareApplyResponse200>(url, {
+	return apiClient.post<T.OrderShareApplyResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3093,8 +3229,9 @@ export async function OrderShareCreate(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.OrderShareCreateResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/order-share/create";
-	return getdiksInstance().post<T.OrderShareCreateResponse200>(url, {
+	return apiClient.post<T.OrderShareCreateResponse200>(url, {
 		headers,
 	});
 }
@@ -3107,6 +3244,7 @@ export async function RabobankWebhookOmnikassa(
 	data: T.RabobankWebhookOmnikassaRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.RabobankWebhookOmnikassaResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/rabobank/webhook/omnikassa";
 	const bodyData = {
 		authentication: data.authentication,
@@ -3115,7 +3253,7 @@ export async function RabobankWebhookOmnikassa(
 		poiId: data.poiId,
 		signature: data.signature,
 	};
-	return getdiksInstance().post<T.RabobankWebhookOmnikassaResponse200>(url, {
+	return apiClient.post<T.RabobankWebhookOmnikassaResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3135,8 +3273,9 @@ export async function SharedVehicleReservationActive(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationActiveResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/shared-vehicle-reservation/active";
-	return getdiksInstance().get<T.SharedVehicleReservationActiveResponse200>(url, {
+	return apiClient.get<T.SharedVehicleReservationActiveResponse200>(url, {
 		headers,
 	});
 }
@@ -3158,12 +3297,13 @@ export async function SharedVehicleReservationAvailabilityExtendBooking(
 	data: T.SharedVehicleReservationAvailabilityExtendBookingRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationAvailabilityExtendBookingResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}/availability-extend-booking`;
 	const bodyData = {
 		locale: data.locale,
 		dateReturn: data.dateReturn,
 	};
-	return getdiksInstance().post<T.SharedVehicleReservationAvailabilityExtendBookingResponse200>(url, {
+	return apiClient.post<T.SharedVehicleReservationAvailabilityExtendBookingResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3184,8 +3324,9 @@ export async function SharedVehicleReservationSingle(
 	data: { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}`;
-	return getdiksInstance().get<T.SharedVehicleReservationSingleResponse200>(url, {
+	return apiClient.get<T.SharedVehicleReservationSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -3205,13 +3346,14 @@ export async function SharedVehicleReservationUpdate(
 	data: T.SharedVehicleReservationUpdateRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationUpdateResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}`;
 	const bodyData = {
 		locale: data.locale,
 		datePickup: data.datePickup,
 		dateReturn: data.dateReturn,
 	};
-	return getdiksInstance().put<T.SharedVehicleReservationUpdateResponse200>(url, {
+	return apiClient.put<T.SharedVehicleReservationUpdateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3231,8 +3373,9 @@ export async function SharedVehicleReservationCancel(
 	data: { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationCancelResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}`;
-	return getdiksInstance().delete<T.SharedVehicleReservationCancelResponse200>(url, {
+	return apiClient.delete<T.SharedVehicleReservationCancelResponse200>(url, {
 		headers,
 	});
 }
@@ -3252,12 +3395,13 @@ export async function SharedVehicleReservationExtendBooking(
 	data: T.SharedVehicleReservationExtendBookingRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationExtendBookingResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}/extend-booking`;
 	const bodyData = {
 		locale: data.locale,
 		dateReturn: data.dateReturn,
 	};
-	return getdiksInstance().post<T.SharedVehicleReservationExtendBookingResponse200>(url, {
+	return apiClient.post<T.SharedVehicleReservationExtendBookingResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3279,11 +3423,12 @@ export async function SharedVehicleReservationGeneratePaymentUrl(
 	data: T.SharedVehicleReservationGeneratePaymentUrlRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationGeneratePaymentUrlResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}/generate-payment-url`;
 	const bodyData = {
 		locale: data.locale,
 	};
-	return getdiksInstance().post<T.SharedVehicleReservationGeneratePaymentUrlResponse200>(url, {
+	return apiClient.post<T.SharedVehicleReservationGeneratePaymentUrlResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3304,8 +3449,9 @@ export async function SharedVehicleReservationGetFuelInstructions(
 	data: { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationGetFuelInstructionsResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}/get-fuel-instructions`;
-	return getdiksInstance().get<T.SharedVehicleReservationGetFuelInstructionsResponse200>(url, {
+	return apiClient.get<T.SharedVehicleReservationGetFuelInstructionsResponse200>(url, {
 		headers,
 	});
 }
@@ -3320,6 +3466,7 @@ export async function SharedVehicleReservationList(
 	data: T.SharedVehicleReservationListRequest & { offset?: number; limit?: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/shared-vehicle-reservation/list";
 	const queryData = {
 		offset: data.offset,
@@ -3329,7 +3476,7 @@ export async function SharedVehicleReservationList(
 		status: data.status,
 		filters: data.filters,
 	};
-	return getdiksInstance().post<T.SharedVehicleReservationListResponse200>(url, {
+	return apiClient.post<T.SharedVehicleReservationListResponse200>(url, {
 		params: queryData,
 		data: bodyData,
 		headers,
@@ -3351,12 +3498,13 @@ export async function SharedVehicleReservationStartRide(
 	data: T.SharedVehicleReservationStartRideRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationStartRideResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}/start-ride`;
 	const bodyData = {
 		internalTidiness: data.internalTidiness,
 		externalTidiness: data.externalTidiness,
 	};
-	return getdiksInstance().post<T.SharedVehicleReservationStartRideResponse200>(url, {
+	return apiClient.post<T.SharedVehicleReservationStartRideResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3380,12 +3528,13 @@ export async function SharedVehicleReservationStopRide(
 	data: T.SharedVehicleReservationStopRideRequest & { reservationId: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SharedVehicleReservationStopRideResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/shared-vehicle-reservation/${data.reservationId}/stop-ride`;
 	const bodyData = {
 		internalTidiness: data.internalTidiness,
 		externalTidiness: data.externalTidiness,
 	};
-	return getdiksInstance().post<T.SharedVehicleReservationStopRideResponse200>(url, {
+	return apiClient.post<T.SharedVehicleReservationStopRideResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3403,11 +3552,12 @@ export async function StorageAddons(
 	data: { storageLocationId: string; excludeUnavailable?: boolean },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageAddonsResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/storage/${data.storageLocationId}/addons`;
 	const queryData = {
 		excludeUnavailable: data.excludeUnavailable,
 	};
-	return getdiksInstance().get<T.StorageAddonsResponse200>(url, {
+	return apiClient.get<T.StorageAddonsResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -3428,8 +3578,9 @@ export async function StorageCategories(
 	data: { storageLocationId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageCategoriesResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/storage/${data.storageLocationId}/categories`;
-	return getdiksInstance().get<T.StorageCategoriesResponse200>(url, {
+	return apiClient.get<T.StorageCategoriesResponse200>(url, {
 		headers,
 	});
 }
@@ -3444,8 +3595,9 @@ export async function StorageTerminationTypes(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageTerminationTypesResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/storage/terminationTypes";
-	return getdiksInstance().get<T.StorageTerminationTypesResponse200>(url, {
+	return apiClient.get<T.StorageTerminationTypesResponse200>(url, {
 		headers,
 	});
 }
@@ -3463,11 +3615,12 @@ export async function StorageUnitTypes(
 	data: { categoryId: string; storageLocationId: string; excludeFull?: boolean },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageUnitTypesResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/storage/${data.storageLocationId}/category/${data.categoryId}/unitTypes`;
 	const queryData = {
 		excludeFull: data.excludeFull,
 	};
-	return getdiksInstance().get<T.StorageUnitTypesResponse200>(url, {
+	return apiClient.get<T.StorageUnitTypesResponse200>(url, {
 		params: queryData,
 
 		headers,
@@ -3482,8 +3635,9 @@ export async function StorageLocationSingle(
 	data: { storageLocationId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.StorageLocationSingleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/storage-location/${data.storageLocationId}`;
-	return getdiksInstance().get<T.StorageLocationSingleResponse200>(url, {
+	return apiClient.get<T.StorageLocationSingleResponse200>(url, {
 		headers,
 	});
 }
@@ -3495,6 +3649,7 @@ export async function SupportContact(
 	data: T.SupportContactRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SupportContactResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/support/contact";
 	const bodyData = {
 		name: data.name,
@@ -3503,7 +3658,7 @@ export async function SupportContact(
 		department: data.department,
 		question: data.question,
 	};
-	return getdiksInstance().post<T.SupportContactResponse200>(url, {
+	return apiClient.post<T.SupportContactResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -3516,11 +3671,12 @@ export async function SupportSubscribeNewsletter(
 	data: T.SupportSubscribeNewsletterRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SupportSubscribeNewsletterResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/support/mailing-list/newsletter/subscribe";
 	const bodyData = {
 		email: data.email,
 	};
-	return getdiksInstance().post<T.SupportSubscribeNewsletterResponse200>(url, {
+	return apiClient.post<T.SupportSubscribeNewsletterResponse200>(url, {
 		data: bodyData,
 		headers,
 	});

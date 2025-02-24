@@ -1,5 +1,5 @@
 import type { AxiosResponse } from "axios";
-import { getjaarbeursInstance } from "./jaarbeurs.axios";
+import { getApiClient } from "./apiClient";
 import type * as T from "./jaarbeurs.schema";
 
 /**
@@ -10,8 +10,9 @@ export async function AccountMe(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountMeResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/me";
-	return getjaarbeursInstance().get<T.AccountMeResponse200>(url, {
+	return apiClient.get<T.AccountMeResponse200>(url, {
 		headers,
 	});
 }
@@ -24,12 +25,13 @@ export async function AccountRegister(
 	data: T.AccountRegisterRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountRegisterResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/register";
 	const bodyData = {
 		email: data.email,
 		password: data.password,
 	};
-	return getjaarbeursInstance().post<T.AccountRegisterResponse200>(url, {
+	return apiClient.post<T.AccountRegisterResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -47,8 +49,9 @@ export async function AccountRemove(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/remove";
-	return getjaarbeursInstance().delete<T.AccountRemoveResponse200>(url, {
+	return apiClient.delete<T.AccountRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -63,11 +66,12 @@ export async function AccountUpdatePushNotifications(
 	data: T.AccountUpdatePushNotificationsRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AccountUpdatePushNotificationsResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/account/me/update-push-notifications";
 	const bodyData = {
 		pushNotificationSettings: data.pushNotificationSettings,
 	};
-	return getjaarbeursInstance().put<T.AccountUpdatePushNotificationsResponse200>(url, {
+	return apiClient.put<T.AccountUpdatePushNotificationsResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -88,13 +92,14 @@ export async function TicketAdd(
 	data: T.TicketAddRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.TicketAddResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/ticket/add";
 	const bodyData = {
 		email: data.email,
 		barcode: data.barcode,
 		exhibitionId: data.exhibitionId,
 	};
-	return getjaarbeursInstance().post<T.TicketAddResponse200>(url, {
+	return apiClient.post<T.TicketAddResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -113,8 +118,9 @@ export async function TicketRemove(
 	data: { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.TicketRemoveResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/ticket/${data.id}/remove`;
-	return getjaarbeursInstance().delete<T.TicketRemoveResponse200>(url, {
+	return apiClient.delete<T.TicketRemoveResponse200>(url, {
 		headers,
 	});
 }
@@ -131,11 +137,12 @@ export async function AuthPasswordBasedForgotPassword(
 	data: T.AuthPasswordBasedForgotPasswordRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedForgotPasswordResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/forgot-password";
 	const bodyData = {
 		email: data.email,
 	};
-	return getjaarbeursInstance().post<T.AuthPasswordBasedForgotPasswordResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedForgotPasswordResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -148,8 +155,9 @@ export async function AuthPasswordBasedListEmails(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedListEmailsResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based";
-	return getjaarbeursInstance().get<T.AuthPasswordBasedListEmailsResponse200>(url, {
+	return apiClient.get<T.AuthPasswordBasedListEmailsResponse200>(url, {
 		headers,
 	});
 }
@@ -169,13 +177,14 @@ export async function AuthPasswordBasedLogin(
 	data: T.AuthPasswordBasedLoginRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedLoginResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/login";
 	const bodyData = {
 		email: data.email,
 		password: data.password,
 		device: data.device,
 	};
-	return getjaarbeursInstance().post<T.AuthPasswordBasedLoginResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedLoginResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -196,12 +205,13 @@ export async function AuthPasswordBasedResetPassword(
 	data: T.AuthPasswordBasedResetPasswordRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedResetPasswordResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/reset-password";
 	const bodyData = {
 		resetToken: data.resetToken,
 		password: data.password,
 	};
-	return getjaarbeursInstance().post<T.AuthPasswordBasedResetPasswordResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedResetPasswordResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -222,11 +232,12 @@ export async function AuthPasswordBasedUpdateEmail(
 	data: T.AuthPasswordBasedUpdateEmailRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedUpdateEmailResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/update-email";
 	const bodyData = {
 		email: data.email,
 	};
-	return getjaarbeursInstance().post<T.AuthPasswordBasedUpdateEmailResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedUpdateEmailResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -245,11 +256,12 @@ export async function AuthPasswordBasedUpdatePassword(
 	data: T.AuthPasswordBasedUpdatePasswordRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedUpdatePasswordResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/update-password";
 	const bodyData = {
 		password: data.password,
 	};
-	return getjaarbeursInstance().post<T.AuthPasswordBasedUpdatePasswordResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedUpdatePasswordResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -272,12 +284,13 @@ export async function AuthPasswordBasedVerifyEmail(
 	data: T.AuthPasswordBasedVerifyEmailRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPasswordBasedVerifyEmailResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/password-based/verify-email";
 	const bodyData = {
 		verifyToken: data.verifyToken,
 		device: data.device,
 	};
-	return getjaarbeursInstance().post<T.AuthPasswordBasedVerifyEmailResponse200>(url, {
+	return apiClient.post<T.AuthPasswordBasedVerifyEmailResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -293,8 +306,9 @@ export async function AppRedirectAccountResetPassword(
 	data: { token: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AppRedirectAccountResetPasswordResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/app-redirect/account/reset-password/${data.token}`;
-	return getjaarbeursInstance().get<T.AppRedirectAccountResetPasswordResponse200>(url, {
+	return apiClient.get<T.AppRedirectAccountResetPasswordResponse200>(url, {
 		headers,
 	});
 }
@@ -309,8 +323,9 @@ export async function AppRedirectAccountVerification(
 	data: { token: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AppRedirectAccountVerificationResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/app-redirect/account/verification/${data.token}`;
-	return getjaarbeursInstance().get<T.AppRedirectAccountVerificationResponse200>(url, {
+	return apiClient.get<T.AppRedirectAccountVerificationResponse200>(url, {
 		headers,
 	});
 }
@@ -327,8 +342,9 @@ export async function AuthGetUser(
 	data: { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthGetUserResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/user/${data.user}`;
-	return getjaarbeursInstance().get<T.AuthGetUserResponse200>(url, {
+	return apiClient.get<T.AuthGetUserResponse200>(url, {
 		headers,
 	});
 }
@@ -345,8 +361,9 @@ export async function AuthImpersonateStopSession(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthImpersonateStopSessionResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/impersonate-stop-session";
-	return getjaarbeursInstance().post<T.AuthImpersonateStopSessionResponse200>(url, {
+	return apiClient.post<T.AuthImpersonateStopSessionResponse200>(url, {
 		headers,
 	});
 }
@@ -359,8 +376,9 @@ export async function AuthLogout(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthLogoutResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/logout";
-	return getjaarbeursInstance().post<T.AuthLogoutResponse200>(url, {
+	return apiClient.post<T.AuthLogoutResponse200>(url, {
 		headers,
 	});
 }
@@ -375,8 +393,9 @@ export async function AuthMe(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthMeResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/me";
-	return getjaarbeursInstance().get<T.AuthMeResponse200>(url, {
+	return apiClient.get<T.AuthMeResponse200>(url, {
 		headers,
 	});
 }
@@ -392,11 +411,12 @@ export async function AuthRefreshTokens(
 	data: T.AuthRefreshTokensRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthRefreshTokensResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/refresh-tokens";
 	const bodyData = {
 		refreshToken: data.refreshToken,
 	};
-	return getjaarbeursInstance().post<T.AuthRefreshTokensResponse200>(url, {
+	return apiClient.post<T.AuthRefreshTokensResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -415,11 +435,12 @@ export async function AuthSetUserActive(
 	data: T.AuthSetUserActiveRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthSetUserActiveResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/user/${data.user}/set-active`;
 	const bodyData = {
 		active: data.active,
 	};
-	return getjaarbeursInstance().post<T.AuthSetUserActiveResponse200>(url, {
+	return apiClient.post<T.AuthSetUserActiveResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -437,11 +458,12 @@ export async function AuthUpdateUser(
 	data: T.AuthUpdateUserRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthUpdateUserResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/user/${data.user}/update`;
 	const bodyData = {
 		name: data.name,
 	};
-	return getjaarbeursInstance().put<T.AuthUpdateUserResponse200>(url, {
+	return apiClient.put<T.AuthUpdateUserResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -458,12 +480,13 @@ export async function AuthUserList(
 	data: T.AuthUserListRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthUserListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/list-users";
 	const bodyData = {
 		search: data.search,
 		filters: data.filters,
 	};
-	return getjaarbeursInstance().post<T.AuthUserListResponse200>(url, {
+	return apiClient.post<T.AuthUserListResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -477,11 +500,12 @@ export async function AuthPermissionCreateRole(
 	data: T.AuthPermissionCreateRoleRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionCreateRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/role";
 	const bodyData = {
 		identifier: data.identifier,
 	};
-	return getjaarbeursInstance().post<T.AuthPermissionCreateRoleResponse200>(url, {
+	return apiClient.post<T.AuthPermissionCreateRoleResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -496,8 +520,9 @@ export async function AuthPermissionPermissionList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionPermissionListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/permission/list";
-	return getjaarbeursInstance().get<T.AuthPermissionPermissionListResponse200>(url, {
+	return apiClient.get<T.AuthPermissionPermissionListResponse200>(url, {
 		headers,
 	});
 }
@@ -511,8 +536,9 @@ export async function AuthPermissionRemoveRole(
 	data: { role: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRemoveRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/role/${data.role}`;
-	return getjaarbeursInstance().delete<T.AuthPermissionRemoveRoleResponse200>(url, {
+	return apiClient.delete<T.AuthPermissionRemoveRoleResponse200>(url, {
 		headers,
 	});
 }
@@ -534,11 +560,12 @@ export async function AuthPermissionRoleAddPermissions(
 	data: T.AuthPermissionRoleAddPermissionsRequest & { role: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRoleAddPermissionsResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/role/${data.role}/add-permissions`;
 	const bodyData = {
 		permissions: data.permissions,
 	};
-	return getjaarbeursInstance().post<T.AuthPermissionRoleAddPermissionsResponse200>(url, {
+	return apiClient.post<T.AuthPermissionRoleAddPermissionsResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -552,8 +579,9 @@ export async function AuthPermissionRoleList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRoleListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/role/list";
-	return getjaarbeursInstance().get<T.AuthPermissionRoleListResponse200>(url, {
+	return apiClient.get<T.AuthPermissionRoleListResponse200>(url, {
 		headers,
 	});
 }
@@ -574,11 +602,12 @@ export async function AuthPermissionRoleRemovePermissions(
 	data: T.AuthPermissionRoleRemovePermissionsRequest & { role: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionRoleRemovePermissionsResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/role/${data.role}/remove-permissions`;
 	const bodyData = {
 		permissions: data.permissions,
 	};
-	return getjaarbeursInstance().post<T.AuthPermissionRoleRemovePermissionsResponse200>(url, {
+	return apiClient.post<T.AuthPermissionRoleRemovePermissionsResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -592,8 +621,9 @@ export async function AuthPermissionSummary(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionSummaryResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/auth/permission/summary";
-	return getjaarbeursInstance().get<T.AuthPermissionSummaryResponse200>(url, {
+	return apiClient.get<T.AuthPermissionSummaryResponse200>(url, {
 		headers,
 	});
 }
@@ -615,11 +645,12 @@ export async function AuthPermissionUserAssignRole(
 	data: T.AuthPermissionUserAssignRoleRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionUserAssignRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/user/${data.user}/assign-role`;
 	const bodyData = {
 		role: data.role,
 	};
-	return getjaarbeursInstance().post<T.AuthPermissionUserAssignRoleResponse200>(url, {
+	return apiClient.post<T.AuthPermissionUserAssignRoleResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -640,11 +671,12 @@ export async function AuthPermissionUserRemoveRole(
 	data: T.AuthPermissionUserRemoveRoleRequest & { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionUserRemoveRoleResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/user/${data.user}/remove-role`;
 	const bodyData = {
 		role: data.role,
 	};
-	return getjaarbeursInstance().post<T.AuthPermissionUserRemoveRoleResponse200>(url, {
+	return apiClient.post<T.AuthPermissionUserRemoveRoleResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -659,8 +691,9 @@ export async function AuthPermissionUserSummary(
 	data: { user: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.AuthPermissionUserSummaryResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/auth/permission/user/${data.user}/summary`;
-	return getjaarbeursInstance().get<T.AuthPermissionUserSummaryResponse200>(url, {
+	return apiClient.get<T.AuthPermissionUserSummaryResponse200>(url, {
 		headers,
 	});
 }
@@ -675,8 +708,9 @@ export async function SessionList(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SessionListResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/session/list";
-	return getjaarbeursInstance().get<T.SessionListResponse200>(url, {
+	return apiClient.get<T.SessionListResponse200>(url, {
 		headers,
 	});
 }
@@ -691,11 +725,12 @@ export async function SessionLogout(
 	data: T.SessionLogoutRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SessionLogoutResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/session/logout";
 	const bodyData = {
 		sessionId: data.sessionId,
 	};
-	return getjaarbeursInstance().post<T.SessionLogoutResponse200>(url, {
+	return apiClient.post<T.SessionLogoutResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -711,12 +746,13 @@ export async function SessionSetDeviceNotificationToken(
 	data: T.SessionSetDeviceNotificationTokenRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.SessionSetDeviceNotificationTokenResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/session/set-notification-token";
 	const bodyData = {
 		notificationToken: data.notificationToken,
 		webPushInformation: data.webPushInformation,
 	};
-	return getjaarbeursInstance().post<T.SessionSetDeviceNotificationTokenResponse200>(url, {
+	return apiClient.post<T.SessionSetDeviceNotificationTokenResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -739,6 +775,7 @@ export async function DatoWebhookExhibition(
 	data: T.DatoWebhookExhibitionRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DatoWebhookExhibitionResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/dato/webhook-exhibition";
 	const bodyData = {
 		environment: data.environment,
@@ -746,7 +783,7 @@ export async function DatoWebhookExhibition(
 		event_type: data.event_type,
 		entity: data.entity,
 	};
-	return getjaarbeursInstance().post<T.DatoWebhookExhibitionResponse200>(url, {
+	return apiClient.post<T.DatoWebhookExhibitionResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -767,6 +804,7 @@ export async function DatoWebhookExhibitionCreate(
 	data: T.DatoWebhookExhibitionCreateRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DatoWebhookExhibitionCreateResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/dato/webhook-exhibition-create";
 	const bodyData = {
 		environment: data.environment,
@@ -774,7 +812,7 @@ export async function DatoWebhookExhibitionCreate(
 		event_type: data.event_type,
 		entity: data.entity,
 	};
-	return getjaarbeursInstance().post<T.DatoWebhookExhibitionCreateResponse200>(url, {
+	return apiClient.post<T.DatoWebhookExhibitionCreateResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -793,6 +831,7 @@ export async function DatoWebhookExhibitionRssFeed(
 	data: T.DatoWebhookExhibitionRssFeedRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DatoWebhookExhibitionRssFeedResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/dato/webhook-exhibition-rss-feed";
 	const bodyData = {
 		environment: data.environment,
@@ -800,7 +839,7 @@ export async function DatoWebhookExhibitionRssFeed(
 		event_type: data.event_type,
 		entity: data.entity,
 	};
-	return getjaarbeursInstance().post<T.DatoWebhookExhibitionRssFeedResponse200>(url, {
+	return apiClient.post<T.DatoWebhookExhibitionRssFeedResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -824,6 +863,7 @@ export async function DatoWebhookNotification(
 	data: T.DatoWebhookNotificationRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DatoWebhookNotificationResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/dato/webhook-notification";
 	const bodyData = {
 		environment: data.environment,
@@ -831,7 +871,7 @@ export async function DatoWebhookNotification(
 		event_type: data.event_type,
 		entity: data.entity,
 	};
-	return getjaarbeursInstance().post<T.DatoWebhookNotificationResponse200>(url, {
+	return apiClient.post<T.DatoWebhookNotificationResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -879,6 +919,7 @@ export async function DatoWebhookRecurringScheduleItem(
 	data: T.DatoWebhookRecurringScheduleItemRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DatoWebhookRecurringScheduleItemResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/dato/webhook-recurring-schedule-item";
 	const bodyData = {
 		environment: data.environment,
@@ -886,7 +927,7 @@ export async function DatoWebhookRecurringScheduleItem(
 		event_type: data.event_type,
 		entity: data.entity,
 	};
-	return getjaarbeursInstance().post<T.DatoWebhookRecurringScheduleItemResponse200>(url, {
+	return apiClient.post<T.DatoWebhookRecurringScheduleItemResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -909,6 +950,7 @@ export async function DatoWebhookSchedule(
 	data: T.DatoWebhookScheduleRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.DatoWebhookScheduleResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/dato/webhook-schedule";
 	const bodyData = {
 		environment: data.environment,
@@ -916,7 +958,7 @@ export async function DatoWebhookSchedule(
 		event_type: data.event_type,
 		entity: data.entity,
 	};
-	return getjaarbeursInstance().post<T.DatoWebhookScheduleResponse200>(url, {
+	return apiClient.post<T.DatoWebhookScheduleResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -936,8 +978,9 @@ export async function ExhibitionDelete(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitionDeleteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/exhibition/sync/${data.id}/delete`;
-	return getjaarbeursInstance().delete<T.ExhibitionDeleteResponse200>(url, {
+	return apiClient.delete<T.ExhibitionDeleteResponse200>(url, {
 		headers,
 	});
 }
@@ -956,8 +999,9 @@ export async function ExhibitionFavorite(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitionFavoriteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/exhibition/${data.id}/favorite`;
-	return getjaarbeursInstance().post<T.ExhibitionFavoriteResponse200>(url, {
+	return apiClient.post<T.ExhibitionFavoriteResponse200>(url, {
 		headers,
 	});
 }
@@ -977,11 +1021,12 @@ export async function ExhibitionSync(
 	data: T.ExhibitionSyncRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitionSyncResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/exhibition/sync";
 	const bodyData = {
 		exhibitions: data.exhibitions,
 	};
-	return getjaarbeursInstance().post<T.ExhibitionSyncResponse200>(url, {
+	return apiClient.post<T.ExhibitionSyncResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1002,8 +1047,9 @@ export async function ExhibitionSyncAll(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitionSyncAllResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/exhibition/syncAll";
-	return getjaarbeursInstance().post<T.ExhibitionSyncAllResponse200>(url, {
+	return apiClient.post<T.ExhibitionSyncAllResponse200>(url, {
 		headers,
 	});
 }
@@ -1022,8 +1068,9 @@ export async function ExhibitorDelete(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitorDeleteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/exhibitor/sync/${data.id}/delete`;
-	return getjaarbeursInstance().delete<T.ExhibitorDeleteResponse200>(url, {
+	return apiClient.delete<T.ExhibitorDeleteResponse200>(url, {
 		headers,
 	});
 }
@@ -1042,8 +1089,9 @@ export async function ExhibitorFavorite(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitorFavoriteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/exhibitor/${data.id}/favorite`;
-	return getjaarbeursInstance().post<T.ExhibitorFavoriteResponse200>(url, {
+	return apiClient.post<T.ExhibitorFavoriteResponse200>(url, {
 		headers,
 	});
 }
@@ -1060,8 +1108,9 @@ export async function ExhibitorLogo(
 	data: { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitorLogoResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/exhibitor/${data.id}/logo`;
-	return getjaarbeursInstance().get<T.ExhibitorLogoResponse200>(url, {
+	return apiClient.get<T.ExhibitorLogoResponse200>(url, {
 		headers,
 	});
 }
@@ -1083,13 +1132,14 @@ export async function ExhibitorSendMail(
 	data: T.ExhibitorSendMailRequest & { id: number },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitorSendMailResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/exhibitor/${data.id}/send-mail`;
 	const bodyData = {
 		email: data.email,
 		name: data.name,
 		message: data.message,
 	};
-	return getjaarbeursInstance().post<T.ExhibitorSendMailResponse200>(url, {
+	return apiClient.post<T.ExhibitorSendMailResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1111,11 +1161,12 @@ export async function ExhibitorSync(
 	data: T.ExhibitorSyncRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitorSyncResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/exhibitor/sync";
 	const bodyData = {
 		exhibitors: data.exhibitors,
 	};
-	return getjaarbeursInstance().post<T.ExhibitorSyncResponse200>(url, {
+	return apiClient.post<T.ExhibitorSyncResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1136,8 +1187,9 @@ export async function ExhibitorSyncAll(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ExhibitorSyncAllResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/exhibitor/syncAll";
-	return getjaarbeursInstance().post<T.ExhibitorSyncAllResponse200>(url, {
+	return apiClient.post<T.ExhibitorSyncAllResponse200>(url, {
 		headers,
 	});
 }
@@ -1150,8 +1202,9 @@ export async function FeatureFlagCurrent(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.FeatureFlagCurrentResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/feature-flag/current";
-	return getjaarbeursInstance().get<T.FeatureFlagCurrentResponse200>(url, {
+	return apiClient.get<T.FeatureFlagCurrentResponse200>(url, {
 		headers,
 	});
 }
@@ -1164,8 +1217,9 @@ export async function MultitenantCurrent(
 	data?: undefined,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.MultitenantCurrentResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/multitenant/current";
-	return getjaarbeursInstance().get<T.MultitenantCurrentResponse200>(url, {
+	return apiClient.get<T.MultitenantCurrentResponse200>(url, {
 		headers,
 	});
 }
@@ -1184,13 +1238,14 @@ export async function NewsletterSubscribe(
 	data: T.NewsletterSubscribeRequest,
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.NewsletterSubscribeResponse200>> {
+	const apiClient = getApiClient();
 	const url = "/newsletter/subscribe";
 	const bodyData = {
 		email: data.email,
 		sourceCode: data.sourceCode,
 		contactMomentTypeCode: data.contactMomentTypeCode,
 	};
-	return getjaarbeursInstance().post<T.NewsletterSubscribeResponse200>(url, {
+	return apiClient.post<T.NewsletterSubscribeResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1207,8 +1262,9 @@ export async function ScheduleFavorite(
 	data: { id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.ScheduleFavoriteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/schedule/${data.id}/favorite`;
-	return getjaarbeursInstance().post<T.ScheduleFavoriteResponse200>(url, {
+	return apiClient.post<T.ScheduleFavoriteResponse200>(url, {
 		headers,
 	});
 }
@@ -1226,11 +1282,12 @@ export async function WorkshopFavorite(
 	data: T.WorkshopFavoriteRequest & { datoId: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.WorkshopFavoriteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/workshop/${data.datoId}/favorite`;
 	const bodyData = {
 		date: data.date,
 	};
-	return getjaarbeursInstance().post<T.WorkshopFavoriteResponse200>(url, {
+	return apiClient.post<T.WorkshopFavoriteResponse200>(url, {
 		data: bodyData,
 		headers,
 	});
@@ -1251,8 +1308,9 @@ export async function WorkshopRemoveFavorite(
 	data: { datoId: string; id: string },
 	headers?: Record<string, string>
 ): Promise<AxiosResponse<T.WorkshopRemoveFavoriteResponse200>> {
+	const apiClient = getApiClient();
 	const url = `/workshop/${data.datoId}/favorite/${data.id}`;
-	return getjaarbeursInstance().delete<T.WorkshopRemoveFavoriteResponse200>(url, {
+	return apiClient.delete<T.WorkshopRemoveFavoriteResponse200>(url, {
 		headers,
 	});
 }
