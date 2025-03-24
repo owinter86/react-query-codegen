@@ -1,4 +1,4 @@
-import type { AxiosResponse } from "axios";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
 import { getApiClient } from "./apiClient";
 import type * as T from "./pokApi.schema";
 
@@ -8,12 +8,12 @@ import type * as T from "./pokApi.schema";
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see ability_listResponse200
+	 * @see getability_listResponse200
 	 */
-export function abilityList(
+export function getabilityList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.AbilityListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetabilityListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/ability/";
 	const queryData = {
@@ -21,26 +21,26 @@ export function abilityList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.AbilityListResponse200>(url, {
+	return apiClient.get<T.GetabilityListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
 /**
  * Abilities provide passive effects for Pokémon in battle or in the overworld. Pokémon have multiple possible abilities but can have only one ability at a time. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Ability) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see ability_retrieveResponse200
+ * @see getability_retrieveResponse200
  */
-export function abilityRetrieve(
+export function getabilityRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.AbilityRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetabilityRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/ability/${data.id}/`;
-	return apiClient.get<T.AbilityRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetabilityRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -51,12 +51,12 @@ export function abilityRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see berry_listResponse200
+	 * @see getberry_listResponse200
 	 */
-export function berryList(
+export function getberryList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.BerryListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetberryListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/berry/";
 	const queryData = {
@@ -64,10 +64,10 @@ export function berryList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.BerryListResponse200>(url, {
+	return apiClient.get<T.GetberryListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -75,16 +75,16 @@ export function berryList(
  * Get a berry
  * Berries are small fruits that can provide HP and status condition restoration, stat enhancement, and even damage negation when eaten by Pokémon. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Berry) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see berry_retrieveResponse200
+ * @see getberry_retrieveResponse200
  */
-export function berryRetrieve(
+export function getberryRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.BerryRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetberryRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/berry/${data.id}/`;
-	return apiClient.get<T.BerryRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetberryRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -95,12 +95,12 @@ export function berryRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see berry_firmness_listResponse200
+	 * @see getberry_firmness_listResponse200
 	 */
-export function berryFirmnessList(
+export function getberryFirmnessList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.BerryFirmnessListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetberryFirmnessListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/berry-firmness/";
 	const queryData = {
@@ -108,10 +108,10 @@ export function berryFirmnessList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.BerryFirmnessListResponse200>(url, {
+	return apiClient.get<T.GetberryFirmnessListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -119,16 +119,16 @@ export function berryFirmnessList(
  * Get berry by firmness
  * Berries can be soft or hard. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Category:Berries_by_firmness) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see berry_firmness_retrieveResponse200
+ * @see getberry_firmness_retrieveResponse200
  */
-export function berryFirmnessRetrieve(
+export function getberryFirmnessRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.BerryFirmnessRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetberryFirmnessRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/berry-firmness/${data.id}/`;
-	return apiClient.get<T.BerryFirmnessRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetberryFirmnessRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -139,12 +139,12 @@ export function berryFirmnessRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see berry_flavor_listResponse200
+	 * @see getberry_flavor_listResponse200
 	 */
-export function berryFlavorList(
+export function getberryFlavorList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.BerryFlavorListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetberryFlavorListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/berry-flavor/";
 	const queryData = {
@@ -152,10 +152,10 @@ export function berryFlavorList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.BerryFlavorListResponse200>(url, {
+	return apiClient.get<T.GetberryFlavorListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -163,16 +163,16 @@ export function berryFlavorList(
  * Get berries by flavor
  * Flavors determine whether a Pokémon will benefit or suffer from eating a berry based on their **nature**. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Flavor) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see berry_flavor_retrieveResponse200
+ * @see getberry_flavor_retrieveResponse200
  */
-export function berryFlavorRetrieve(
+export function getberryFlavorRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.BerryFlavorRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetberryFlavorRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/berry-flavor/${data.id}/`;
-	return apiClient.get<T.BerryFlavorRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetberryFlavorRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -183,12 +183,12 @@ export function berryFlavorRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see characteristic_listResponse200
+	 * @see getcharacteristic_listResponse200
 	 */
-export function characteristicList(
+export function getcharacteristicList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.CharacteristicListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetcharacteristicListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/characteristic/";
 	const queryData = {
@@ -196,10 +196,10 @@ export function characteristicList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.CharacteristicListResponse200>(url, {
+	return apiClient.get<T.GetcharacteristicListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -207,16 +207,16 @@ export function characteristicList(
  * Get characteristic
  * Characteristics indicate which stat contains a Pokémon's highest IV. A Pokémon's Characteristic is determined by the remainder of its highest IV divided by 5 (gene_modulo). Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Characteristic) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see characteristic_retrieveResponse200
+ * @see getcharacteristic_retrieveResponse200
  */
-export function characteristicRetrieve(
+export function getcharacteristicRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.CharacteristicRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetcharacteristicRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/characteristic/${data.id}/`;
-	return apiClient.get<T.CharacteristicRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetcharacteristicRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -227,12 +227,12 @@ export function characteristicRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see contest_type_listResponse200
+	 * @see getcontest_type_listResponse200
 	 */
-export function contestTypeList(
+export function getcontestTypeList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ContestTypeListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetcontestTypeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/contest-type/";
 	const queryData = {
@@ -240,10 +240,10 @@ export function contestTypeList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ContestTypeListResponse200>(url, {
+	return apiClient.get<T.GetcontestTypeListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -251,16 +251,16 @@ export function contestTypeList(
  * Get contest type
  * Contest types are categories judges used to weigh a Pokémon's condition in Pokémon contests. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Contest_condition) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see contest_type_retrieveResponse200
+ * @see getcontest_type_retrieveResponse200
  */
-export function contestTypeRetrieve(
+export function getcontestTypeRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ContestTypeRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetcontestTypeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/contest-type/${data.id}/`;
-	return apiClient.get<T.ContestTypeRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetcontestTypeRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -271,12 +271,12 @@ export function contestTypeRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see contest_effect_listResponse200
+	 * @see getcontest_effect_listResponse200
 	 */
-export function contestEffectList(
+export function getcontestEffectList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ContestEffectListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetcontestEffectListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/contest-effect/";
 	const queryData = {
@@ -284,10 +284,10 @@ export function contestEffectList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ContestEffectListResponse200>(url, {
+	return apiClient.get<T.GetcontestEffectListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -295,16 +295,16 @@ export function contestEffectList(
  * Get contest effect
  * Contest effects refer to the effects of moves when used in contests.
  * @param params.id - This parameter can be a string or an integer.
- * @see contest_effect_retrieveResponse200
+ * @see getcontest_effect_retrieveResponse200
  */
-export function contestEffectRetrieve(
+export function getcontestEffectRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ContestEffectRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetcontestEffectRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/contest-effect/${data.id}/`;
-	return apiClient.get<T.ContestEffectRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetcontestEffectRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -315,12 +315,12 @@ export function contestEffectRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see egg_group_listResponse200
+	 * @see getegg_group_listResponse200
 	 */
-export function eggGroupList(
+export function geteggGroupList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EggGroupListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GeteggGroupListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/egg-group/";
 	const queryData = {
@@ -328,10 +328,10 @@ export function eggGroupList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.EggGroupListResponse200>(url, {
+	return apiClient.get<T.GeteggGroupListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -339,16 +339,16 @@ export function eggGroupList(
  * Get egg group
  * Egg Groups are categories which determine which Pokémon are able to interbreed. Pokémon may belong to either one or two Egg Groups. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Egg_Group) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see egg_group_retrieveResponse200
+ * @see getegg_group_retrieveResponse200
  */
-export function eggGroupRetrieve(
+export function geteggGroupRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EggGroupRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GeteggGroupRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/egg-group/${data.id}/`;
-	return apiClient.get<T.EggGroupRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GeteggGroupRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -359,12 +359,12 @@ export function eggGroupRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see encounter_method_listResponse200
+	 * @see getencounter_method_listResponse200
 	 */
-export function encounterMethodList(
+export function getencounterMethodList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EncounterMethodListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetencounterMethodListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/encounter-method/";
 	const queryData = {
@@ -372,10 +372,10 @@ export function encounterMethodList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.EncounterMethodListResponse200>(url, {
+	return apiClient.get<T.GetencounterMethodListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -383,16 +383,16 @@ export function encounterMethodList(
  * Get encounter method
  * Methods by which the player might can encounter Pokémon in the wild, e.g., walking in tall grass. Check out Bulbapedia for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see encounter_method_retrieveResponse200
+ * @see getencounter_method_retrieveResponse200
  */
-export function encounterMethodRetrieve(
+export function getencounterMethodRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EncounterMethodRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetencounterMethodRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/encounter-method/${data.id}/`;
-	return apiClient.get<T.EncounterMethodRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetencounterMethodRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -403,12 +403,12 @@ export function encounterMethodRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see encounter_condition_listResponse200
+	 * @see getencounter_condition_listResponse200
 	 */
-export function encounterConditionList(
+export function getencounterConditionList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EncounterConditionListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetencounterConditionListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/encounter-condition/";
 	const queryData = {
@@ -416,10 +416,10 @@ export function encounterConditionList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.EncounterConditionListResponse200>(url, {
+	return apiClient.get<T.GetencounterConditionListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -427,16 +427,16 @@ export function encounterConditionList(
  * Get encounter condition
  * Conditions which affect what pokemon might appear in the wild, e.g., day or night.
  * @param params.id - This parameter can be a string or an integer.
- * @see encounter_condition_retrieveResponse200
+ * @see getencounter_condition_retrieveResponse200
  */
-export function encounterConditionRetrieve(
+export function getencounterConditionRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EncounterConditionRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetencounterConditionRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/encounter-condition/${data.id}/`;
-	return apiClient.get<T.EncounterConditionRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetencounterConditionRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -447,12 +447,12 @@ export function encounterConditionRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see encounter_condition_value_listResponse200
+	 * @see getencounter_condition_value_listResponse200
 	 */
-export function encounterConditionValueList(
+export function getencounterConditionValueList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EncounterConditionValueListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetencounterConditionValueListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/encounter-condition-value/";
 	const queryData = {
@@ -460,10 +460,10 @@ export function encounterConditionValueList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.EncounterConditionValueListResponse200>(url, {
+	return apiClient.get<T.GetencounterConditionValueListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -471,16 +471,16 @@ export function encounterConditionValueList(
  * Get encounter condition value
  * Encounter condition values are the various states that an encounter condition can have, i.e., time of day can be either day or night.
  * @param params.id - This parameter can be a string or an integer.
- * @see encounter_condition_value_retrieveResponse200
+ * @see getencounter_condition_value_retrieveResponse200
  */
-export function encounterConditionValueRetrieve(
+export function getencounterConditionValueRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EncounterConditionValueRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetencounterConditionValueRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/encounter-condition-value/${data.id}/`;
-	return apiClient.get<T.EncounterConditionValueRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetencounterConditionValueRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -491,12 +491,12 @@ export function encounterConditionValueRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see evolution_chain_listResponse200
+	 * @see getevolution_chain_listResponse200
 	 */
-export function evolutionChainList(
+export function getevolutionChainList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EvolutionChainListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetevolutionChainListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/evolution-chain/";
 	const queryData = {
@@ -504,10 +504,10 @@ export function evolutionChainList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.EvolutionChainListResponse200>(url, {
+	return apiClient.get<T.GetevolutionChainListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -515,16 +515,16 @@ export function evolutionChainList(
  * Get evolution chain
  * Evolution chains are essentially family trees. They start with the lowest stage within a family and detail evolution conditions for each as well as Pokémon they can evolve into up through the hierarchy.
  * @param params.id - This parameter can be a string or an integer.
- * @see evolution_chain_retrieveResponse200
+ * @see getevolution_chain_retrieveResponse200
  */
-export function evolutionChainRetrieve(
+export function getevolutionChainRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EvolutionChainRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetevolutionChainRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/evolution-chain/${data.id}/`;
-	return apiClient.get<T.EvolutionChainRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetevolutionChainRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -535,12 +535,12 @@ export function evolutionChainRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see evolution_trigger_listResponse200
+	 * @see getevolution_trigger_listResponse200
 	 */
-export function evolutionTriggerList(
+export function getevolutionTriggerList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EvolutionTriggerListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetevolutionTriggerListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/evolution-trigger/";
 	const queryData = {
@@ -548,10 +548,10 @@ export function evolutionTriggerList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.EvolutionTriggerListResponse200>(url, {
+	return apiClient.get<T.GetevolutionTriggerListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -559,16 +559,16 @@ export function evolutionTriggerList(
  * Get evolution trigger
  * Evolution triggers are the events and conditions that cause a Pokémon to evolve. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Methods_of_evolution) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see evolution_trigger_retrieveResponse200
+ * @see getevolution_trigger_retrieveResponse200
  */
-export function evolutionTriggerRetrieve(
+export function getevolutionTriggerRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.EvolutionTriggerRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetevolutionTriggerRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/evolution-trigger/${data.id}/`;
-	return apiClient.get<T.EvolutionTriggerRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetevolutionTriggerRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -579,12 +579,12 @@ export function evolutionTriggerRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see generation_listResponse200
+	 * @see getgeneration_listResponse200
 	 */
-export function generationList(
+export function getgenerationList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.GenerationListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetgenerationListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/generation/";
 	const queryData = {
@@ -592,10 +592,10 @@ export function generationList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.GenerationListResponse200>(url, {
+	return apiClient.get<T.GetgenerationListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -603,16 +603,16 @@ export function generationList(
  * Get genration
  * A generation is a grouping of the Pokémon games that separates them based on the Pokémon they include. In each generation, a new set of Pokémon, Moves, Abilities and Types that did not exist in the previous generation are released.
  * @param params.id - This parameter can be a string or an integer.
- * @see generation_retrieveResponse200
+ * @see getgeneration_retrieveResponse200
  */
-export function generationRetrieve(
+export function getgenerationRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.GenerationRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetgenerationRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/generation/${data.id}/`;
-	return apiClient.get<T.GenerationRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetgenerationRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -623,12 +623,12 @@ export function generationRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see gender_listResponse200
+	 * @see getgender_listResponse200
 	 */
-export function genderList(
+export function getgenderList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.GenderListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetgenderListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/gender/";
 	const queryData = {
@@ -636,10 +636,10 @@ export function genderList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.GenderListResponse200>(url, {
+	return apiClient.get<T.GetgenderListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -647,16 +647,16 @@ export function genderList(
  * Get gender
  * Genders were introduced in Generation II for the purposes of breeding Pokémon but can also result in visual differences or even different evolutionary lines. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Gender) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see gender_retrieveResponse200
+ * @see getgender_retrieveResponse200
  */
-export function genderRetrieve(
+export function getgenderRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.GenderRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetgenderRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/gender/${data.id}/`;
-	return apiClient.get<T.GenderRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetgenderRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -667,12 +667,12 @@ export function genderRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see growth_rate_listResponse200
+	 * @see getgrowth_rate_listResponse200
 	 */
-export function growthRateList(
+export function getgrowthRateList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.GrowthRateListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetgrowthRateListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/growth-rate/";
 	const queryData = {
@@ -680,10 +680,10 @@ export function growthRateList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.GrowthRateListResponse200>(url, {
+	return apiClient.get<T.GetgrowthRateListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -691,16 +691,16 @@ export function growthRateList(
  * Get growth rate
  * Growth rates are the speed with which Pokémon gain levels through experience. Check out [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Experience) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see growth_rate_retrieveResponse200
+ * @see getgrowth_rate_retrieveResponse200
  */
-export function growthRateRetrieve(
+export function getgrowthRateRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.GrowthRateRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetgrowthRateRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/growth-rate/${data.id}/`;
-	return apiClient.get<T.GrowthRateRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetgrowthRateRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -711,12 +711,12 @@ export function growthRateRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see item_listResponse200
+	 * @see getitem_listResponse200
 	 */
-export function itemList(
+export function getitemList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item/";
 	const queryData = {
@@ -724,10 +724,10 @@ export function itemList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ItemListResponse200>(url, {
+	return apiClient.get<T.GetitemListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -735,16 +735,16 @@ export function itemList(
  * Get item
  * An item is an object in the games which the player can pick up, keep in their bag, and use in some manner. They have various uses, including healing, powering up, helping catch Pokémon, or to access a new area.
  * @param params.id - This parameter can be a string or an integer.
- * @see item_retrieveResponse200
+ * @see getitem_retrieveResponse200
  */
-export function itemRetrieve(
+export function getitemRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item/${data.id}/`;
-	return apiClient.get<T.ItemRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetitemRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -755,12 +755,12 @@ export function itemRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see item_category_listResponse200
+	 * @see getitem_category_listResponse200
 	 */
-export function itemCategoryList(
+export function getitemCategoryList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemCategoryListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemCategoryListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-category/";
 	const queryData = {
@@ -768,10 +768,10 @@ export function itemCategoryList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ItemCategoryListResponse200>(url, {
+	return apiClient.get<T.GetitemCategoryListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -779,16 +779,16 @@ export function itemCategoryList(
  * Get item category
  * Item categories determine where items will be placed in the players bag.
  * @param params.id - This parameter can be a string or an integer.
- * @see item_category_retrieveResponse200
+ * @see getitem_category_retrieveResponse200
  */
-export function itemCategoryRetrieve(
+export function getitemCategoryRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemCategoryRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemCategoryRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-category/${data.id}/`;
-	return apiClient.get<T.ItemCategoryRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetitemCategoryRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -799,12 +799,12 @@ export function itemCategoryRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see item_attribute_listResponse200
+	 * @see getitem_attribute_listResponse200
 	 */
-export function itemAttributeList(
+export function getitemAttributeList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemAttributeListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemAttributeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-attribute/";
 	const queryData = {
@@ -812,10 +812,10 @@ export function itemAttributeList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ItemAttributeListResponse200>(url, {
+	return apiClient.get<T.GetitemAttributeListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -823,16 +823,16 @@ export function itemAttributeList(
  * Get item attribute
  * Item attributes define particular aspects of items, e.g."usable in battle" or "consumable".
  * @param params.id - This parameter can be a string or an integer.
- * @see item_attribute_retrieveResponse200
+ * @see getitem_attribute_retrieveResponse200
  */
-export function itemAttributeRetrieve(
+export function getitemAttributeRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemAttributeRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemAttributeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-attribute/${data.id}/`;
-	return apiClient.get<T.ItemAttributeRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetitemAttributeRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -843,12 +843,12 @@ export function itemAttributeRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see item_fling_effect_listResponse200
+	 * @see getitem_fling_effect_listResponse200
 	 */
-export function itemFlingEffectList(
+export function getitemFlingEffectList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemFlingEffectListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemFlingEffectListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-fling-effect/";
 	const queryData = {
@@ -856,10 +856,10 @@ export function itemFlingEffectList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ItemFlingEffectListResponse200>(url, {
+	return apiClient.get<T.GetitemFlingEffectListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -867,16 +867,16 @@ export function itemFlingEffectList(
  * Get item fling effect
  * The various effects of the move"Fling" when used with different items.
  * @param params.id - This parameter can be a string or an integer.
- * @see item_fling_effect_retrieveResponse200
+ * @see getitem_fling_effect_retrieveResponse200
  */
-export function itemFlingEffectRetrieve(
+export function getitemFlingEffectRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemFlingEffectRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemFlingEffectRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-fling-effect/${data.id}/`;
-	return apiClient.get<T.ItemFlingEffectRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetitemFlingEffectRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -887,12 +887,12 @@ export function itemFlingEffectRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see item_pocket_listResponse200
+	 * @see getitem_pocket_listResponse200
 	 */
-export function itemPocketList(
+export function getitemPocketList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemPocketListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemPocketListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/item-pocket/";
 	const queryData = {
@@ -900,10 +900,10 @@ export function itemPocketList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.ItemPocketListResponse200>(url, {
+	return apiClient.get<T.GetitemPocketListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -911,16 +911,16 @@ export function itemPocketList(
  * Get item pocket
  * Pockets within the players bag used for storing items by category.
  * @param params.id - This parameter can be a string or an integer.
- * @see item_pocket_retrieveResponse200
+ * @see getitem_pocket_retrieveResponse200
  */
-export function itemPocketRetrieve(
+export function getitemPocketRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.ItemPocketRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetitemPocketRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/item-pocket/${data.id}/`;
-	return apiClient.get<T.ItemPocketRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetitemPocketRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -931,12 +931,12 @@ export function itemPocketRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see language_listResponse200
+	 * @see getlanguage_listResponse200
 	 */
-export function languageList(
+export function getlanguageList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.LanguageListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetlanguageListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/language/";
 	const queryData = {
@@ -944,10 +944,10 @@ export function languageList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.LanguageListResponse200>(url, {
+	return apiClient.get<T.GetlanguageListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -955,16 +955,16 @@ export function languageList(
  * Get language
  * Languages for translations of API resource information.
  * @param params.id - This parameter can be a string or an integer.
- * @see language_retrieveResponse200
+ * @see getlanguage_retrieveResponse200
  */
-export function languageRetrieve(
+export function getlanguageRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.LanguageRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetlanguageRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/language/${data.id}/`;
-	return apiClient.get<T.LanguageRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetlanguageRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -975,12 +975,12 @@ export function languageRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see location_listResponse200
+	 * @see getlocation_listResponse200
 	 */
-export function locationList(
+export function getlocationList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.LocationListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetlocationListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/location/";
 	const queryData = {
@@ -988,10 +988,10 @@ export function locationList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.LocationListResponse200>(url, {
+	return apiClient.get<T.GetlocationListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -999,16 +999,16 @@ export function locationList(
  * Get location
  * Locations that can be visited within the games. Locations make up sizable portions of regions, like cities or routes.
  * @param params.id - This parameter can be a string or an integer.
- * @see location_retrieveResponse200
+ * @see getlocation_retrieveResponse200
  */
-export function locationRetrieve(
+export function getlocationRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.LocationRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetlocationRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/location/${data.id}/`;
-	return apiClient.get<T.LocationRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetlocationRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1017,22 +1017,22 @@ export function locationRetrieve(
  * Location areas are sections of areas, such as floors in a building or cave. Each area has its own set of possible Pokémon encounters.
  * @param query.limit - Number of results to return per page.
  * @param query.offset - The initial index from which to return the results.
- * @see location_area_listResponse200
+ * @see getlocation_area_listResponse200
  */
-export function locationAreaList(
+export function getlocationAreaList(
 	data: { limit?: number; offset?: number },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.LocationAreaListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetlocationAreaListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/location-area/";
 	const queryData = {
 		limit: data.limit,
 		offset: data.offset,
 	};
-	return apiClient.get<T.LocationAreaListResponse200>(url, {
+	return apiClient.get<T.GetlocationAreaListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1040,16 +1040,16 @@ export function locationAreaList(
  * Get location area
  * Location areas are sections of areas, such as floors in a building or cave. Each area has its own set of possible Pokémon encounters.
  * @param params.id - A unique integer value identifying this location area.
- * @see location_area_retrieveResponse200
+ * @see getlocation_area_retrieveResponse200
  */
-export function locationAreaRetrieve(
+export function getlocationAreaRetrieve(
 	data: { id: number },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.LocationAreaRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetlocationAreaRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/location-area/${data.id}/`;
-	return apiClient.get<T.LocationAreaRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetlocationAreaRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1060,12 +1060,12 @@ export function locationAreaRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see machine_listResponse200
+	 * @see getmachine_listResponse200
 	 */
-export function machineList(
+export function getmachineList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MachineListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmachineListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/machine/";
 	const queryData = {
@@ -1073,10 +1073,10 @@ export function machineList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MachineListResponse200>(url, {
+	return apiClient.get<T.GetmachineListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1084,16 +1084,16 @@ export function machineList(
  * Get machine
  * Machines are the representation of items that teach moves to Pokémon. They vary from version to version, so it is not certain that one specific TM or HM corresponds to a single Machine.
  * @param params.id - This parameter can be a string or an integer.
- * @see machine_retrieveResponse200
+ * @see getmachine_retrieveResponse200
  */
-export function machineRetrieve(
+export function getmachineRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MachineRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmachineRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/machine/${data.id}/`;
-	return apiClient.get<T.MachineRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmachineRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1104,12 +1104,12 @@ export function machineRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see move_listResponse200
+	 * @see getmove_listResponse200
 	 */
-export function moveList(
+export function getmoveList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move/";
 	const queryData = {
@@ -1117,10 +1117,10 @@ export function moveList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MoveListResponse200>(url, {
+	return apiClient.get<T.GetmoveListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1128,16 +1128,16 @@ export function moveList(
  * Get move
  * Moves are the skills of Pokémon in battle. In battle, a Pokémon uses one move each turn. Some moves (including those learned by Hidden Machine) can be used outside of battle as well, usually for the purpose of removing obstacles or exploring new areas.
  * @param params.id - This parameter can be a string or an integer.
- * @see move_retrieveResponse200
+ * @see getmove_retrieveResponse200
  */
-export function moveRetrieve(
+export function getmoveRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move/${data.id}/`;
-	return apiClient.get<T.MoveRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmoveRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1148,12 +1148,12 @@ export function moveRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see move_ailment_listResponse200
+	 * @see getmove_ailment_listResponse200
 	 */
-export function moveAilmentList(
+export function getmoveAilmentList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveAilmentListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveAilmentListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-ailment/";
 	const queryData = {
@@ -1161,10 +1161,10 @@ export function moveAilmentList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MoveAilmentListResponse200>(url, {
+	return apiClient.get<T.GetmoveAilmentListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1172,16 +1172,16 @@ export function moveAilmentList(
  * Get move meta ailment
  * Move Ailments are status conditions caused by moves used during battle. See [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/Status_condition) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see move_ailment_retrieveResponse200
+ * @see getmove_ailment_retrieveResponse200
  */
-export function moveAilmentRetrieve(
+export function getmoveAilmentRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveAilmentRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveAilmentRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-ailment/${data.id}/`;
-	return apiClient.get<T.MoveAilmentRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmoveAilmentRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1192,12 +1192,12 @@ export function moveAilmentRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see move_battle_style_listResponse200
+	 * @see getmove_battle_style_listResponse200
 	 */
-export function moveBattleStyleList(
+export function getmoveBattleStyleList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveBattleStyleListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveBattleStyleListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-battle-style/";
 	const queryData = {
@@ -1205,10 +1205,10 @@ export function moveBattleStyleList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MoveBattleStyleListResponse200>(url, {
+	return apiClient.get<T.GetmoveBattleStyleListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1216,16 +1216,16 @@ export function moveBattleStyleList(
  * Get move battle style
  * Styles of moves when used in the Battle Palace. See [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Battle_Frontier_(Generation_III)) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see move_battle_style_retrieveResponse200
+ * @see getmove_battle_style_retrieveResponse200
  */
-export function moveBattleStyleRetrieve(
+export function getmoveBattleStyleRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveBattleStyleRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveBattleStyleRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-battle-style/${data.id}/`;
-	return apiClient.get<T.MoveBattleStyleRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmoveBattleStyleRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1236,12 +1236,12 @@ export function moveBattleStyleRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see move_category_listResponse200
+	 * @see getmove_category_listResponse200
 	 */
-export function moveCategoryList(
+export function getmoveCategoryList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveCategoryListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveCategoryListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-category/";
 	const queryData = {
@@ -1249,10 +1249,10 @@ export function moveCategoryList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MoveCategoryListResponse200>(url, {
+	return apiClient.get<T.GetmoveCategoryListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1260,16 +1260,16 @@ export function moveCategoryList(
  * Get move meta category
  * Very general categories that loosely group move effects.
  * @param params.id - This parameter can be a string or an integer.
- * @see move_category_retrieveResponse200
+ * @see getmove_category_retrieveResponse200
  */
-export function moveCategoryRetrieve(
+export function getmoveCategoryRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveCategoryRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveCategoryRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-category/${data.id}/`;
-	return apiClient.get<T.MoveCategoryRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmoveCategoryRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1280,12 +1280,12 @@ export function moveCategoryRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see move_damage_class_listResponse200
+	 * @see getmove_damage_class_listResponse200
 	 */
-export function moveDamageClassList(
+export function getmoveDamageClassList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveDamageClassListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveDamageClassListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-damage-class/";
 	const queryData = {
@@ -1293,10 +1293,10 @@ export function moveDamageClassList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MoveDamageClassListResponse200>(url, {
+	return apiClient.get<T.GetmoveDamageClassListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1304,16 +1304,16 @@ export function moveDamageClassList(
  * Get move damage class
  * Damage classes moves can have, e.g. physical, special, or non-damaging.
  * @param params.id - This parameter can be a string or an integer.
- * @see move_damage_class_retrieveResponse200
+ * @see getmove_damage_class_retrieveResponse200
  */
-export function moveDamageClassRetrieve(
+export function getmoveDamageClassRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveDamageClassRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveDamageClassRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-damage-class/${data.id}/`;
-	return apiClient.get<T.MoveDamageClassRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmoveDamageClassRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1324,12 +1324,12 @@ export function moveDamageClassRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see move_learn_method_listResponse200
+	 * @see getmove_learn_method_listResponse200
 	 */
-export function moveLearnMethodList(
+export function getmoveLearnMethodList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveLearnMethodListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveLearnMethodListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-learn-method/";
 	const queryData = {
@@ -1337,10 +1337,10 @@ export function moveLearnMethodList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MoveLearnMethodListResponse200>(url, {
+	return apiClient.get<T.GetmoveLearnMethodListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1348,16 +1348,16 @@ export function moveLearnMethodList(
  * Get move learn method
  * Methods by which Pokémon can learn moves.
  * @param params.id - This parameter can be a string or an integer.
- * @see move_learn_method_retrieveResponse200
+ * @see getmove_learn_method_retrieveResponse200
  */
-export function moveLearnMethodRetrieve(
+export function getmoveLearnMethodRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveLearnMethodRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveLearnMethodRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-learn-method/${data.id}/`;
-	return apiClient.get<T.MoveLearnMethodRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmoveLearnMethodRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1368,12 +1368,12 @@ export function moveLearnMethodRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see move_target_listResponse200
+	 * @see getmove_target_listResponse200
 	 */
-export function moveTargetList(
+export function getmoveTargetList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveTargetListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveTargetListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/move-target/";
 	const queryData = {
@@ -1381,10 +1381,10 @@ export function moveTargetList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.MoveTargetListResponse200>(url, {
+	return apiClient.get<T.GetmoveTargetListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1392,16 +1392,16 @@ export function moveTargetList(
  * Get move target
  * Targets moves can be directed at during battle. Targets can be Pokémon, environments or even other moves.
  * @param params.id - This parameter can be a string or an integer.
- * @see move_target_retrieveResponse200
+ * @see getmove_target_retrieveResponse200
  */
-export function moveTargetRetrieve(
+export function getmoveTargetRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.MoveTargetRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetmoveTargetRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/move-target/${data.id}/`;
-	return apiClient.get<T.MoveTargetRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetmoveTargetRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1412,12 +1412,12 @@ export function moveTargetRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see nature_listResponse200
+	 * @see getnature_listResponse200
 	 */
-export function natureList(
+export function getnatureList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.NatureListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetnatureListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/nature/";
 	const queryData = {
@@ -1425,10 +1425,10 @@ export function natureList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.NatureListResponse200>(url, {
+	return apiClient.get<T.GetnatureListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1436,16 +1436,16 @@ export function natureList(
  * Get nature
  * Natures influence how a Pokémon's stats grow. See [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Nature) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see nature_retrieveResponse200
+ * @see getnature_retrieveResponse200
  */
-export function natureRetrieve(
+export function getnatureRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.NatureRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetnatureRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/nature/${data.id}/`;
-	return apiClient.get<T.NatureRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetnatureRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1456,12 +1456,12 @@ export function natureRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pal_park_area_listResponse200
+	 * @see getpal_park_area_listResponse200
 	 */
-export function palParkAreaList(
+export function getpalParkAreaList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PalParkAreaListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpalParkAreaListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pal-park-area/";
 	const queryData = {
@@ -1469,10 +1469,10 @@ export function palParkAreaList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PalParkAreaListResponse200>(url, {
+	return apiClient.get<T.GetpalParkAreaListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1480,16 +1480,16 @@ export function palParkAreaList(
  * Get pal park area
  * Areas used for grouping Pokémon encounters in Pal Park. They're like habitats that are specific to Pal Park.
  * @param params.id - This parameter can be a string or an integer.
- * @see pal_park_area_retrieveResponse200
+ * @see getpal_park_area_retrieveResponse200
  */
-export function palParkAreaRetrieve(
+export function getpalParkAreaRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PalParkAreaRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpalParkAreaRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pal-park-area/${data.id}/`;
-	return apiClient.get<T.PalParkAreaRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpalParkAreaRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1500,12 +1500,12 @@ export function palParkAreaRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokedex_listResponse200
+	 * @see getpokedex_listResponse200
 	 */
-export function pokedexList(
+export function getpokedexList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokedexListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokedexListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokedex/";
 	const queryData = {
@@ -1513,10 +1513,10 @@ export function pokedexList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokedexListResponse200>(url, {
+	return apiClient.get<T.GetpokedexListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1524,16 +1524,16 @@ export function pokedexList(
  * Get pokedex
  * A Pokédex is a handheld electronic encyclopedia device; one which is capable of recording and retaining information of the various Pokémon in a given region with the exception of the national dex and some smaller dexes related to portions of a region. See [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Pokedex) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokedex_retrieveResponse200
+ * @see getpokedex_retrieveResponse200
  */
-export function pokedexRetrieve(
+export function getpokedexRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokedexRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokedexRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokedex/${data.id}/`;
-	return apiClient.get<T.PokedexRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokedexRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1544,12 +1544,12 @@ export function pokedexRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokemon_listResponse200
+	 * @see getpokemon_listResponse200
 	 */
-export function pokemonList(
+export function getpokemonList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon/";
 	const queryData = {
@@ -1557,10 +1557,10 @@ export function pokemonList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokemonListResponse200>(url, {
+	return apiClient.get<T.GetpokemonListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1568,16 +1568,16 @@ export function pokemonList(
  * Get pokemon
  * Pokémon are the creatures that inhabit the world of the Pokémon games. They can be caught using Pokéballs and trained by battling with other Pokémon. Each Pokémon belongs to a specific species but may take on a variant which makes it differ from other Pokémon of the same species, such as base stats, available abilities and typings. See [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9mon_(species)) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokemon_retrieveResponse200
+ * @see getpokemon_retrieveResponse200
  */
-export function pokemonRetrieve(
+export function getpokemonRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon/${data.id}/`;
-	return apiClient.get<T.PokemonRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokemonRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1588,12 +1588,12 @@ export function pokemonRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokemon_color_listResponse200
+	 * @see getpokemon_color_listResponse200
 	 */
-export function pokemonColorList(
+export function getpokemonColorList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonColorListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonColorListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-color/";
 	const queryData = {
@@ -1601,10 +1601,10 @@ export function pokemonColorList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokemonColorListResponse200>(url, {
+	return apiClient.get<T.GetpokemonColorListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1612,16 +1612,16 @@ export function pokemonColorList(
  * Get pokemon color
  * Colors used for sorting Pokémon in a Pokédex. The color listed in the Pokédex is usually the color most apparent or covering each Pokémon's body. No orange category exists; Pokémon that are primarily orange are listed as red or brown.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokemon_color_retrieveResponse200
+ * @see getpokemon_color_retrieveResponse200
  */
-export function pokemonColorRetrieve(
+export function getpokemonColorRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonColorRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonColorRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-color/${data.id}/`;
-	return apiClient.get<T.PokemonColorRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokemonColorRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1632,12 +1632,12 @@ export function pokemonColorRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokemon_form_listResponse200
+	 * @see getpokemon_form_listResponse200
 	 */
-export function pokemonFormList(
+export function getpokemonFormList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonFormListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonFormListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-form/";
 	const queryData = {
@@ -1645,10 +1645,10 @@ export function pokemonFormList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokemonFormListResponse200>(url, {
+	return apiClient.get<T.GetpokemonFormListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1656,16 +1656,16 @@ export function pokemonFormList(
  * Get pokemon form
  * Some Pokémon may appear in one of multiple, visually different forms. These differences are purely cosmetic. For variations within a Pokémon species, which do differ in more than just visuals, the 'Pokémon' entity is used to represent such a variety.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokemon_form_retrieveResponse200
+ * @see getpokemon_form_retrieveResponse200
  */
-export function pokemonFormRetrieve(
+export function getpokemonFormRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonFormRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonFormRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-form/${data.id}/`;
-	return apiClient.get<T.PokemonFormRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokemonFormRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1676,12 +1676,12 @@ export function pokemonFormRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokemon_habitat_listResponse200
+	 * @see getpokemon_habitat_listResponse200
 	 */
-export function pokemonHabitatList(
+export function getpokemonHabitatList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonHabitatListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonHabitatListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-habitat/";
 	const queryData = {
@@ -1689,10 +1689,10 @@ export function pokemonHabitatList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokemonHabitatListResponse200>(url, {
+	return apiClient.get<T.GetpokemonHabitatListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1700,16 +1700,16 @@ export function pokemonHabitatList(
  * Get pokemom habita
  * Habitats are generally different terrain Pokémon can be found in but can also be areas designated for rare or legendary Pokémon.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokemon_habitat_retrieveResponse200
+ * @see getpokemon_habitat_retrieveResponse200
  */
-export function pokemonHabitatRetrieve(
+export function getpokemonHabitatRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonHabitatRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonHabitatRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-habitat/${data.id}/`;
-	return apiClient.get<T.PokemonHabitatRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokemonHabitatRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1720,12 +1720,12 @@ export function pokemonHabitatRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokemon_shape_listResponse200
+	 * @see getpokemon_shape_listResponse200
 	 */
-export function pokemonShapeList(
+export function getpokemonShapeList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonShapeListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonShapeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-shape/";
 	const queryData = {
@@ -1733,10 +1733,10 @@ export function pokemonShapeList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokemonShapeListResponse200>(url, {
+	return apiClient.get<T.GetpokemonShapeListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1744,16 +1744,16 @@ export function pokemonShapeList(
  * Get pokemon shape
  * Shapes used for sorting Pokémon in a Pokédex.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokemon_shape_retrieveResponse200
+ * @see getpokemon_shape_retrieveResponse200
  */
-export function pokemonShapeRetrieve(
+export function getpokemonShapeRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonShapeRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonShapeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-shape/${data.id}/`;
-	return apiClient.get<T.PokemonShapeRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokemonShapeRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1764,12 +1764,12 @@ export function pokemonShapeRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokemon_species_listResponse200
+	 * @see getpokemon_species_listResponse200
 	 */
-export function pokemonSpeciesList(
+export function getpokemonSpeciesList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonSpeciesListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonSpeciesListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokemon-species/";
 	const queryData = {
@@ -1777,10 +1777,10 @@ export function pokemonSpeciesList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokemonSpeciesListResponse200>(url, {
+	return apiClient.get<T.GetpokemonSpeciesListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1788,16 +1788,16 @@ export function pokemonSpeciesList(
  * Get pokemon species
  * A Pokémon Species forms the basis for at least one Pokémon. Attributes of a Pokémon species are shared across all varieties of Pokémon within the species. A good example is Wormadam; Wormadam is the species which can be found in three different varieties, Wormadam-Trash, Wormadam-Sandy and Wormadam-Plant.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokemon_species_retrieveResponse200
+ * @see getpokemon_species_retrieveResponse200
  */
-export function pokemonSpeciesRetrieve(
+export function getpokemonSpeciesRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonSpeciesRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonSpeciesRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon-species/${data.id}/`;
-	return apiClient.get<T.PokemonSpeciesRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokemonSpeciesRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1808,12 +1808,12 @@ export function pokemonSpeciesRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see pokeathlon_stat_listResponse200
+	 * @see getpokeathlon_stat_listResponse200
 	 */
-export function pokeathlonStatList(
+export function getpokeathlonStatList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokeathlonStatListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokeathlonStatListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/pokeathlon-stat/";
 	const queryData = {
@@ -1821,10 +1821,10 @@ export function pokeathlonStatList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.PokeathlonStatListResponse200>(url, {
+	return apiClient.get<T.GetpokeathlonStatListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1832,16 +1832,16 @@ export function pokeathlonStatList(
  * Get pokeathlon stat
  * Pokeathlon Stats are different attributes of a Pokémon's performance in Pokéathlons. In Pokéathlons, competitions happen on different courses; one for each of the different Pokéathlon stats. See [Bulbapedia](http://bulbapedia.bulbagarden.net/wiki/Pok%C3%A9athlon) for greater detail.
  * @param params.id - This parameter can be a string or an integer.
- * @see pokeathlon_stat_retrieveResponse200
+ * @see getpokeathlon_stat_retrieveResponse200
  */
-export function pokeathlonStatRetrieve(
+export function getpokeathlonStatRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokeathlonStatRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokeathlonStatRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokeathlon-stat/${data.id}/`;
-	return apiClient.get<T.PokeathlonStatRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokeathlonStatRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1852,12 +1852,12 @@ export function pokeathlonStatRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see region_listResponse200
+	 * @see getregion_listResponse200
 	 */
-export function regionList(
+export function getregionList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.RegionListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetregionListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/region/";
 	const queryData = {
@@ -1865,10 +1865,10 @@ export function regionList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.RegionListResponse200>(url, {
+	return apiClient.get<T.GetregionListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1876,16 +1876,16 @@ export function regionList(
  * Get region
  * A region is an organized area of the Pokémon world. Most often, the main difference between regions is the species of Pokémon that can be encountered within them.
  * @param params.id - This parameter can be a string or an integer.
- * @see region_retrieveResponse200
+ * @see getregion_retrieveResponse200
  */
-export function regionRetrieve(
+export function getregionRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.RegionRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetregionRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/region/${data.id}/`;
-	return apiClient.get<T.RegionRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetregionRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1896,12 +1896,12 @@ export function regionRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see stat_listResponse200
+	 * @see getstat_listResponse200
 	 */
-export function statList(
+export function getstatList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.StatListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetstatListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/stat/";
 	const queryData = {
@@ -1909,10 +1909,10 @@ export function statList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.StatListResponse200>(url, {
+	return apiClient.get<T.GetstatListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1920,16 +1920,16 @@ export function statList(
  * Get stat
  * Stats determine certain aspects of battles. Each Pokémon has a value for each stat which grows as they gain levels and can be altered momentarily by effects in battles.
  * @param params.id - This parameter can be a string or an integer.
- * @see stat_retrieveResponse200
+ * @see getstat_retrieveResponse200
  */
-export function statRetrieve(
+export function getstatRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.StatRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetstatRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/stat/${data.id}/`;
-	return apiClient.get<T.StatRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetstatRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1940,12 +1940,12 @@ export function statRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see super_contest_effect_listResponse200
+	 * @see getsuper_contest_effect_listResponse200
 	 */
-export function superContestEffectList(
+export function getsuperContestEffectList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.SuperContestEffectListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetsuperContestEffectListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/super-contest-effect/";
 	const queryData = {
@@ -1953,10 +1953,10 @@ export function superContestEffectList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.SuperContestEffectListResponse200>(url, {
+	return apiClient.get<T.GetsuperContestEffectListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -1964,16 +1964,16 @@ export function superContestEffectList(
  * Get super contest effect
  * Super contest effects refer to the effects of moves when used in super contests.
  * @param params.id - This parameter can be a string or an integer.
- * @see super_contest_effect_retrieveResponse200
+ * @see getsuper_contest_effect_retrieveResponse200
  */
-export function superContestEffectRetrieve(
+export function getsuperContestEffectRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.SuperContestEffectRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetsuperContestEffectRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/super-contest-effect/${data.id}/`;
-	return apiClient.get<T.SuperContestEffectRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetsuperContestEffectRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -1984,12 +1984,12 @@ export function superContestEffectRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see type_listResponse200
+	 * @see gettype_listResponse200
 	 */
-export function typeList(
+export function gettypeList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.TypeListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GettypeListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/type/";
 	const queryData = {
@@ -1997,10 +1997,10 @@ export function typeList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.TypeListResponse200>(url, {
+	return apiClient.get<T.GettypeListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -2008,16 +2008,16 @@ export function typeList(
  * Get types
  * Types are properties for Pokémon and their moves. Each type has three properties: which types of Pokémon it is super effective against, which types of Pokémon it is not very effective against, and which types of Pokémon it is completely ineffective against.
  * @param params.id - This parameter can be a string or an integer.
- * @see type_retrieveResponse200
+ * @see gettype_retrieveResponse200
  */
-export function typeRetrieve(
+export function gettypeRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.TypeRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GettypeRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/type/${data.id}/`;
-	return apiClient.get<T.TypeRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GettypeRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -2028,12 +2028,12 @@ export function typeRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see version_listResponse200
+	 * @see getversion_listResponse200
 	 */
-export function versionList(
+export function getversionList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.VersionListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetversionListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/version/";
 	const queryData = {
@@ -2041,10 +2041,10 @@ export function versionList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.VersionListResponse200>(url, {
+	return apiClient.get<T.GetversionListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -2052,16 +2052,16 @@ export function versionList(
  * Get version
  * Versions of the games, e.g., Red, Blue or Yellow.
  * @param params.id - This parameter can be a string or an integer.
- * @see version_retrieveResponse200
+ * @see getversion_retrieveResponse200
  */
-export function versionRetrieve(
+export function getversionRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.VersionRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetversionRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/version/${data.id}/`;
-	return apiClient.get<T.VersionRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetversionRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -2072,12 +2072,12 @@ export function versionRetrieve(
 	 * @param query.offset - The initial index from which to return the results.
 	 * @param query.q - > Only available locally and not at [pokeapi.co](https://pokeapi.co/docs/v2)
 Case-insensitive query applied on the `name` property. 
-	 * @see version_group_listResponse200
+	 * @see getversion_group_listResponse200
 	 */
-export function versionGroupList(
+export function getversionGroupList(
 	data: { limit?: number; offset?: number; q?: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.VersionGroupListResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetversionGroupListResponse200>> {
 	const apiClient = getApiClient();
 	const url = "/api/v2/version-group/";
 	const queryData = {
@@ -2085,10 +2085,10 @@ export function versionGroupList(
 		offset: data.offset,
 		q: data.q,
 	};
-	return apiClient.get<T.VersionGroupListResponse200>(url, {
+	return apiClient.get<T.GetversionGroupListResponse200>(url, {
 		params: queryData,
 
-		headers,
+		...config,
 	});
 }
 
@@ -2096,16 +2096,16 @@ export function versionGroupList(
  * Get version group
  * Version groups categorize highly similar versions of the games.
  * @param params.id - This parameter can be a string or an integer.
- * @see version_group_retrieveResponse200
+ * @see getversion_group_retrieveResponse200
  */
-export function versionGroupRetrieve(
+export function getversionGroupRetrieve(
 	data: { id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.VersionGroupRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetversionGroupRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/version-group/${data.id}/`;
-	return apiClient.get<T.VersionGroupRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetversionGroupRetrieveResponse200>(url, {
+		...config,
 	});
 }
 
@@ -2113,15 +2113,15 @@ export function versionGroupRetrieve(
  * Get pokemon encounter
  * Handles Pokemon Encounters as a sub-resource.
  * @param params.pokemon_id
- * @see pokemon_encounters_retrieveResponse200
+ * @see getpokemon_encounters_retrieveResponse200
  */
-export function pokemonEncountersRetrieve(
+export function getpokemonEncountersRetrieve(
 	data: { pokemon_id: string },
-	headers?: Record<string, string>
-): Promise<AxiosResponse<T.PokemonEncountersRetrieveResponse200>> {
+	config?: AxiosRequestConfig
+): Promise<AxiosResponse<T.GetpokemonEncountersRetrieveResponse200>> {
 	const apiClient = getApiClient();
 	const url = `/api/v2/pokemon/${data.pokemon_id}/encounters`;
-	return apiClient.get<T.PokemonEncountersRetrieveResponse200>(url, {
-		headers,
+	return apiClient.get<T.GetpokemonEncountersRetrieveResponse200>(url, {
+		...config,
 	});
 }

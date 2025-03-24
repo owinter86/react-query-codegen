@@ -3,8 +3,7 @@ import { camelCase, sanitizeTypeName, specTitle } from "../utils";
 import type { OperationInfo } from "./clientGenerator";
 
 function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document): string {
-	const { operationId: rawOperationId, parameters, requestBody } = operation;
-	const operationId = sanitizeTypeName(rawOperationId);
+	const { operationId, parameters, requestBody } = operation;
 
 	const hasData = (parameters && parameters.length > 0) || operation.requestBody;
 
@@ -40,13 +39,13 @@ function generateQueryOptions(operation: OperationInfo, spec: OpenAPIV3.Document
 
 	return `
 export const ${namedQuery}QueryOptions = (
-  ${hasData ? `params: Partial<Parameters<typeof apiClient.${namedQuery}>[0]>` : ""}
+  ${hasData ? `params: Partial<Parameters<typeof apiClient.${namedQuery}>[0]>, config?: Partial<Parameters<typeof apiClient.${namedQuery}>[1]>` : ""}
 ) => {
   const enabled = ${hasData ? `hasDefinedProps(params, ${requiredParams.join(", ")})` : "true"};
   return queryOptions({
-    queryKey: ['${operationId}', ${hasData ? "params" : "undefined"}],
+    queryKey: ['${camelCase(operationId)}', ${hasData ? "params" : "undefined"}],
     queryFn: enabled ? async () => {
-      const response = await apiClient.${namedQuery}(${hasData ? "params" : "undefined"});
+      const response = await apiClient.${namedQuery}(${hasData ? "params" : "undefined"}, config);
       return response.data;
     } : skipToken,
   });
@@ -63,11 +62,10 @@ export function generateReactQuery(spec: OpenAPIV3.Document): string {
 		["get", "post", "put", "delete", "patch"].forEach((method) => {
 			const operation = pathItem[method as keyof OpenAPIV3.PathItemObject] as OpenAPIV3.OperationObject;
 			if (!operation) return;
-
 			operations.push({
 				method: method.toUpperCase(),
 				path,
-				operationId: sanitizeTypeName(operation.operationId || `${method}${path.replace(/\W+/g, "_")}`),
+				operationId: `${method}${sanitizeTypeName(operation.operationId || `${path.replace(/\W+/g, "_")}`)}`,
 				summary: operation.summary,
 				description: operation.description,
 				parameters: [

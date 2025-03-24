@@ -7,1413 +7,1552 @@ const hasDefinedProps = <T extends { [P in K]?: any }, K extends PropertyKey>(
 	return keys.every((k) => obj[k] !== undefined);
 };
 
-export const abilityListQueryOptions = (params: Partial<Parameters<typeof apiClient.abilityList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["ability_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.abilityList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const abilityRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.abilityRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["ability_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.abilityRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const berryListQueryOptions = (params: Partial<Parameters<typeof apiClient.berryList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["berry_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.berryList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const berryRetrieveQueryOptions = (params: Partial<Parameters<typeof apiClient.berryRetrieve>[0]>) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["berry_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.berryRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const berryFirmnessListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.berryFirmnessList>[0]>
+export const getabilityListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getabilityList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getabilityList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["berry_firmness_list", params],
+		queryKey: ["getabilityList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.berryFirmnessList(params);
+					const response = await apiClient.getabilityList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const berryFirmnessRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.berryFirmnessRetrieve>[0]>
+export const getabilityRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getabilityRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getabilityRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["berry_firmness_retrieve", params],
+		queryKey: ["getabilityRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.berryFirmnessRetrieve(params);
+					const response = await apiClient.getabilityRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const berryFlavorListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.berryFlavorList>[0]>
+export const getberryListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getberryList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getberryList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["berry_flavor_list", params],
+		queryKey: ["getberryList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.berryFlavorList(params);
+					const response = await apiClient.getberryList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const berryFlavorRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.berryFlavorRetrieve>[0]>
+export const getberryRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getberryRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getberryRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["berry_flavor_retrieve", params],
+		queryKey: ["getberryRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.berryFlavorRetrieve(params);
+					const response = await apiClient.getberryRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const characteristicListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.characteristicList>[0]>
+export const getberryFirmnessListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getberryFirmnessList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getberryFirmnessList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["characteristic_list", params],
+		queryKey: ["getberryFirmnessList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.characteristicList(params);
+					const response = await apiClient.getberryFirmnessList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const characteristicRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.characteristicRetrieve>[0]>
+export const getberryFirmnessRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getberryFirmnessRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getberryFirmnessRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["characteristic_retrieve", params],
+		queryKey: ["getberryFirmnessRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.characteristicRetrieve(params);
+					const response = await apiClient.getberryFirmnessRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const contestTypeListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.contestTypeList>[0]>
+export const getberryFlavorListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getberryFlavorList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getberryFlavorList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["contest_type_list", params],
+		queryKey: ["getberryFlavorList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.contestTypeList(params);
+					const response = await apiClient.getberryFlavorList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const contestTypeRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.contestTypeRetrieve>[0]>
+export const getberryFlavorRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getberryFlavorRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getberryFlavorRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["contest_type_retrieve", params],
+		queryKey: ["getberryFlavorRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.contestTypeRetrieve(params);
+					const response = await apiClient.getberryFlavorRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const contestEffectListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.contestEffectList>[0]>
+export const getcharacteristicListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getcharacteristicList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getcharacteristicList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["contest_effect_list", params],
+		queryKey: ["getcharacteristicList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.contestEffectList(params);
+					const response = await apiClient.getcharacteristicList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const contestEffectRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.contestEffectRetrieve>[0]>
+export const getcharacteristicRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getcharacteristicRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getcharacteristicRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["contest_effect_retrieve", params],
+		queryKey: ["getcharacteristicRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.contestEffectRetrieve(params);
+					const response = await apiClient.getcharacteristicRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const eggGroupListQueryOptions = (params: Partial<Parameters<typeof apiClient.eggGroupList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["egg_group_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.eggGroupList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const eggGroupRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.eggGroupRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["egg_group_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.eggGroupRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const encounterMethodListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.encounterMethodList>[0]>
+export const getcontestTypeListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getcontestTypeList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getcontestTypeList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["encounter_method_list", params],
+		queryKey: ["getcontestTypeList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.encounterMethodList(params);
+					const response = await apiClient.getcontestTypeList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const encounterMethodRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.encounterMethodRetrieve>[0]>
+export const getcontestTypeRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getcontestTypeRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getcontestTypeRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["encounter_method_retrieve", params],
+		queryKey: ["getcontestTypeRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.encounterMethodRetrieve(params);
+					const response = await apiClient.getcontestTypeRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const encounterConditionListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.encounterConditionList>[0]>
+export const getcontestEffectListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getcontestEffectList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getcontestEffectList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["encounter_condition_list", params],
+		queryKey: ["getcontestEffectList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.encounterConditionList(params);
+					const response = await apiClient.getcontestEffectList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const encounterConditionRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.encounterConditionRetrieve>[0]>
+export const getcontestEffectRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getcontestEffectRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getcontestEffectRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["encounter_condition_retrieve", params],
+		queryKey: ["getcontestEffectRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.encounterConditionRetrieve(params);
+					const response = await apiClient.getcontestEffectRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const encounterConditionValueListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.encounterConditionValueList>[0]>
+export const geteggGroupListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.geteggGroupList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.geteggGroupList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["encounter_condition_value_list", params],
+		queryKey: ["geteggGroupList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.encounterConditionValueList(params);
+					const response = await apiClient.geteggGroupList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const encounterConditionValueRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.encounterConditionValueRetrieve>[0]>
+export const geteggGroupRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.geteggGroupRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.geteggGroupRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["encounter_condition_value_retrieve", params],
+		queryKey: ["geteggGroupRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.encounterConditionValueRetrieve(params);
+					const response = await apiClient.geteggGroupRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const evolutionChainListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.evolutionChainList>[0]>
+export const getencounterMethodListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getencounterMethodList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getencounterMethodList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["evolution_chain_list", params],
+		queryKey: ["getencounterMethodList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.evolutionChainList(params);
+					const response = await apiClient.getencounterMethodList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const evolutionChainRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.evolutionChainRetrieve>[0]>
+export const getencounterMethodRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getencounterMethodRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getencounterMethodRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["evolution_chain_retrieve", params],
+		queryKey: ["getencounterMethodRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.evolutionChainRetrieve(params);
+					const response = await apiClient.getencounterMethodRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const evolutionTriggerListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.evolutionTriggerList>[0]>
+export const getencounterConditionListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getencounterConditionList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getencounterConditionList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["evolution_trigger_list", params],
+		queryKey: ["getencounterConditionList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.evolutionTriggerList(params);
+					const response = await apiClient.getencounterConditionList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const evolutionTriggerRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.evolutionTriggerRetrieve>[0]>
+export const getencounterConditionRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getencounterConditionRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getencounterConditionRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["evolution_trigger_retrieve", params],
+		queryKey: ["getencounterConditionRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.evolutionTriggerRetrieve(params);
+					const response = await apiClient.getencounterConditionRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const generationListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.generationList>[0]>
+export const getencounterConditionValueListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getencounterConditionValueList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getencounterConditionValueList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["generation_list", params],
+		queryKey: ["getencounterConditionValueList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.generationList(params);
+					const response = await apiClient.getencounterConditionValueList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const generationRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.generationRetrieve>[0]>
+export const getencounterConditionValueRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getencounterConditionValueRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getencounterConditionValueRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["generation_retrieve", params],
+		queryKey: ["getencounterConditionValueRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.generationRetrieve(params);
+					const response = await apiClient.getencounterConditionValueRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const genderListQueryOptions = (params: Partial<Parameters<typeof apiClient.genderList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["gender_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.genderList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const genderRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.genderRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["gender_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.genderRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const growthRateListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.growthRateList>[0]>
+export const getevolutionChainListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getevolutionChainList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getevolutionChainList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["growth_rate_list", params],
+		queryKey: ["getevolutionChainList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.growthRateList(params);
+					const response = await apiClient.getevolutionChainList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const growthRateRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.growthRateRetrieve>[0]>
+export const getevolutionChainRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getevolutionChainRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getevolutionChainRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["growth_rate_retrieve", params],
+		queryKey: ["getevolutionChainRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.growthRateRetrieve(params);
+					const response = await apiClient.getevolutionChainRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemListQueryOptions = (params: Partial<Parameters<typeof apiClient.itemList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["item_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.itemList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const itemRetrieveQueryOptions = (params: Partial<Parameters<typeof apiClient.itemRetrieve>[0]>) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["item_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.itemRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const itemCategoryListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemCategoryList>[0]>
+export const getevolutionTriggerListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getevolutionTriggerList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getevolutionTriggerList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["item_category_list", params],
+		queryKey: ["getevolutionTriggerList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemCategoryList(params);
+					const response = await apiClient.getevolutionTriggerList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemCategoryRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemCategoryRetrieve>[0]>
+export const getevolutionTriggerRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getevolutionTriggerRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getevolutionTriggerRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["item_category_retrieve", params],
+		queryKey: ["getevolutionTriggerRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemCategoryRetrieve(params);
+					const response = await apiClient.getevolutionTriggerRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemAttributeListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemAttributeList>[0]>
+export const getgenerationListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getgenerationList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getgenerationList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["item_attribute_list", params],
+		queryKey: ["getgenerationList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemAttributeList(params);
+					const response = await apiClient.getgenerationList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemAttributeRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemAttributeRetrieve>[0]>
+export const getgenerationRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getgenerationRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getgenerationRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["item_attribute_retrieve", params],
+		queryKey: ["getgenerationRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemAttributeRetrieve(params);
+					const response = await apiClient.getgenerationRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemFlingEffectListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemFlingEffectList>[0]>
+export const getgenderListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getgenderList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getgenderList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["item_fling_effect_list", params],
+		queryKey: ["getgenderList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemFlingEffectList(params);
+					const response = await apiClient.getgenderList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemFlingEffectRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemFlingEffectRetrieve>[0]>
+export const getgenderRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getgenderRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getgenderRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["item_fling_effect_retrieve", params],
+		queryKey: ["getgenderRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemFlingEffectRetrieve(params);
+					const response = await apiClient.getgenderRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemPocketListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemPocketList>[0]>
+export const getgrowthRateListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getgrowthRateList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getgrowthRateList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["item_pocket_list", params],
+		queryKey: ["getgrowthRateList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemPocketList(params);
+					const response = await apiClient.getgrowthRateList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const itemPocketRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.itemPocketRetrieve>[0]>
+export const getgrowthRateRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getgrowthRateRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getgrowthRateRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["item_pocket_retrieve", params],
+		queryKey: ["getgrowthRateRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.itemPocketRetrieve(params);
+					const response = await apiClient.getgrowthRateRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const languageListQueryOptions = (params: Partial<Parameters<typeof apiClient.languageList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["language_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.languageList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const languageRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.languageRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["language_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.languageRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const locationListQueryOptions = (params: Partial<Parameters<typeof apiClient.locationList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["location_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.locationList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const locationRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.locationRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["location_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.locationRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const locationAreaListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.locationAreaList>[0]>
+export const getitemListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["location_area_list", params],
+		queryKey: ["getitemList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.locationAreaList(params);
+					const response = await apiClient.getitemList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const locationAreaRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.locationAreaRetrieve>[0]>
+export const getitemRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["location_area_retrieve", params],
+		queryKey: ["getitemRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.locationAreaRetrieve(params);
+					const response = await apiClient.getitemRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const machineListQueryOptions = (params: Partial<Parameters<typeof apiClient.machineList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["machine_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.machineList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const machineRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.machineRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["machine_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.machineRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const moveListQueryOptions = (params: Partial<Parameters<typeof apiClient.moveList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["move_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.moveList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const moveRetrieveQueryOptions = (params: Partial<Parameters<typeof apiClient.moveRetrieve>[0]>) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["move_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.moveRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const moveAilmentListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveAilmentList>[0]>
+export const getitemCategoryListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemCategoryList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemCategoryList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["move_ailment_list", params],
+		queryKey: ["getitemCategoryList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveAilmentList(params);
+					const response = await apiClient.getitemCategoryList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveAilmentRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveAilmentRetrieve>[0]>
+export const getitemCategoryRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemCategoryRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemCategoryRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["move_ailment_retrieve", params],
+		queryKey: ["getitemCategoryRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveAilmentRetrieve(params);
+					const response = await apiClient.getitemCategoryRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveBattleStyleListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveBattleStyleList>[0]>
+export const getitemAttributeListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemAttributeList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemAttributeList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["move_battle_style_list", params],
+		queryKey: ["getitemAttributeList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveBattleStyleList(params);
+					const response = await apiClient.getitemAttributeList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveBattleStyleRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveBattleStyleRetrieve>[0]>
+export const getitemAttributeRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemAttributeRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemAttributeRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["move_battle_style_retrieve", params],
+		queryKey: ["getitemAttributeRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveBattleStyleRetrieve(params);
+					const response = await apiClient.getitemAttributeRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveCategoryListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveCategoryList>[0]>
+export const getitemFlingEffectListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemFlingEffectList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemFlingEffectList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["move_category_list", params],
+		queryKey: ["getitemFlingEffectList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveCategoryList(params);
+					const response = await apiClient.getitemFlingEffectList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveCategoryRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveCategoryRetrieve>[0]>
+export const getitemFlingEffectRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemFlingEffectRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemFlingEffectRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["move_category_retrieve", params],
+		queryKey: ["getitemFlingEffectRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveCategoryRetrieve(params);
+					const response = await apiClient.getitemFlingEffectRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveDamageClassListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveDamageClassList>[0]>
+export const getitemPocketListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemPocketList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemPocketList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["move_damage_class_list", params],
+		queryKey: ["getitemPocketList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveDamageClassList(params);
+					const response = await apiClient.getitemPocketList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveDamageClassRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveDamageClassRetrieve>[0]>
+export const getitemPocketRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getitemPocketRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getitemPocketRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["move_damage_class_retrieve", params],
+		queryKey: ["getitemPocketRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveDamageClassRetrieve(params);
+					const response = await apiClient.getitemPocketRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveLearnMethodListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveLearnMethodList>[0]>
+export const getlanguageListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getlanguageList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getlanguageList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["move_learn_method_list", params],
+		queryKey: ["getlanguageList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveLearnMethodList(params);
+					const response = await apiClient.getlanguageList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveLearnMethodRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveLearnMethodRetrieve>[0]>
+export const getlanguageRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getlanguageRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getlanguageRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["move_learn_method_retrieve", params],
+		queryKey: ["getlanguageRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveLearnMethodRetrieve(params);
+					const response = await apiClient.getlanguageRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveTargetListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveTargetList>[0]>
+export const getlocationListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getlocationList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getlocationList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["move_target_list", params],
+		queryKey: ["getlocationList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveTargetList(params);
+					const response = await apiClient.getlocationList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const moveTargetRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.moveTargetRetrieve>[0]>
+export const getlocationRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getlocationRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getlocationRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["move_target_retrieve", params],
+		queryKey: ["getlocationRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.moveTargetRetrieve(params);
+					const response = await apiClient.getlocationRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const natureListQueryOptions = (params: Partial<Parameters<typeof apiClient.natureList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["nature_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.natureList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const natureRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.natureRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["nature_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.natureRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const palParkAreaListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.palParkAreaList>[0]>
+export const getlocationAreaListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getlocationAreaList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getlocationAreaList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["pal_park_area_list", params],
+		queryKey: ["getlocationAreaList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.palParkAreaList(params);
+					const response = await apiClient.getlocationAreaList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const palParkAreaRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.palParkAreaRetrieve>[0]>
+export const getlocationAreaRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getlocationAreaRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getlocationAreaRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["pal_park_area_retrieve", params],
+		queryKey: ["getlocationAreaRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.palParkAreaRetrieve(params);
+					const response = await apiClient.getlocationAreaRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokedexListQueryOptions = (params: Partial<Parameters<typeof apiClient.pokedexList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["pokedex_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.pokedexList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const pokedexRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokedexRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["pokedex_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.pokedexRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const pokemonListQueryOptions = (params: Partial<Parameters<typeof apiClient.pokemonList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["pokemon_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.pokemonList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const pokemonRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["pokemon_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.pokemonRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const pokemonColorListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonColorList>[0]>
+export const getmachineListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmachineList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmachineList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["pokemon_color_list", params],
+		queryKey: ["getmachineList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonColorList(params);
+					const response = await apiClient.getmachineList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonColorRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonColorRetrieve>[0]>
+export const getmachineRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmachineRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmachineRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["pokemon_color_retrieve", params],
+		queryKey: ["getmachineRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonColorRetrieve(params);
+					const response = await apiClient.getmachineRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonFormListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonFormList>[0]>
+export const getmoveListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["pokemon_form_list", params],
+		queryKey: ["getmoveList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonFormList(params);
+					const response = await apiClient.getmoveList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonFormRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonFormRetrieve>[0]>
+export const getmoveRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["pokemon_form_retrieve", params],
+		queryKey: ["getmoveRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonFormRetrieve(params);
+					const response = await apiClient.getmoveRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonHabitatListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonHabitatList>[0]>
+export const getmoveAilmentListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveAilmentList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveAilmentList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["pokemon_habitat_list", params],
+		queryKey: ["getmoveAilmentList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonHabitatList(params);
+					const response = await apiClient.getmoveAilmentList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonHabitatRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonHabitatRetrieve>[0]>
+export const getmoveAilmentRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveAilmentRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveAilmentRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["pokemon_habitat_retrieve", params],
+		queryKey: ["getmoveAilmentRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonHabitatRetrieve(params);
+					const response = await apiClient.getmoveAilmentRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonShapeListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonShapeList>[0]>
+export const getmoveBattleStyleListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveBattleStyleList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveBattleStyleList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["pokemon_shape_list", params],
+		queryKey: ["getmoveBattleStyleList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonShapeList(params);
+					const response = await apiClient.getmoveBattleStyleList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonShapeRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonShapeRetrieve>[0]>
+export const getmoveBattleStyleRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveBattleStyleRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveBattleStyleRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["pokemon_shape_retrieve", params],
+		queryKey: ["getmoveBattleStyleRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonShapeRetrieve(params);
+					const response = await apiClient.getmoveBattleStyleRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonSpeciesListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonSpeciesList>[0]>
+export const getmoveCategoryListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveCategoryList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveCategoryList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["pokemon_species_list", params],
+		queryKey: ["getmoveCategoryList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonSpeciesList(params);
+					const response = await apiClient.getmoveCategoryList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonSpeciesRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonSpeciesRetrieve>[0]>
+export const getmoveCategoryRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveCategoryRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveCategoryRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["pokemon_species_retrieve", params],
+		queryKey: ["getmoveCategoryRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonSpeciesRetrieve(params);
+					const response = await apiClient.getmoveCategoryRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokeathlonStatListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokeathlonStatList>[0]>
+export const getmoveDamageClassListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveDamageClassList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveDamageClassList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["pokeathlon_stat_list", params],
+		queryKey: ["getmoveDamageClassList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokeathlonStatList(params);
+					const response = await apiClient.getmoveDamageClassList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokeathlonStatRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokeathlonStatRetrieve>[0]>
+export const getmoveDamageClassRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveDamageClassRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveDamageClassRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["pokeathlon_stat_retrieve", params],
+		queryKey: ["getmoveDamageClassRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokeathlonStatRetrieve(params);
+					const response = await apiClient.getmoveDamageClassRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const regionListQueryOptions = (params: Partial<Parameters<typeof apiClient.regionList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["region_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.regionList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const regionRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.regionRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["region_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.regionRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const statListQueryOptions = (params: Partial<Parameters<typeof apiClient.statList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["stat_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.statList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const statRetrieveQueryOptions = (params: Partial<Parameters<typeof apiClient.statRetrieve>[0]>) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["stat_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.statRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const superContestEffectListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.superContestEffectList>[0]>
+export const getmoveLearnMethodListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveLearnMethodList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveLearnMethodList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["super_contest_effect_list", params],
+		queryKey: ["getmoveLearnMethodList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.superContestEffectList(params);
+					const response = await apiClient.getmoveLearnMethodList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const superContestEffectRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.superContestEffectRetrieve>[0]>
+export const getmoveLearnMethodRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveLearnMethodRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveLearnMethodRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["super_contest_effect_retrieve", params],
+		queryKey: ["getmoveLearnMethodRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.superContestEffectRetrieve(params);
+					const response = await apiClient.getmoveLearnMethodRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const typeListQueryOptions = (params: Partial<Parameters<typeof apiClient.typeList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["type_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.typeList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const typeRetrieveQueryOptions = (params: Partial<Parameters<typeof apiClient.typeRetrieve>[0]>) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["type_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.typeRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const versionListQueryOptions = (params: Partial<Parameters<typeof apiClient.versionList>[0]>) => {
-	const enabled = hasDefinedProps(params);
-	return queryOptions({
-		queryKey: ["version_list", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.versionList(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const versionRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.versionRetrieve>[0]>
-) => {
-	const enabled = hasDefinedProps(params, "id");
-	return queryOptions({
-		queryKey: ["version_retrieve", params],
-		queryFn: enabled
-			? async () => {
-					const response = await apiClient.versionRetrieve(params);
-					return response.data;
-				}
-			: skipToken,
-	});
-};
-
-export const versionGroupListQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.versionGroupList>[0]>
+export const getmoveTargetListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveTargetList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveTargetList>[1]>
 ) => {
 	const enabled = hasDefinedProps(params);
 	return queryOptions({
-		queryKey: ["version_group_list", params],
+		queryKey: ["getmoveTargetList", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.versionGroupList(params);
+					const response = await apiClient.getmoveTargetList(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const versionGroupRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.versionGroupRetrieve>[0]>
+export const getmoveTargetRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getmoveTargetRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getmoveTargetRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "id");
 	return queryOptions({
-		queryKey: ["version_group_retrieve", params],
+		queryKey: ["getmoveTargetRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.versionGroupRetrieve(params);
+					const response = await apiClient.getmoveTargetRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,
 	});
 };
 
-export const pokemonEncountersRetrieveQueryOptions = (
-	params: Partial<Parameters<typeof apiClient.pokemonEncountersRetrieve>[0]>
+export const getnatureListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getnatureList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getnatureList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getnatureList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getnatureList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getnatureRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getnatureRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getnatureRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getnatureRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getnatureRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpalParkAreaListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpalParkAreaList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpalParkAreaList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpalParkAreaList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpalParkAreaList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpalParkAreaRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpalParkAreaRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpalParkAreaRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpalParkAreaRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpalParkAreaRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokedexListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokedexList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokedexList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokedexList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokedexList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokedexRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokedexRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokedexRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokedexRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokedexRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokemonList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokemonRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonColorListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonColorList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonColorList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokemonColorList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonColorList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonColorRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonColorRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonColorRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokemonColorRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonColorRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonFormListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonFormList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonFormList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokemonFormList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonFormList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonFormRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonFormRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonFormRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokemonFormRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonFormRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonHabitatListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonHabitatList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonHabitatList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokemonHabitatList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonHabitatList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonHabitatRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonHabitatRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonHabitatRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokemonHabitatRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonHabitatRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonShapeListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonShapeList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonShapeList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokemonShapeList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonShapeList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonShapeRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonShapeRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonShapeRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokemonShapeRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonShapeRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonSpeciesListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonSpeciesList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonSpeciesList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokemonSpeciesList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonSpeciesList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonSpeciesRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonSpeciesRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonSpeciesRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokemonSpeciesRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokemonSpeciesRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokeathlonStatListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokeathlonStatList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokeathlonStatList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getpokeathlonStatList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokeathlonStatList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokeathlonStatRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokeathlonStatRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokeathlonStatRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getpokeathlonStatRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getpokeathlonStatRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getregionListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getregionList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getregionList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getregionList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getregionList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getregionRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getregionRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getregionRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getregionRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getregionRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getstatListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getstatList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getstatList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getstatList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getstatList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getstatRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getstatRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getstatRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getstatRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getstatRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getsuperContestEffectListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getsuperContestEffectList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getsuperContestEffectList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getsuperContestEffectList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getsuperContestEffectList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getsuperContestEffectRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getsuperContestEffectRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getsuperContestEffectRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getsuperContestEffectRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getsuperContestEffectRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const gettypeListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.gettypeList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.gettypeList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["gettypeList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.gettypeList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const gettypeRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.gettypeRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.gettypeRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["gettypeRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.gettypeRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getversionListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getversionList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getversionList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getversionList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getversionList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getversionRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getversionRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getversionRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getversionRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getversionRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getversionGroupListQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getversionGroupList>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getversionGroupList>[1]>
+) => {
+	const enabled = hasDefinedProps(params);
+	return queryOptions({
+		queryKey: ["getversionGroupList", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getversionGroupList(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getversionGroupRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getversionGroupRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getversionGroupRetrieve>[1]>
+) => {
+	const enabled = hasDefinedProps(params, "id");
+	return queryOptions({
+		queryKey: ["getversionGroupRetrieve", params],
+		queryFn: enabled
+			? async () => {
+					const response = await apiClient.getversionGroupRetrieve(params, config);
+					return response.data;
+				}
+			: skipToken,
+	});
+};
+
+export const getpokemonEncountersRetrieveQueryOptions = (
+	params: Partial<Parameters<typeof apiClient.getpokemonEncountersRetrieve>[0]>,
+	config?: Partial<Parameters<typeof apiClient.getpokemonEncountersRetrieve>[1]>
 ) => {
 	const enabled = hasDefinedProps(params, "pokemon_id");
 	return queryOptions({
-		queryKey: ["pokemon_encounters_retrieve", params],
+		queryKey: ["getpokemonEncountersRetrieve", params],
 		queryFn: enabled
 			? async () => {
-					const response = await apiClient.pokemonEncountersRetrieve(params);
+					const response = await apiClient.getpokemonEncountersRetrieve(params, config);
 					return response.data;
 				}
 			: skipToken,

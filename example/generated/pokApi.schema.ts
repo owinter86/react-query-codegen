@@ -1889,199 +1889,199 @@ export interface VersionSummary {
 	url: string;
 }
 
-export type AbilityListResponse200 = PaginatedAbilitySummaryList;
+export type GetabilityListResponse200 = PaginatedAbilitySummaryList;
 
-export type AbilityRetrieveResponse200 = AbilityDetail;
+export type GetabilityRetrieveResponse200 = AbilityDetail;
 
-export type BerryListResponse200 = PaginatedBerrySummaryList;
+export type GetberryListResponse200 = PaginatedBerrySummaryList;
 
-export type BerryRetrieveResponse200 = BerryDetail;
+export type GetberryRetrieveResponse200 = BerryDetail;
 
-export type BerryFirmnessListResponse200 = PaginatedBerryFirmnessSummaryList;
+export type GetberryFirmnessListResponse200 = PaginatedBerryFirmnessSummaryList;
 
-export type BerryFirmnessRetrieveResponse200 = BerryFirmnessDetail;
+export type GetberryFirmnessRetrieveResponse200 = BerryFirmnessDetail;
 
-export type BerryFlavorListResponse200 = PaginatedBerryFlavorSummaryList;
+export type GetberryFlavorListResponse200 = PaginatedBerryFlavorSummaryList;
 
-export type BerryFlavorRetrieveResponse200 = BerryFlavorDetail;
+export type GetberryFlavorRetrieveResponse200 = BerryFlavorDetail;
 
-export type CharacteristicListResponse200 = PaginatedCharacteristicSummaryList;
+export type GetcharacteristicListResponse200 = PaginatedCharacteristicSummaryList;
 
-export type CharacteristicRetrieveResponse200 = CharacteristicDetail;
+export type GetcharacteristicRetrieveResponse200 = CharacteristicDetail;
 
-export type ContestTypeListResponse200 = PaginatedContestTypeSummaryList;
+export type GetcontestTypeListResponse200 = PaginatedContestTypeSummaryList;
 
-export type ContestTypeRetrieveResponse200 = ContestTypeDetail;
+export type GetcontestTypeRetrieveResponse200 = ContestTypeDetail;
 
-export type ContestEffectListResponse200 = PaginatedContestEffectSummaryList;
+export type GetcontestEffectListResponse200 = PaginatedContestEffectSummaryList;
 
-export type ContestEffectRetrieveResponse200 = ContestEffectDetail;
+export type GetcontestEffectRetrieveResponse200 = ContestEffectDetail;
 
-export type EggGroupListResponse200 = PaginatedEggGroupSummaryList;
+export type GeteggGroupListResponse200 = PaginatedEggGroupSummaryList;
 
-export type EggGroupRetrieveResponse200 = EggGroupDetail;
+export type GeteggGroupRetrieveResponse200 = EggGroupDetail;
 
-export type EncounterMethodListResponse200 = PaginatedEncounterMethodSummaryList;
+export type GetencounterMethodListResponse200 = PaginatedEncounterMethodSummaryList;
 
-export type EncounterMethodRetrieveResponse200 = EncounterMethodDetail;
+export type GetencounterMethodRetrieveResponse200 = EncounterMethodDetail;
 
-export type EncounterConditionListResponse200 = PaginatedEncounterConditionSummaryList;
+export type GetencounterConditionListResponse200 = PaginatedEncounterConditionSummaryList;
 
-export type EncounterConditionRetrieveResponse200 = EncounterConditionDetail;
+export type GetencounterConditionRetrieveResponse200 = EncounterConditionDetail;
 
-export type EncounterConditionValueListResponse200 = PaginatedEncounterConditionValueSummaryList;
+export type GetencounterConditionValueListResponse200 = PaginatedEncounterConditionValueSummaryList;
 
-export type EncounterConditionValueRetrieveResponse200 = EncounterConditionValueDetail;
+export type GetencounterConditionValueRetrieveResponse200 = EncounterConditionValueDetail;
 
-export type EvolutionChainListResponse200 = PaginatedEvolutionChainSummaryList;
+export type GetevolutionChainListResponse200 = PaginatedEvolutionChainSummaryList;
 
-export type EvolutionChainRetrieveResponse200 = EvolutionChainDetail;
+export type GetevolutionChainRetrieveResponse200 = EvolutionChainDetail;
 
-export type EvolutionTriggerListResponse200 = PaginatedEvolutionTriggerSummaryList;
+export type GetevolutionTriggerListResponse200 = PaginatedEvolutionTriggerSummaryList;
 
-export type EvolutionTriggerRetrieveResponse200 = EvolutionTriggerDetail;
+export type GetevolutionTriggerRetrieveResponse200 = EvolutionTriggerDetail;
 
-export type GenerationListResponse200 = PaginatedGenerationSummaryList;
+export type GetgenerationListResponse200 = PaginatedGenerationSummaryList;
 
-export type GenerationRetrieveResponse200 = GenerationDetail;
+export type GetgenerationRetrieveResponse200 = GenerationDetail;
 
-export type GenderListResponse200 = PaginatedGenderSummaryList;
+export type GetgenderListResponse200 = PaginatedGenderSummaryList;
 
-export type GenderRetrieveResponse200 = GenderDetail;
+export type GetgenderRetrieveResponse200 = GenderDetail;
 
-export type GrowthRateListResponse200 = PaginatedGrowthRateSummaryList;
+export type GetgrowthRateListResponse200 = PaginatedGrowthRateSummaryList;
 
-export type GrowthRateRetrieveResponse200 = GrowthRateDetail;
+export type GetgrowthRateRetrieveResponse200 = GrowthRateDetail;
 
-export type ItemListResponse200 = PaginatedItemSummaryList;
+export type GetitemListResponse200 = PaginatedItemSummaryList;
 
-export type ItemRetrieveResponse200 = ItemDetail;
+export type GetitemRetrieveResponse200 = ItemDetail;
 
-export type ItemCategoryListResponse200 = PaginatedItemCategorySummaryList;
+export type GetitemCategoryListResponse200 = PaginatedItemCategorySummaryList;
 
-export type ItemCategoryRetrieveResponse200 = ItemCategoryDetail;
+export type GetitemCategoryRetrieveResponse200 = ItemCategoryDetail;
 
-export type ItemAttributeListResponse200 = PaginatedItemAttributeSummaryList;
+export type GetitemAttributeListResponse200 = PaginatedItemAttributeSummaryList;
 
-export type ItemAttributeRetrieveResponse200 = ItemAttributeDetail;
+export type GetitemAttributeRetrieveResponse200 = ItemAttributeDetail;
 
-export type ItemFlingEffectListResponse200 = PaginatedItemFlingEffectSummaryList;
+export type GetitemFlingEffectListResponse200 = PaginatedItemFlingEffectSummaryList;
 
-export type ItemFlingEffectRetrieveResponse200 = ItemFlingEffectDetail;
+export type GetitemFlingEffectRetrieveResponse200 = ItemFlingEffectDetail;
 
-export type ItemPocketListResponse200 = PaginatedItemPocketSummaryList;
+export type GetitemPocketListResponse200 = PaginatedItemPocketSummaryList;
 
-export type ItemPocketRetrieveResponse200 = ItemPocketDetail;
+export type GetitemPocketRetrieveResponse200 = ItemPocketDetail;
 
-export type LanguageListResponse200 = PaginatedLanguageSummaryList;
+export type GetlanguageListResponse200 = PaginatedLanguageSummaryList;
 
-export type LanguageRetrieveResponse200 = LanguageDetail;
+export type GetlanguageRetrieveResponse200 = LanguageDetail;
 
-export type LocationListResponse200 = PaginatedLocationSummaryList;
+export type GetlocationListResponse200 = PaginatedLocationSummaryList;
 
-export type LocationRetrieveResponse200 = LocationDetail;
+export type GetlocationRetrieveResponse200 = LocationDetail;
 
-export type LocationAreaListResponse200 = PaginatedLocationAreaSummaryList;
+export type GetlocationAreaListResponse200 = PaginatedLocationAreaSummaryList;
 
-export type LocationAreaRetrieveResponse200 = LocationAreaDetail;
+export type GetlocationAreaRetrieveResponse200 = LocationAreaDetail;
 
-export type MachineListResponse200 = PaginatedMachineSummaryList;
+export type GetmachineListResponse200 = PaginatedMachineSummaryList;
 
-export type MachineRetrieveResponse200 = MachineDetail;
+export type GetmachineRetrieveResponse200 = MachineDetail;
 
-export type MoveListResponse200 = PaginatedMoveSummaryList;
+export type GetmoveListResponse200 = PaginatedMoveSummaryList;
 
-export type MoveRetrieveResponse200 = MoveDetail;
+export type GetmoveRetrieveResponse200 = MoveDetail;
 
-export type MoveAilmentListResponse200 = PaginatedMoveMetaAilmentSummaryList;
+export type GetmoveAilmentListResponse200 = PaginatedMoveMetaAilmentSummaryList;
 
-export type MoveAilmentRetrieveResponse200 = MoveMetaAilmentDetail;
+export type GetmoveAilmentRetrieveResponse200 = MoveMetaAilmentDetail;
 
-export type MoveBattleStyleListResponse200 = PaginatedMoveBattleStyleSummaryList;
+export type GetmoveBattleStyleListResponse200 = PaginatedMoveBattleStyleSummaryList;
 
-export type MoveBattleStyleRetrieveResponse200 = MoveBattleStyleDetail;
+export type GetmoveBattleStyleRetrieveResponse200 = MoveBattleStyleDetail;
 
-export type MoveCategoryListResponse200 = PaginatedMoveMetaCategorySummaryList;
+export type GetmoveCategoryListResponse200 = PaginatedMoveMetaCategorySummaryList;
 
-export type MoveCategoryRetrieveResponse200 = MoveMetaCategoryDetail;
+export type GetmoveCategoryRetrieveResponse200 = MoveMetaCategoryDetail;
 
-export type MoveDamageClassListResponse200 = PaginatedMoveDamageClassSummaryList;
+export type GetmoveDamageClassListResponse200 = PaginatedMoveDamageClassSummaryList;
 
-export type MoveDamageClassRetrieveResponse200 = MoveDamageClassDetail;
+export type GetmoveDamageClassRetrieveResponse200 = MoveDamageClassDetail;
 
-export type MoveLearnMethodListResponse200 = PaginatedMoveLearnMethodSummaryList;
+export type GetmoveLearnMethodListResponse200 = PaginatedMoveLearnMethodSummaryList;
 
-export type MoveLearnMethodRetrieveResponse200 = MoveLearnMethodDetail;
+export type GetmoveLearnMethodRetrieveResponse200 = MoveLearnMethodDetail;
 
-export type MoveTargetListResponse200 = PaginatedMoveTargetSummaryList;
+export type GetmoveTargetListResponse200 = PaginatedMoveTargetSummaryList;
 
-export type MoveTargetRetrieveResponse200 = MoveTargetDetail;
+export type GetmoveTargetRetrieveResponse200 = MoveTargetDetail;
 
-export type NatureListResponse200 = PaginatedNatureSummaryList;
+export type GetnatureListResponse200 = PaginatedNatureSummaryList;
 
-export type NatureRetrieveResponse200 = NatureDetail;
+export type GetnatureRetrieveResponse200 = NatureDetail;
 
-export type PalParkAreaListResponse200 = PaginatedPalParkAreaSummaryList;
+export type GetpalParkAreaListResponse200 = PaginatedPalParkAreaSummaryList;
 
-export type PalParkAreaRetrieveResponse200 = PalParkAreaDetail;
+export type GetpalParkAreaRetrieveResponse200 = PalParkAreaDetail;
 
-export type PokedexListResponse200 = PaginatedPokedexSummaryList;
+export type GetpokedexListResponse200 = PaginatedPokedexSummaryList;
 
-export type PokedexRetrieveResponse200 = PokedexDetail;
+export type GetpokedexRetrieveResponse200 = PokedexDetail;
 
-export type PokemonListResponse200 = PaginatedPokemonSummaryList;
+export type GetpokemonListResponse200 = PaginatedPokemonSummaryList;
 
-export type PokemonRetrieveResponse200 = PokemonDetail;
+export type GetpokemonRetrieveResponse200 = PokemonDetail;
 
-export type PokemonColorListResponse200 = PaginatedPokemonColorSummaryList;
+export type GetpokemonColorListResponse200 = PaginatedPokemonColorSummaryList;
 
-export type PokemonColorRetrieveResponse200 = PokemonColorDetail;
+export type GetpokemonColorRetrieveResponse200 = PokemonColorDetail;
 
-export type PokemonFormListResponse200 = PaginatedPokemonFormSummaryList;
+export type GetpokemonFormListResponse200 = PaginatedPokemonFormSummaryList;
 
-export type PokemonFormRetrieveResponse200 = PokemonFormDetail;
+export type GetpokemonFormRetrieveResponse200 = PokemonFormDetail;
 
-export type PokemonHabitatListResponse200 = PaginatedPokemonHabitatSummaryList;
+export type GetpokemonHabitatListResponse200 = PaginatedPokemonHabitatSummaryList;
 
-export type PokemonHabitatRetrieveResponse200 = PokemonHabitatDetail;
+export type GetpokemonHabitatRetrieveResponse200 = PokemonHabitatDetail;
 
-export type PokemonShapeListResponse200 = PaginatedPokemonShapeSummaryList;
+export type GetpokemonShapeListResponse200 = PaginatedPokemonShapeSummaryList;
 
-export type PokemonShapeRetrieveResponse200 = PokemonShapeDetail;
+export type GetpokemonShapeRetrieveResponse200 = PokemonShapeDetail;
 
-export type PokemonSpeciesListResponse200 = PaginatedPokemonSpeciesSummaryList;
+export type GetpokemonSpeciesListResponse200 = PaginatedPokemonSpeciesSummaryList;
 
-export type PokemonSpeciesRetrieveResponse200 = PokemonSpeciesDetail;
+export type GetpokemonSpeciesRetrieveResponse200 = PokemonSpeciesDetail;
 
-export type PokeathlonStatListResponse200 = PaginatedPokeathlonStatSummaryList;
+export type GetpokeathlonStatListResponse200 = PaginatedPokeathlonStatSummaryList;
 
-export type PokeathlonStatRetrieveResponse200 = PokeathlonStatDetail;
+export type GetpokeathlonStatRetrieveResponse200 = PokeathlonStatDetail;
 
-export type RegionListResponse200 = PaginatedRegionSummaryList;
+export type GetregionListResponse200 = PaginatedRegionSummaryList;
 
-export type RegionRetrieveResponse200 = RegionDetail;
+export type GetregionRetrieveResponse200 = RegionDetail;
 
-export type StatListResponse200 = PaginatedStatSummaryList;
+export type GetstatListResponse200 = PaginatedStatSummaryList;
 
-export type StatRetrieveResponse200 = StatDetail;
+export type GetstatRetrieveResponse200 = StatDetail;
 
-export type SuperContestEffectListResponse200 = PaginatedSuperContestEffectSummaryList;
+export type GetsuperContestEffectListResponse200 = PaginatedSuperContestEffectSummaryList;
 
-export type SuperContestEffectRetrieveResponse200 = SuperContestEffectDetail;
+export type GetsuperContestEffectRetrieveResponse200 = SuperContestEffectDetail;
 
-export type TypeListResponse200 = PaginatedTypeSummaryList;
+export type GettypeListResponse200 = PaginatedTypeSummaryList;
 
-export type TypeRetrieveResponse200 = TypeDetail;
+export type GettypeRetrieveResponse200 = TypeDetail;
 
-export type VersionListResponse200 = PaginatedVersionSummaryList;
+export type GetversionListResponse200 = PaginatedVersionSummaryList;
 
-export type VersionRetrieveResponse200 = VersionDetail;
+export type GetversionRetrieveResponse200 = VersionDetail;
 
-export type VersionGroupListResponse200 = PaginatedVersionGroupSummaryList;
+export type GetversionGroupListResponse200 = PaginatedVersionGroupSummaryList;
 
-export type VersionGroupRetrieveResponse200 = VersionGroupDetail;
+export type GetversionGroupRetrieveResponse200 = VersionGroupDetail;
 
-export type PokemonEncountersRetrieveResponse200 = Array<{
+export type GetpokemonEncountersRetrieveResponse200 = Array<{
 	location_area: {
 		name: string;
 		url: string;

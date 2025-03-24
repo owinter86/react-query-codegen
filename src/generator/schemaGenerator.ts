@@ -77,7 +77,6 @@ function generateTypeDefinition(
 	// Use 'interface' only for complex objects with properties
 	const isInterface = !("$ref" in schema) && schema.type === "object" && schema.properties;
 	const namedInterface = pascalCase(name);
-	console.log(name);
 	return isInterface
 		? `${description}export interface ${name} ${typeValue}\n\n`
 		: `${description}export type ${namedInterface} = ${typeValue}\n\n`;
@@ -126,9 +125,8 @@ export function generateTypeDefinitions(spec: OpenAPIV3.Document): string {
 						const responseObj = response as OpenAPIV3.ResponseObject;
 						const content = responseObj.content?.["application/json"];
 						if (content?.schema) {
-							const typeName = sanitizeTypeName(
-								`${operationObject.operationId || `${method.toLowerCase()}${path.replace(/\W+/g, "_")}`}_Response${code}`
-							);
+							const opName = `${method}${sanitizeTypeName(operationObject.operationId || `${path.replace(/\W+/g, "_")}`)}`;
+							const typeName = sanitizeTypeName(`${opName}_Response${code}`);
 							output += generateTypeDefinition(typeName, content.schema as OpenAPIV3.SchemaObject, context);
 						}
 					}
